@@ -1,0 +1,113 @@
+﻿@model BDS.Areas.Admin.Models.News.NewsCreateRequest
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@section css{
+    <link href="~/admin/js/summernote/summernote-bs4.min.css" rel="stylesheet">
+}
+
+@section js{
+    <script src="~/admin/js/summernote/summernote-bs4.js"></script>
+    <script src="~/admin/js/custemUrl.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#detail').summernote({
+                height: 200,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'italic', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'hr']],
+                    ['view', ['fullscreen', 'codeview']],
+                    ['help', ['help']]
+                ]
+            });
+        });
+    </script>
+}
+<input type="hidden" id="success" value="@TempData["success"]" />
+<input type="hidden" id="warning" value="@TempData["warning"]" />
+<input type="hidden" id="error" value="@TempData["error"]" />
+
+<div class="container-fluid">
+    <h1 class="mt-4">Tạo mới bài viết</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+        <li class="breadcrumb-item active">Tạo mới bài viết</li>
+    </ol>
+    <div class="card mb-4">
+        <div class="card-header">
+            <a class="btn btn-success" asp-action="Index" asp-controller="News" asp-area="admin">Về danh sách</a>
+        </div>
+
+        <div class="card-body">
+            <form asp-action="Create" asp-controller="News" asp-area="Admin" enctype="multipart/form-data" method="post">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label class="control-label"> Tên bài viết</label>
+                            <input asp-for="Name" id="txtName" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label"> URL</label>
+                            <input asp-for="Url" id="txtUrl" class="form-control" />
+                            <span asp-validation-for="Url" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Danh mục</label><br />
+                            <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.categoryList"></select>
+                            <span asp-validation-for="CategoryId" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Mô tả</label>
+                            <textarea asp-for="Description" rows="5" class="form-control"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label"> Chi tiết</label>
+                            <textarea asp-for="Detail" id="detail" class="form-control"></textarea>
+                            <span asp-validation-for="Detail" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label">Thứ tự hiển thị</label>
+                            <input asp-for="DisplayOrder" type="number" class="form-control" />
+                            <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Trạng thái</label>
+                            <select class="form-control" id="Status" asp-for="Status">
+                                <option value="1" selected>Hoạt động</option>
+                                <option value="0">Khóa</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Hình ảnh</label>
+                            <input asp-for="FileUpload" type="file" class="form-control" />
+                            <span asp-validation-for="FileUpload" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Bài viết mới :  </label>
+                            <input asp-for="IsNewInput" type="checkbox" />
+                            <span asp-validation-for="IsNewInput" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Tạo mới" class="btn btn-primary" />
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

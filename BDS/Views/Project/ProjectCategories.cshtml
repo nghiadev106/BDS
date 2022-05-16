@@ -1,0 +1,893 @@
+﻿@model BDS.Models.PaginationSet<BDS.Model.Project>
+@{
+    var category = (BDS.Model.Category)ViewBag.ListCate;
+    ViewData["Title"] = category.Name;
+    var ListCate = (List<BDS.Model.Category>)ViewBag.ListCate;
+    var ListProject = (List<BDS.Model.Project>)ViewBag.ListProject;
+}
+
+
+<div id="fix_height">
+    <meta name="placename" content="Cần thu&#234; căn hộ chung cư  Việt Nam" />
+    <div class="main main-detail">
+        <div class="dl-flex">
+            <div class="col-auto display-ib mg-right-20">
+                <ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                        <a href="/" itemprop="item" title="BatdongsanViet">
+                            <meta itemprop="name" content="BatdongsanViet" />
+                            BatdongsanViet
+                        </a>
+                        <meta itemprop="position" content="1" />
+                    </li>
+                    <li class="active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                        <a href="" itemprop="item" title="@category.Name">
+                            <meta itemprop="name" content="@category.Name" />
+                            @category.Name
+                        </a>
+                        <meta itemprop="position" content="3" />
+                    </li>
+                </ul>
+                <h1 class="fweight-bold fsize-18 clr-055699 lh-24 mg-bottom-5">@category.Name</h1>
+                <div class="text-center clr-000 fsize-13 mg-top-10">
+                    Batdongsanviet.com.vn là kênh thông tin nhanh và chính xác về Cần thu&#234; căn hộ chung cư Việt Nam một cách khách quan và đầy đủ thông tin về Cần thu&#234; căn hộ chung cư Việt Nam để quý khách có thông tin trước khi quyết định giao dịch tại Cần thu&#234; căn hộ chung cư Việt Nam. Hãy chọn batdongsanviet.com.vn
+                </div>
+                <div id="rating-box"> <div class="br-wrapper br-theme-fontawesome-stars"><select id="rating" style="display: none;"> <option value="1">1</option> <option value="2">2</option> <option value="3">3</option> <option selected value="4">4</option> <option value="5">5</option> </select><div class="br-widget"><a href="#" data-rating-value="1" data-rating-text="1" class="br-selected"></a><a href="#" data-rating-value="2" data-rating-text="2" class="br-selected"></a><a href="#" data-rating-value="3" data-rating-text="3" class="br-selected"></a><a href="#" data-rating-value="4" data-rating-text="4" class="br-selected"></a><a href="#" data-rating-value="5" data-rating-text="5" class="br-selected br-current"></a><div class="br-current-rating">5</div></div></div> <div class="kksr-legend"> <div vocab="//schema.org/" typeof="CreativeWorkSeason"> <div property="name" class="kksr-title">Cần thu&#234; căn hộ chung cư Việt Nam</div> <div property="aggregateRating" typeof="AggregateRating"> Tỷ lệ: <span property="ratingValue">5</span> (89%) <span property="ratingCount">350</span> votes <meta property="bestRating" content="5"> <meta property="worstRating" content="1"> </div> </div> </div> <div class="rating-responsive">.Đánh giá của bạn</div> </div>
+                <div class="display-bl brd-bottom-w-1 brd-style-solid brd-style-color set-relative h-45 mg-bottom-10 mg-top-20">
+                    <div class="set-absolute bottom-10 left-0">
+                        <h2 class="fweight-bold fsize-14 clr-055699 lh-24 mg-bottom-5"> Có <span class="fweight-bold fsize-14 clr-055699">8 </span> bất động sản tại Cần thu&#234; căn hộ chung cư Việt Nam </h2>
+                    </div>
+                    <div class="set-absolute right0 bottom-5">
+                        <select id="cboOrders" class="chosen-select disable_search w-150" onchange="ArrangeUrl(this.value);">
+                            <option value="0">--Sắp xếp theo--</option>
+                            <option value="1">Tin mới nhất</option>
+                            <option value="2">Giá thấp nhất</option>
+                            <option value="3">Giá cao nhất</option>
+                            <option value="4">Diện tích nhỏ nhất</option>
+                            <option value="5">Diện tích lớn nhất</option>
+                        </select>
+                    </div>
+                </div>
+                @if (Model.Count > 0)
+                {
+                    foreach (var item in Model.Items)
+                    {
+                        <div class="item display-bl pd-top-10 pd-bottom-10">
+                            <h3 class="display-bl fsize-13">
+                                <a href="/du-an/@item.Url/@item.Id" title="@item.Name" class="clr-055699">@item.Name</a>
+                            </h3>
+                            <div class="display-bl set-relative min-h-84 new-view">
+                                <a href="/du-an/@item.Url/@item.Id" title="Cho thu&#234; căn hộ studio full nội thất v&#224;o được lu&#244;n tại Vinhomes Smart City T&#226;y Mỗ" class="display-ib w-per-17">
+                                    <img alt="@item.Name" class="full-width clr-D4D4D4 text-non-underline" src="/bds/2022-04-22/20220422102626138248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
+                                    <img alt="@item.Name" class="small-img1" src="/bds/2022-04-22/20220422102626451110.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
+                                    <img alt="@item.Name" class="small-img2" src="/bds/2022-04-22/20220422102626451248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
+                                </a><p class="pd-left-10 w-per-83 display-ib oflow-hidden max-h-40 no-mg-bottom">
+                                    @item.Description
+                                </p>
+                                    <p class="set-absolute left-per-17 bottom-per-23 pd-left-10 no-mg-bottom">
+
+                                        Giá:@if (item.Price > 0){<span class="fweight-bold mg-right-60 clr-055699">@item.Price</span>
+                    }
+                    else
+                    {
+                                    <span class="fweight-bold mg-right-60 clr-055699">
+                                        Thỏa thuận
+                                    </span>
+                    }
+                                          
+                                            Diện tích: <span class="fweight-bold clr-055699">@item.Acreage m&#178;</span>
+                                        </p>
+                                <p class="set-absolute left-per-17 bottom-ng-3 pd-left-10 no-mg-bottom">
+                                    Quận/Huyện:@item.AddressDetail
+                                </p>
+                                <p class="set-absolute bottom-ng-3 no-mg-bottom right-3 clr-555">
+                                    @item.CreateDate
+                                </p>
+                            </div>
+                        </div>
+
+                    }
+                }
+
+                <div class="clear"></div>
+                <div class="pn-paging"> <ul class="paging"> </ul> </div>
+                <div class="desciption-content">
+                    <p></p><div class="toc_container">
+                        <div class="toc_title">Nội dung bài viết [<button>Thu gọn bài viết</button>]</div><ul style="display: block;" class="toc_list">
+                            <li>
+                                <a href="#faq-nhung-cau-hoi-thuong-gap"><h2>FAQ – Những lưu ý khi giao dịch tại Cần thu&#234; căn hộ chung cư Việt Nam :</h2></a><ul>
+                                    <li><a href="#1-mua-ban-nha-trong-khu-dan-cu-hien-huu-can-luu-y-gi">1. 1/ Mua bán nhà trong khu dân cư hiện hữu cần lưu ý gì?</a></li>
+                                    <li><a href="#2-mua-ban-can-ho-chung-cu-can-luu-y-gi">1. 2/ Mua bán căn hộ chung cư cần lưu ý gì?</a></li>
+                                    <li><a href="#3-Mua-ban-dat-tho-cu-dat-o-can-luu-y-gi">1. 3/ Mua bán đất thổ cư, đất ở cần lưu ý gì?</a></li>
+                                    <li><a href="#4-mua-ban-dat-nen-lien-ke-dat-du-dan-can-luu-y-gi">1. 4/ Mua bán đất nền, liền kề, đất dự án cần lưu ý gì?</a></li>
+                                    <li><a href="#5-thue-nha-mat-tien-nha-trong-ngo-hem-can-luu-y">1. 5/ Thuê nhà mặt tiền, nhà trong ngõ hẻm cần lưu ý gì?</a></li>
+                                    <li><a href="#6-thue-cho-thue-can-ho-chung-cu-can-luu-y-gi">1. 6/ Thuê, cho thuê căn hộ Chung cư cần lưu ý gì?</a></li>
+                                    <h2 id="faq-nhung-cau-hoi-thuong-gap"><div class="desciption-content"><strong>FAQ – Những lưu ý khi giao dịch tại Cần thu&#234; căn hộ chung cư Việt Nam:</strong></h2>
+                                    <h3 id="1-mua-ban-nha-trong-khu-dan-cu-hien-huu-can-luu-y-gi">1/ Mua bán nhà trong khu dân cư hiện hữu cần lưu ý gì?</h3>
+                                    <p>
+                                        Giai đoạn tìm hiểu và đàm phán:
+                                        Tìm hiểu giấy tờ pháp lý của tài sản là thật hay giả.
+                                        Kiểm tra tài sản trên thực tế và tài sản trên giấy chứng nhận.
+                                        Tìm hiểu nhà đất bán có bị tranh chấp với hàng xóm liền kề hay tranh chấp giữa các đồng sở hữu hoặc với người khác.
+                                        Kiểm tra người đứng tên tài sản vợ/chồng có gặp khó khăn trong việc ký tên chuyển nhượng không.
+                                        Tìm hiểu ở Phòng công chứng xem tài sản có đang liên quan đến một giao dịch khác như đặt cọc, cầm cố, bảo lãnh, ủy quyền… hay không?
+                                        Kiểm tra giấy tờ tùy thân có còn trong hạn sử dụng hay không.
+                                        Kiểm tra giấy chứng nhận có ghi nợ các khoản lệ phí trước bạ, tiền sử dụng đất,..
+                                        Kiểm tra việc mua bán có biểu hiện giấu giếm, vội vàng, giá cả mua bán có quá rẻ không
+                                        Tìm hiểu tài sản có liên quan đến bên thứ ba như hệ thống cống, cáp điện, cấp nước…
+                                        Giai đoạn ký hợp đồng, thanh toán:
+                                        Hạn chế việc mua bán viết tay, nếu tài sản đã có giấy chứng nhận nên đến phòng công chứng để làm hợp đồng mua bán.
+                                        Việc đặt cọc, mua bán nên mời người làm chứng.
+                                        Việc thanh toán cần thực hiện tại ngân hàng, không nên thanh toán ở địa điểm khác.
+                                        Hạn chế việc đặt cọc, mua bán bằng ngoại tệ bởi việc mua bán này có thể bị vô hiệu, gây thiệt hại cho các bên.
+                                        Ngay sau khi ký hợp đồng công chứng, một trong các bên phải liên hệ nộp thuế với cơ quan thuế để tránh bị phạt do chậm nộp.
+                                        Khi nhận Giấy chứng nhận (cấp cho bên mua) cần kiểm tra các thông tin ghi trên giấy chứng nhận có chính xác không. Nếu phát hiện sai sót phải đề nghị đính chính ngay..
+                                    </p>
+                                    <h3 id="2-mua-ban-can-ho-chung-cu-can-luu-y-gi">2/ Mua bán căn hộ chung cư cần lưu ý gì?</h3>
+                                    <p>
+                                        Chủ đầu tư uy tín: Bạn phải tỉnh táo và tìm hiểu thật kỹ lưỡng xem Chủ đầu tư đó có được Ngân hàng đứng ra bảo lãnh tiến độ xây dựng của dự án hay không hoặc chủ đâu tư có uy tín và tiềm lực tài chính lớn
+                                        Khả năng tài chính: Cần cân nhắc khả năng tài chính của chính mình để có sự lựa chọn phù hợp nhất.
+                                        Vị trí: Cụ thể là khoảng cách từ dự án đến trung tâm thành phố, nơi làm việc, học tập và các tiện ích cần thiết như chợ, siêu thị… là bao xa.
+                                        Phương thức thanh toán: phương thức thanh toán linh hoạt được các chủ đầu tư tận dụng như lá 1 yếu tố để thu hút khách hàng. Đây là yếu tố được rất nhiều gia đình trẻ có thu nhập trung bình chú ý để vừa phải cân bằng giữa chi tiêu trong sinh hoạt và thanh toán cho chủ đầu tư.
+                                        Tiến độ xây dựng: nên lựa chọn các dự án có cam kết mạnh mẽ và cụ thể thời gian về từng giai đoạn thi công. Đặc biệt là những dự án cam kết tiến độ thi công song song với tiến độ đóng tiền.
+                                        Pháp lý/ Hợp đồng: Cần tham khảo Hợp đồng mua bán / Hồ sơ pháp lý trước khi đặt bút ký vào hợp đồng. Cần phân tích ở những điểm: Giá cả phải minh bạch, rõ ràng, thanh toán ở những mốc thời gian cụ thể. Yêu cầu chủ đầu tư cho xem về giấy tờ pháp lý liên quan như: giấy phép xây dựng, giấy phép đầu tư, sổ đỏ dự án…Nếu là căn hộ trả góp cần hỏi kỹ lưỡng những giấy tờ cần thiết, điều kiện vay, lãi suất thay đổi như thế nào?
+                                        Phí chung cư, tiện ích: Bạn nên tìm hiểu các loại phí chung cư cần phải trả hàng tháng có phù hợp hoặc chấp nhận được không? Phí chung cư hiện nay là vấn đề các bạn phải cân nhắc thiệt kỹ trước khi mua. Cần xem xét kĩ các vấn đề như: chỗ gởi xe máy, xe hơi, chỗ sinh hoạt công cộng, nhà cung cấp dịch vụ internet, cáp, điện thoại, bể bơi, trung tâm thể dục, thang máy….và các tiện ích khác. Phí quản lý chung cư: tùy thuộc vào tiêu chuẩn của dự án sẽ có 1 mức phí khác nhau nhưng đều không vượt quá mức trần của nhà nước quy định
+                                        Sau khi quyết định mua một căn hộ chung cư nào đó, bạn nên xin một bản copy hợp đồng về đọc, phân tích kỹ lưỡng.
+                                    </p>
+                                    <h3 id="3-Mua-ban-dat-tho-cu-dat-o-can-luu-y-gi">3/ Mua bán đất thổ cư, đất ở cần lưu ý gì?</h3>
+                                    <p>
+                                        Tìm hiểu về mảnh đất cần mua
+                                        Khu dân sinh có tốt không, giao thông có thuận lợi không, để thuận tiện trong cuộc sống, bạn nên chọn những khu đất gần trường học, bệnh viện, chợ, ...
+                                        Chọn hướng phù hợp với bạn nếu bạn tin vào phong thủy chọn hoặc bạn mảnh đất nằm ở hướng Nam hay Đông Nam là tốt nhất. Đây là hai hướng khí hậu ôn hòa, rất tốt để xây nhà. Vì thế, dân gian có câu "lấy vợ hiền hòa, làm nhà hướng Nam".
+                                        Tới Sở Tài Nguyên Môi trường hỏi xem mảnh đất đó có nằm trong diện quy hoạch không, hoặc khu vực đó có dự án nào không.
+                                        Giấy chứng nhận quyền sử dụng đất hợp pháp, điều này rất quan trọng bởi nó quyết định đến tính pháp lý của mảnh đất.
+                                        Không có tranh chấp lối đi vào: Tại các đô thị lớn có rất nhiều mảnh đất mà lối vào đang xảy ra tranh chấp chưa thể giải quyết.
+                                        Giai đoạn ký hợp đồng, thanh toán:
+                                        Hạn chế việc mua bán viết tay, nếu tài sản đã có giấy chứng nhận nên đến phòng công chứng để làm hợp đồng mua bán.
+                                        Việc đặt cọc, mua bán nên mời người làm chứng.
+                                        Việc thanh toán cần thực hiện tại ngân hàng, không nên thanh toán ở địa điểm khác.
+                                        Hạn chế việc đặt cọc, mua bán bằng ngoại tệ bởi việc mua bán này có thể bị vô hiệu, gây thiệt hại cho các bên.
+                                        Ngay sau khi ký hợp đồng công chứng, một trong các bên phải liên hệ nộp thuế với cơ quan thuế để tránh bị phạt do chậm nộp.
+                                        Khi nhận Giấy chứng nhận (cấp cho bên mua) cần kiểm tra các thông tin ghi trên giấy chứng nhận có chính xác không. Nếu phát hiện sai sót phải đề nghị đính chính ngay.
+                                    </p>
+                                    <h3 id="4-mua-ban-dat-nen-lien-ke-dat-du-dan-can-luu-y-gi">4/ Mua Đất nền, liền kề, đất dự án cần lưu ý gì?</h3>
+                                    <p>
+                                        Chủ đầu tư: khi mua đất nền dự án là cần phải chọn chủ đầu tư có uy tín, thực hiện nhiều công trình tốt và có trách nhiệm với khách hàng, có nguồn vốn mạnh mẽ.
+                                        Vị trí: mảnh đất đó có gần nơi làm việc hay không, có gần siêu thị hay trường học cho con cái của bạn đi học hay không, nơi đó có yên tĩnh không, các phương tiện giao thông đi qua, chỗ đậu xe, nơi mua sắm...
+                                        Pháp lý: Người bán phải có đầy đủ giấy tờ chứng minh quyền sử dụng hợp pháp. Nếu là đất được thừa kế, phải tìm hiểu kỹ những người thừa kế khác có tranh chấp hay không. Pháp lý minh bạch, rõ ràng là ưu tiên hàng đầu trong thời điểm hiện nay.
+                                        Không nên mua đất sổ chung: Vì nếu sau này xảy ra tranh chấp thì sẽ rất phiền phức cho 2 bên và gần như không giải quyết triệt để được.
+                                        Cơ sở hạ tầng: Cơ sở hạ tầng đã hoàn thiện hay đang trong giai đoạn hoàn thiện, các dự án có cơ sở hạ tầng hoàn thiện được khách hàng ưu tiên trước vì có thể đáp ứng được nhu cầu ở, kinh doanh, hoặc đầu tư.
+                                        Tránh tin vào tâm lý đám đông: Các bạn nên lưu ý đừng thấy nhiều người cùng thực hiện một việc mà tin tưởng rằng việc đó là đúng. Trong việc mua đât nền dự án cũng vậy, để hiệu quả, bạncần thu thập đầy đủ thông tin về chủ đầu tư, dự án và nếu có thể nhờ đến sự tư vấn của chuyên gia để hạn chế rủi ro.
+                                        Hợp đồng: Nội dung hợp đồng phải được ghi rõ ràng, đầy đủ các thông tin cần thiết: phương thức thanh toán, thời hạn thanh toán, thời hạn giao đất, đặc biệt là các điều khoản phạt như mức đền bù thiệt hại nếu chủ đầu tư vi phạm tiến độ, quy hoạch thay đổi, người mua trễ hạn nộp phí thì giải quyết thế nào, …
+                                    </p>
+                                    <h3 id="5-thue-nha-mat-tien-nha-trong-ngo-hem-can-luu-y">5/ Thuê nhà mặt tiền, nhà trong ngõ hẻm cần lưu ý gì?</h3>
+                                    <p>
+                                        Trước khi đến xem nhà cần xác minh người đang liên hệ là chủ nhà hay nhà môi giới để tránh mất tiền vô ích. Nên hỏi trước những thông tin cơ bản như địa chỉ cụ thể, giá thuê, tiền điện, nước,…
+                                        Vị trị nhà: Dò hỏi xung quanh để biết được tình hình ngập lụt, an ninh, ồn ào hay nhà bạn định thuê có gặp vấn đề gì không. Bạn muốn thuê nhà để kinh doanh, chắc chắn phải xem xét căn nhà có nằm ở vị trí sầm uất không, có phù hợp với ngành nghề bạn muốn kinh doanh không.
+                                        Xác minh chủ nhà: kiểm tra chắc chắn rằng người ký hợp đồng với bạn là chủ nhà và có quyền cho bạn thuê nhà. Cần yêu cầu chủ nhà trình giấy tờ để xác nhận tư cách thực của chủ nhà.
+                                        Tiền thuê: Tiền thuê là bao nhiêu? Nộp lúc nào? Thời hạn thuê bao lâu? Có cam kết không tăng giá trong thời gian thuê không?
+                                        Tiền đặt cọc: có cần đặt cọc trước hay không, số tiền bao nhiêu, khi nào thì được lấy lại cọc?
+                                        Chi phí khác: tiền điện, tiền nước, internet, cáp và những chi phí phát sinh khác (nếu có)…
+                                        Chấm dứt hợp đồng: Có thể chấm dứt hợp đồng trước thời hạn không? Cần phải báo trước bao nhiêu ngày? Thời gian được hoàn lại tiền đặt cọc (nếu có).
+                                        Thiết bị gia dụng: Kiểm tra tình trạng những đồ gia dụng và thiết bị được chủ nhà cung cấp? .
+                                    </p>
+                                    <h3 id="6-thue-cho-thue-can-ho-chung-cu-can-luu-y-gi">6/ Thuê, cho thuê căn hộ Chung cư cần lưu ý gì?</h3>
+                                    <p>
+                                        Liên hệ trước khi đến xem nhà, xác nhận người đang liên hệ chủ nhà hay nhà môi giới. Xác định phí dịch vụ (nếu có) khi dẫn đi xem nhà, nếu tốn phí tốt nhất nên tìm nhà cho thuê khác. Hỏi các thông tin cơ bản như địa chỉ cụ thể, giá cho thuê, tiền điện, tiền nước nước,... Mỗi chung cư chỉ dùng một đường truyền Internet và truyền hình cáp, người thuê cần cân nhắc xem có phù hợp với nhu cầu sử dụng của mình không. Nên tìm hiểu nhiều chung cư để tham khảo mức giá và tránh bị “hét” giá.
+                                        Vị trí: Dò hỏi xung quanh để xem tình hình ngập lụt, an ninh nơi thuê. Cần xem xét nơi thuê có gần trường học bạn đang học, gần nơi làm việc, siêu thi hay chợ hay không, có các tuyến xe đi đến các địa điểm bạn thường tới không, giao thông có thuận tiện hay không…
+                                        Xác minh chủ nhà: kiểm tra chắc chắn rằng người ký hợp đồng với bạn là chủ nhà và có quyền cho bạn thuê nhà. Cần yêu cầu chủ nhà trình giấy tờ để xác nhận tư cách thực của chủ nhà.
+                                        Tiền thuê: Tiền thuê là bao nhiêu? Nộp lúc nào? Thời hạn thuê bao lâu?
+                                        Tiền đặt cọc: có cần đặt cọc trước hay không, số tiền bao nhiêu, khi nào thì được lấy lại cọc?
+                                        Chi phí khác: Tiền điện, tiền nước, internet, phí giữ xe, phí thang máy và các chi phí khác nếu có? Nên yêu cầu chủ nhà liệt kê chi tiết tất cả các khoản phí phải đóng và bạn chỉ thực hiện đúng như hợp đồng.
+                                        Chấm dứt hợp đồng: Có thể chấm dứt hợp đồng trước thời hạn không? Cần phải báo trước bao nhiêu ngày? Thời gian được hoàn lại tiền đặt cọc (nếu có).
+                                        Những ràng buộc đặc biệt: xác định chủ nhà có yêu cầu hay quy định gì không ( ví dụ như được nuôi thú không, được tiếp khách không…).
+                                    </p>
+                    </div>
+                </div>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                <script>
+                    $(document).ready(function () {
+                        $("button").click(function () {
+                            $("p").toggle();
+                        });
+                    });
+                </script>
+                <style>
+                    desciption-content {
+                        padding: 15px;
+                        text-align: justify;
+                        background: #fff;
+                        font-size: 14px;
+                    }
+
+                    .toc_container {
+                        width: auto;
+                        display: table;
+                        background: #eaeae9;
+                        padding: 15px 10px;
+                        margin-bottom: 10px;
+                        min-width: 300px;
+                        font-size: 14px;
+                    }
+
+                    .toc_title {
+                        text-align: center;
+                        font-family: "Asap-Medium",sans-serif;
+                        margin: 0 !important;
+                        padding: 0 !important;
+                        background-image: url(/assets/icons/menu-bar.svg);
+                        background-size: 20px 20px;
+                        background-repeat: no-repeat;
+                        padding-left: 30px;
+                        font-size: 14px;
+                    }
+
+                        .toc_title .toc_toggle {
+                            cursor: pointer;
+                            font-size: 14px;
+                        }
+
+                    .toc_list {
+                        margin-top: 10px;
+                        margin-bottom: 0 !important;
+                        list-style-type: none !important;
+                        list-style: none !important;
+                        font-size: 14px;
+                    }
+                </style>
+                <div class='list-property-footer'>
+                    <div class='location-page'>
+                        <p style="color: rgb(0, 0, 0); line-height: 16px; text-align: justify;">
+                            <h2 class="fweight-bold fsize-14 clr-055699 lh-24 mg-bottom-5">T&igrave;m mua ,bán, thuê, cho thuê, sang nhượng, nhận sang nhượng tại Cần thu&#234; căn hộ chung cư Việt Nam tr&ecirc;n trang th&ocirc;ng tin rao vặt nh&agrave; đất, bất động sản trực tuyến batdongsanviet.vn</span></h2>
+                            <div style="color: rgb(0, 0, 0); line-height: 16px;">
+                                <span style="font-size: 14px;">Trang th&ocirc;ng tin rao vặt nh&agrave; đất tại Cần thu&#234; căn hộ chung cư Việt Nam, cập nhật c&aacute;c th&ocirc;ng tin mua b&aacute;n v&agrave; cho thu&ecirc; nh&agrave; tại Cần thu&#234; căn hộ chung cư Việt Nam mới nhất, tổng hợp tất cả c&aacute;c tin nh&agrave; đất b&aacute;n v&agrave; nh&agrave; đất cho thu&ecirc; bao gồm cả tin đăng nh&agrave; đất ch&iacute;nh chủ v&agrave; của người m&ocirc;i giới, người mua c&oacute; thể li&ecirc;n hệ trực tiếp với chủ nh&agrave; để thương lượng mức gi&aacute; hoặc li&ecirc;n hệ với nh&agrave; m&ocirc;i giới nh&agrave; đất ở Cần thu&#234; căn hộ chung cư Việt Nam để được tư vấn để đầu tư một c&aacute;c hiểu quả.</span>
+                            </div>
+                            <div style="color: rgb(0, 0, 0); line-height: 16px;">
+                                &nbsp;
+                            </div>
+                            <div style="color: rgb(0, 0, 0); line-height: 16px;">
+                                <span style="font-size: 14px;">Với h&agrave;ng ng&agrave;n tin bất động sản ở Cần thu&#234; căn hộ chung cư Việt Nam được người c&oacute; nhu cầu b&aacute;n, cho thu&ecirc; đăng tải mỗi ng&agrave;y, người mua/thu&ecirc; c&oacute; nhiều lựa chọn, so s&aacute;nh để t&igrave;m ra sản phẩm th&iacute;ch hợp nhất cho m&igrave;nh. Sử dụng chức năng t&igrave;m kiếm t&agrave;i sản theo c&aacute;c ti&ecirc;u ch&iacute; cụ thể như mức gi&aacute;, diện t&iacute;ch, k&iacute;ch thước, hướng ph&ugrave; với với phong thủy nh&agrave; ở của m&igrave;nh&hellip;. người ,bán, thuê, cho thuê, sang nhượng, nhận sang nhượng; c&oacute; thể tiết kiệm được nhiều thời gian đi lại trong việc t&igrave;m kiếm nh&agrave; Cần thu&#234; căn hộ chung cư Việt Nam so với phương thức t&igrave;m mua, thu&ecirc; nh&agrave; đất theo phương thức truyền thống.</span>
+                            </div>
+                    </div>
+                    <div class='google-map'>
+                        <h3 class='title'>Bản đồ </h3>
+                        <iframe title='' width='820' height='600' frameborder='0' scrolling='no' marginheight='0' marginwidth='0' src='https://maps.google.com/maps?&amp;q=&amp;output=embed'>
+                        </iframe>
+                    </div>
+                </div>
+                <script type="application/ld+json">
+                    null
+                </script>
+            </div>
+            <div class="col-300 display-ib">
+                <input type="hidden" id="hddAreas" />
+                <input type="hidden" id="hddPrice" />
+                <div class="display-bl brd-bottom-w-1 brd-style-solid brd-style-color set-relative h-30 mg-top-20">
+                    <div class="no-mg bg-055699 fsize-13 fweight-bold set-absolute bottom-0 left-0 pd-2 pd-top-3 pd-left-5 pd-right-10 radius-top-7 white-clr">
+                        Tìm kiếm BĐS
+                    </div>
+                </div>
+                <div class="w-300 pd-10 pd-bottom-20 brd-style-solid brdcolor-999 display-bl brdwidth1 bs-border-box no-border-top">
+                    <form ReturnUrl="" action="/Product/BoxSearch/" id="frm_BoxSearch" method="post">
+                        <div class="mg-top-5">
+                            <input class="input form-control" id="Keyword" maxlength="60" name="Keyword" placeholder="Nhập nội dung tìm kiếm" type="text" value="" />
+                        </div>
+                        <div class="mg-top-10">
+                            <select name="ProductType" id="cboType" class="chosen-select disable_search w-278" onchange="objSearchFunc.GetSubCategory(this.value);">
+                                <option value="89">Nh&#224; đất b&#225;n</option>
+                                <option value="90">Nh&#224; đất cho thu&#234;</option>
+                                <option value="92">Nh&#224; đất cần mua</option>
+                                <option selected=selected value="91">Nh&#224; đất cần thu&#234;</option>
+                                <option value="79">Nh&#224; đất sang nhượng</option>
+                            </select>
+                        </div>
+                        <div class="mg-top-10">
+                            <select name="Category" id="cboCategory" class="chosen-select disable_search w-278">
+                                <option value="0">--Chọn loại nhà đất--</option>
+                                <option selected=selected value="71">Cần thu&#234; căn hộ chung cư</option>
+                                <option value="72">Cần thu&#234; nh&#224; ri&#234;ng</option>
+                                <option value="73">Cần thu&#234; nh&#224; mặt phố</option>
+                                <option value="74">Cần thu&#234; nh&#224; trọ, ph&#242;ng trọ</option>
+                                <option value="75">Cần thu&#234; văn ph&#242;ng</option>
+                                <option value="76">Cần thu&#234; cửa h&#224;ng, ki ốt</option>
+                                <option value="77">Cần thu&#234; kho, nh&#224; xưởng, đất</option>
+                                <option value="78">Cần thu&#234; loại bất động sản kh&#225;c</option>
+                            </select>
+                        </div>
+                        <div class="mg-top-10">
+                            <select name="City" id="cboCity" class="chosen-select w-278" onchange="objSearchFunc.ChangeCity(this.value);">
+                                <option value="">--Chọn Tỉnh/Thành phố--</option>
+                                <option value="SG">Hồ Ch&#237; Minh</option>
+                                <option value="HN">Hà N&#244;̣i</option>
+                                <option value="BD">B&#236;nh Dương</option>
+                                <option value="DDN">Đ&#224; Nẵng</option>
+                                <option value="HP">Hải Ph&#242;ng</option>
+                                <option value="LA">Long An</option>
+                                <option value="VT">B&#224; Rịa Vũng T&#224;u</option>
+                                <option value="AG">An Giang</option>
+                                <option value="BG">Bắc Giang</option>
+                                <option value="BK">Bắc Kạn</option>
+                                <option value="BL">Bạc Li&#234;u</option>
+                                <option value="BN">Bắc Ninh</option>
+                                <option value="BTR">Bến Tre</option>
+                                <option value="BDD">B&#236;nh Định</option>
+                                <option value="BP">B&#236;nh Phước</option>
+                                <option value="BTH">B&#236;nh Thuận </option>
+                                <option value="CM">C&#224; Mau</option>
+                                <option value="CN">Cả Nước</option>
+                                <option value="CT">Cần Thơ</option>
+                                <option value="CB">Cao Bằng</option>
+                                <option value="DDL">Đắk Lắk</option>
+                                <option value="DNO">Đắk N&#244;ng</option>
+                                <option value="DDB">Điện Bi&#234;n</option>
+                                <option value="DNA">Đồng Nai</option>
+                                <option value="DDT">Đồng Th&#225;p</option>
+                                <option value="GL">Gia Lai</option>
+                                <option value="HG">H&#224; Giang</option>
+                                <option value="HNA">H&#224; Nam</option>
+                                <option value="HT">H&#224; Tĩnh</option>
+                                <option value="HD">Hải Dương</option>
+                                <option value="HGI">Hậu Giang</option>
+                                <option value="HB">H&#242;a B&#236;nh</option>
+                                <option value="HY">Hưng Y&#234;n</option>
+                                <option value="KH">Kh&#225;nh H&#242;a</option>
+                                <option value="KG">Ki&#234;n Giang</option>
+                                <option value="KT">Kon Tum</option>
+                                <option value="LCH">Lai Ch&#226;u</option>
+                                <option value="LDD">L&#226;m Đồng</option>
+                                <option value="LS">Lạng Sơn</option>
+                                <option value="LCA">L&#224;o Cai</option>
+                                <option value="NDD">Nam Định</option>
+                                <option value="NA">Nghệ An</option>
+                                <option value="NB">Ninh B&#236;nh</option>
+                                <option value="NT">Ninh Thuận</option>
+                                <option value="PT">Ph&#250; Thọ</option>
+                                <option value="PY">Ph&#250; Y&#234;n</option>
+                                <option value="QB">Quảng B&#236;nh</option>
+                                <option value="QNA">Quảng Nam</option>
+                                <option value="QNG">Quảng Ng&#227;i</option>
+                                <option value="QNI">Quảng Ninh</option>
+                                <option value="QT">Quảng Trị</option>
+                                <option value="ST">S&#243;c Trăng</option>
+                                <option value="SL">Sơn La</option>
+                                <option value="TNI">T&#226;y Ninh</option>
+                                <option value="TB">Th&#225;i B&#236;nh</option>
+                                <option value="TN">Th&#225;i Nguy&#234;n</option>
+                                <option value="TH">Thanh H&#243;a</option>
+                                <option value="TTH">Thừa Thi&#234;n Huế</option>
+                                <option value="TG">Tiền Giang</option>
+                                <option value="TV">Tr&#224; Vinh</option>
+                                <option value="TQ">Tuy&#234;n Quang</option>
+                                <option value="VL">Vĩnh Long</option>
+                                <option value="VP">Vĩnh Ph&#250;c</option>
+                                <option value="YB">Y&#234;n B&#225;i</option>
+                            </select>
+                        </div>
+                        <div class="mg-top-10">
+                            <select name="District" id="cboDistricts" class="chosen-select w-278" onchange="objSearchFunc.ChangeDistricts($('#cboCity').val(), this.value)">
+                                <option value="0">--Chọn Quận/Huyện--</option>
+                            </select>
+                        </div>
+                        <div class="mg-top-10">
+                            <div id="divArea" class="searchrow advance-select-box">
+                                <span class="select-text">
+                                    <span class="select-text-content">--Chọn diện tích--</span>
+                                </span>
+                                <input id="hdCboArea" name="Area" value="-1" type="hidden">
+                                <div id="divAreaOptions" class="advance-select-options advance-options" minvalue="txtAreaMinValue" maxvalue="txtAreaMaxValue" unit="area" hddvalue="hdCboArea" ddlid="divArea">
+                                    <table class="header-options options">
+                                        <tbody>
+                                            <tr class="advance-options">
+                                                <td class="advance-options">
+                                                    <input id="txtAreaMinValue" value="" name="AreaMin" placeholder="từ" class="min-value advance-options" maxlength="6" numbersonly="true" decimal="false" type="text">
+                                                </td>
+                                                <td class="advance-options">
+                                                    <span class="advance-options">- </span>
+                                                </td>
+                                                <td class="advance-options">
+                                                    <input id="txtAreaMaxValue" value="" name="AreaMax" placeholder="đến" class="max-value advance-options" maxlength="6" numbersonly="true" decimal="false" type="text">
+                                                </td>
+                                                <td class="advance-options">
+                                                    <span class="advance-options">m2</span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <ul class="advance-options">
+                                        <li data-id="-1" class="advance-options">--Chọn diện tích--</li>
+                                        <li data-id="0" class="advance-options">Chưa xác định</li>
+                                        <li data-id="1" class="advance-options">&lt; 30 m2</li>
+                                        <li data-id="2" class="advance-options">30 - 50 m2</li>
+                                        <li data-id="3" class="advance-options">50 - 80 m2</li>
+                                        <li data-id="4" class="advance-options">80 - 100 m2</li>
+                                        <li data-id="5" class="advance-options">100 - 150 m2</li>
+                                        <li data-id="6" class="advance-options">150 - 200 m2</li>
+                                        <li data-id="7" class="advance-options">200 - 250 m2</li>
+                                        <li data-id="8" class="advance-options">250 - 300 m2</li>
+                                        <li data-id="9" class="advance-options">300 - 500 m2</li>
+                                        <li data-id="10" class="advance-options">&gt;= 500 m2</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mg-top-10">
+                            <div id="divPrice" class="searchrow advance-select-box">
+                                <span class="select-text">
+                                    <span class="select-text-content">--Chọn mức giá--</span>
+                                </span>
+                                <input id="hdCboPrice" name="Price" value="-1" type="hidden">
+                                <div id="divPriceOptions" class="advance-select-options advance-options" minvalue="txtPriceMinValue" maxvalue="txtPriceMaxValue" unit="money" lblmin="lblPriceMin" lblmax="lblPriceMax" hddvalue="hdCboPrice" ddlid="divPrice">
+                                    <table class="header-options options">
+                                        <tbody>
+                                            <tr class="advance-options">
+                                                <td class="advance-options">
+                                                    <input id="txtPriceMinValue" value="" name="PriceMin" placeholder="từ" class="min-value advance-options" maxlength="6" numbersonly="true" decimal="true" type="text">
+                                                    <div id="lblPriceMin"></div>
+                                                </td>
+                                                <td class="advance-options">
+                                                    <span class="advance-options">-</span>
+                                                </td>
+                                                <td class="advance-options">
+                                                    <input id="txtPriceMaxValue" value="" name="PriceMax" placeholder="đến" class="max-value advance-options" maxlength="6" numbersonly="true" decimal="true" type="text">
+                                                    <div id="lblPriceMax"></div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <ul class="advance-options">
+                                        <li data-id="-1" class="advance-options current">--Chọn mức giá--</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="cpsearchadvanced" class="h-0">
+                            <div class="mg-top-10">
+                                <select name="Ward" id="cboWards" class="chosen-select w-278">
+                                    <option value="0">--Chọn Phường/Xã--</option>
+                                </select>
+                            </div>
+                            <div class="mg-top-10">
+                                <select name="Street" id="cboStreets" class="chosen-select w-278">
+                                    <option value="0">--Chọn Đường/Phố--</option>
+                                </select>
+                            </div>
+                            <div class="mg-top-10">
+                                <select name="Rooms" id="cboRooms" class="chosen-select w-278">
+                                    <option value="-1">--Chọn số phòng ngủ--</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">&gt; 5</option>
+                                </select>
+                            </div>
+                            <div class="mg-top-10">
+                                <select id="cboDirections" name="Directions" class="chosen-select w-278">
+                                    <option value="-1">--Chọn hướng nhà--</option>
+                                    <option value="1">Đ&#244;ng</option>
+                                    <option value="2">T&#226;y</option>
+                                    <option value="3">Nam</option>
+                                    <option value="4">Bắc</option>
+                                    <option value="5">Đ&#244;ng Bắc</option>
+                                    <option value="6">T&#226;y Bắc</option>
+                                    <option value="7">T&#226;y Nam</option>
+                                    <option value="8">Đ&#244;ng Nam</option>
+                                </select>
+                            </div>
+                            <div class="mg-top-10">
+                                <select name="Projects" id="cboProjects" class="chosen-select w-278">
+                                    <option value="0">--Chọn dự án bất động sản--</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mg-top-20">
+                            <button class="btn-boxsearch btn bg-green fsize-16 w-130 no-pd fweight-normal text-non-uppercase mg-left-70 lh-42 h-42" type="submit" style="line-height:40px !important;">
+                                <i class="icon-search"></i>
+                                Tìm kiếm
+                            </button>
+                            <div class="text-center mg-top-10"><span id="advsearch">Tìm nâng cao</span></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="display-bl brd-bottom-w-1 brd-style-solid brd-style-color set-relative h-30 mg-top-20">
+                    <div class="no-mg bg-055699 fsize-13 fweight-bold set-absolute bottom-0 left-0 pd-2 pd-top-3 pd-left-5 pd-right-10 radius-top-7 white-clr">
+                        Tiện ích
+                    </div>
+                </div>
+                <div class="w-300 pd-10 pd-bottom-20 brd-style-solid brdcolor-999 display-bl brdwidth1 bs-border-box no-border-top">
+                    <div class="i-fengshui mg-top-10 mg-bottom-15" onclick="(new FengShui()).ShowPopup();">
+                        Xem phong thủy theo tuổi
+                    </div>
+
+                </div>
+                <h2>
+                    <div class="h-count">
+                        Cần thu&#234; căn hộ chung cư
+                    </div>
+                    <ul class="cp-linkcount">
+                        <li>
+                            <h3>
+                                <a title="Cần thu&#234; căn hộ chung cư Hà N&#244;̣i" href="/can-thue-can-ho-chung-cu-ha-noi">
+                                    Hà N&#244;̣i
+                                </a> (71)
+                            </h3>
+                        </li>
+                        <li>
+                            <h3>
+                                <a title="Cần thu&#234; căn hộ chung cư Hồ Ch&#237; Minh" href="/can-thue-can-ho-chung-cu-ho-chi-minh">
+                                    Hồ Ch&#237; Minh
+                                </a> (51)
+                            </h3>
+                        </li>
+                        <li>
+                            <h3>
+                                <a title="Cần thu&#234; căn hộ chung cư Kh&#225;nh H&#242;a" href="/can-thue-can-ho-chung-cu-khanh-hoa">
+                                    Kh&#225;nh H&#242;a
+                                </a> (7)
+                            </h3>
+                        </li>
+                        <li>
+                            <h3>
+                                <a title="Cần thu&#234; căn hộ chung cư Đ&#224; Nẵng" href="/can-thue-can-ho-chung-cu-da-nang">
+                                    Đ&#224; Nẵng
+                                </a> (6)
+                            </h3>
+                        </li>
+                        <li>
+                            <h3>
+                                <a title="Cần thu&#234; căn hộ chung cư B&#236;nh Dương" href="/can-thue-can-ho-chung-cu-binh-duong">
+                                    B&#236;nh Dương
+                                </a> (2)
+                            </h3>
+                        </li>
+                        <li>
+                            <h3>
+                                <a title="Cần thu&#234; căn hộ chung cư Bắc Ninh" href="/can-thue-can-ho-chung-cu-bn-bac-ninh">
+                                    Bắc Ninh
+                                </a> (1)
+                            </h3>
+                        </li>
+                        <li>
+                            <h3>
+                                <a title="Cần thu&#234; căn hộ chung cư Đồng Nai" href="/can-thue-can-ho-chung-cu-dong-nai">
+                                    Đồng Nai
+                                </a> (1)
+                            </h3>
+                        </li>
+                        <li>
+                            <h3>
+                                <a title="Cần thu&#234; căn hộ chung cư Th&#225;i B&#236;nh" href="/can-thue-can-ho-chung-cu-tb-thai-binh">
+                                    Th&#225;i B&#236;nh
+                                </a> (1)
+                            </h3>
+                        </li>
+                        <li>
+                            <h3>
+                                <a title="Cần thu&#234; căn hộ chung cư Thanh H&#243;a" href="/can-thue-can-ho-chung-cu-thanh-hoa">
+                                    Thanh H&#243;a
+                                </a> (1)
+                            </h3>
+                        </li>
+                        <li>
+                            <h3>
+                                <a title="Cần thu&#234; căn hộ chung cư B&#224; Rịa Vũng T&#224;u" href="/can-thue-can-ho-chung-cu-ba-ria-vung-tau">
+                                    B&#224; Rịa Vũng T&#224;u
+                                </a> (1)
+                            </h3>
+                        </li>
+                        <li>
+                            <h3>
+                                <a title="Cần thu&#234; căn hộ chung cư L&#226;m Đồng" href="/can-thue-can-ho-chung-cu-lam-dong">
+                                    L&#226;m Đồng
+                                </a> (1)
+                            </h3>
+                        </li>
+                    </ul>
+                    <div class="clear"></div>
+                </h2>
+                <div class="display-bl brd-bottom-w-1 brd-style-solid brd-style-color set-relative h-30 mg-top-20">
+                    <div class="no-mg bg-055699 fsize-13 fweight-bold set-absolute bottom-0 left-0 pd-2 pd-top-3 pd-left-5 pd-right-10 radius-top-7 white-clr">
+                        Dự án nổi bật
+                    </div>
+                    <a class="more-duan" href="/du-an-bat-dong-san" title="Dự án Bất động sản - batdongsanviet.vn">Xem thêm</a>
+                </div>
+                <div id="slide-projecthome" class="set-relative swiper-container w-300 brd-style-solid brdcolor-999 display-bl h-485 brdwidth1 bs-border-box no-border-top">
+                    <div class="swiper-wrapper h-440">
+                        <ul class='swiper-slide h-440'>
+                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-12 h-78 fsize-12 lh-18">
+                                <a title="Khu đ&#244; thị An Ph&#250; Thịnh" href="/khu-do-thi-moi-quy-nhon-binh-dinh/khu-do-thi-an-phu-thinh-prj611" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
+                                    <img class="clr-D4D4D4" src="/duan/2018-04-18/20180418020447626248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Khu đ&#244; thị An Ph&#250; Thịnh" />
+                                </a>
+                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
+                                    <a title="Khu đ&#244; thị An Ph&#250; Thịnh" href="/khu-do-thi-moi-quy-nhon-binh-dinh/khu-do-thi-an-phu-thinh-prj611" class="clr-055699">
+                                        Khu đ&#244; thị An Ph&#250; Thịnh
+                                    </a>
+                                </h3>
+                                Đường Huỳnh Tấn Ph&#225;t, X&#227; Nhơn B&#236;nh, Quy Nhơn, B&#236;nh Định
+                            </li>
+                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-14 h-78 fsize-12 lh-18">
+                                <a title="Eurowindow River Park" href="/khu-do-thi-moi-dong-anh-ha-noi/eurowindow-river-park-prj3197" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
+                                    <img class="clr-D4D4D4" src="/duan/2018-04-28/20180428062852182248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Eurowindow River Park" />
+                                </a>
+                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
+                                    <a title="Eurowindow River Park" href="/khu-do-thi-moi-dong-anh-ha-noi/eurowindow-river-park-prj3197" class="clr-055699">
+                                        Eurowindow River Park
+                                    </a>
+                                </h3>
+                                Đường 5 k&#233;o d&#224;i (Trường Sa), x&#227; Đ&#244;ng Hội, Đ&#244;ng Anh, Hà N&#244;̣i
+                            </li>
+                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-14 h-78 fsize-12 lh-18">
+                                <a title="V-Green City Phố Nối" href="/khu-do-thi-moi-yen-my-hy-hung-yen/v-green-city-pho-noi-prj186" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
+                                    <img class="clr-D4D4D4" src="/duan/2018-04-16/20180416092929080248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="V-Green City Phố Nối" />
+                                </a>
+                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
+                                    <a title="V-Green City Phố Nối" href="/khu-do-thi-moi-yen-my-hy-hung-yen/v-green-city-pho-noi-prj186" class="clr-055699">
+                                        V-Green City Phố Nối
+                                    </a>
+                                </h3>
+                                Đường 39A, X&#227; Li&#234;u X&#225;, Y&#234;n Mỹ, Hưng Y&#234;n
+                            </li>
+                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-14 h-78 fsize-12 lh-18">
+                                <a title="Chơn Th&#224;nh Golden Land" href="/khu-do-thi-moi-chon-thanh-binh-phuoc/chon-thanh-golden-land-prj304" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
+                                    <img class="clr-D4D4D4" src="/duan/2018-04-16/20180416040527240248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Chơn Th&#224;nh Golden Land" />
+                                </a>
+                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
+                                    <a title="Chơn Th&#224;nh Golden Land" href="/khu-do-thi-moi-chon-thanh-binh-phuoc/chon-thanh-golden-land-prj304" class="clr-055699">
+                                        Chơn Th&#224;nh Golden Land
+                                    </a>
+                                </h3>
+                                Đường Quốc Lộ 13, X&#227; Minh Hưng, Chơn Th&#224;nh, B&#236;nh Phước
+                            </li>
+                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-14 h-78 fsize-12 lh-18">
+                                <a title="Lavita Garden" href="/can-ho-chung-cu-thu-duc-ho-chi-minh/lavita-garden-prj2935" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
+                                    <img class="clr-D4D4D4" src="/duan/2018-04-27/20180427042730810248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Lavita Garden" />
+                                </a>
+                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
+                                    <a title="Lavita Garden" href="/can-ho-chung-cu-thu-duc-ho-chi-minh/lavita-garden-prj2935" class="clr-055699">
+                                        Lavita Garden
+                                    </a>
+                                </h3>
+                                30 Đường 3, Phường Trường Thọ, Thủ Đức, Hồ Ch&#237; Minh
+                            </li>
+                        </ul><ul class='swiper-slide h-440'>
+                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-12 h-78 fsize-12 lh-18">
+                                <a title="Times City" href="/khu-phuc-hop-hai-ba-trung-ha-noi/times-city-prj1718" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
+                                    <img class="clr-D4D4D4" src="/duan/2018-04-26/20180426115652997248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Times City" />
+                                </a>
+                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
+                                    <a title="Times City" href="/khu-phuc-hop-hai-ba-trung-ha-noi/times-city-prj1718" class="clr-055699">
+                                        Times City
+                                    </a>
+                                </h3>
+                                458 Minh Khai, Phường Vĩnh Tuy, Hai B&#224; Trưng, Hà N&#244;̣i
+                            </li>
+                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-14 h-78 fsize-12 lh-18">
+                                <a title="Dầu Gi&#226;y Center City 2" href="/khu-do-thi-moi-thong-nhat-dong-nai/dau-giay-center-city-2-prj1990" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
+                                    <img class="clr-D4D4D4" src="/duan/2018-04-26/20180426050312274248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Dầu Gi&#226;y Center City 2" />
+                                </a>
+                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
+                                    <a title="Dầu Gi&#226;y Center City 2" href="/khu-do-thi-moi-thong-nhat-dong-nai/dau-giay-center-city-2-prj1990" class="clr-055699">
+                                        Dầu Gi&#226;y Center City 2
+                                    </a>
+                                </h3>
+                                Đường Quốc lộ 1A, Thị trấn Dầu Gi&#226;y, Thống Nhất, Đồng Nai
+                            </li>
+                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-14 h-78 fsize-12 lh-18">
+                                <a title="Aurora Residences" href="/can-ho-chung-cu-quan-8-ho-chi-minh/aurora-residences-prj3046" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
+                                    <img class="clr-D4D4D4" src="/duan/2018-04-27/20180427050514770248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Aurora Residences" />
+                                </a>
+                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
+                                    <a title="Aurora Residences" href="/can-ho-chung-cu-quan-8-ho-chi-minh/aurora-residences-prj3046" class="clr-055699">
+                                        Aurora Residences
+                                    </a>
+                                </h3>
+                                Số 277 Bến B&#236;nh Đ&#244;ng, phường 14, quận 8, Tp.HCM
+                            </li>
+                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-14 h-78 fsize-12 lh-18">
+                                <a title="Trầu Cau Garden" href="/biet-thu-lien-ke-bac-ninh-bn-bac-ninh/trau-cau-garden-prj872" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
+                                    <img class="clr-D4D4D4" src="/duan/2018-04-25/20180425113705819248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Trầu Cau Garden" />
+                                </a>
+                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
+                                    <a title="Trầu Cau Garden" href="/biet-thu-lien-ke-bac-ninh-bn-bac-ninh/trau-cau-garden-prj872" class="clr-055699">
+                                        Trầu Cau Garden
+                                    </a>
+                                </h3>
+                                Đường L&#234; Th&#225;i Tổ, Bắc Ninh, Bắc Ninh
+                            </li>
+                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-14 h-78 fsize-12 lh-18">
+                                <a title="Vincity Gia L&#226;m" href="/can-ho-chung-cu-gia-lam-ha-noi/vincity-gia-lam-prj2484" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
+                                    <img class="clr-D4D4D4" src="/duan/2018-04-27/20180427022307979248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Vincity Gia L&#226;m" />
+                                </a>
+                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
+                                    <a title="Vincity Gia L&#226;m" href="/can-ho-chung-cu-gia-lam-ha-noi/vincity-gia-lam-prj2484" class="clr-055699">
+                                        Vincity Gia L&#226;m
+                                    </a>
+                                </h3>
+                                Gia L&#226;m, Hà N&#244;̣i
+                            </li>
+                        </ul><ul class='swiper-slide h-440'>
+                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-12 h-78 fsize-12 lh-18">
+                                <a title="Tecco Tứ Hiệp" href="/can-ho-chung-cu-thanh-tri-ha-noi/tecco-tu-hiep-prj2511" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
+                                    <img class="clr-D4D4D4" src="/duan/2018-04-27/20180427023204998248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Tecco Tứ Hiệp" />
+                                </a>
+                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
+                                    <a title="Tecco Tứ Hiệp" href="/can-ho-chung-cu-thanh-tri-ha-noi/tecco-tu-hiep-prj2511" class="clr-055699">
+                                        Tecco Tứ Hiệp
+                                    </a>
+                                </h3>
+                                X&#227; Tứ Hiệp, Thanh Tr&#236;, Hà N&#244;̣i
+                            </li>
+                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-14 h-78 fsize-12 lh-18">
+                                <a title="New Skyline" href="/can-ho-chung-cu-ha-dong-ha-noi/new-skyline-prj2148" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
+                                    <img class="clr-D4D4D4" src="/duan/2018-04-27/20180427120420049248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="New Skyline" />
+                                </a>
+                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
+                                    <a title="New Skyline" href="/can-ho-chung-cu-ha-dong-ha-noi/new-skyline-prj2148" class="clr-055699">
+                                        New Skyline
+                                    </a>
+                                </h3>
+                                L&#244; đất CC2 KĐT Văn Qu&#225;n, Phường Văn Qu&#225;n, H&#224; Đ&#244;ng, Hà N&#244;̣i
+                            </li>
+                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-14 h-78 fsize-12 lh-18">
+                                <a title="Dragon Park Văn Giang" href="/du-an-khac-van-giang-hy-hung-yen/dragon-park-van-giang-prj789" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
+                                    <img class="clr-D4D4D4" src="/duan/2018-04-25/20180425111418451248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Dragon Park Văn Giang" />
+                                </a>
+                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
+                                    <a title="Dragon Park Văn Giang" href="/du-an-khac-van-giang-hy-hung-yen/dragon-park-van-giang-prj789" class="clr-055699">
+                                        Dragon Park Văn Giang
+                                    </a>
+                                </h3>
+                                Đường Tỉnh lộ 179, X&#227; Cửu Cao, Văn Giang, Hưng Y&#234;n
+                            </li>
+                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-14 h-78 fsize-12 lh-18">
+                                <a title="Daresco Residence" href="/khu-do-thi-moi-duc-hoa-long-an/daresco-residence-prj2075" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
+                                    <img class="clr-D4D4D4" src="/duan/2018-04-26/20180426113658720248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Daresco Residence" />
+                                </a>
+                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
+                                    <a title="Daresco Residence" href="/khu-do-thi-moi-duc-hoa-long-an/daresco-residence-prj2075" class="clr-055699">
+                                        Daresco Residence
+                                    </a>
+                                </h3>
+                                X&#227; Đức Lập Thượng, Đức H&#242;a, Long An
+                            </li>
+                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-14 h-78 fsize-12 lh-18">
+                                <a title="B&#224;u C&#225;t II" href="/can-ho-chung-cu-tan-binh-ho-chi-minh/bau-cat-ii-prj2737" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
+                                    <img class="clr-D4D4D4" src="/duan/2018-04-27/20180427032926204248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="B&#224;u C&#225;t II" />
+                                </a>
+                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
+                                    <a title="B&#224;u C&#225;t II" href="/can-ho-chung-cu-tan-binh-ho-chi-minh/bau-cat-ii-prj2737" class="clr-055699">
+                                        B&#224;u C&#225;t II
+                                    </a>
+                                </h3>
+                                Hồng Lạc, P.10, Q.T&#226;n B&#236;nh, TP. Hồ Ch&#237; Minh
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="swiper-button-next fsize-44 clr-055699">
+                        <i class="icon-right-open-big wauto-before set-absolute top0 right-5"></i>
+                    </div>
+                    <div class="swiper-button-prev fsize-44 clr-055699">
+                        <i class="icon-left-open-big wauto-before set-absolute top0 left-5"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .list-property-footer-right {
+            float: right;
+        }
+
+        .googl.title {
+            margin: 0;
+            font-size: 13px;
+            padding: 5px;
+            line-height: 20px;
+            background-color: #0090b5;
+            color: #fff;
+            font-weight: 700;
+            position: relative;
+            border: 1px solid #639ec4;
+            text-align: center;
+        }
+
+        .google-map {
+            display: block;
+        }
+
+        .list-property-footer {
+            margin: 10px 0 0;
+        }
+
+            .list-property-footer .location-page {
+                padding: 5px;
+                background: #f5f5f5;
+                border-top: 1px solid #ddd;
+            }
+
+        .br-theme-fontawesome-stars .br-widget {
+            height: 28px;
+            white-space: nowrap;
+        }
+
+            .br-theme-fontawesome-stars .br-widget a {
+                margin-right: 2px;
+                position: relative;
+                width: 16px;
+                height: 16px;
+                display: inline-block;
+            }
+
+                .br-theme-fontawesome-stars .br-widget a:after {
+                    background: url(../Content/img/star.gif) center center no-repeat;
+                    width: 16px;
+                    height: 16px;
+                    position: absolute;
+                    left: 0;
+                    top: 0px;
+                    content: "";
+                }
+
+                .br-theme-fontawesome-stars .br-widget a.br-active:after {
+                    background: url(../Content/img/star-active.gif) center center no-repeat;
+                    width: 16px;
+                    height: 16px;
+                    position: absolute;
+                    left: 0;
+                    top: 0px;
+                    content: "";
+                }
+
+                .br-theme-fontawesome-stars .br-widget a.br-selected:after {
+                    background: url(../Content/img/star-active.gif) center center no-repeat;
+                    width: 16px;
+                    height: 16px;
+                    position: absolute;
+                    left: 0;
+                    top: 0px;
+                    content: "";
+                }
+
+            .br-theme-fontawesome-stars .br-widget .br-current-rating {
+                display: none;
+            }
+
+        .br-theme-fontawesome-stars .br-readonly a {
+            cursor: default;
+        }
+
+        .single-post {
+            margin-bottom: 30px;
+        }
+
+        #rating-box {
+            margin-bottom: 15px;
+        }
+
+            #rating-box .kksr-title {
+                display: none
+            }
+
+            #rating-box .br-wrapper {
+                display: inline-block;
+            }
+
+            #rating-box .kksr-legend {
+                display: inline-block;
+            }
+
+            #rating-box .rating-responsive {
+                display: inline-block;
+            }
+
+        #faqs_box {
+            padding: 30px 0px;
+            margin-top: 20px;
+        }
+    </style>
+</div>
+
+

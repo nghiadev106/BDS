@@ -1,0 +1,67 @@
+﻿.add-to-cart button.btn-button {
+    border-radius: 100px;
+    height: 44px;
+    margin-left: 0;
+    margin-right: 10px;
+    width: 175px;
+}
+
+.add-to-cart .qty-arrows {
+    border: 1px solid #e8e8e8;
+    display: inline;
+    left: 82px;
+    position: absolute;
+}
+
+.image {
+    width: 262px !important;
+    height: 262px !important;
+}
+
+.quickview {
+    background-color: #2e2e2e;
+    border-radius: 0 20px 0 0;
+    -webkit-border-radius: 0 20px 0 0;
+    -moz-border-radius: 0 20px 0 0;
+    color: #fff;
+    bottom: 0;
+    font-size: 16px;
+    height: 40px;
+    left: 0;
+    padding-top: 7px;
+    position: absolute;
+    text-align: center;
+    width: 40px;
+    z-index: 1;
+    opacity: 0;
+    transition: all 0.3s ease-out 0s;
+    -webkit-transition: all 0.3s ease-out 0s;
+    -moz-transition: all 0.3s ease-out 0s;
+}
+
+.padding-30 {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.add-to-cart .input-text.qty {
+    border: 1px solid #e8e8e8;
+    height: 40px;
+    margin-left: 25px;
+    position: relative;
+    text-align: center;
+    width: 60px;
+}
+
+.estimate-ship-tax {
+    margin-top: 10px;
+}
+
+.qty-area .input-text.qty {
+    border: 1px solid #e8e8e8;
+    height: 40px;
+    margin-left: 22px;
+    position: relative;
+    text-align: center;
+    width: 60px;
+}

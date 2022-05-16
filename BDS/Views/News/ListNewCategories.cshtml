@@ -1,0 +1,190 @@
+﻿@model BDS.Models.PaginationSet<BDS.Model.News>
+@{
+    ViewData["Title"] = "Danh mục tin tức";
+    var ListCate = (List<BDS.Model.NewsCategory>)ViewBag.ListCate;
+    var cate = (BDS.Model.NewsCategory)ViewBag.category;
+    var ListNews = (List<BDS.Model.News>)ViewBag.ListNews;    
+}
+
+<!-- start breadcrumb area-->
+<section class="breadcrumb-area padding-30">
+    <div class="container">
+        <div class="breadcrumb breadcrumb-box">
+            <ul>
+                <li><a href="/"><span class="fa fa-home"><span>Trang chủ</span></span></a></li>
+                <li><span>@cate.Name</span></li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- end breadcrumb area-->
+<section class="main-page container">
+    <div class="main-container col2-left-layout">
+        <div class="main">
+            <div class="row">
+                <!-- start left area -->
+                <div class="col-sm-4 col-md-3 col-lg-3">
+                    <!-- start category menu -->
+                    <div class="nav_vmmenu-area hidden-xs">
+                        <div class="nav_inner">
+                            <div class="vmmenu-title gray9-bg"><i class="fa fa-list"></i><span>categories</span></div>
+                            <div class="category-list">
+                                <div class="category-list-inner">
+                                    <ul class="sf-vartical-menu2 accordion">
+                                        <li>
+                                            <a href="/"><span>Trang chủ</span></a>
+                                        </li>
+                                        @foreach (var category in ListCate)
+                                        {
+                                            <li> <a href="/tin-tuc/@category.Url/@category.Id"><span>@category.Name</span></a></li>
+
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end category menu -->
+
+                    <!-- start resent blog -->
+                    <div class="left-recent-post padding-30">
+                        <div class="left-recent-post-inner">
+                            <div class="hadding"><span>Tin mới</span></div>
+                            @if (ListNews.Count() > 0)
+                            {
+                                foreach (var item in ListNews)
+                                {
+                                    <div class="recent-media">
+                                        <div class="resent-media-img">
+                                            <a href="/chi-tiet-tin/@item.Url/@item.Id">
+                                                <img src="@item.Image" style="width: 61px; height: 61px;" alt="@item.Name" />
+                                            </a>
+                                        </div>
+                                        <div class="media-content">
+                                            <div class="product-name"><a href="/chi-tiet-tin/@item.Url/@item.Id">@item.Name</a></div>
+                                            <div class="post-meta">
+                                                <ul>
+                                                    <li>@item.CreateDate.Value.ToString("dd/MM/yyyy")</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                }
+
+                            }
+                        </div>
+                    </div>
+                    <!-- end resent blog  -->
+                </div>
+                <!-- end left area-->
+                <div class="col-sm-8 col-md-9 col-lg-9">
+                    <div class="col-main">
+                        <!-- start right area-->
+                        <div class="all-blog-area all-blog-list">
+                            <div class="page-title margin-bottom"><span>latest blog</span></div>
+                            <div class="row">
+                                @if (Model.Count > 0)
+                                {
+                                    foreach (var item in Model.Items)
+                                    {
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="single-blog">
+                                                <div class="blog-image">
+                                                    <img style="height: 210px; width: 210px;" src="@item.Image" alt="@item.Name" />
+                                                </div>
+                                                <div class="blog-contant">
+                                                    <div class="blog-content-inner">
+                                                        <h2 class="blog-name"><a href="/chi-tiet-tin/@item.Url/@item.Id">@item.Name</a></h2>
+                                                        <div class="post-content">
+                                                            <ul class="post-meta">
+                                                                <li><span class="fa fa-user"></span>Đăng bởi: Admin</li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="post-detail">
+                                                            @if (item.Description.Length > 150)
+                                                            {
+                                                                <p>
+                                                                    @item.Description.Substring(0, 150)...
+                                                                </p>
+                                                            }
+                                                            else
+                                                            {
+                                                                <p>
+                                                                    @item.Description
+                                                                </p>
+                                                            }
+
+                                                        </div>
+                                                        <div class="post-dae">@item.CreateDate.Value.ToString("dd/MM/yyyy")</div>
+                                                        <a class="btn readmore" href="/chi-tiet-tin/@item.Url/@item.Id">Xem thêm</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    }
+                                }
+
+                                    </div>
+                            <div class="pager pager-area latest-blogs">
+                                @if (Model.TotalPages > 1)
+                                {
+                                    // Create numeric links
+                                    var startPageIndex = Math.Max(1, Model.Page - Model.MaxPage / 2);
+                                    var endPageIndex = Math.Min(Model.TotalPages, Model.Page + Model.MaxPage / 2);
+
+                                    <nav>
+                                        <ul class="pagination">
+                                            @if (Model.Page > 1)
+                                            {
+                                                <li class="page-item">
+                                                    <a class="page-link" href="?page=1" aria-label="First">
+                                                        <i class="fa fa-angle-double-left"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="page-item">
+                                                    <a class="page-link" href="?page=@(Model.Page-1)" aria-label="Previous">
+                                                        <i class="fa fa-angle-double-left"></i>
+                                                    </a>
+                                                </li>
+                                            }
+                                            @for (int i = startPageIndex; i <= endPageIndex; i++)
+                                            {
+                                                if (Model.Page == i)
+                                                {
+                                                    <li class="active page-item"><a class="page-link" href="?page=@i" title="Trang @i">@i</a></li>
+                                                }
+                                                else
+                                                {
+                                                    <li class="page-item"><a class="page-link" href="?page=@i" title="Trang @i">@i</a></li>
+                                                }
+                                            }
+                                            @if (Model.Page < Model.TotalPages)
+                                            {
+                                                <li class="page-item">
+                                                    <a class="page-link" href="?page=@(Model.Page+1)" aria-label="Next">
+                                                        <i class="fa fa-angle-double-right"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="page-item">
+                                                    <a class="page-link" href="?page=@Model.TotalPages" aria-label="Last">
+                                                        <i class="fa fa-angle-double-right"></i>
+                                                    </a>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </nav>
+                                }
+
+                            </div>
+                            <!-- end right area-->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!--  free shipping message -->

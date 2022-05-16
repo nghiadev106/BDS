@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>D:\Outsource\flower\WebsiteBanHang\bin\Release\net5.0\publish\</_PublishTargetUrl>
+    <History>True|2021-10-06T15:00:25.7740986Z;True|2021-10-06T21:29:24.0038631+07:00;True|2021-10-06T21:26:53.3564253+07:00;True|2021-10-06T17:22:37.3078348+07:00;True|2021-10-06T12:04:43.8268694+07:00;True|2021-10-05T15:21:25.6759829+07:00;True|2021-10-02T23:20:43.1474697+07:00;True|2021-10-02T22:53:36.4058675+07:00;True|2021-09-29T00:38:19.7637267+07:00;True|2021-09-29T00:35:16.0876256+07:00;True|2021-09-29T00:31:29.3651784+07:00;True|2021-09-28T23:52:37.5260554+07:00;True|2021-09-21T21:18:12.3647962+07:00;True|2021-09-21T17:38:30.3737369+07:00;</History>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,82 @@
+﻿@{
+    Layout = "_LayoutAdmin";
+    var lstCategories = (List<BDS.Models.CategoryNewsViewModel>)ViewBag.lstCategories;
+}
+
+<input type="hidden" id="success" value="@TempData["success"]" />
+<input type="hidden" id="warning" value="@TempData["warning"]" />
+<input type="hidden" id="error" value="@TempData["error"]" />
+
+<div class="container-fluid">
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+        <li class="breadcrumb-item active">Danh sách danh mục</li>
+    </ol>
+    <div class="card mb-12">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-6 col-xs-12">
+                    <a class="btn btn-success" asp-action="Create" asp-controller="CategoryNews" asp-area="admin">Tạo mới</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <div class="table-responsive">
+                @if (lstCategories.Count() > 0)
+                {
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Tên</th>
+                                <th>Mô tả</th>
+                                <th>Hiển thị</th>
+                                <th>Trạng thái</th>
+                                <th>#</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                var stt = 0;
+                                @foreach (var item in lstCategories)
+                                {
+                                    <tr>
+                                        <td>@Html.Raw(stt = stt + 1)</td>
+                                        <td>@item.Name</td>
+                                        <td>@item.Description</td>
+                                        @if (item.ShowHome == true)
+                                        {
+                                            <td>Hiển thị</td>
+                                        }
+                                        else
+                                        {
+                                            <td>Ẩn</td>
+                                        }
+                                        @if (item.Status == 1)
+                                        {
+                                            <td><span class="btn-success">Hoạt động</span></td>
+                                        }
+                                        else
+                                        {
+                                            <td><span class="btn-danger">Khóa</span></td>
+                                        }
+                                        <td>
+                                            <a href="/Admin/CategoryNews/Edit/@item.Id" class="btn btn-primary glyphicon glyphicon-pencilt">Sửa</a>
+                                            <a class="btn btn-danger glyphicon glyphicon-trash" onclick="return confirm('Bạn có muốn xóa không?');" href="@Url.Action("Delete","CategoryNews")/@item.Id">Xóa</a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <span>Không có danh mục nào</span>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>

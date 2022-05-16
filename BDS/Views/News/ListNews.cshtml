@@ -1,0 +1,8 @@
+﻿@model BDS.Models.PaginationSet<BDS.Model.News>
+@{
+    ViewData["Title"] = "Danh mục tin tức";
+    var ListCate = (List<BDS.Model.NewsCategory>)ViewBag.ListCate;
+    var ListNews = (List<BDS.Model.News>)ViewBag.ListNews;
+}
+
+
