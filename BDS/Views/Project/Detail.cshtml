@@ -1,7 +1,11 @@
-﻿
+﻿@model BDS.Models.ProjectViewModel
+
 @{
     ViewData["Title"] = "Detail";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var ListProject = (List<BDS.Model.Project>)ViewBag.ListProject;
+    var relatedProject = (List<BDS.Model.Project>)ViewBag.relatedProject;
+    var category = ( BDS.Model.Category )ViewBag.category;
 }
 
 <div id="fix_height">
@@ -17,42 +21,29 @@
                         <meta itemprop="position" content="1" />
                     </li>
                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a href="/nha-dat-ban/-1/-1/0/0" itemprop="item" title="Nh&#224; đất b&#225;n">
+                        <a href="/@category.Url/@category.Id" itemprop="item" title="Nh&#224; đất b&#225;n">
                             <meta itemprop="name" content="Nh&#224; đất b&#225;n" />
-                            Nh&#224; đất b&#225;n
+                            @category.Name
                         </a>
                         <meta itemprop="position" content="2" />
                     </li>
-                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a href="/ban-dat-tho-cu-ha-noi/-1/-1/0/0" itemprop="item" title="Hà N&#244;̣i">
-                            <meta itemprop="name" content="Hà N&#244;̣i" />
-                            Hà N&#244;̣i
-                        </a>
-                        <meta itemprop="position" content="3" />
-                    </li>
-                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a href="/ban-dat-tho-cu-dong-anh-ha-noi/-1/-1/0/0" itemprop="item" title="Đ&#244;ng Anh, Hà N&#244;̣i">
-                            <meta itemprop="name" content="Đ&#244;ng Anh, Hà N&#244;̣i" />
-                            Đ&#244;ng Anh, Hà N&#244;̣i
-                        </a>
-                        <meta itemprop="position" content="4" />
-                    </li>
+
                     <li class="active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a href="" itemprop="item" title="Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư  tại Bắc Thăng Long gi&#225; rẻ hơn thị trường">
-                            <meta itemprop="name" content="Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư  tại Bắc Thăng Long gi&#225; rẻ hơn thị trường" />
-                            Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư tại Bắc Thăng Long gi&#225; rẻ hơn thị trường
+                        <a href="" itemprop="item" title="@Model.Name">
+                            <meta itemprop="name" content="@Model.Name" />
+                            @Model.Name
                         </a>
                         <meta itemprop="position" content="5" />
                     </li>
                 </ul>
-                <h1 class="fweight-bold fsize-18 clr-055699 lh-24">Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư tại Bắc Thăng Long gi&#225; rẻ hơn thị trường</h1>
+                <h1 class="fweight-bold fsize-18 clr-055699 lh-24">@Model.Name</h1>
                 <p>
                     <h2 class="text-non-underline clr-055699 fsize-14">
                         <b class="clr-000">Khu vực:</b>
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn" title="B&#225;n đất thổ cư  Đường 19">
+                        <a href="/ban-dat-tho-cu-duong-19-10-hn" title="@Model.Name">
                             B&#225;n đất thổ cư Đường 19
                         </a>
-                        - Đ&#244;ng Anh - Hà N&#244;̣i
+                        - @Model.AddressDetail
                     </h2>
                 </p>
                 <div class="pn-social">
@@ -66,15 +57,15 @@
                 <p>
                     <b class="fsize-13 clr-000">Giá:</b>
                     <span class="fsize-15 fweight-bold clr-319c00">
-                        2.85 tỷ
+                        @Model.Price tỷ
                     </span>
                     <b class="fsize-13 clr-000 mg-left-20">Diện tích:</b>
                     <span class="fsize-15 fweight-bold clr-319c00">
-                        75 m&#178;
+                        @Model.Acreage m&#178;
                     </span>
                 </p>
                 <div class="p-desc fsize-14 lh-24 text-left mg-top-10">
-                    Vợ chồng em cần bán gấp mảnh đất 75m2 THỔ CƯ tại BẮC THĂNG LONG giá rẻ hơn thị trường</br>* Địa chỉ: Lô đầu tiên ngõ 10 đường Bờ Kênh, Ấp Sáp Mai, Võng La, Đông Anh</br>* Diện tích: 75m2, mặt tiền 4,12m</br>* Hướng: Đông Bắc</br> </br>HẠ TẦNG – TIỆN ÍCH ngập tràn :</br>+ Ngõ ô tô con, đánh thẳng xe vào nhà, khu dân cư văn minh </br>+ Gần đường nhựa lớn 11m, có thể để xe luôn dọc đường lớn.</br>+ Giao thông thuận tiện, mất 2p đến cổng chính KCN Bắc Thăng Long, 3p đến Cầu Thăng Long, ~10p đến Mỹ Đình, 15p đến sân bay Nội Bài…</br>+ Gần 3 chợ lớn, gần viện Nhiệt đới TW 2, gần trường cấp 1-2-3, gần công viên Kim Quy châu Á…</br> </br>Vợ Chồng em đang có nhu cầu cần tiền cho mảnh lớn hơn nên bán gấp trong tuần. Bác nào mua đầu tư hay muốn xây nhà có sân thì quá đẹp luôn ạ.</br>* Sổ đỏ full thổ cư, pháp lý rõ ràng</br>Giá công khai: 2tỷ 850tr (Không thương lượng, thiện chí mua nhanh e bao sổ) </br>Chính chủ: Call Ms Nga 0973.820.720 hoặc zalo cùng số.
+                    @Html.Raw(Model.Detail)
                 </div>
                 <div class="display-bl brd-bottom-w-1 brd-style-solid brd-style-color set-relative h-30 mg-top-20">
                     <div onclick="(new ProductDetailFnc()).ShowView(this);" data-action="prd-view" data-id="pn-image" class="no-mg fsize-13 fweight-bold set-absolute bottom-0 left-0 pd-2 pd-top-3 pd-left-8 pd-right-8 prd-view">
@@ -92,21 +83,16 @@
                             </a>
                             <span class="num-img"><span id="countimage">1</span>/5</span>
                             <div id="aniimated-thumbnials" style="display:none">
-                                <span class="imageGallery" id="imagegallery-0" data-src="/bds/2022-05-10/20220510093355361248.jpg" data-desc="Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư  tại Bắc Thăng Long gi&#225; rẻ hơn thị trường-0">
-                                    <img src="/bds/2022-05-10/20220510093355361248.jpg?width=73&amp;height=55&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư  tại Bắc Thăng Long gi&#225; rẻ hơn thị trường-0">
-                                </span>
-                                <span class="imageGallery" id="imagegallery-1" data-src="/bds/2022-05-10/20220510093355986248.jpg" data-desc="Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư  tại Bắc Thăng Long gi&#225; rẻ hơn thị trường-1">
-                                    <img src="/bds/2022-05-10/20220510093355986248.jpg?width=73&amp;height=55&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư  tại Bắc Thăng Long gi&#225; rẻ hơn thị trường-1">
-                                </span>
-                                <span class="imageGallery" id="imagegallery-2" data-src="/bds/2022-05-10/20220510093356627248.jpg" data-desc="Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư  tại Bắc Thăng Long gi&#225; rẻ hơn thị trường-2">
-                                    <img src="/bds/2022-05-10/20220510093356627248.jpg?width=73&amp;height=55&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư  tại Bắc Thăng Long gi&#225; rẻ hơn thị trường-2">
-                                </span>
-                                <span class="imageGallery" id="imagegallery-3" data-src="/bds/2022-05-10/20220510093400533248.jpg" data-desc="Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư  tại Bắc Thăng Long gi&#225; rẻ hơn thị trường-3">
-                                    <img src="/bds/2022-05-10/20220510093400533248.jpg?width=73&amp;height=55&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư  tại Bắc Thăng Long gi&#225; rẻ hơn thị trường-3">
-                                </span>
-                                <span class="imageGallery" id="imagegallery-4" data-src="/bds/2022-05-10/20220510093402377248.jpg" data-desc="Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư  tại Bắc Thăng Long gi&#225; rẻ hơn thị trường-4">
-                                    <img src="/bds/2022-05-10/20220510093402377248.jpg?width=73&amp;height=55&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư  tại Bắc Thăng Long gi&#225; rẻ hơn thị trường-4">
-                                </span>
+                                @if (Model.Images.Count() > 0)
+                                {
+                                    foreach (var item in Model.Images)
+                                    {
+                                        <span class="imageGallery" id="imagegallery-0" >
+                                            <img src="@item.Path" alt="@Model.Name">
+                                        </span>
+                                    }
+                                }
+
                             </div>
                         </div>
                         <div class="slide-thumb">
@@ -114,18 +100,6 @@
                                 <div class="content-listthumb">
                                     <div class="item_thumb osgslideimg osgslide-active">
                                         <img rel="imagegallery-0" src="/bds/2022-05-10/20220510093355361248.jpg?width=73&amp;height=55&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư  tại Bắc Thăng Long gi&#225; rẻ hơn thị trường-0">
-                                    </div>
-                                    <div class="item_thumb osgslideimg">
-                                        <img rel="imagegallery-1" src="/bds/2022-05-10/20220510093355986248.jpg?width=73&amp;height=55&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư  tại Bắc Thăng Long gi&#225; rẻ hơn thị trường-1">
-                                    </div>
-                                    <div class="item_thumb osgslideimg">
-                                        <img rel="imagegallery-2" src="/bds/2022-05-10/20220510093356627248.jpg?width=73&amp;height=55&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư  tại Bắc Thăng Long gi&#225; rẻ hơn thị trường-2">
-                                    </div>
-                                    <div class="item_thumb osgslideimg">
-                                        <img rel="imagegallery-3" src="/bds/2022-05-10/20220510093400533248.jpg?width=73&amp;height=55&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư  tại Bắc Thăng Long gi&#225; rẻ hơn thị trường-3">
-                                    </div>
-                                    <div class="item_thumb osgslideimg">
-                                        <img rel="imagegallery-4" src="/bds/2022-05-10/20220510093402377248.jpg?width=73&amp;height=55&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư  tại Bắc Thăng Long gi&#225; rẻ hơn thị trường-4">
                                     </div>
                                 </div>
                             </div>

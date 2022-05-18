@@ -14167,7 +14167,7 @@ phone:
       - voice
   styles:
     - solid
-  unicode: f095
+  unicode: project
   voted: false
 phone-alt:
   changes:

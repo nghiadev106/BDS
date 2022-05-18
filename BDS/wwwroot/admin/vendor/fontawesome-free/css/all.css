@@ -3007,7 +3007,7 @@ readers do not read off random characters that represent icons */
   content: "\f511"; }
 
 .fa-phone:before {
-  content: "\f095"; }
+  content: "\project"; }
 
 .fa-phone-alt:before {
   content: "\f879"; }

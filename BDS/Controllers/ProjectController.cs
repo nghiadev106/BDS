@@ -1,5 +1,6 @@
 ﻿using BDS.Model;
 using BDS.Models;
+using BDS.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -11,18 +12,20 @@ namespace BDS.Controllers
     public class ProjectController : Controller
     {
         private readonly BDSContext _context;
+        private readonly IProjectService _service;
 
-        public ProjectController(BDSContext context)
+        public ProjectController(BDSContext context, IProjectService service)
         {
             _context = context;
+            _service = service;
         }
         public async Task<IActionResult> ListProject(int page = 1)
         {
             int totalRow = 0;
             var pageSize = 1;
-            var blogs = await _context.Projects.Where(x => x.Status == 1).OrderBy(x => x.DisplayOrder).ToListAsync();
-            totalRow = blogs.Count();
-            var sanphams = blogs.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            var projects = await _context.Projects.Where(x => x.Status == 1).OrderBy(x => x.DisplayOrder).ToListAsync();
+            totalRow = projects.Count();
+            var sanphams = projects.Skip((page - 1) * pageSize).Take(pageSize).ToList();
             int totalPage = (int)Math.Ceiling((double)totalRow / pageSize);
 
             var paginationSet = new PaginationSet<Project>()
@@ -43,9 +46,9 @@ namespace BDS.Controllers
         {
             int totalRow = 0;
             var pageSize = 1;
-            var blogs = await _context.Projects.Where(x => x.Status == 1 && x.CategoryId == id).OrderBy(x => x.DisplayOrder).ToListAsync();
-            totalRow = blogs.Count();
-            var sanphams = blogs.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            var projects = await _context.Projects.Where(x => x.Status == 1 && x.CategoryId == id).OrderBy(x => x.DisplayOrder).ToListAsync();
+            totalRow = projects.Count();
+            var sanphams = projects.Skip((page - 1) * pageSize).Take(pageSize).ToList();
             int totalPage = (int)Math.Ceiling((double)totalRow / pageSize);
 
             var paginationSet = new PaginationSet<Project>()
@@ -65,11 +68,11 @@ namespace BDS.Controllers
 
         public async Task<IActionResult> Detail(int id)
         {
-            var blog = await _context.Projects.Where(x => x.Status == 1 && x.Id == id).SingleOrDefaultAsync();
-            ViewBag.ListProjects = await _context.Projects.Where(x => x.Status == 1).OrderBy(x => x.CreateDate).ToListAsync();
-            ViewBag.relatedProjects = await _context.Projects.Where(x => x.CategoryId == blog.CategoryId && x.Id != id && x.Status == 1).OrderBy(x => x.DisplayOrder).Take(5).ToListAsync();
-            ViewBag.categories = await _context.Categories.ToListAsync();
-            return View(blog);
+            var project = await _service.Detail(id);
+            ViewBag.ListProject = await _context.Projects.Where(x => x.Status == 1).OrderBy(x => x.CreateDate).ToListAsync();
+            ViewBag.relatedProject = await _context.Projects.Where(x => x.CategoryId == project.CategoryId && x.Id != id && x.Status == 1).OrderBy(x => x.DisplayOrder).Take(5).ToListAsync();
+            ViewBag.category = await _context.Categories.Where(x=>x.Id==project.CategoryId).SingleOrDefaultAsync();
+            return View(project);
         }
     }
 }
