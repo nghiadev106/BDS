@@ -32,9 +32,26 @@ namespace BDS
               options.UseSqlServer(
                   Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
+            //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //    .AddEntityFrameworkStores<ApplicationDbContext>()
+            //    .AddDefaultTokenProviders();
+
+             //Specifiying we are going to use Identity Framework
+            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            {
+                options.Password.RequireDigit = false;
+                options.Password.RequiredLength = 6;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireLowercase = true;
+                options.User.RequireUniqueEmail = true;
+
+                // Lockout settings.
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                options.Lockout.MaxFailedAccessAttempts = 5;
+                options.Lockout.AllowedForNewUsers = true;
+
+            }).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 
             services.AddTransient<IStorageService, FileStorageService>();
             services.AddTransient<ICategoryService,CategoryService>();
@@ -44,7 +61,12 @@ namespace BDS
             services.AddTransient<ITopicService, TopicService>();
             services.AddTransient<IFurnitureService, FurnitureService>();
             services.AddTransient<IProjectService, ProjectService>();
-            services.AddTransient<IAddressService, AddressService>();
+            services.AddTransient<IWardService, WardService>();
+            services.AddTransient<IDistrictService, DistrictService>();
+            services.AddTransient<IProvinceService, ProvinceService>();
+            services.AddTransient<IPriceTypeService, PriceTypeService>();
+            services.AddTransient<IDirectionService, DirectionService>();
+            services.AddTransient<IFeedbackService, FeedbackService>();
 
             services.AddDistributedMemoryCache();
             services.AddSession(options =>
@@ -95,35 +117,100 @@ namespace BDS
 
             app.UseEndpoints(endpoints =>
             {
-               endpoints.MapControllerRoute(
-               name: "Cart",
-               pattern: "thanh-toan", new
+                endpoints.MapControllerRoute(
+                name: "admin",
+                pattern: "admin", new
+                {
+                    area = "Admin",
+                    controller = "User",
+                    action = "Login"
+                });
+
+                endpoints.MapControllerRoute(
+                name: "areas",
+                pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                );
+
+                endpoints.MapControllerRoute(
+               name: "logout",
+               pattern: "dang-xuat", new
                {
-                   controller = "Cart",
-                   action = "Checkout"
+                   controller = "User",
+                   action = "LogOut"
                });
 
                 endpoints.MapControllerRoute(
-               name: "SearchAdvand",
-               pattern: "tim-kiem-chi-tiet", new
+             name: "post project",
+             pattern: "dang-du-an", new
+             {
+                 controller = "PostProject",
+                 action = "Create"
+             });
+
+                endpoints.MapControllerRoute(
+                 name: "Login",
+                 pattern: "dang-nhap", new
+                 {
+                     controller = "User",
+                     action = "Login"
+                 });
+
+                endpoints.MapControllerRoute(
+                name: "register",
+                pattern: "dang-ky", new
+                {
+                    controller = "User",
+                    action = "Register"
+                });
+
+                endpoints.MapControllerRoute(
+              name: "district",
+              pattern: "get-district", new
+              {
+                  controller = "Home",
+                  action = "GetDistrict"
+              });
+
+                endpoints.MapControllerRoute(
+               name: "ward",
+               pattern: "get-ward", new
                {
-                   controller = "Projects",
-                   action = "SearchAdvand"
+                   controller = "Home",
+                   action = "GetWard"
                });
+
+                endpoints.MapControllerRoute(
+               name: "admin",
+               pattern: "admin", new
+               {
+                   area = "Admin",
+                   controller = "User",
+                   action = "Login"
+               });
+
 
                 endpoints.MapControllerRoute(
                name: "Search",
                pattern: "tim-kiem", new
                {
-                   controller = "Projects",
+                   controller = "Project",
                    action = "Search"
                });
 
                 endpoints.MapControllerRoute(
                  name: "ProjectCategories",
                  pattern: "{url}/{id}",
-                 defaults: new { controller = "Home", action = "ProjectCategories" }
+                 defaults: new { controller = "Project", action = "ProjectCategories" }
                  );
+
+
+                endpoints.MapControllerRoute(
+                 name: "Project Detail",
+                 pattern: "du-an/chi-tiet/{url}/{id}", new
+                 {
+                     controller = "Project",
+                     action = "Detail"
+                 });
 
                 endpoints.MapControllerRoute(
                 name: "Blog",
@@ -149,36 +236,45 @@ namespace BDS
                    action = "ListNewCategories"
                });
 
+                endpoints.MapControllerRoute(
+                 name: "Phong thuy",
+                 pattern: "phong-thuy", new
+                 {
+                     controller = "FengShui",
+                     action = "Index"
+                 });
 
                 endpoints.MapControllerRoute(
-                 name: "Project Detail",
-                 pattern: "du-an/{url}/{id}", new
+                 name: "Phong thuy",
+                 pattern: "phong-thuy/{url}/{id}", new
                  {
-                     controller = "Project",
+                     controller = "FengShui",
                      action = "Detail"
                  });
 
                 endpoints.MapControllerRoute(
-                 name: "Project Detail",
+                name: "Noi ngoai that",
+                pattern: "noi-ngoai-that", new
+                {
+                    controller = "Furniture",
+                    action = "Index"
+                });
+
+                endpoints.MapControllerRoute(
+                 name: "Noi ngoai that chi tiet",
+                 pattern: "noi-ngoai-that/{url}/{id}", new
+                 {
+                     controller = "Furniture",
+                     action = "Detail"
+                 });
+
+                endpoints.MapControllerRoute(
+                 name: "Contact",
                  pattern: "lien-he", new
                  {
                      controller = "Home",
                      action = "Contact"
                  });
-
-                endpoints.MapControllerRoute(
-                name: "admin",
-                pattern: "admin" ,new
-                {
-                    area="Admin",
-                    controller = "User",
-                    action = "Login"
-                });
-
-                endpoints.MapControllerRoute(
-                name: "areas",
-                pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-                );
 
                 endpoints.MapControllerRoute(
                 name: "default",

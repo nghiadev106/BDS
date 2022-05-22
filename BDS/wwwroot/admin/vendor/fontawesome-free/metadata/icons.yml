@@ -73,7 +73,7 @@ address-book:
     - '4.7'
     - 5.0.0
     - 5.0.3
-  label: Address Book
+  label: Ward Book
   search:
     terms:
       - contact
@@ -91,7 +91,7 @@ address-card:
     - '4.7'
     - 5.0.0
     - 5.0.3
-  label: Address Card
+  label: Ward Card
   search:
     terms:
       - about

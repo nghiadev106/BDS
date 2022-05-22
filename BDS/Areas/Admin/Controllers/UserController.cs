@@ -33,18 +33,17 @@ namespace BDS.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginRequest request,string returnUrl = null)
         {
-            returnUrl ??= Url.Content("~/admin/news/index");
-              // Đã đăng nhập nên chuyển hướng về Index
+            returnUrl ??= Url.Content("/admin/dashboard/index");
+            // Đã đăng nhập nên chuyển hướng về Index
             if (_signInManager.IsSignedIn(User))
             {
                 HttpContext.Session.SetString("Token", JsonConvert.SerializeObject(request));
                 return Redirect(returnUrl);
             }
-              
+
 
             if (ModelState.IsValid)
             {
-                // Thử login bằng username/password
                 var result = await _signInManager.PasswordSignInAsync(
                     request.UserNameOrEmail,
                     request.Password,
@@ -70,30 +69,18 @@ namespace BDS.Areas.Admin.Controllers
 
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("Đăng nhập thành công");
                     HttpContext.Session.SetString("Token", JsonConvert.SerializeObject(request));
                     return LocalRedirect(returnUrl);
                 }
-                if (result.RequiresTwoFactor)
-                {
-                    return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = request.RememberMe });
-                }
-                if (result.IsLockedOut)
-                {
-                    _logger.LogWarning("User account locked out.");
-                    return RedirectToPage("./Lockout");
-                }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Đăng nhập không thành công");
+                    TempData["error"] = "Tài khoản hoặc mật khẩu không chính xác";
                     return View();
                 }
             }
-
-            // If we got this far, something failed, redisplay form
+            TempData["error"] = "Đăng nhập không thành công";
             return View();
         }
-
 
         public async Task<IActionResult> LogOut()
         {

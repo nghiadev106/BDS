@@ -35,6 +35,7 @@ namespace BDS.Controllers
             };
 
             ViewBag.ListCate = await _context.NewsCategories.ToListAsync();
+            ViewBag.ListProject = await _context.Projects.Where(x => x.Status == 1).OrderBy(x => x.CreateDate).Take(5).ToListAsync();
             ViewBag.ListNews = await _context.News.Where(x => x.Status == 1).OrderBy(x => x.CreateDate).ToListAsync();
             return View(paginationSet);
         }
@@ -69,6 +70,7 @@ namespace BDS.Controllers
             ViewBag.ListNews = await _context.News.Where(x => x.Status == 1).OrderBy(x => x.CreateDate).ToListAsync();
             ViewBag.relatedNews = await _context.News.Where(x => x.CategoryId == blog.CategoryId && x.Id != id && x.Status == 1).OrderBy(x => x.DisplayOrder).Take(5).ToListAsync();
             ViewBag.categories = await _context.NewsCategories.ToListAsync();
+            ViewBag.ListProject = await _context.Projects.Where(x => x.Status == 1).OrderBy(x => x.CreateDate).Take(5).ToListAsync();
             return View(blog);
         }
     }

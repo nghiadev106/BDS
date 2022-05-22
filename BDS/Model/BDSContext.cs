@@ -17,7 +17,6 @@ namespace BDS.Model
         {
         }
 
-        public virtual DbSet<Address> Addresses { get; set; }
         public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
         public virtual DbSet<AspNetRoleClaim> AspNetRoleClaims { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
@@ -27,14 +26,19 @@ namespace BDS.Model
         public virtual DbSet<AspNetUserToken> AspNetUserTokens { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<Direction> Directions { get; set; }
+        public virtual DbSet<District> Districts { get; set; }
         public virtual DbSet<Feedback> Feedbacks { get; set; }
         public virtual DbSet<FengShui> FengShuis { get; set; }
         public virtual DbSet<Furniture> Furnitures { get; set; }
         public virtual DbSet<News> News { get; set; }
         public virtual DbSet<NewsCategory> NewsCategories { get; set; }
+        public virtual DbSet<PriceType> PriceTypes { get; set; }
         public virtual DbSet<Project> Projects { get; set; }
         public virtual DbSet<ProjectImage> ProjectImages { get; set; }
+        public virtual DbSet<Province> Provinces { get; set; }
         public virtual DbSet<Topic> Topics { get; set; }
+        public virtual DbSet<Ward> Wards { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -47,15 +51,6 @@ namespace BDS.Model
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
-
-            modelBuilder.Entity<Address>(entity =>
-            {
-                entity.ToTable("Address");
-
-                entity.Property(e => e.Description).HasMaxLength(500);
-
-                entity.Property(e => e.Name).HasMaxLength(500);
-            });
 
             modelBuilder.Entity<AspNetRole>(entity =>
             {
@@ -149,7 +144,7 @@ namespace BDS.Model
             {
                 entity.ToTable("Customer");
 
-                entity.Property(e => e.Address)
+                entity.Property(e => e.Ward)
                     .IsRequired()
                     .HasMaxLength(250);
 
@@ -175,6 +170,25 @@ namespace BDS.Model
                     .IsRequired()
                     .HasMaxLength(11)
                     .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<Direction>(entity =>
+            {
+                entity.ToTable("Direction");
+
+                entity.Property(e => e.Name).HasMaxLength(250);
+            });
+
+            modelBuilder.Entity<District>(entity =>
+            {
+                entity.ToTable("District");
+
+                entity.Property(e => e.Name).HasMaxLength(500);
+
+                entity.HasOne(d => d.Province)
+                    .WithMany(p => p.Districts)
+                    .HasForeignKey(d => d.ProvinceId)
+                    .HasConstraintName("FK_District_Province");
             });
 
             modelBuilder.Entity<Feedback>(entity =>
@@ -263,6 +277,13 @@ namespace BDS.Model
                 entity.Property(e => e.Url).HasMaxLength(500);
             });
 
+            modelBuilder.Entity<PriceType>(entity =>
+            {
+                entity.ToTable("PriceType");
+
+                entity.Property(e => e.Name).HasMaxLength(250);
+            });
+
             modelBuilder.Entity<Project>(entity =>
             {
                 entity.ToTable("Project");
@@ -279,19 +300,29 @@ namespace BDS.Model
 
                 entity.Property(e => e.Name).HasMaxLength(500);
 
-                entity.Property(e => e.Price).HasColumnType("decimal(18, 0)");
+                entity.Property(e => e.Price).HasMaxLength(100);
 
                 entity.Property(e => e.Url).HasMaxLength(250);
-
-                entity.HasOne(d => d.Address)
-                    .WithMany(p => p.Projects)
-                    .HasForeignKey(d => d.AddressId)
-                    .HasConstraintName("FK_Project_Address");
 
                 entity.HasOne(d => d.Category)
                     .WithMany(p => p.Projects)
                     .HasForeignKey(d => d.CategoryId)
                     .HasConstraintName("FK_Project_Category");
+
+                entity.HasOne(d => d.Direction)
+                    .WithMany(p => p.Projects)
+                    .HasForeignKey(d => d.DirectionId)
+                    .HasConstraintName("FK_Project_Direction");
+
+                entity.HasOne(d => d.PriceType)
+                    .WithMany(p => p.Projects)
+                    .HasForeignKey(d => d.PriceTypeId)
+                    .HasConstraintName("FK_Project_PriceType");
+
+                entity.HasOne(d => d.Ward)
+                    .WithMany(p => p.Projects)
+                    .HasForeignKey(d => d.WardId)
+                    .HasConstraintName("FK_Project_Ward");
             });
 
             modelBuilder.Entity<ProjectImage>(entity =>
@@ -306,6 +337,13 @@ namespace BDS.Model
                     .HasConstraintName("FK_ProjectImage_Project");
             });
 
+            modelBuilder.Entity<Province>(entity =>
+            {
+                entity.ToTable("Province");
+
+                entity.Property(e => e.Name).HasMaxLength(500);
+            });
+
             modelBuilder.Entity<Topic>(entity =>
             {
                 entity.ToTable("Topic");
@@ -317,6 +355,18 @@ namespace BDS.Model
                 entity.Property(e => e.Name).HasMaxLength(500);
 
                 entity.Property(e => e.Url).HasMaxLength(500);
+            });
+
+            modelBuilder.Entity<Ward>(entity =>
+            {
+                entity.ToTable("Ward");
+
+                entity.Property(e => e.Name).HasMaxLength(500);
+
+                entity.HasOne(d => d.District)
+                    .WithMany(p => p.Wards)
+                    .HasForeignKey(d => d.DistrictId)
+                    .HasConstraintName("FK_Ward_District");
             });
 
             OnModelCreatingPartial(modelBuilder);

@@ -51,6 +51,7 @@ namespace BDS.Services
                 IsNew = p.IsNew,
                 Url = p.Url,
                 DisplayOrder = p.DisplayOrder,
+                CategoryName=p.Category.Name,
                 Status = p.Status,
                 CreateDate = p.CreateDate
             }).ToListAsync();
@@ -61,6 +62,7 @@ namespace BDS.Services
             try
             {
                 Furniture topic = new Furniture()
+
                 {
                     Name = request.Name,
                     Image = request.Image,

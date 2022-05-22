@@ -25,13 +25,19 @@ namespace BDS.Model
         public int? DisplayOrder { get; set; }
         public int? Status { get; set; }
         public bool? IsHot { get; set; }
-        public decimal? Price { get; set; }
+        public string Price { get; set; }
         public string Acreage { get; set; }
-        public int? AddressId { get; set; }
+        public int? DirectionId { get; set; }
+        public int? PriceTypeId { get; set; }
+        public int? Phone { get; set; }
         public string AddressDetail { get; set; }
-
-        public virtual Address Address { get; set; }
+        public int? WardId { get; set; }
+        public int? ProvinceId { get; set; }
+        public int? DistrictId { get; set; }
         public virtual Category Category { get; set; }
+        public virtual Direction Direction { get; set; }
+        public virtual PriceType PriceType { get; set; }
+        public virtual Ward Ward { get; set; }
         public virtual ICollection<ProjectImage> ProjectImages { get; set; }
     }
 }

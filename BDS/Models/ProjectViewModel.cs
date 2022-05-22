@@ -22,9 +22,19 @@ namespace BDS.Models
         public int? DisplayOrder { get; set; }
         public int? Status { get; set; }
         public bool? IsHot { get; set; }
-        public decimal? Price { get; set; }
+        public string Price { get; set; }
         public string Acreage { get; set; }
-        public int? AddressId { get; set; }
+        public int? WardId { get; set; }
+        public int? PriceTypeId { get; set; }
+        public int? DirectionId { get; set; }
+        public int? ProvinceId { get; set; }
+        public int? DistrictId { get; set; }
+        public int? Phone { get; set; }
+        public string WardName { get; set; }
+        public string DistrictName { get; set; }
+        public string ProvinceName { get; set; }
+        public string PriceTypeName { get; set; }
+        public string DirectionName { get; set; }
         public string AddressDetail { get; set; }
         public List<ProjectImage> Images { get; set; }
     }

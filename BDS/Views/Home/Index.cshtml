@@ -1,665 +1,498 @@
-﻿@{ 
-    var newsHot= (BDS.Model.News)ViewBag.newsHot;
+﻿@{
+    var categories = (List<BDS.Model.Category>)ViewBag.categories;
+    var provinces=(List<BDS.Model.Province>)ViewBag.provinces;
+    var priceTypes = (List<BDS.Model.PriceType>)ViewBag.priceTypes;
     var ListNews = (List<BDS.Model.News>)ViewBag.ListNews;
-    var ListProject = (List<BDS.Model.Project>)ViewBag.ListProject;
+    var ListNewsHot = (List<BDS.Model.News>)ViewBag.ListNewsHot;
+    var ListFurniture = (List<BDS.Model.Furniture>)ViewBag.ListFurniture;
+    var ListFengShui = (List<BDS.Model.FengShui>)ViewBag.ListFengShui;
+    var ListProject = (List<BDS.Models.ProjectViewModel>)ViewBag.ListProject;
+    var ListProjectNew = (List<BDS.Model.Project>)ViewBag.ListProjectNew;
     var ListProjectHot = (List<BDS.Model.Project>)ViewBag.ListProjectHot;
-
-
 }
-<div id="fix_height">
-    <div class="main main-detail">
-        <div class="dl-flex">
-            <div class="col-auto display-ib mg-right-20">
-                <div style="clear:both; display:block;" class="row123467"></div>
-                <div class="main-hpnews">
-                    @if (newsHot != null)
-                    {
-                        <div class="hpnews-l">
-                            <div class="adv-300-250">
-                                <a class="a-img" title="@newsHot.Name" href="/gia-nha-dat-van-tiep-tuc-tang-hay-se-giam-vi-covid-19-newsid76">
-                                    <img alt="@newsHot.Name" src="/news/20210606/bat-dong-san-tang-hay-giam-vi-covid19.jpg?width=300&amp;height=246&amp;quality=100&amp;cache=always&amp;mode=crop">
-                                </a>
-                            </div>
-                            <h2 class="h-title">
-                                <a title="Gi&#225; nh&#224; đất vẫn tiếp tục tăng hay sẽ giảm v&#236; Covid-19?" href="/gia-nha-dat-van-tiep-tuc-tang-hay-se-giam-vi-covid-19-newsid76">
-                                    @newsHot.Name
-                                </a>
+
+<div id="homepage" class="page-body mt15">
+    <div class="uk-container uk-container-center">
+        <div class="uk-grid uk-grid-medium lib-grid-15 uk-flex-right">
+            <div class="uk-width-large-2-10 mb15">
+                <aside class="aside">
+                    <section class="aside-panel uk-visible-large news-box-01">
+                        <header class="panel-head">
+                            <h2 class="heading">
+                                <span>Bất động sản mới</span>
                             </h2>
-                        </div>
-                                    }
-                    <div class="hpnews-r">
-                        <div class="swiper-container swiper-hpnews">
-                            <div class="swiper-wrapper">
-                                @if (ListNews.Count() > 0)
+                        </header>
+                        <section class="panel-body">
+                            <ul class="uk-list list-tin-tuc">
+                                @if (ListProjectNew.Count() > 0)
                                 {
-                                    foreach (var item in ListNews)
+                                    foreach (var item in ListProjectNew)
                                     {
-                    <div class="swiper-slide">
-                        <div class="n-row" onclick="javascript: document.location.href = '/tin-tuc/@item.Url/@item.Id';">
-                            <a class="a-img" title="@item.Name" href="/tin-tuc/@item.Url/@item.Id">
-                                <img alt="@item.Name" src="@item.Image">
-                            </a>
-                            <h2 class="h-title">
-                                <a title="@item.Name" href="/tin-tuc/@item.Url/@item.Id">
-                                    @item.Name
-                                </a>
-                            </h2>
-                        </div>
-                    </div>}
-            }
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="clear"></div>
-                <div class="display-bl brd-bottom-w-1 brd-style-solid brd-style-color set-relative h-30 mg-bottom-10 mg-top-20">
-                    <h2 class="no-mg bg-055699 white-clr fsize-13 fweight-bold set-absolute bottom-0 left-0 pd-2 pd-top-3 pd-left-5 pd-right-10 radius-top-7">
-                        Bất động sản dành cho bạn
-                    </h2>
-                </div>
-                @if (ListProject.Count() > 0)
-                {
-                    foreach (var item in ListProject)
-                    {
-                        <div class="item display-bl pd-top-10 pd-bottom-10">
-                            <h3 class="display-bl fsize-13">
-                                <a href="/du-an/@item.Url/@item.Id" title="@item.Name" class="clr-055699">@item.Name</a>
-                            </h3>
-                            <div class="display-bl set-relative min-h-84 new-view">
-                                <a href="/du-an/@item.Url/@item.Id" title="@item.Name" class="display-ib w-per-17">
-                                    <img alt="@item.Name" class="full-width clr-D4D4D4 text-non-underline" src="@item.Image" />
-                                </a><p class="pd-left-10 w-per-83 display-ib oflow-hidden max-h-40 no-mg-bottom">
-                                    @item.Name
-                                </p>
-                                <p class="set-absolute left-per-17 bottom-per-23 pd-left-10 no-mg-bottom">
-                                    Giá: <span class="fweight-bold mg-right-60 clr-055699">@item.Price</span>
-                                    Diện tích: <span class="fweight-bold clr-055699">@item.Acreage</span>
-                                </p>
-                                <p class="set-absolute left-per-17 bottom-ng-3 pd-left-10 no-mg-bottom">
-                                    Địa chỉ: @item.AddressDetail
-                                </p>
-                                <p class="set-absolute bottom-ng-3 no-mg-bottom right-3 clr-555">
-                                    @item.CreateDate
-                                </p>
-                            </div>
-                        </div>
-                                        }
+                                        <li class="box-list element">
+                                            <div class="item uk-flex lib-grid-10 mb10">
+                                                <div class="thumb">
+                                                    <a class="image img-cover" href="/du-an/chi-tiet/@item.Url/@item.Id">
+                                                        <img src="@item.Image" alt="@item.Name">
+                                                    </a>
+                                                </div>
+                                                <div class="info">
+                                                    <div class="title_bl mb5">
+                                                        <a href="/du-an/chi-tiet/@item.Url/@item.Id" title="@item.Name">@item.Name</a>
+                                                    </div>
+                                                    <div class="time_create">@item.CreateDate.Value.ToString("MM/dd/yyyy")</div>
+                                                </div>
+                                                <div class="clear"></div>
+                                            </div>
+                                        </li>
                                     }
-
-            </div><div class="col-300 display-ib">
-                <input type="hidden" id="hddAreas" />
-                <input type="hidden" id="hddPrice" />
-                <div class="display-bl brd-bottom-w-1 brd-style-solid brd-style-color set-relative h-30 mg-top-20">
-                    <div class="no-mg bg-055699 fsize-13 fweight-bold set-absolute bottom-0 left-0 pd-2 pd-top-3 pd-left-5 pd-right-10 radius-top-7 white-clr">
-                        Tìm kiếm BĐS
-                    </div>
-                </div>
-                <div class="w-300 pd-10 pd-bottom-20 brd-style-solid brdcolor-999 display-bl brdwidth1 bs-border-box no-border-top">
-                    <form ReturnUrl="" action="/Product/BoxSearch/" id="frm_BoxSearch" method="post">
-                        <div class="mg-top-5">
-                            <input class="input form-control" id="Keyword" maxlength="60" name="Keyword" placeholder="Nhập nội dung tìm kiếm" type="text" value="" />
-                        </div>
-                        <div class="mg-top-10">
-                            <select name="ProductType" id="cboType" class="chosen-select disable_search w-278" onchange="objSearchFunc.GetSubCategory(this.value);">
-                                <option selected=selected value="89">Nh&#224; đất b&#225;n</option>
-                                <option value="90">Nh&#224; đất cho thu&#234;</option>
-                                <option value="92">Nh&#224; đất cần mua</option>
-                                <option value="91">Nh&#224; đất cần thu&#234;</option>
-                                <option value="79">Nh&#224; đất sang nhượng</option>
-                            </select>
-                        </div>
-                        <div class="mg-top-10">
-                            <select name="Category" id="cboCategory" class="chosen-select disable_search w-278">
-                                <option value="0">--Chọn loại nhà đất--</option>
-                                <option value="45">B&#225;n căn hộ chung cư</option>
-                                <option value="46">B&#225;n nh&#224; ri&#234;ng, ng&#245;, hẻm</option>
-                                <option value="47">B&#225;n nh&#224; biệt thự, liền kề</option>
-                                <option value="48">B&#225;n nh&#224; mặt tiền, mặt phố</option>
-                                <option value="81">B&#225;n nh&#224; cấp 4</option>
-                                <option value="84">B&#225;n cửa h&#224;ng &amp; ki ốt</option>
-                                <option value="51">B&#225;n trang trại, khu nghỉ dưỡng</option>
-                                <option value="52">B&#225;n kho, nh&#224; xưởng</option>
-                                <option value="83">B&#225;n đất</option>
-                                <option value="49">B&#225;n đất nền dự &#225;n</option>
-                                <option value="50">B&#225;n đất thổ cư</option>
-                                <option value="53">B&#225;n loại bất động sản kh&#225;c</option>
-                            </select>
-                        </div>
-                        <div class="mg-top-10">
-                            <select name="City" id="cboCity" class="chosen-select w-278" onchange="objSearchFunc.ChangeCity(this.value);">
-                                <option value="">--Chọn Tỉnh/Thành phố--</option>
-                                <option value="SG">Hồ Ch&#237; Minh</option>
-                                <option value="HN">Hà N&#244;̣i</option>
-                                <option value="BD">B&#236;nh Dương</option>
-                                <option value="DDN">Đ&#224; Nẵng</option>
-                                <option value="HP">Hải Ph&#242;ng</option>
-                                <option value="LA">Long An</option>
-                                <option value="VT">B&#224; Rịa Vũng T&#224;u</option>
-                                <option value="AG">An Giang</option>
-                                <option value="BG">Bắc Giang</option>
-                                <option value="BK">Bắc Kạn</option>
-                                <option value="BL">Bạc Li&#234;u</option>
-                                <option value="BN">Bắc Ninh</option>
-                                <option value="BTR">Bến Tre</option>
-                                <option value="BDD">B&#236;nh Định</option>
-                                <option value="BP">B&#236;nh Phước</option>
-                                <option value="BTH">B&#236;nh Thuận </option>
-                                <option value="CM">C&#224; Mau</option>
-                                <option value="CN">Cả Nước</option>
-                                <option value="CT">Cần Thơ</option>
-                                <option value="CB">Cao Bằng</option>
-                                <option value="DDL">Đắk Lắk</option>
-                                <option value="DNO">Đắk N&#244;ng</option>
-                                <option value="DDB">Điện Bi&#234;n</option>
-                                <option value="DNA">Đồng Nai</option>
-                                <option value="DDT">Đồng Th&#225;p</option>
-                                <option value="GL">Gia Lai</option>
-                                <option value="HG">H&#224; Giang</option>
-                                <option value="HNA">H&#224; Nam</option>
-                                <option value="HT">H&#224; Tĩnh</option>
-                                <option value="HD">Hải Dương</option>
-                                <option value="HGI">Hậu Giang</option>
-                                <option value="HB">H&#242;a B&#236;nh</option>
-                                <option value="HY">Hưng Y&#234;n</option>
-                                <option value="KH">Kh&#225;nh H&#242;a</option>
-                                <option value="KG">Ki&#234;n Giang</option>
-                                <option value="KT">Kon Tum</option>
-                                <option value="LCH">Lai Ch&#226;u</option>
-                                <option value="LDD">L&#226;m Đồng</option>
-                                <option value="LS">Lạng Sơn</option>
-                                <option value="LCA">L&#224;o Cai</option>
-                                <option value="NDD">Nam Định</option>
-                                <option value="NA">Nghệ An</option>
-                                <option value="NB">Ninh B&#236;nh</option>
-                                <option value="NT">Ninh Thuận</option>
-                                <option value="PT">Ph&#250; Thọ</option>
-                                <option value="PY">Ph&#250; Y&#234;n</option>
-                                <option value="QB">Quảng B&#236;nh</option>
-                                <option value="QNA">Quảng Nam</option>
-                                <option value="QNG">Quảng Ng&#227;i</option>
-                                <option value="QNI">Quảng Ninh</option>
-                                <option value="QT">Quảng Trị</option>
-                                <option value="ST">S&#243;c Trăng</option>
-                                <option value="SL">Sơn La</option>
-                                <option value="TNI">T&#226;y Ninh</option>
-                                <option value="TB">Th&#225;i B&#236;nh</option>
-                                <option value="TN">Th&#225;i Nguy&#234;n</option>
-                                <option value="TH">Thanh H&#243;a</option>
-                                <option value="TTH">Thừa Thi&#234;n Huế</option>
-                                <option value="TG">Tiền Giang</option>
-                                <option value="TV">Tr&#224; Vinh</option>
-                                <option value="TQ">Tuy&#234;n Quang</option>
-                                <option value="VL">Vĩnh Long</option>
-                                <option value="VP">Vĩnh Ph&#250;c</option>
-                                <option value="YB">Y&#234;n B&#225;i</option>
-                            </select>
-                        </div>
-                        <div class="mg-top-10">
-                            <select name="District" id="cboDistricts" class="chosen-select w-278" onchange="objSearchFunc.ChangeDistricts($('#cboCity').val(), this.value)">
-                                <option value="0">--Chọn Quận/Huyện--</option>
-                            </select>
-                        </div>
-                        <div class="mg-top-10">
-                            <div id="divArea" class="searchrow advance-select-box">
-                                <span class="select-text">
-                                    <span class="select-text-content">--Chọn diện tích--</span>
-                                </span>
-                                <input id="hdCboArea" name="Area" value="-1" type="hidden">
-                                <div id="divAreaOptions" class="advance-select-options advance-options" minvalue="txtAreaMinValue" maxvalue="txtAreaMaxValue" unit="area" hddvalue="hdCboArea" ddlid="divArea">
-                                    <table class="header-options options">
-                                        <tbody>
-                                            <tr class="advance-options">
-                                                <td class="advance-options">
-                                                    <input id="txtAreaMinValue" name="AreaMin" placeholder="từ" class="min-value advance-options" maxlength="6" numbersonly="true" decimal="false" type="text">
-                                                </td>
-                                                <td class="advance-options">
-                                                    <span class="advance-options">- </span>
-                                                </td>
-                                                <td class="advance-options">
-                                                    <input id="txtAreaMaxValue" name="AreaMax" placeholder="đến" class="max-value advance-options" maxlength="6" numbersonly="true" decimal="false" type="text">
-                                                </td>
-                                                <td class="advance-options">
-                                                    <span class="advance-options">m2</span>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <ul class="advance-options">
-                                        <li data-id="-1" class="advance-options">--Chọn diện tích--</li>
-                                        <li data-id="0" class="advance-options">Chưa xác định</li>
-                                        <li data-id="1" class="advance-options">&lt; 30 m2</li>
-                                        <li data-id="2" class="advance-options">30 - 50 m2</li>
-                                        <li data-id="3" class="advance-options">50 - 80 m2</li>
-                                        <li data-id="4" class="advance-options">80 - 100 m2</li>
-                                        <li data-id="5" class="advance-options">100 - 150 m2</li>
-                                        <li data-id="6" class="advance-options">150 - 200 m2</li>
-                                        <li data-id="7" class="advance-options">200 - 250 m2</li>
-                                        <li data-id="8" class="advance-options">250 - 300 m2</li>
-                                        <li data-id="9" class="advance-options">300 - 500 m2</li>
-                                        <li data-id="10" class="advance-options">&gt;= 500 m2</li>
+                                }
                                     </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mg-top-10">
-                            <div id="divPrice" class="searchrow advance-select-box">
-                                <span class="select-text">
-                                    <span class="select-text-content">--Chọn mức giá--</span>
-                                </span>
-                                <input id="hdCboPrice" name="Price" value="-1" type="hidden">
-                                <div id="divPriceOptions" class="advance-select-options advance-options" minvalue="txtPriceMinValue" maxvalue="txtPriceMaxValue" unit="money" lblmin="lblPriceMin" lblmax="lblPriceMax" hddvalue="hdCboPrice" ddlid="divPrice">
-                                    <table class="header-options options">
-                                        <tbody>
-                                            <tr class="advance-options">
-                                                <td class="advance-options">
-                                                    <input id="txtPriceMinValue" name="PriceMin" placeholder="từ" class="min-value advance-options" maxlength="6" numbersonly="true" decimal="true" type="text">
-                                                    <div id="lblPriceMin"></div>
-                                                </td>
-                                                <td class="advance-options">
-                                                    <span class="advance-options">-</span>
-                                                </td>
-                                                <td class="advance-options">
-                                                    <input id="txtPriceMaxValue" name="PriceMax" placeholder="đến" class="max-value advance-options" maxlength="6" numbersonly="true" decimal="true" type="text">
-                                                    <div id="lblPriceMax"></div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <ul class="advance-options">
-                                        <li data-id="-1" class="advance-options current">--Chọn mức giá--</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="cpsearchadvanced" class="h-0">
-                            <div class="mg-top-10">
-                                <select name="Ward" id="cboWards" class="chosen-select w-278">
-                                    <option value="0">--Chọn Phường/Xã--</option>
-                                </select>
-                            </div>
-                            <div class="mg-top-10">
-                                <select name="Street" id="cboStreets" class="chosen-select w-278">
-                                    <option value="0">--Chọn Đường/Phố--</option>
-                                </select>
-                            </div>
-                            <div class="mg-top-10">
-                                <select name="Rooms" id="cboRooms" class="chosen-select w-278">
-                                    <option value="-1">--Chọn số phòng ngủ--</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">&gt; 5</option>
-                                </select>
-                            </div>
-                            <div class="mg-top-10">
-                                <select id="cboDirections" name="Directions" class="chosen-select w-278">
-                                    <option value="-1">--Chọn hướng nhà--</option>
-                                    <option value="1">Đ&#244;ng</option>
-                                    <option value="2">T&#226;y</option>
-                                    <option value="3">Nam</option>
-                                    <option value="4">Bắc</option>
-                                    <option value="5">Đ&#244;ng Bắc</option>
-                                    <option value="6">T&#226;y Bắc</option>
-                                    <option value="7">T&#226;y Nam</option>
-                                    <option value="8">Đ&#244;ng Nam</option>
-                                </select>
-                            </div>
-                            <div class="mg-top-10">
-                                <select name="Projects" id="cboProjects" class="chosen-select w-278">
-                                    <option value="0">--Chọn dự án bất động sản--</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="mg-top-20">
-                            <button class="btn-boxsearch btn bg-green fsize-16 w-130 no-pd fweight-normal text-non-uppercase mg-left-70 lh-42 h-42" type="submit" style="line-height:40px !important;">
-                                <i class="icon-search"></i>
-                                Tìm kiếm
-                            </button>
-                            <div class="text-center mg-top-10"><span id="advsearch">Tìm nâng cao</span></div>
-                        </div>
-                    </form>
-                </div>
-                <div class="display-bl brd-bottom-w-1 brd-style-solid brd-style-color set-relative h-30 mg-top-20">
-                    <div class="no-mg bg-055699 fsize-13 fweight-bold set-absolute bottom-0 left-0 pd-2 pd-top-3 pd-left-5 pd-right-10 radius-top-7 white-clr">
-                        Tiện ích
-                    </div>
-                </div>
-                <div class="w-300 pd-10 pd-bottom-20 brd-style-solid brdcolor-999 display-bl brdwidth1 bs-border-box no-border-top">
-                    <div class="i-fengshui mg-top-10 mg-bottom-15" onclick="(new FengShui()).ShowPopup();">
-                        Xem phong thủy theo tuổi
-                    </div>
+                            <div class="paging"></div>
+                            <style>
+                                .paging span.current, .paging span.current {
+                                    background-color: #000000 !important;
+                                }
 
-                </div>
-                <div class="display-bl brd-bottom-w-1 brd-style-solid brd-style-color set-relative h-30 mg-top-20">
-                    <div class="no-mg bg-055699 fsize-13 fweight-bold set-absolute bottom-0 left-0 pd-2 pd-top-3 pd-left-5 pd-right-10 radius-top-7 white-clr">
-                        Dự án nổi bật
-                    </div>
-                    <a class="more-duan" href="/du-an-bat-dong-san" title="Dự án Bất động sản - batdongsanviet.vn">Xem thêm</a>
-                </div>
-                <div id="slide-projecthome" class="set-relative swiper-container w-300 brd-style-solid brdcolor-999 display-bl h-485 brdwidth1 bs-border-box no-border-top">
-                    <div class="swiper-wrapper h-440">
-                        <ul class='swiper-slide h-440'>
-                            @if (ListProjectHot.Count() > 0)
-                            {
-                                foreach (var item in ListProjectHot)
+                                .paging a, .paging span.current {
+                                    padding: 5px;
+                                    margin-left: 3px;
+                                    line-height: 20px;
+                                    border: none;
+                                    background-color: #0774b9;
+                                    font-size: 11px;
+                                    color: #ffffff;
+                                    text-align: center;
+                                    margin-bottom: 5px;
+                                }
+
+                                .disabled {
+                                    display: none;
+                                }
+                            </style>
+                        </section>
+                    </section>
+                    <!-- Quản cáo -->
+                    <section class="aside-gallery uk-visible-large mt15">
+                        <section class="panel-body home-branch">
+                            <section class="panel-body uk-grid lib-grid-20">
+                                @if (ListProjectHot.Count() > 0)
                                 {
-                        <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-12 h-78 fsize-12 lh-18">
-                            <a title="@item.Name" href="/du-an/@item.Url/@item.Id" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
-                                <img class="clr-D4D4D4" src="@item.Image" alt="Khu c&#244;ng nghiệp Quang Minh" />
-                            </a>
-                            <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
-                                <a title="@item.Name" href="/du-an/@item.Url/@item.Id" class="clr-055699">
-                                    @item.Name
-                                </a>
-                            </h3>
-                            @item.AddressDetail
-                        </li>
-                                    } 
-                            }
-                                        </ul>
-                        <ul class='swiper-slide h-440'>
-                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-12 h-78 fsize-12 lh-18">
-                                <a title="Khu đ&#244; thị mới Đ&#244;ng Sơn" href="/khu-do-thi-moi-dong-son-thanh-hoa/khu-do-thi-moi-dong-son-prj3" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
-                                    <img class="clr-D4D4D4" src="/duan/2018-04-16/20180416043441493248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Khu đ&#244; thị mới Đ&#244;ng Sơn" />
-                                </a>
-                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
-                                    <a title="Khu đ&#244; thị mới Đ&#244;ng Sơn" href="/khu-do-thi-moi-dong-son-thanh-hoa/khu-do-thi-moi-dong-son-prj3" class="clr-055699">
-                                        Khu đ&#244; thị mới Đ&#244;ng Sơn
+                                    foreach (var item in ListProjectHot)
+                                    {
+                                             <div class="adversite-item uk-width-1-1 mb5">
+                                    <a href="/du-an/chi-tiet/@item.Url/@item.Id" title="@item.Name" class="img-cover">
+                                        <img src="@item.Image" alt="@item.Name" />
                                     </a>
-                                </h3>
-                                X&#227; Đ&#244;ng H&#173;ưng - Đ&#244;ng T&#226;n, huyện Đ&#244;ng Sơn v&#224; phư&#173;ờng Ph&#250; Sơn, Thanh Ho&#225;
-                            </li>
-                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-14 h-78 fsize-12 lh-18">
-                                <a title="Vincom Y&#234;n B&#225;i" href="/khu-phuc-hop-yen-bai-yb-yen-bai/vincom-yen-bai-prj970" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
-                                    <img class="clr-D4D4D4" src="/duan/2018-04-26/20180426120905195248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Vincom Y&#234;n B&#225;i" />
-                                </a>
-                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
-                                    <a title="Vincom Y&#234;n B&#225;i" href="/khu-phuc-hop-yen-bai-yb-yen-bai/vincom-yen-bai-prj970" class="clr-055699">
-                                        Vincom Y&#234;n B&#225;i
-                                    </a>
-                                </h3>
-                                Đường Th&#224;nh C&#244;ng, Phường Nguyễn Th&#225;i Học, Y&#234;n B&#225;i, Y&#234;n B&#225;i
-                            </li>
-                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-14 h-78 fsize-12 lh-18">
-                                <a title="Vinhomes D&#39;Capitale" href="/can-ho-chung-cu-cau-giay-ha-noi/vinhomes-dcapitale-prj2356" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
-                                    <img class="clr-D4D4D4" src="/duan/2018-04-27/20180427012355202248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Vinhomes D&#39;Capitale" />
-                                </a>
-                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
-                                    <a title="Vinhomes D&#39;Capitale" href="/can-ho-chung-cu-cau-giay-ha-noi/vinhomes-dcapitale-prj2356" class="clr-055699">
-                                        Vinhomes D&#39;Capitale
-                                    </a>
-                                </h3>
-                                Đường Trần Duy Hưng, Phường Trung H&#242;a, Cầu Giấy, Hà N&#244;̣i
-                            </li>
-                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-14 h-78 fsize-12 lh-18">
-                                <a title="Lavita Garden" href="/can-ho-chung-cu-thu-duc-ho-chi-minh/lavita-garden-prj2935" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
-                                    <img class="clr-D4D4D4" src="/duan/2018-04-27/20180427042730810248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Lavita Garden" />
-                                </a>
-                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
-                                    <a title="Lavita Garden" href="/can-ho-chung-cu-thu-duc-ho-chi-minh/lavita-garden-prj2935" class="clr-055699">
-                                        Lavita Garden
-                                    </a>
-                                </h3>
-                                30 Đường 3, Phường Trường Thọ, Thủ Đức, Hồ Ch&#237; Minh
-                            </li>
-                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-14 h-78 fsize-12 lh-18">
-                                <a title="Khu đ&#244; thị Tiến Th&#224;nh" href="/khu-do-thi-moi-dong-xoai-binh-phuoc/khu-do-thi-tien-thanh-prj275" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
-                                    <img class="clr-D4D4D4" src="/duan/2018-04-16/20180416022846711248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Khu đ&#244; thị Tiến Th&#224;nh" />
-                                </a>
-                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
-                                    <a title="Khu đ&#244; thị Tiến Th&#224;nh" href="/khu-do-thi-moi-dong-xoai-binh-phuoc/khu-do-thi-tien-thanh-prj275" class="clr-055699">
-                                        Khu đ&#244; thị Tiến Th&#224;nh
-                                    </a>
-                                </h3>
-                                Phố T&#244;n Đức Thắng, X&#227; Tiến Th&#224;nh, Đồng Xo&#224;i, B&#236;nh Phước
-                            </li>
-                        </ul>
-                        <ul class='swiper-slide h-440'>
-                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-12 h-78 fsize-12 lh-18">
-                                <a title="Trương Định Complex" href="/can-ho-chung-cu-hai-ba-trung-ha-noi/truong-dinh-complex-prj2390" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
-                                    <img class="clr-D4D4D4" src="/duan/2018-04-27/20180427013956916248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Trương Định Complex" />
-                                </a>
-                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
-                                    <a title="Trương Định Complex" href="/can-ho-chung-cu-hai-ba-trung-ha-noi/truong-dinh-complex-prj2390" class="clr-055699">
-                                        Trương Định Complex
-                                    </a>
-                                </h3>
-                                129D đường Trương Định, Hai B&#224; Trưng, Hà N&#244;̣i
-                            </li>
-                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-14 h-78 fsize-12 lh-18">
-                                <a title="KCN Ph&#250; Nghĩa" href="/khu-cong-nghiep-chuong-my-ha-noi/kcn-phu-nghia-prj742" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
-                                    <img class="clr-D4D4D4" src="/duan/2018-04-25/20180425105747807248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="KCN Ph&#250; Nghĩa" />
-                                </a>
-                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
-                                    <a title="KCN Ph&#250; Nghĩa" href="/khu-cong-nghiep-chuong-my-ha-noi/kcn-phu-nghia-prj742" class="clr-055699">
-                                        KCN Ph&#250; Nghĩa
-                                    </a>
-                                </h3>
-                                Đường Quốc lộ 6, Thị trấn Ch&#250;c Sơn, Chương Mỹ, Hà N&#244;̣i
-                            </li>
-                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-14 h-78 fsize-12 lh-18">
-                                <a title="T&#244; K&#253; Tower" href="/can-ho-chung-cu-quan-12-ho-chi-minh/to-ky-tower-prj3021" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
-                                    <img class="clr-D4D4D4" src="/duan/2018-04-27/20180427045808917248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="T&#244; K&#253; Tower" />
-                                </a>
-                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
-                                    <a title="T&#244; K&#253; Tower" href="/can-ho-chung-cu-quan-12-ho-chi-minh/to-ky-tower-prj3021" class="clr-055699">
-                                        T&#244; K&#253; Tower
-                                    </a>
-                                </h3>
-                                Phường Trung Mỹ T&#226;y, quận 12, Tp.HCM
-                            </li>
-                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-14 h-78 fsize-12 lh-18">
-                                <a title="Tecco Tower Bến Thủy" href="/khu-phuc-hop-2-vinh-nghe-an/tecco-tower-ben-thuy-prj57" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
-                                    <img class="clr-D4D4D4" src="/duan/2018-04-16/20180416052641923248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Tecco Tower Bến Thủy" />
-                                </a>
-                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
-                                    <a title="Tecco Tower Bến Thủy" href="/khu-phuc-hop-2-vinh-nghe-an/tecco-tower-ben-thuy-prj57" class="clr-055699">
-                                        Tecco Tower Bến Thủy
-                                    </a>
-                                </h3>
-                                Đường Huỳnh Th&#250;c Kh&#225;ng, Phường Bến Thuỷ, Vinh, Nghệ An
-                            </li>
-                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-14 h-78 fsize-12 lh-18">
-                                <a title="Rosa Alba Resort Tuy H&#242;a" href="/khu-nghi-duong-sinh-thai-tuy-hoa-phu-yen/rosa-alba-resort-tuy-hoa-prj1009" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
-                                    <img class="clr-D4D4D4" src="/duan/2018-04-26/20180426122141893248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Rosa Alba Resort Tuy H&#242;a" />
-                                </a>
-                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
-                                    <a title="Rosa Alba Resort Tuy H&#242;a" href="/khu-nghi-duong-sinh-thai-tuy-hoa-phu-yen/rosa-alba-resort-tuy-hoa-prj1009" class="clr-055699">
-                                        Rosa Alba Resort Tuy H&#242;a
-                                    </a>
-                                </h3>
-                                Đường Độc Lập, Phường 9, Tuy H&#242;a, Ph&#250; Y&#234;n
-                            </li>
-                        </ul>
+                                </div>                             
+                                    }
+                                }
+                           
+                            </section>
+                        </section>
+                    </section>
+                    <!-- END Quảng cáo -->
+                </aside>
+            </div>
+            <div class="uk-width-large-5-10 mb15">
+                <div class="uk-grid lib-grid-15">
+                    <div class="uk-width-large-1-1 mb15">
+                        <section class="home-articles">
+                            <section class="panel-body">
+                                <div class="uk-slidenav-position slider-2" data-uk-slider="{autoplay: true, autoplayInterval: 3500}">
+                                    <div class="uk-slider-container">
+                                        <ul class="uk-slider uk-grid lib-grid-15 uk-grid-width-1-1 list-articles" style="height: 385px">
+                                            @if (ListProjectHot.Count() > 0)
+                                            {
+                                                foreach (var item in ListProjectHot)
+                                                {
+                                                    <li>
+                                                        <div class="articles-home">
+                                                            <div class="thumb" style="height:385px ">
+                                                                <a class="img-cover" href="/du-an/chi-tiet/@item.Url/@item.Id" title="@item.Name">
+                                                                    <img src="@item.Image" alt="@item.Name">
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                }
+                                            }
+
+                                                </ul>
+                                        <a href="" class="uk-slidene uk-slidenav-contrast" data-uk-slider-item="previous">
+                                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                        </a>
+                                        <a href="" class="uk-slidepr uk-slidenav-contrast" data-uk-slider-item="next">
+                                            <i class="fa fa-angle-left" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </section>
+                        </section>
+
                     </div>
 
-                    <div class="swiper-button-next fsize-44 clr-055699">
-                        <i class="icon-right-open-big wauto-before set-absolute top0 right-5"></i>
+                    <div class="uk-width-large-1-2 mb15">
+                        <section class="home-articles">
+                            <header class="heading-page">
+                                <a href="tin-tuc-bat-dong-san.html">Tin tức bất động sản</a>
+                            </header>
+                            <section class="panel-body">
+                                <div class="uk-slidenav-position slider-2" data-uk-slider="{autoplay: true, autoplayInterval: 5500}">
+                                    <div class="uk-slider-container">
+                                        <ul class="uk-slider uk-grid lib-grid-15 uk-grid-width-1-1 list-articles">
+                                            @if (ListNewsHot.Count() > 0)
+                                            {
+                                                foreach (var item in ListNewsHot)
+                                                {
+                                                    <li>
+                                                        <div class="articles-home">
+                                                            <div class="thumb">
+                                                                <a class="img-cover" href="/tin-tuc/chi-tiet/@item.Url/@item.Id" title="@item.Name">
+                                                                    <img src="@item.Image" alt="@item.Name">
+                                                                    <div class="info">
+                                                                        <div class="title">
+                                                                            @item.Name
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                }
+                                            }
+                                                </ul>
+                                        <a href="" class="uk-slidene uk-slidenav-contrast" data-uk-slider-item="previous">
+                                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                        </a>
+                                        <a href="" class="uk-slidepr uk-slidenav-contrast" data-uk-slider-item="next">
+                                            <i class="fa fa-angle-left" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </section>
+                        </section>
                     </div>
-                    <div class="swiper-button-prev fsize-44 clr-055699">
-                        <i class="icon-left-open-big wauto-before set-absolute top0 left-5"></i>
+
+                    <div class="uk-width-large-1-2 mb15">
+                        <section class="home-articles">
+                            <header class="heading-page">
+                                <a href="du-an-bat-dong-san-noi-bat.html">Nội - ngoại thất</a>
+                            </header>
+                            <section class="panel-body">
+                                <div class="uk-slidenav-position slider-2" data-uk-slider="{autoplay: true, autoplayInterval: 4500}">
+                                    <div class="uk-slider-container">
+                                        <ul class="uk-slider uk-grid lib-grid-15 uk-grid-width-1-1 list-articles">
+                                            @if (ListFurniture.Count() > 0)
+                                            {
+                                                foreach (var item in ListFurniture)
+                                                {
+                                                    <li>
+                                                        <div class="articles-home">
+                                                            <div class="thumb">
+                                                                <a class="img-cover" href="/noi-ngoai-that/chi-tiet/@item.Url/@item.Name" title="@item.Name">
+                                                                    <img src="@item.Image" alt=" @item.Name">
+                                                                    <div class="info">
+                                                                        <div class="title">
+                                                                            @item.Name
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    }
+                                                } 
+                                                </ul>
+                                        <a href="" class="uk-slidene uk-slidenav-contrast" data-uk-slider-item="previous">
+                                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                        </a>
+                                        <a href="" class="uk-slidepr uk-slidenav-contrast" data-uk-slider-item="next">
+                                            <i class="fa fa-angle-left" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </section>
+                        </section>
                     </div>
+
                 </div>
+
+
+
+                <!-- Quản cáo -->
+                <!-- END Quảng cáo -->
+
+                <div class="dv-ct-detail">
+                    <h1>Mua bán nhà đất, cho thuê nhà đất, thông tin nhà đất, bất động sản</h1>
+                </div>
+                <section class="homepage-projects-small mb15 Vip">
+                    <header class="panel-head">
+                        <h3 class="heading uk-flex uk-flex-middle uk-flex-space-between">
+                            <a class="uk-text-uppercase" title="Tin Vip">Dự án nổi bật</a>
+                        </h3>
+                    </header>
+                    <section class="panel-body box-padding-background">
+                        <ul class="uk-grid lib-grid-0 uk-grid-width-1-1 list-projects">
+                            @if (ListProject.Count() > 0)
+                            {
+                                foreach (var item in ListProject)
+                                {
+                                    <li>
+                                        <div class="projects uk-flex lib-grid-10 Vip2">
+                                            <i class="i-bds-cc-1"></i>
+                                            <div class="thumb">
+                                                <a class="image img-cover" href="/du-an/chi-tiet/@item.Url/@item.Id" title="@item.Name">
+                                                    <img src="@item.Image" alt="@item.Name" />
+                                                </a>
+                                            </div>
+                                            <div class="infor">
+                                                <h4 class="title">
+                                                    <img src="/uploads/new-icon.gif" alt="gif" style="width: 22px"> 
+                                                    <a href="/du-an/chi-tiet/@item.Url/@item.Id" title="@item.Name" style="color: rgb(255, 114, 0) !important;"> @item.Name
+</a>
+                                                </h4>
+                                                <div class="time_create">
+                                                    @item.CreateDate.Value.ToString("MM/dd/yyyy")
+                                                </div>
+                                                <div class="projects_desc">
+                                                    @item.Description
+                                                    <a href="/du-an/chi-tiet/@item.Url/@item.Id" title="Xem tiếp">Xem tiếp</a>
+                                                </div>
+
+                                                <div class="uk-flex uk-flex-space-between lib-grid-10 uk-flex-middle list-item-projects">
+                                                    <div class="price_projects blue">
+                                                        Giá: <span class="red">@item.Price @item.PriceTypeName</span>
+                                                    </div>
+                                                    <div class="area_projects blue">
+                                                        - <span class="red">@item.Acreage</span> m²
+                                                    </div>
+                                                    <div class="area_projects blue">
+                                                        - <span>
+                                                            @item.CategoryName
+                                                        </span>
+                                                    </div>
+                                                    <div class="place_projects blue">
+                                                        - <span>
+                                                            @item.AddressDetail
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!-- .product -->
+                                    </li>
+                                }
+                            }
+                                </ul>
+                    </section><!-- .panel-body -->
+                </section><!-- .top-content -->
+            </div>
+            <div class="uk-width-large-3-10 mb15">
+                <aside class="aside">
+                    <script>
+                        var cityid = 0;
+                        var districtid = 0;
+                        var wardid = 0;
+                        var projectid = 0;
+                    </script>
+                    <div class="form-search mb15">
+                        <ul class="tabs1 uk-flex-center uk-flex uk-list">
+                            <li id="sale" class="togle-type active">Tìm kiếm nhanh</li>
+                        </ul>
+                        <div class="panel-body">
+                            <form asp-action="Search" asp-controller="Project" method="get" accept-charset="utf-8">
+                                <div class="line-item mb10">
+                                    <input type="text" name="keyword" value="" placeholder="Nhập tên dự án, vd: Mỹ đình, Topaz Garden" class="text uk-width-1-1" />
+                                </div>
+                                <div class="line-item mb10">
+                                    <select name="categoryId" class="text uk-width-1-1">
+                                        <option value="">Tất cả</option>
+                                        @if (categories.Count() > 0)
+                                        {
+                                            foreach (var item in categories)
+                                            {
+                                                <option value="@item.Id">@item.Name</option>
+                                            } 
+                                        }
+                                    </select>
+                                </div>
+                                <div class="line-item mb10">
+                                    <select name="provinceId" id="province" class="text uk-width-1-1 location">
+                                        <option value="0" selected="selected">[Chọn Tỉnh/Thành phố]</option>
+                                        @if (provinces.Count() > 0)
+                                        {
+                                            foreach (var item in provinces)
+                                            {
+                                                <option value="@item.Id">@item.Name</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                                <div class="line-item mb10">
+                                    <select name="districtId" class="text uk-width-1-1 location" id="district">
+                                        <option value="0" selected="selected">[Chọn Quận/Huyện]</option>
+                                    </select>
+                                </div>
+                                <div class="line-item mb10">
+                                    <select name="wardId" class="text uk-width-1-1 location" id="ward">
+                                        <option value="0" selected="selected">[Chọn Xã/Phường]</option>
+                                    </select>
+                                </div>
+                                <div class="uk-flex uk-flex-middle lib-grid-10">
+                                    <div class="line-item mb10 uk-width-1-1">
+                                        <input type="text" name="fromPrice" value=""
+                                               placeholder="Giá tiền từ ..." class="text uk-width-1-1 input-text">
+                                    </div>
+                                    <div class="line-item mb10 uk-width-1-1">
+                                        <select name="fromPriceType" class="text uk-width-1-1 changetype">
+                                            <option value="0">Giá tiền</option>
+                                            @if (priceTypes.Count() > 0)
+                                            {
+                                                foreach (var item in priceTypes)
+                                                {
+                                                    <option value="@item.Id">@item.Name</option>
+
+                                                }
+                                            }                                               
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="uk-flex uk-flex-middle lib-grid-10">
+                                    <div class="line-item mb10 uk-width-1-1">
+                                        <input type="text" name="toPrice" value=""
+                                               placeholder="Đến ..." class="text uk-width-1-1 input-text">
+                                    </div>
+                                    <div class="line-item mb10 uk-width-1-1">
+                                        <select name="toPriceType" class="text uk-width-1-1 changetype">
+                                            <option value="0">Giá tiền</option>
+                                            @if (priceTypes.Count() > 0)
+                                            {
+                                                foreach (var item in priceTypes)
+                                                {
+                                                    <option value="@item.Id">@item.Name</option>
+                                              }
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="uk-flex uk-flex-middle lib-grid-10">
+                                    <div class="line-item mb10 uk-width-1-1">
+                                        <input type="text" name="fromAcreage" value=""
+                                               placeholder="Diện tích từ ..." class="text uk-width-1-1 input-text">
+                                    </div>
+                                    <div class="line-item mb10 uk-width-1-1">
+                                        <input type="text" name="toAcreage" value=""
+                                               placeholder="Diện tích đến ..." class="text uk-width-1-1 input-text">
+                                    </div>
+                                </div>
+                                <div class="uk-flex uk-flex-middle lib-grid-10">
+                                    <div class="line-item mb10 bg-submit uk-width-1-1">
+                                        <button class="uk-width-1-1 btn-type-1" type="submit"> Tìm tất cả</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="video uk-visible-large mb15">
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/VswHarlC4gs"
+                                frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="dv-boxhotline-r uk-visible-large uk-flex-middle uk-flex uk-flex-space-between">
+                        <div class="dv-hl uk-flex-middle uk-flex uk-flex-left lib-grid-10">
+                            <i class="ico-sty i-hotline"></i>
+                            <label>Hotline</label>
+                            <a title="Hotline trợ giúp trực tiếp"
+                               href="tel: 02466.759.435 -  0948.242.555">02466.759.435 -  0948.242.555</a>
+                        </div>
+                        <div class="dv-sca uk-flex-middle uk-flex uk-flex-right">
+                            <span>
+                                <a href="skype: xiontungbatuoc?chat"
+                                   title="Click để chat trực tuyến với bộ phận hỗ trợ">
+                                    <i class="ico-sty i-yaho"></i>
+                                </a>
+                            </span>
+                            <span>
+                                <a rel="nofollow" target="_blank" href=""
+                                   title="Hãy theo dõi chúng tôi trên Google +">
+                                    <i class="ico-sty i-google"></i>
+                                </a>
+                            </span>
+                            <span>
+                                <a rel="nofollow" title="Hãy theo dõi chúng tôi trên facebook" target="_blank"
+                                   href="https://www.facebook.com/Gamuda-Garden-N%C6%A1i-ng%C3%B4i-nh%C3%A0-l%C3%A0-t%E1%BB%95-%E1%BA%A5m-801984929967755/?ref=bookmarks%5C"><i class="ico-sty i-face"></i></a>
+                            </span>
+                        </div>
+                    </div>
+
+
+                    <section class="aside-gallery uk-visible-large mt15">
+                        <section class="panel-body home-branch">
+                            <section class="panel-body uk-grid lib-grid-20">
+                                @if (ListProject.Count() > 0)
+                                {
+                                    foreach (var item in ListProject.OrderByDescending(x => x.CreateDate).Take(8).ToList())
+                                    {
+                                        <div class="adversite-item uk-width-1-1 mb5">
+                                            <a href="/du-an/chi-tiet/@item.Url/@item.Id" title="@item.Name" class="img-cover">
+                                                <img src="@item.Image" alt="@item.Name" />
+                                            </a>
+                                        </div>
+                                    }
+                                }
+
+                                    </section>
+                        </section>
+                    </section>
+
+
+                </aside>
+                <script type="text/javascript" charset="utf-8">
+                    $(document).ready(function () {
+                        $("#province").on("change", function () {
+                            var id = $("#province").val();
+                            $.ajax({
+                                url: "/get-district",
+                                type: "GET",
+                                data: { id: id },
+                                success: function (result) {
+                                    $("#district").html($('<option/>', { value: 0, text: '[Chọn Quận/Huyện]' }));
+                                    $("#ward").html($('<option/>', { value: 0, text: '[Chọn Xã/Phường]' }));
+                                    $.each(result, function (i, item) {
+                                        $("#district").append('<option value="' + item.id + '"> ' + item.name + ' </option>');
+                                    });
+                                },
+                                error: function (e) {
+                                    alert(e);
+                                }
+                            });
+                        });
+
+                        $("#district").on("change", function () {
+                            var id = $("#district").val();
+                            $.ajax({
+                                url: "/get-ward",
+                                type: "GET",
+                                data: { id: id },
+                                success: function (result) {
+                                    $("#ward").html($('<option/>', { value: 0, text: '[Chọn Xã/Phường]' }));
+                                    $.each(result, function (i, item) {
+                                        $("#ward").append('<option value="' + item.id + '"> ' + item.name + ' </option>');
+                                    });
+                                },
+                                error: function (e) {
+                                    alert(e);
+                                }
+                            });
+                        });
+                    });
+                </script>
             </div>
         </div>
     </div>
-    <script type="application/ld+json">
-        {
-        "@@context":"https://schema.org",
-        "@@type":"WebSite",
-        "url":"https://batdongsanviet.com.vn/",
-        "creator":{
-        "@@context":"http://schema.org",
-        "@@type":"Professionalservice",
-        "@@id":"https://batdongsanviet.com.vn/",
-        "url":"https://batdongsanviet.com.vn/",
-        "alternatename":"Công ty dịch vụ TMDT bất động sản Việt",
-        "disambiguatingdescription":"Trang thông tin - dịch vụ mua bán bất động sản, mua bán, cho thuê nhà đất, căn hộ, biệt thự. cửa hàng, shop kinh doanh, bất động sản nghỉ dưỡng tại Việt",
-        "legalName":"Công ty dịch vụ TMDT bất động sản Việt ",
-        "foundingDate":"2008-03-19",
-        "numberOfEmployees":"200",
-        "priceRange":"5,000đ - 89,000,000đ",
-        "foundingLocation":{
-        "@@type":"place",
-        "name":"Hồ Chí Minh",
-        "url":"https://wikidata.org/wiki/Q1854",
-        "address":"51 Cao Triều Phát, Khu Phố Hưng Phước 2, Hưng, P, Quận 7, Thành phố Hồ Chí Minh 70000, Việt Nam"},
-        "logo":"https://batdongsanviet.com.vn/Content/img/logo-bds-viet.png",
-        "image":"https://batdongsanviet.com.vn/Content/img/logo-bds-viet.png",
-        "hasMap":"https://www.google.com/maps/place/B%E1%BA%A5t%20%C4%91%E1%BB%99ng%20s%E1%BA%A3n%20Vi%E1%BB%87t/@@10.7318145,106.7076995,19z/data=!3m1!4b1!4m5!3m4!1s0x31752f904fda0d13:0x6d58810535e6a171!8m2!3d10.7318132!4d106.7082467",
-        "hasOfferCatalog":{
-        "@@type":"OfferCatalog",
-        "name":"Rao vặt bất động sản",
-        "itemListElement":[{
-        "@@type":"Offer",
-        "itemOffered":"Service",
-        "name":"Dịch vụ cung cấp thông tin và tin đăng bất động sản Việt Nam",
-        "url":"https://batdongsanviet.com.vn/dang-tin"}]},
-        "address":{
-        "@@type":"PostalAddress",
-        "addressLocality":"Quận 7",
-        "addressCountry":"Việt Nam",
-        "addressRegion":"Hồ Chí Minh",
-        "postalCode":"700000",
-        "streetAddress":"51 Cao Triều Phát, Khu Phố Hưng Phước 2, Hưng, P, Quận 7, Thành phố Hồ Chí Minh 70000, Việt Nam"},
-        "description":"Trang thông tin - dịch vụ mua bán bất động sản, mua bán, cho thuê nhà đất, căn hộ, biệt thự. cửa hàng, shop kinh doanh, bất động sản nghỉ dưỡng tại Việt ",
-        "name":"Công ty dịch vụ TMDT bất động sản Việt",
-        "telephone":"0933.22.11.48",
-        "openingHoursSpecification":[{
-        "@@type":"OpeningHoursSpecification",
-        "dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-        "opens":"07:30","closes":"18:00"}],
-        "geo":{
-        "@@type":"GeoCoordinates",
-        "latitude":"10.7318145",
-        "longitude":"106.7076995"},
-        "potentialAction":{
-        "@@type":"ReserveAction",
-        "target":{
-        "@@type":"EntryPoint",
-        "urlTemplate":"https://batdongsanviet.com.vn/dang-tin",
-        "inLanguage":"vn",
-        "actionPlatform":[
-        "http://schema.org/DesktopWebPlatform",
-        "http://schema.org/IOSPlatform",
-        "http://schema.org/AndroidPlatform"]},
-        "result":{
-        "@@type":"Reservation",
-        "name":"Đăng ký"}}
-        }}
-    </script>
-    <script type="application/ld+json">
-        {"@@id":"#organization","name":"BatdongsanViet","url":"https://batdongsanviet.com.vn","logo":"https://batdongsanviet.com.vn/Content/img/logo.png","contactPoint":{"@@type":"ContactPoint","telephone":"+8933221148","contactType":"customer support"},"sameAs":["https://www.facebook.com/batdongsanviet.com.vn/"],"@@context":"http://schema.org","@@type":"Organization"}
-    </script>
-    <script type="application/ld+json">
-        {"@@id":"#website","url":"https://batdongsanviet.com.vn","@@context":"http://schema.org","@@type":"WebSite"}
-    </script>
-    <script type="application/ld+json">
-        {"name":"Bất động sản, mua bán cho thuê nhà đất","bestRating":"5","worstRating":"0.5","ratingCount":"40","ratingValue":"5","itemReviewed":{"@@type":"CreativeWork"},"@@context":"http://schema.org","@@type":"AggregateRating"}
-    </script>
-    <style>
-        element.style {
-            min-height: 60px;
-            overflow: hidden;
-            height: 3796px;
-        }
-
-        .home-post-wrapper [data-showmore].explain .block-description {
-            height: auto !important;
-        }
-
-        .block-description {
-            margin-top: 15px;
-        }
-
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
-
-        user agent stylesheet
-        div {
-            display: block;
-        }
-
-        body {
-            margin: 0;
-            font-family: "Asap-Regular",sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            line-height: 1.5;
-            color: #3f3424;
-            text-align: left;
-            background-color: #f4f2f0;
-            position: relative;
-        }
-
-        html {
-            font-family: sans-serif;
-            line-height: 1.15;
-            -webkit-text-size-adjust: 100%;
-            -ms-text-size-adjust: 100%;
-            -ms-overflow-style: scrollbar;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
-
-            *, *::before, *::after {
-                box-sizing: border-box;
-            }
-
-        .block-description {
-            margin-top: 15px;
-        }
-
-        .toc_container {
-            /* width: auto; */
-            display: table;
-            background: #eaeae9;
-            padding: 15px 10px;
-            margin-bottom: 10px;
-            min-width: 300px;
-        }
-
-        .showmore-button, .desciption-button {
-            cursor: pointer;
-            color: #cfa267;
-            background-color: rgba(255,255,255,.9);
-            position: relative;
-            font-size: 16px;
-            line-height: 40px;
-        }
-    </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>$(document).ready(function () {
-                    $("button").click(function () {
-                        $("p").toggle();
-                    });
-                });</script>
-    <div class="home-boxlink">
-        <div class="main set-relative">
-            <strong><a>Bất động sản</a> </strong>là một trong những kênh đầu tư luôn nằm trong danh mục của những nhà đầu tư lớn. Đầu tư bất động sản mang lại cơ hội, thử thách và là kênh giữ tài sản tốt nhất. Mua một lô đất hay một căn nhà chỉ đơn thuần là để ở nhưng thực ra đó đã được tính là đầu tư, chúng tôi gọi đó là đầu tư cho cuộc sống.<p>
-                <div class=toc_container>
-                    <div class=toc_title>Nội dung bài viết [<button>Thu gọn</button>]</div><ul style=display:block class=toc_list>
-                        <li><a href=#tim-hieu-khai-niem-bat-dong-san>1. Tìm hiểu khái niệm Bất động sản?</a>
-                        <li><a href=#hieu-nhu-the-nao-ve-kinh-doanh-bat-dong-san>2. Hiểu như thế nào về kinh doanh bất động sản</a>
-                        <li><a href=#cac-thuat-ngu-chuyen-nganh-trong-luat-kinh-doanh-bat-dong-san>3. Các thuật ngữ chuyên ngành trong luật kinh doanh bất động sản</a>
-                        <li><a href=#nhung-luu-y-khi-tham-gia-dau-tu-bat-dong-san>4. Những lưu ý khi tham gia đầu tư bất động sản</a>
-                        <li>
-                            <a href=#kinh-nghiem-dau-tu-nha-dat-hieu-qua>5. Kinh nghiệm đầu tư nhà đất hiệu quả</a>
-                            <ul><li><a href=#xay-dung-ke-hoach>5.1. Xây dựng kế hoạch</a><li><a href=#nghien-cuu-chuyen-sau-thi-truong>5.2. Nghiên cứu chuyên sâu thị trường</a><li><a href=#chon-loai-bat-dong-san-de-dau-tu>5.3. Chọn loại bất động sản để đầu tư</a><li><a href=#xac-dinh-chu-ky-phat-trien-cua-bat-dong-san>5.4. Xác định chu kỳ phát triển của bất động sản</a></ul>
-                        <li><a href=#uu-diem-va-nhuoc-diem-cua-bat-dong-san>6. Ưu điểm và nhược điểm của bất động sản</a><ul><li><a href=#uu-diem>6.1. Ưu điểm</a><li><a href=#nhuoc-diem>6.2. Nhược điểm:</a></ul>
-                        <li><a href=#thuc-trang-thi-truong-bat-dong-san-hien-nay>7. Thực trạng thị trường bất động sản hiện nay</a>
-                        <li><a href=#so-sanh-bat-dong-san-ha-noi-va-bat-dong-san-tp-hcm>8. So sánh bất động sản Hà Nội và bất động sản TP.HCM</a>
-                        <li><a href=#theo-doi-tin-tuc-bat-dong-san-o-dau-uy-tin-chinh-xac-nhat>9. Theo dõi tin tức bất động sản ở đâu uy tín, chính xác nhất?</a>
-                        <li><a href=#batdongsanviet-vn-trang-dang-tin-mua-ban-bat-dong-san-mien-phi>10. Batdongsanviet.com.vn – trang đăng tin mua bán bất động sản miễn phí</a>
-                    </ul>
-                </div><h6 id=tim-hieu-khai-niem-bat-dong-san><strong>Tìm hiểu khái niệm Bất động sản?</strong></h6>
-            <p>Theo Wikipedia thì bất động sản là một thuật ngữ pháp luật, có ý nghĩa bao gồm đất và những gì gắn liền vĩnh viễn với đất.<p>Những thứ gắn liền vĩnh viễn bao gồm: nhà cửa, ga ra, công trình kiến trúc bên trên mặt đất hoặc dầu khí, mỏ, khoáng chất bên dưới mặt đất.<p>Bất động sản trong tiếng anh là “real estate” hay “real property”.<p>Người sở hữu bất động sản được pháp luật cho phép chuyển nhượng, mua bán, cho thuê, sử dụng, làm quà tặng, để di chúc cho người thừa hưởng,..<p>Bất động sản là loại tài sản quan trọng với cuộc đời mỗi con người, đặc biệt là người Việt Nam. Chúng ta thường nổ lực kiếm tiền chỉ để mong cầu sở hữu một tài sản bất động sản hoặc nhiều hơn.<h6 id=hieu-nhu-the-nao-ve-kinh-doanh-bat-dong-san><strong>Hiểu như thế nào về kinh doanh bất động sản</strong></h6><p><strong>Kinh doanh bất động sản</strong> có thể hiểu đơn giản là đầu tư nguồn vốn của cá nhân/doanh nghiệp vào các hoạt động mua, xây dựng, chuyển nhượng bất động sản.<p>Chuyển nhượng ở đây có thể hiểu là các hoạt động cho thuê, cho thuê lại.<p>Ngoài ra, một số doanh nghiệp hoạt động môi giới nhà đất, dịch vụ tư vấn mua bán bất động sản, quản lý bất động sản hay dịch vụ sàn giao dịch bđs nhằm vào mục đích sinh lợi cũng được gọi là kinh doanh bất động sản.<h6 id=cac-thuat-ngu-chuyen-nganh-trong-luat-kinh-doanh-bat-dong-san><strong>Các thuật ngữ chuyên ngành trong luật kinh doanh bất động sản</strong></h6><p><span style=color:#c0392b><strong>Sàn giao dịch bất động sản:</strong></span> Nơi diễn ra các hoạt động <strong><a href=https://Batdongsanviet.com.vn/nha-dat-ban target=_blank rel=noopener><em>mua bán nhà đất</em></a></strong>, chuyển nhượng nhà đất, cho thuê hoặc cho thuê mua bất động sản.<p><span style=color:#c0392b><strong>Môi giới bất động sản:</strong></span> Môi giới là việc làm trung gian cho các bên mua và bán, cho thuê, cho thuê lại hoặc cho thuê mua bất động sản. Theo luật đất đai quy định, các cá nhân hoặc tổ chức khi tham gia kinh doanh dịch vụ môi giới bất động sản phải thành lập mô hình kinh doanh hợp pháp và phải đáp ứng được về yêu cầu chứng chỉ hành nghề môi giới.<p>Ngày nay khi bất động sản bùng nổ và nghề môi giới trở thành một nghề “hot”, nhiều người tham gia vào tư vấn môi giới nhà đất mà không được đào tạo bài bản, không có chứng chỉ hành nghề.<p><span style=color:#c0392b><strong>Chủ đầu tư bất động sản:</strong></span> Là các cá nhân, tổ chức có nguồn vốn hoặc được giao vốn để thực hiện xây dựng các công trình đô thị, dự án nhà ở. Chủ đầu tư là bên chịu toàn bộ trách nhiệm về chất lượng công trình, tiến độ, hiệu quả đầu tư đối với dự án.<p><span style=color:#c0392b><strong>Quản lý bất động sản:</strong></span> Là việc thực hiện một, một số hoặc toàn bộ hoạt động quản lý, định đoạt, khai thác tài sản với sự chấp thuận của chủ sở hữu công trình, nhà ở hoặc người có quyền sử dụng nhà đất.<p><strong><span style=color:#c0392b>Nhà ở, công trình xây dựng hình thành trong tương lai: </span></strong>Tức là nhà ở hoặc công trình đang trong quá trình xây dựng, chưa được nghiệm thu và chưa đưa vào sử dụng.<h6 id=nhung-luu-y-khi-tham-gia-dau-tu-bat-dong-san><strong>Những lưu ý khi tham gia đầu tư bất động sản</strong></h6><p>Trong kinh doanh <span style=text-decoration:underline><em><strong>bất động sản</strong></em></span>, khi tham gia đầu tư bạn cần nắm rõ các quy tắc, luật chơi của lĩnh vực này để đưa ra được những lựa chọn kênh đầu tư phù hợp. Dưới đây là những lưu ý dành cho người mới đầu tư bất động sản:<ul><li>Bất động sản là cuộc chơi của mua bán và cho thuê: Nhiều nhà đầu tư hiện nay thường chỉ tập trung vào hình thức đầu tư mua đất hoặc mua nhà, sau đó chờ lên giá và bán để kiếm lợi nhuận. Với nhà đầu tư lâu năm, họ thường chọn cả 2 hình thức đầu tư là cả mua bán và đầu tư mua cho thuê để đảm bảo dòng tiền ổn định.<li>Đầu tư bất động sản không hề đơn giản: Nhiều người lầm tưởng việc đầu tư bất động sản chỉ đơn giản là mua và chờ lên giá bán. Việc tham gia đầu tư <strong>mua bán bds</strong> cần nghiên cứu kỹ, lựa chọn kênh đầu tư phù hợp và theo dõi thị trường để có những giải pháp tài chính khi thị trường khủng hoảng.<li>Đất nền là kênh đầu tư tốt nhất với tất cả mọi người: Đất nền đúng là kênh đầu tư mang lại tỷ suất lợi nhuận tốt được nhiều người săn đón. Tuy nhiên không phải ai cũng phù hợp với kênh này, việc đầu tư đất nền cũng đi kèm rủi ro cao nhất, chính vì lẽ đó nhà đầu tư phải luôn sáng suốt và có thể theo sát thị trường tốt nhất. Tránh bị chôn vốn khi đầu tư đất nền ở các thị trường sốt ảo.<li>Người mới đầu tư nên nghe các chuyên gia: Chuyên gia là những người có sự am hiểu sâu trong thị trường, nhiều nhà đầu tư lâu năm cũng mang lại lời khuyên bổ ích cho bạn. Tất nhiên là lắng nghe và chắt lọc thông tin, đừng răm rắp nghe theo bất kỳ một ai.</ul><h6 id=kinh-nghiem-dau-tu-nha-dat-hieu-qua><strong>Kinh nghiệm đầu tư nhà đất hiệu quả</strong></h6><h6 id=xay-dung-ke-hoach><span style=color:#c0392b><strong>Xây dựng kế hoạch</strong></span></h6><p>Trước khi bắt đầu học kinh doanh bất động sản hãy xác định kế hoạch đầu tư, mục tiêu kinh doanh của bạn. Việc lập kế hoạch cụ thể giúp bạn xác định được lộ trình, đo lường được kết quả và giảm thiểu rủi ro đầu tư.<p>Nhiều nhà đầu tư bất động sản không có kế hoạch cụ thể mà nhảy thẳng vào thị trường, điều này khiến họ lan man trong quá trình đầu tư và rủi ro về dòng tiền có thể xảy ra cao hơn.<h6 id=nghien-cuu-chuyen-sau-thi-truong><span style=color:#c0392b><strong>Nghiên cứu chuyên sâu thị trường</strong></span></h6><p>Rủi ro đầu tư nhà đất sẽ giảm đi rất nhiều nếu nhà đầu tư có kiến thức chuyên sâu về thị trường. Theo dõi sát thị trường sẽ giúp bạn có những hành động kịp thời, giảm thiểu rủi ro hoặc nắm được cơ hội đầu tư khi thị trường tăng trưởng.<h6 id=chon-loai-bat-dong-san-de-dau-tu><span style=color:#c0392b><strong>Chọn loại bất động sản để đầu tư</strong></span></h6><p>Đầu tư vào loại bất động sản nào mang lại cơ hội là câu hỏi của rất nhiều người. Theo các chuyên gia, đầu tư vào các loại hình BĐS dưới đây hứa hẹn đem lại lợi nhuận tốt hơn cho bạn:<ul><li><strong>Mua bất động sản tốt nhất: </strong>Hãy mua bất động sản ở nơi người giàu có hay lui tới. Những nơi này thì chắc chắn khí hậu tốt, dịch vụ tiện ích tốt và nhiều điều tốt mới có thể thu hút họ. Điều này giúp bạn có thể khai thác kinh doanh với bất động sản hoặc dễ dàng bán lại cho người giàu để kiếm lợi nhuận.<li><strong>Mua bất động sản có vị trí tốt: </strong>Yếu tố vị trí tác động mạnh mẽ đến giá trị bất động sản. Một ngôi nhà xấu có vị trí tốt vẫn hơn rất nhiều một ngôi nhà đẹp lung linh nhưng lại nằm ở vị trí xấu.<li><strong>Đầu tư vào bất động sản cho thuê: </strong>nhà cho thuê hay chung cư cho thuê mang lại giải pháp lợi nhuận lâu dài cho nhà đầu tư. Tại các vùng trung tâm, nhu cầu nhà đất cho thuê rất lớn.<li><strong>Đầu tư dựa trên thị hiếu của khu vực: </strong>Một cách tốt nhất khi chọn mua bất động sản là dựa theo thị hiếu của khách hàng khu vực. Dựa trên điều này để quyết định sẽ đầu tư nhà đất để bán hay cho thuê giúp giảm thiểu rủi ro chôn vốn.</ul><h6 id=xac-dinh-chu-ky-phat-trien-cua-bat-dong-san><span style=color:#c0392b><strong>Xác định chu kỳ phát triển của bất động sản</strong></span></h6><p><strong>Thị trường bất động sản </strong>thường xuyên biến động theo chu kỳ. Sẽ có chu kỳ tăng trưởng, tăng trưởng mạnh và sụt giảm, thậm chí có chu kỳ đóng băng thị trường do tăng trưởng vượt quá nhu cầu.<p>Nếu không hiểu rõ chu kỳ phát triển của bất động sản, nhà đầu tư nghiệp dư thường sẽ rơi vào tâm lý bán tháo khi thị trường rơi vào điểm chu kỳ suy thoái nhất thời. Nhà đầu tư chiến thắng là người biết chính xác chu kỳ hiện tại và kiên nhẫn chờ đợi để thu được lợi nhuận.<h6 id=uu-diem-va-nhuoc-diem-cua-bat-dong-san><strong>Ưu điểm và nhược điểm của bất động sản</strong></h6><p>Bất kỳ một loại hình đầu tư nào cũng đều có cơ hội và rủi ro. Đầu tư mua bán bất động sản có những ưu điểm và nhược điểm như sau:<h6 id=uu-diem><span style=color:#c0392b><strong>Ưu điểm</strong></span></h6><ul><li>Mang lại cơ hội gia tăng tài sản tốt cho nhà đầu tư. <strong>Mua bán BĐS</strong> hợp lý mang đến thành công cho rất nhiều nhà đầu tư trên thị trường. Nhiều doanh nghiệp kinh doanh bất động sản (sàn giao dịch/chủ đầu tư) tạo dựng được sự nghiệp với nhiều dự án bất động sản uy tín, có chất lượng cao.<li>Là loại tài sản “giữ tiền” tốt nhất, sẽ rất khó để một lô đất một căn nhà giảm giá, phần lớn bất động sản sẽ tăng giá theo thời gian.<li>Sở hữu bất động sản là tiền đề cho sự phát triển ổn định của một cá nhân. Người ta vẫn thường nói nhau “an cư lập nghiệp”, nhà đất chính là nơi an cư.</ul><h6 id=nhuoc-diem><span style=color:#c0392b><strong>Nhược điểm:</strong></span></h6><ul><li>Đầu tư bất động sản có tính rủi ro khá cao nếu nhà đầu tư không nhạy cảm và không có kiến thức về thị trường mà đầu tư theo cảm xúc.<li>Giá bất động sản đang ngày càng tăng cao, có những nơi vượt quá khả năng tài chính của nhiều người. Như tại nhà đất thành phố Hồ Chí Minh và Hà Nôi, để sở hữu bđs với người dân ngày càng khó.<li>Giá bất động sản bị ảnh hưởng mạnh bởi tâm lý thị trường, nhiều nhà đầu tư nghiệp dư tham gia đầu cơ khiến giá tăng mạnh không đúng với nhu cầu thực tế.<li>Quyền sở hữu tài sản bất động sản không phải là vĩnh viễn. Nhiều người thường lầm tưởng về điều này. Nhà đất sẽ theo quy hoạch chung của nhà nước. Tất nhiên là nếu đất đai của bạn dính quy hoạch sẽ được bồi thường theo luật hiện hành.</ul><h6 id=thuc-trang-thi-truong-bat-dong-san-hien-nay><strong>Thực trạng thị trường bất động sản hiện nay</strong></h6><p><strong>Dịch Covid 19</strong> khiến hoạt động kinh tế trên thế giới bị đóng băng, thị trường bất động sản là một trong những ngành hứng chịu hậu quả nặng nề nhất. Tại Việt Nam, số lượng giao dịch bất động sản trong sáu tháng đầu năm 2021 sụt giảm xuống mức thấp nhất trong vòng bốn năm qua.<p>Diễn biến của thị trường bất động sản 2021 làm nhiều người nhớ lại thời điểm 2011 – 2013, đây là thời điểm được xem là giai đoạn thị trường trầm nhất hay còn được gọi là “<em>vỡ bong bóng bất động sản</em>”.<p>Báo cáo của Bộ xây dựng cho biết, đến cuối tháng 5/2021 trên cả nước chỉ còn khoảng 250 sàn giao dịch bất động sản còn hoạt động cầm chừng, trong khi 800 sàn giao dịch đã ngưng hoạt động.<p>Các con số trên cho thấy thực trạng thị trường bất động sản 2021, trước dịch Covid-19 nhiều sàn giao dịch mọc lên như “nấm sau mưa”, kinh doanh theo kiểu “lướt sóng” để kiếm lợi nhuận nhất thời và khi đại dịch kéo đến thì không thể trụ lại khi thị trường đóng băng.<p>Cũng trong giai đoạn vừa qua, nhiều công ty môi giới bất động sản cũng đã buộc phải tạm ngừng hoạt động hoặc thậm chí là giải thể. Số lượng người môi giới địa ốc cũng sụt giảm, nhiều người lâm vào cảnh thất nghiệp.<p>Đến thời điểm tháng 06/2021, khi dịch Covid trong nước tạm thời được khống chế, các hoạt động giao dịch bất động sản, mua bán nhà đất bắt đầu sôi động trở lại. Thị trường chung ghi nhận số lượng dự án bất động sản được chào bán tăng cao.<h6 id=so-sanh-bat-dong-san-ha-noi-va-bat-dong-san-tp-hcm><strong>So sánh bất động sản Hà Nội và bất động sản TP.HCM</strong></h6><table border=1 cellspacing=0><tbody><tr><td><p style=text-align:center><span style=color:#c0392b><strong>Loại so sánh</strong></span><td><p style=text-align:center><span style=color:#c0392b><strong>Hà Nội</strong></span><td><p style=text-align:center><span style=color:#c0392b><strong>Hồ Chí Minh</strong></span><tr><td><p style=text-align:center>Cơ cấu sản phẩm:<td><p style=text-align:center>Bất động sản Hà Nội tập trung nhiều vào phân khúc trung cấp và bình dân. Nguồn cung nhà ở 2 phân khúc này luôn duy trì ổn định.<td><p style=text-align:center>Bất động sản TPHCM tập trung nhiều vào phân khúc cao cấp. Trong những năm gần đây, nguồn cung nhà ở trung cấp cũng dần suy giảm trong khi nguồn cung nhà ở cao cấp tặng mạnh, thậm chí cung vượt cầu.<tr><td><p style=text-align:center>Phân khúc căn hộ hạng sang:<td><p style=text-align:center>Nguồn cung căn hộ hạng sang tại Hà Nội không quá lớn, tỷ lệ hấp thụ của thị trường cũng không cao. Điều này được phản ánh rõ rệt thông qua số lượng sản phẩm căn hộ tung ra thị trường mỗi năm.<td><p style=text-align:center>Trái ngược với Hà Nội, phân khúc căn hộ hạng sang tại thành phố Hồ Chí Minh thu hút được sự quan tâm lớn hơn, tính thanh khoản cao hơn rất nhiều và số lượng dự án hạng sang ra mắt thị trương đang tăng lên.<tr><td><p style=text-align:center>Thị hiếu người mua nhà:<td><p style=text-align:center>Theo số liệu thống kê sơ bộ, người Hà Nội chuộng nhà ở căn hộ chung cư hơn.<td><p style=text-align:center>Người TPHCM lại có xu hướng tìm kiếm nhà riêng, nhà liền thổ hơn. Tuy nhiên tỷ lệ so với căn hộ chung cư không quá cao vì quỹ đất để phát triển nhà liền thổ ngày càng khan hiếm.<tr><td><p style=text-align:center>Vị trí phân bổ dự án:<td><p style=text-align:center>Người Hà Nội thường chọn nhà ở gần vị trí làm việc.<td><p style=text-align:center>Người Sài Gòn chấp nhận đi xa để có thể sở hữu được nhà ở phù hợp với tài chính.</table><h6 id=theo-doi-tin-tuc-bat-dong-san-o-dau-uy-tin-chinh-xac-nhat><strong>Theo dõi tin tức bất động sản ở đâu uy tín, chính xác nhất?</strong></h6><p>Hiện nay có nhiều đầu báo cập nhật tin tức bất động sản mỗi ngày, giúp người đọc dễ dàng tiếp cận những chuyển biến mới của thị trường và đưa ra được những thông tin bổ ích.<p><strong>BatdongsanViet </strong>gợi ý cho bạn những trang báo bất động sản như: chuyên mục CafeF bất động sản; báo Vnexpress; báo Vietnamnet; bất động sản Cafeland, batdongsan com vn hay các diễn đàn bất động sản – nơi các chuyên gia và nhà đầu tư chia sẻ các kiến thức thực tế về thị trường.<p>Tất nhiên, bạn cũng có thể theo dõi những tin tức bđs trên trang <strong>Batdongsanviet.com.vn</strong> các chuyên mục tin thị trường, thông tin quy hoạch, tin dự án và ngoài ra còn nhiều chuyên mục khác. <strong>Bất động sản BatdongsanViet</strong> với đội ngũ nhân sự chuyển cập nhật tổng hợp tin tức nhà đất mỗi ngày giúp độc giả dễ dàng tiếp cận các thông tin bổ ích nhất.<h6 id=batdongsanviet-vn-trang-dang-tin-mua-ban-bat-dong-san-mien-phi><strong>Batdongsanviet.com.vn – trang đăng tin mua bán bất động sản miễn phí</strong></h6><p><strong>Batdongsanviet.com.vn</strong> là trang tin bất động sản miễn phí giúp các môi giới bất động sản dễ dàng tiếp cận khách hàng tiềm năng. Ngoài ra, hệ thống còn cung cấp các giải pháp tìm kiếm khách hàng cho doanh nghiệp, tạo sàn giao dịch bất động sản trực tuyến bằng công nghệ quản lý sản phẩm vượt trội.<p><strong>Batdongsanviet.com.vn</strong> đang hướng đến là trang mua bán số 1 về bất động sản Việt Nam. Cũng chính vì đó, hệ thống được đầu tư nghiêm túc về công cụ đăng tin rao bán bất động sản, giúp mọi thao tác trở nên dễ dàng hơn; giao diện người dùng được tối ưu đơn giản nhất, thuận tiện tìm kiếm tin đăng bán nhà đất nhất; Ngoài ra, chúng tôi còn liên tục cập nhật <strong>tin tức bất động sản</strong> mới nhất, bổ sung kiến thức bất động sản cho nhà đầu tư và môi giới.
+    <section class="menu_link_bottom">
+        <div class="uk-container uk-container-center">
+            <div class="uk-grid lib-grid-20 uk-grid-width-1-2 uk-grid-width-medium-1-3 uk-grid-width-large-1-5 list_menu_link mt20">
+            </div>
         </div>
-    </div>
+    </section>
 </div>

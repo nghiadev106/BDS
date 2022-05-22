@@ -132,7 +132,7 @@
                 ProductId: $("#producId").val(),
                 Quantity: parseInt($("#input-quantity2").val()),
                 OrderName: $("#customer-name").val(),
-                OrderAddress: $("#customer-address").val(),
+                OrderWard: $("#customer-address").val(),
                 OrderEmail: $("#customer-email").val(),
                 OrderPhone: $("#customer-phone").val(),
                 OrderNote: $("#customer-note").val()

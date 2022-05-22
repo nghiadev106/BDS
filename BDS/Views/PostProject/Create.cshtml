@@ -1,0 +1,220 @@
+﻿@model BDS.Areas.Admin.Models.Project.ProjectCreateRequest
+@{
+    ViewData["Title"] = "Create";
+}
+@section css{
+    <link href="~/admin/js/summernote/summernote-bs4.min.css" rel="stylesheet">
+}
+
+@section js{
+    <script src="~/admin/js/summernote/summernote-bs4.js"></script>
+    <script src="~/admin/js/custemUrl.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#detail').summernote({
+                height: 200,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'italic', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'hr']],
+                    ['view', ['fullscreen', 'codeview']],
+                    ['help', ['help']]
+                ]
+            });
+
+            $("#province").on("change", function () {
+                var id = $("#province").val();
+                $.ajax({
+                    url: "/get-district",
+                    type: "GET",
+                    data: { id: id },
+                    success: function (result) {
+                        $("#district").html($('<option/>', { value: -1, text: 'Chọn Quận/Huyện' }));
+                        $("#ward").html($('<option/>', { value: -1, text: 'Chọn Xã/Phường' }));
+                        $.each(result, function (i, item) {
+                            $("#district").append('<option value="' + item.id + '"> ' + item.name + ' </option>');
+                        });
+                    },
+                    error: function (e) {
+                        alert(e);
+                    }
+                });
+            });
+
+            $("#district").on("change", function () {
+                var id = $("#district").val();
+                $.ajax({
+                    url: "/get-ward",
+                    type: "GET",
+                    data: { id: id },
+                    success: function (result) {
+                        $("#ward").html($('<option/>', { value: -1, text: 'Chọn Xã/Phường' }));
+                        $.each(result, function (i, item) {
+                            $("#ward").append('<option value="' + item.id + '"> ' + item.name + ' </option>');
+                        });
+                    },
+                    error: function (e) {
+                        alert(e);
+                    }
+                });
+            });
+        });
+    </script>
+}
+<input type="hidden" id="success" value="@TempData["success"]" />
+<input type="hidden" id="warning" value="@TempData["warning"]" />
+<input type="hidden" id="error" value="@TempData["error"]" />
+
+
+<div id="body" class="body-container">
+    <div class="breadcrumb" style="display: list-item;">
+        <div class="uk-container uk-container-center">
+            <ul class="uk-breadcrumb">
+                <li>
+                    <a href="/" title="Trang chủ">
+                        <i class="fa fa-home"></i> Trang chủ
+                    </a>
+                </li>
+                <li class="uk-active">
+                    <a href="#" title="Đăng bài">Đăng bài</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="uk-container uk-container-center">
+        <div class="uk-grid uk-grid-medium mb20">
+            <div class="uk-width-large-3-3 mb15">
+                <div class="card-body">
+                    <form asp-action="Create" asp-controller="PostProject" enctype="multipart/form-data" method="post">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-group" style="margin-bottom: 15px;">
+                                    <label class="control-label"> Tên dự án</label>
+                                    <input asp-for="Name" id="txtName" class="form-control" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                                <div class="form-group" style="margin-bottom: 15px;">
+                                    <label class="control-label"> URL</label>
+                                    <input asp-for="Url" id="txtUrl" class="form-control" />
+                                    <span asp-validation-for="Url" class="text-danger"></span>
+                                </div>
+                                <div class="form-group" style="margin-bottom: 15px;">
+                                    <label class="control-label">Danh mục</label><br />
+                                    <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.categoryList"></select>
+                                    <span asp-validation-for="CategoryId" class="text-danger"></span>
+                                </div>
+                                <div class="form-group" style="margin-bottom: 15px;">
+                                    <label class="control-label">Tỉnh/Thành phố</label><br />
+                                    <select id="province" asp-for="ProvinceId" class="form-control" asp-items="ViewBag.provinceList"></select>
+                                    <span asp-validation-for="ProvinceId" class="text-danger"></span>
+                                </div>
+                                <div class="form-group" style="margin-bottom: 15px;">
+                                    <label class="control-label">Quận/Huyện</label><br />
+                                    <select id="district" asp-for="DistrictId" class="form-control" asp-items="ViewBag.districtList"></select>
+                                    <span asp-validation-for="DistrictId" class="text-danger"></span>
+                                </div>
+                                <div class="form-group" style="margin-bottom: 15px;">
+                                    <label class="control-label">Xã/Phường</label><br />
+                                    <select id="ward" asp-for="WardId" class="form-control" asp-items="ViewBag.wardList"></select>
+                                    <span asp-validation-for="WardId" class="text-danger"></span>
+                                </div>
+                                <div class="form-group" style="margin-bottom: 15px;">
+                                    <label class="control-label">Địa chỉ chi tiết</label>
+                                    <input asp-for="AddressDetail" id="txtUrl" class="form-control" />
+                                    <span asp-validation-for="AddressDetail" class="text-danger"></span>
+                                </div>
+                                <div class="form-group" style="margin-bottom: 15px;">
+                                    <label class="control-label">Mô tả</label>
+                                    <textarea asp-for="Description" rows="5" class="form-control"></textarea>
+                                    <span asp-validation-for="Description" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group" style="margin-bottom: 15px;">
+                                    <label class="control-label"> Chi tiết</label>
+                                    <textarea asp-for="Detail" id="detail" class="form-control"></textarea>
+                                    <span asp-validation-for="Detail" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group" style="margin-bottom: 15px;">
+                                    <label class="control-label">Giá</label>
+                                    <input asp-for="Price" min="0.00" max="10000000000000.00" step="0.01" type="number" class="form-control" />
+                                    <span asp-validation-for="Price" class="text-danger"></span>
+                                </div>
+                                <div class="form-group" style="margin-bottom: 15px;">
+                                    <label class="control-label">Loại giá</label><br />
+                                    <select asp-for="PriceTypeId" class="form-control" asp-items="ViewBag.priceTypeList"></select>
+                                    <span asp-validation-for="PriceTypeId" class="text-danger"></span>
+                                </div>
+                                <div class="form-group" style="margin-bottom: 15px;">
+                                    <label class="control-label">SĐT liên hệ</label><br />
+                                    <input asp-for="Phone" class="form-control" type="number" />
+                                    <span asp-validation-for="Phone" class="text-danger"></span>
+                                </div>
+                                <div class="form-group" style="margin-bottom: 15px;">
+                                    <label class="control-label">Hướng</label><br />
+                                    <select asp-for="DirectionId" class="form-control" asp-items="ViewBag.directionList"></select>
+                                    <span asp-validation-for="DirectionId" class="text-danger"></span>
+                                </div>
+                                <div class="form-group" style="margin-bottom: 15px;">
+                                    <label class="control-label">Diện tích</label>
+                                    <input asp-for="Acreage" min="0.00" max="10000000000000.00" step="0.01" type="number" class="form-control" />
+                                    <span asp-validation-for="Acreage" class="text-danger"></span>
+                                </div>
+                                <div class="form-group" style="margin-bottom: 15px;">
+                                    <label for="exampleInputEmail1">Trạng thái</label>
+                                    <select class="form-control" id="Status" asp-for="Status">
+                                        <option value="1" selected>Hoạt động</option>
+                                        <option value="0">Khóa</option>
+                                    </select>
+                                </div>
+                                <div class="form-group" style="margin-bottom: 15px;">
+                                    <label class="control-label">Hình ảnh</label>
+                                    <input asp-for="File" type="file" class="form-control" />
+                                    <span asp-validation-for="File" class="text-danger"></span>
+                                </div>
+                                <div class="form-group" style="margin-bottom: 15px;">
+                                    <label class="control-label">Ảnh khác</label>
+                                    <input asp-for="Files" class="form-control" multiple />
+                                    <span asp-validation-for="Files" class="text-danger"></span>
+                                </div>
+                                <div class="form-group" style="margin-bottom: 15px;">
+                                    <label>Dự án mới :  </label>
+                                    <input asp-for="IsNewInput" type="checkbox" />
+                                    <span asp-validation-for="IsNewInput" class="text-danger"></span>
+                                </div>
+                                <div class="form-group" style="margin-bottom: 15px;">
+                                    <label>Dự án nổi bật :  </label>
+                                    <input asp-for="IsHotInput" type="checkbox" />
+                                    <span asp-validation-for="IsHotInput" class="text-danger"></span>
+                                </div>
+                                <div class="form-group" style="margin-bottom: 15px;">
+                                    <input type="submit" value="Tạo mới" class="btn btn-primary" />
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*<div class="container-fluid">
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+        <li class="breadcrumb-item active">Tạo mới dự án</li>
+    </ol>
+    <div class="card mb-4">
+   
+    </div>
+</div>*@
+

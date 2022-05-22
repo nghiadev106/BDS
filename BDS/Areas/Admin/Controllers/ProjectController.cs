@@ -15,13 +15,29 @@ namespace BDS.Areas.Admin.Controllers
     {
         private readonly IProjectService _service;
         private readonly ICategoryService _categoryService;
-        private readonly IAddressService _addressService;
+        private readonly IWardService _wardService;
 
-        public ProjectController(IProjectService service, ICategoryService categoryService, IAddressService addressService)
+        private readonly IDistrictService _districtService;
+        private readonly IProvinceService _provinceService;
+        private readonly IPriceTypeService _priceTypeService;
+        private readonly IDirectionService _directionService;
+
+        public ProjectController(IProjectService service,
+            ICategoryService categoryService,
+            IWardService wardService,
+            IDistrictService districtService,
+            IProvinceService provinceService,
+            IPriceTypeService priceTypeService,
+            IDirectionService directionService
+            )
         {
             _service = service;
             _categoryService = categoryService;
-            _addressService = addressService;
+            _wardService = wardService;
+            _directionService = directionService;
+            _districtService = districtService;
+            _provinceService = provinceService;
+            _priceTypeService = priceTypeService;
         }
         public async Task<IActionResult> Index()
         {
@@ -34,13 +50,37 @@ namespace BDS.Areas.Admin.Controllers
         public async Task<SelectList> loadCategory()
         {
             List<CategoryViewModel> categories = await _categoryService.GetAll();
-            categories.Insert(0, new CategoryViewModel { Id = -1, Name = "-- Chọn danh mục --" });
+            categories.Insert(0, new CategoryViewModel { Id = -1, Name = "Chọn danh mục" });
             SelectList categoryList = new SelectList(categories, "Id", "Name");
-            List<Address> lstAddress = await _addressService.GetAll();
-            SelectList addressList = new SelectList(lstAddress, "Id", "Name");
+
+            var provinces = await _provinceService.GetAll();
+            provinces.Insert(0, new Province { Id = -1, Name = "Chọn Tỉnh/Thành phố" });
+            SelectList provinceList = new SelectList(await _provinceService.GetAll(), "Id", "Name");
+
+            SelectList priceTypeList = new SelectList(await _priceTypeService.GetAll(), "Id", "Name");
+
+            SelectList directionList = new SelectList(await _directionService.GetAll(), "Id", "Name");
+
             ViewBag.categoryList = categoryList;
-            ViewBag.addressList = addressList;
+            ViewBag.provinceList = provinceList;
+            ViewBag.priceTypeList = priceTypeList;
+            ViewBag.directionList = directionList;
             return categoryList;
+        }
+
+        public async Task<SelectList> loadAddress(int provinceId,int districtId)
+        {
+            List<District> districts = await _districtService.GetByProvince(provinceId);
+            districts.Insert(0, new District { Id = -1, Name = "Chọn Quận/Huyện" });
+            SelectList districtList = new SelectList(districts, "Id", "Name");
+
+            var wards = await _wardService.GetByDistirct(districtId);
+            wards.Insert(0, new Ward { Id = -1, Name = "Chọn Xã/Phường" });
+            SelectList wardList = new SelectList(wards, "Id", "Name");
+
+            ViewBag.districtList = districtList;
+            ViewBag.wardList = wardList;
+            return wardList;
         }
 
 
@@ -69,6 +109,13 @@ namespace BDS.Areas.Admin.Controllers
                 return View(request);
             }
 
+            if (request.WardId == -1 || request.WardId==null)
+            {
+                ModelState.AddModelError("", "Bạn chưa chọn địa chỉ");
+                TempData["warning"] = "Bạn chưa chọn địa chỉ";
+                return View(request);
+            }
+
             var result = await _service.Create(request);
 
             if (result != -1)
@@ -84,15 +131,16 @@ namespace BDS.Areas.Admin.Controllers
 
         public async Task<IActionResult> Edit(int id)
         {
-            var product = await _service.Edit(id);
-            if (product == null)
+            var project = await _service.Edit(id);
+            if (project == null)
             {
                 TempData["warning"] = "Sản phẩm không tồn tại";
                 return RedirectToAction("Index");
             }
-
+            
             await loadCategory();
-            return View(product);
+            await loadAddress(project.ProvinceId.Value, project.DistrictId.Value);
+            return View(project);
         }
 
         [HttpPost]
@@ -100,6 +148,7 @@ namespace BDS.Areas.Admin.Controllers
         public async Task<IActionResult> Edit(ProjectUpdateRequest request)
         {
             await loadCategory();
+            await loadAddress(request.ProvinceId.Value, request.DistrictId.Value);
             if (!ModelState.IsValid)
             {
                 TempData["warning"] = "Bạn nhập thiếu dữ liệu";
@@ -110,6 +159,13 @@ namespace BDS.Areas.Admin.Controllers
             if (request.CategoryId == -1)
             {
                 ModelState.AddModelError("", "Bạn chưa chọn danh mục");
+                TempData["warning"] = "Bạn chưa chọn danh mục";
+                return View(request);
+            }
+
+            if (request.WardId == -1)
+            {
+                ModelState.AddModelError("", "Bạn chưa chọn địa chỉ");
                 TempData["warning"] = "Bạn chưa chọn danh mục";
                 return View(request);
             }

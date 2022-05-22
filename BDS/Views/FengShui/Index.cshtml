@@ -1,0 +1,280 @@
+﻿@model BDS.Models.PaginationSet<BDS.Model.FengShui>
+@{
+    ViewData["Title"] = "Danh mục tin tức";
+    var ListProject = (List<BDS.Model.Project>)ViewBag.ListProject;
+}
+
+<div id="body" class="body-container">
+    <div class="breadcrumb" style="        display: list-item;">
+        <div class="uk-container uk-container-center">
+            <ul class="uk-breadcrumb">
+                <li>
+                    <a href="/" title="Trang chủ">
+                        <i class="fa fa-home"></i> Trang chủ
+                    </a>
+                </li>
+                <li class="uk-active">
+                    <a href="#" title="Phong thủy">Phong thủy</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="uk-container uk-container-center">
+        <div class="uk-grid uk-grid-medium mb20">
+            <div class="uk-width-large-1-3 mb15 uk-push-2-3">
+                <aside class="aside">
+                    @*<div class="form-search mb15">
+                            <ul class="tabs1 uk-flex-center uk-flex uk-list">
+                                <li id="sale" class="togle-type active">Tìm kiếm nhanh</li>
+                            </ul>
+                            <div class="panel-body">
+                                <form asp-action="Search" asp-controller="Project" method="get" accept-charset="utf-8">
+                                    <div class="line-item mb10">
+                                        <input type="text" name="keyword" value="" placeholder="Nhập tên dự án, vd: Mỹ đình, Topaz Garden" class="text uk-width-1-1" />
+                                    </div>
+                                    <div class="line-item mb10">
+                                        <select name="categoryId" class="text uk-width-1-1">
+                                            <option value="">Tất cả</option>
+                                            @if (categories.Count() > 0)
+                                            {
+                                                foreach (var item in categories)
+                                                {
+                                                    <option value="@item.Id">@item.Name</option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="line-item mb10">
+                                        <select name="provinceId" id="province" class="text uk-width-1-1 location">
+                                            <option value="0" selected="selected">[Chọn Tỉnh/Thành phố]</option>
+                                            @if (provinces.Count() > 0)
+                                            {
+                                                foreach (var item in provinces)
+                                                {
+                                                    <option value="@item.Id">@item.Name</option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="line-item mb10">
+                                        <select name="districtId" class="text uk-width-1-1 location" id="district">
+                                            <option value="0" selected="selected">[Chọn Quận/Huyện]</option>
+                                        </select>
+                                    </div>
+                                    <div class="line-item mb10">
+                                        <select name="wardId" class="text uk-width-1-1 location" id="ward">
+                                            <option value="0" selected="selected">[Chọn Xã/Phường]</option>
+                                        </select>
+                                    </div>
+                                    <div class="uk-flex uk-flex-middle lib-grid-10">
+                                        <div class="line-item mb10 uk-width-1-1">
+                                            <input type="text" name="fromPrice" value=""
+                                                   placeholder="Giá tiền từ ..." class="text uk-width-1-1 input-text">
+                                        </div>
+                                        <div class="line-item mb10 uk-width-1-1">
+                                            <select name="fromPriceType" class="text uk-width-1-1 changetype">
+                                                <option value="0">Giá tiền</option>
+                                                @if (priceTypes.Count() > 0)
+                                                {
+                                                    foreach (var item in priceTypes)
+                                                    {
+                                                        <option value="@item.Id">@item.Name</option>
+
+                                                    }
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="uk-flex uk-flex-middle lib-grid-10">
+                                        <div class="line-item mb10 uk-width-1-1">
+                                            <input type="text" name="toPrice" value=""
+                                                   placeholder="Đến ..." class="text uk-width-1-1 input-text">
+                                        </div>
+                                        <div class="line-item mb10 uk-width-1-1">
+                                            <select name="toPriceType" class="text uk-width-1-1 changetype">
+                                                <option value="0">Giá tiền</option>
+                                                @if (priceTypes.Count() > 0)
+                                                {
+                                                    foreach (var item in priceTypes)
+                                                    {
+                                                        <option value="@item.Id">@item.Name</option>
+                                                    }
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="uk-flex uk-flex-middle lib-grid-10">
+                                        <div class="line-item mb10 uk-width-1-1">
+                                            <input type="text" name="fromAcreage" value=""
+                                                   placeholder="Diện tích từ ..." class="text uk-width-1-1 input-text">
+                                        </div>
+                                        <div class="line-item mb10 uk-width-1-1">
+                                            <input type="text" name="toAcreage" value=""
+                                                   placeholder="Diện tích đến ..." class="text uk-width-1-1 input-text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-flex uk-flex-middle lib-grid-10">
+                                        <div class="line-item mb10 bg-submit uk-width-1-1">
+                                            <button class="uk-width-1-1 btn-type-1" type="submit"> Tìm tất cả</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>*@
+
+                    <div class="video uk-visible-large mb15">
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/VswHarlC4gs"
+                                frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="dv-boxhotline-r uk-visible-large uk-flex-middle uk-flex uk-flex-space-between">
+                        <div class="dv-hl uk-flex-middle uk-flex uk-flex-left lib-grid-10">
+                            <i class="ico-sty i-hotline"></i>
+                            <label>Hotline</label>
+                            <a title="Hotline trợ giúp trực tiếp"
+                               href="tel: 02466.759.435 -  0948.242.555">02466.759.435 -  0948.242.555</a>
+                        </div>
+                        <div class="dv-sca uk-flex-middle uk-flex uk-flex-right">
+                            <span>
+                                <a href="skype: xiontungbatuoc?chat"
+                                   title="Click để chat trực tuyến với bộ phận hỗ trợ">
+                                    <i class="ico-sty i-yaho"></i>
+                                </a>
+                            </span>
+                            <span>
+                                <a rel="nofollow" target="_blank" href=""
+                                   title="Hãy theo dõi chúng tôi trên Google +">
+                                    <i class="ico-sty i-google"></i>
+                                </a>
+                            </span>
+                            <span>
+                                <a rel="nofollow" title="Hãy theo dõi chúng tôi trên facebook" target="_blank"
+                                   href="https://www.facebook.com/Gamuda-Garden-N%C6%A1i-ng%C3%B4i-nh%C3%A0-l%C3%A0-t%E1%BB%95-%E1%BA%A5m-801984929967755/?ref=bookmarks%5C"><i class="ico-sty i-face"></i></a>
+                            </span>
+                        </div>
+                    </div>
+
+
+                    <section class="aside-gallery uk-visible-large mt15">
+                        <section class="panel-body home-branch">
+                            <section class="panel-body uk-grid lib-grid-20">
+                                @if (ListProject.Count() > 0)
+                                {
+                                    foreach (var item in ListProject)
+                                    {
+                                        <div class="adversite-item uk-width-1-1 mb5">
+                                            <a href="/du-an/chi-tiet/@item.Url/@item.Id" title="@item.Name" class="img-cover">
+                                                <img src="@item.Image" alt="@item.Name" />
+                                            </a>
+                                        </div>
+
+                                    }
+                                }
+
+                            </section>
+                        </section>
+                    </section>
+
+
+                </aside>
+            </div>
+            <div class="uk-width-large-2-3 mb15 uk-pull-1-3">
+                <section class="main-content big">
+                    <section class="project-catalogue">
+                        <header class="panel-head">
+                            <h1 class="heading-2 uk-flex uk-flex-middle uk-flex-space-between">
+                                <span>Nội - Ngoại thất</span>
+                            </h1>
+                        </header>
+                        <section class="panel-body">
+                            <ul class="uk-grid lib-grid-0 uk-grid-width-1-1 list-projects">
+                                @if (Model.Items.Count() > 0)
+                                {
+                                    foreach (var item in Model.Items)
+                                    {
+                                        <li>
+                                            <div class="projects uk-flex lib-grid-10 Vip2">
+                                                <i class="i-bds-cc-1"></i>
+                                                <div class="thumb">
+                                                    <a class="image img-cover" href="/phong-thuy/@item.Url/@item.Id" title="@item.Name">
+                                                        <img src="@item.Image" alt="@item.Name" />
+                                                    </a>
+                                                </div>
+                                                <div class="infor">
+                                                    <h4 class="title">
+                                                        <img src="/uploads/new-icon.gif" alt="gif" style="width: 22px">
+                                                        <a href="/phong-thuy/@item.Url/@item.Id" title="@item.Name" style="color: rgb(255, 114, 0) !important;">
+                                                            @item.Name
+                                                        </a>
+                                                    </h4>
+                                                    <div class="time_create">
+                                                        @item.CreateDate.Value.ToString("MM/dd/yyyy")
+                                                    </div>
+                                                    <div class="projects_desc">
+                                                        @item.Description
+                                                        <a href="/phong-thuy/@item.Url/@item.Id" title="Xem tiếp">Xem tiếp</a>
+                                                    </div>
+                                                </div>
+                                            </div><!-- .product -->
+                                        </li>
+                                    }
+                                }
+
+
+                            </ul>
+                            <div class="pagination">
+                                @if (Model.TotalPages > 1)
+                                {
+                                    // Create numeric links
+                                    var startPageIndex = Math.Max(1, Model.Page - Model.MaxPage / 2);
+                                    var endPageIndex = Math.Min(Model.TotalPages, Model.Page + Model.MaxPage / 2);
+
+                                    <nav>
+                                        <ul class="pagination">
+                                            @if (Model.Page > 1)
+                                            {
+                                                <li class="page-item">
+                                                    <a class="page-link" href="?page=1" aria-label="First">
+                                                        <i class="fa fa-angle-double-left"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="page-item">
+                                                    <a class="page-link" href="?page=@(Model.Page-1)" aria-label="Previous">
+                                                        <i class="fa fa-angle-double-left"></i>
+                                                    </a>
+                                                </li>
+                                            }
+                                            @for (int i = startPageIndex; i <= endPageIndex; i++)
+                                            {
+                                                if (Model.Page == i)
+                                                {
+                                                    <li class="active page-item"><a class="page-link" href="?page=@i" title="Trang @i">@i</a></li>
+                                                }
+                                                else
+                                                {
+                                                    <li class="page-item"><a class="page-link" href="?page=@i" title="Trang @i">@i</a></li>
+                                                }
+                                            }
+                                            @if (Model.Page < Model.TotalPages)
+                                            {
+                                                <li class="page-item">
+                                                    <a class="page-link" href="?page=@(Model.Page+1)" aria-label="Next">
+                                                        <i class="fa fa-angle-double-right"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="page-item">
+                                                    <a class="page-link" href="?page=@Model.TotalPages" aria-label="Last">
+                                                        <i class="fa fa-angle-double-right"></i>
+                                                    </a>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </nav>
+                                }
+                            </div>
+                        </section><!-- .panel-body -->
+                    </section><!-- .project-catalogue -->
+                </section><!-- .main-content -->
+            </div>
+        </div>
+    </div><!-- .wrapper -->
+</div><!-- .page-body -->

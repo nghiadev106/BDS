@@ -19,21 +19,8 @@
 
   <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
-    <None Include="wwwroot\assets\js\BuilderDropbox.js" />
-    <None Include="wwwroot\assets\js\chosen.jquery.min.js" />
-    <None Include="wwwroot\assets\js\common.js" />
-    <None Include="wwwroot\assets\js\email-decode.min.js" />
-    <None Include="wwwroot\assets\js\jquery-1.12.4.min.js" />
-    <None Include="wwwroot\assets\js\jquery-ui.min.js" />
-    <None Include="wwwroot\assets\js\jquery.min.js" />
-    <None Include="wwwroot\assets\js\jquery.nicescroll.js" />
-    <None Include="wwwroot\assets\js\jquery.validate.min.js" />
-    <None Include="wwwroot\assets\js\jquery.validate.unobtrusive.min.js" />
-    <None Include="wwwroot\assets\js\lang.js" />
-    <None Include="wwwroot\assets\js\script.js" />
-    <None Include="wwwroot\assets\js\SearchScript.js" />
-    <None Include="wwwroot\assets\js\sticky-kit.js" />
-    <None Include="wwwroot\assets\js\swiper.min.js" />
+    <None Include="Areas\Admin\Views\FeedBack\Detail.cshtml" />
+    <None Include="Areas\Admin\Views\FeedBack\Index.cshtml" />
     <None Include="wwwroot\js\jquery.accordion.source.js" />
     <None Include="wwwroot\js\jquery.ddslick.min.js" />
     <None Include="wwwroot\js\theme.js" />

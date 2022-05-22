@@ -1,686 +1,608 @@
-﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="vi-vn" dir="ltr" lang="vi-vn">
-<head itemscope itemtype="http://schema.org/WebSite">
+﻿@using Microsoft.AspNetCore.Identity
 
-    <script>
-        (function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-T6MKFP5');</script>
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-139238923-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-139238923-1');
-    </script>
-
-    <link rel=”alternate” hreflang=”es” href=” https: es.batdongsanviet.com.vn ” />
-    <link rel=”alternate” href=”https://batdongsanviet.com.vn” hreflang=”vn-vi” />
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+<!DOCTYPE html>
+<html>
+<head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta http-equiv="audience" content="general" />
-    <meta name="resource-type" content="document" />
-    <meta property="og:type" content="website" />
-    <meta name="abstract" content="Thông tin nhà đất Việt Nam" />
-    <meta name="classification" content="Bất động sản Việt Nam" />
-    <meta name="area" content="Nhà đất và bất động sản" />
-    <meta name="placename" content="Việt Nam" />
-    <meta name="author" content="batdongsanviet.vn" />
-    <meta name="copyright" content="©2010 Batdongsanviet.com.vn" />
-    <meta name="owner" content="Batdongsanviet.com.vn" />
-    <meta name="generator" content="công ty dịch vụ TMDT bất động sản Việt" />
-    <meta name="distribution" content="Global" />
-    <meta name='revisit-after' content='1 days' />
-    <meta property="og:type" content="website" />
-    <meta name="referrer" content="no-referrer-when-downgrade" />
-    <meta property="og:url" content="https://batdongsanviet.com.vn/" />
-    <meta property="og:title" content="Bất động sản, mua bán cho thuê nhà đất" />
-    <meta property="og:description" content="Bất động sản, mua bán cho thuê nhà đất" />
-    <meta property="og:image" content="https://batdongsanviet.com.vn/Content/img/no_images.jpg" />
+    <meta http-equiv="content-language" content="vi" />
     <meta name="robots" content="index,follow" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta itemprop="name" content="Bất động sản Việt" />
-    <link rel="canonical" href="https://batdongsanviet.com.vn/" itemprop="url">
-    <link href="/favicon-bdsviet.ico" rel="shortcut icon" type="image/x-icon">
-    <meta name="keywords" content="Bất, động, sản, mua, bán, cho, thuê, nhà, đất" />
-    <title>Bất động sản, mua bán cho thuê nhà đất, Tháng 05, 2022</title>
-    <meta name="description" content="Bất động sản, mua bán cho thuê nhà đất, căn hộ chung cư, văn phòng, tòa nhà, sang nhượng quán, shop, cửa hàng, cập nhật thông tin chính xác và liên tục" />
-    <meta name="robots" content="index,follow" />
-    @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />*@
-    <link href="/assets/css/reset.css" rel="stylesheet">
-    <link href="/assets/css/swiper.min.css" rel="stylesheet">
-    <link href="/assets/css/chosen.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="/assets/css/basis.css" rel="stylesheet">
-    <link href="/assets/css/general.css" rel="stylesheet">
-    <link href="/assets/css/style.css" rel="stylesheet">
-    <link href="/assets/css/fix.css" rel="stylesheet">
-    <meta name="google-site-verification" content="C4RpAdtIy1i3v-1ayYRNzg9cZR5pVjsWmJnco-u2tLM" />
+    <!-- for Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Trang Web Nhà Đất Mua Bán Nhà Đất" />
+    <meta name="twitter:description" content="" />
+    <link rel="icon" href="/uploads/images/logo/untitled.png" type="image/png" sizes="30x30">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link href="/assets/css/uikit.modify.css" rel="stylesheet" />
+    <link href="/assets/css/reset.css" rel="stylesheet" />
+    <link href="/assets/css/library.css" rel="stylesheet" />
+    <link href="/assets/css/slideshow.min.css" rel="stylesheet" />
+    <link href="/assets/css/lightslider.min.css" rel="stylesheet" />
+    <link href="/assets/css/flexslider.css" rel="stylesheet" />
+    <link href="~/admin/js/Toastr/build/toastr.css" rel="stylesheet">
+    <link href="/assets/css/style.css" rel="stylesheet" />
+    <script src="~/admin/vendor/jquery/jquery.min.js"></script>
+    <script src="~/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/uikit.min.js"></script>
+    @RenderSection("css", required: false)
+    <style type="text/css">
+        .buynow-2 {
+            max-width: 740px;
+            margin: 0 auto;
+            background: #fff;
+            font-family: 'Roboto Condensed',sans-serif !important
+        }
+
+            .buynow-2 .heading {
+                position: relative;
+                cursor: pointer;
+                padding-left: 40px
+            }
+
+                .buynow-2 .heading:before {
+                    content: "";
+                    position: absolute;
+                    width: 22px;
+                    height: 20px;
+                    left: 10px;
+                    top: 0;
+                    background-image: url(templates/backend/images/spritesheet.png);
+                    background-repeat: no-repeat;
+                    background-position: -459px -360px
+                }
+
+                .buynow-2 .heading .text {
+                    padding-left: 50px;
+                    display: inline-block;
+                    font-size: 14px;
+                    line-height: 20px;
+                    text-transform: uppercase;
+                    color: #555
+                }
+
+                    .buynow-2 .heading .text:hover {
+                        color: #0388cd
+                    }
+
+            .buynow-2 .list-cart-heading {
+                width: 100%;
+                background: #f7f7f7;
+                font-size: 12px;
+                color: #333;
+                padding: 0 15px
+            }
+
+                .buynow-2 .list-cart-heading .item {
+                    float: left;
+                    padding: 6px 15px;
+                    text-transform: none;
+                    font-weight: bold
+                }
+
+                    .buynow-2 .list-cart-heading .item + .item {
+                        border-left: 1px solid #fff
+                    }
+
+                .buynow-2 .list-cart-heading .product, .buynow-2 .list-order .product {
+                    width: 330px
+                }
+
+                .buynow-2 .list-cart-heading .price, .buynow-2 .list-order .price {
+                    width: 130px
+                }
+
+                .buynow-2 .list-cart-heading .count, .buynow-2 .list-order .count {
+                    width: 114px
+                }
+
+                .buynow-2 .list-cart-heading .prices, .buynow-2 .list-order .prices {
+                    width: 130px
+                }
+
+            .buynow-2 .list-order {
+                padding: 0 15px
+            }
+
+                .buynow-2 .list-order > .item {
+                    padding: 15px 0
+                }
+
+                    .buynow-2 .list-order > .item + .item {
+                        border-top: 1px dotted #ccc
+                    }
+
+                .buynow-2 .list-order .product .thumb {
+                    width: 80px;
+                    border: 1px solid #d8d8d8
+                }
+
+                .buynow-2 .list-order .price, .buynow-2 .list-order .prices {
+                    padding-right: 15px;
+                    font-size: 12px;
+                    font-weight: 700
+                }
+
+                    .buynow-2 .list-order .prices span {
+                        font-size: 12px;
+                        display: block
+                    }
+
+                .buynow-2 .list-order .list-item > * {
+                    float: left
+                }
+
+                .buynow-2 .list-order .product .info {
+                    width: 250px;
+                    padding: 0 15px
+                }
+
+                    .buynow-2 .list-order .product .info .title {
+                        font-size: 13px;
+                        line-height: 18px;
+                        font-weight: 700
+                    }
+
+                        .buynow-2 .list-order .product .info .title .link {
+                            color: #333;
+                            font-size: 12px
+                        }
+
+                            .buynow-2 .list-order .product .info .title .link:hover {
+                                color: #0388cd
+                            }
+
+                .buynow-2 .list-order .product .delete {
+                    border: none;
+                    background: #fff;
+                    font-size: 11px;
+                    color: #6f0600;
+                    cursor: pointer
+                }
+
+                    .buynow-2 .list-order .product .delete i {
+                        color: #959595;
+                        margin-right: 5px
+                    }
+
+                .buynow-2 .list-order .price .old {
+                    text-decoration: line-through;
+                    color: #959595;
+                    font-weight: 400
+                }
+
+                .buynow-2 .list-order .price .saleoff {
+                    color: #d60c0c;
+                    font-weight: 400
+                }
+
+                .buynow-2 .list-order .count {
+                    text-align: center
+                }
+
+                    .buynow-2 .list-order .count > * {
+                        display: inline-block
+                    }
+
+                    .buynow-2 .list-order .count .btns {
+                        position: absolute;
+                        width: 30px;
+                        height: 30px;
+                        border: 1px solid #dfdfdf;
+                        top: 0;
+                        cursor: pointer
+                    }
+
+                    .buynow-2 .list-order .count .abate:before, .buynow-2 .list-order .count .augment:before {
+                        width: 12px;
+                        height: 2px;
+                        margin: 15px auto;
+                        content: "";
+                        display: block
+                    }
+
+                    .buynow-2 .list-order .count .abate {
+                        left: -30px;
+                        border-right: none
+                    }
+
+                        .buynow-2 .list-order .count .abate:before {
+                            background: #ccc
+                        }
+
+                    .buynow-2 .list-order .count .augment {
+                        right: -30px;
+                        border-left: none
+                    }
+
+                        .buynow-2 .list-order .count .augment:before {
+                            background: #288ad6
+                        }
+
+                        .buynow-2 .list-order .count .augment:after {
+                            content: "";
+                            width: 2px;
+                            height: 12px;
+                            background: #288ad6;
+                            display: block;
+                            margin: 0 auto;
+                            position: absolute;
+                            top: 10px;
+                            left: 0;
+                            right: 0
+                        }
+
+                    .buynow-2 .list-order .count .quantity {
+                        width: 30px;
+                        height: 30px;
+                        text-align: center;
+                        border: 1px solid #dfdfdf
+                    }
+
+            .buynow-2 .panel-foot {
+                padding: 15px 15px 0;
+                font-size: 14px;
+                line-height: 20px;
+                color: #333;
+                border-top: 1px solid #eee
+            }
+
+                .buynow-2 .panel-foot .total .price strong {
+                    color: #d60c0c
+                }
+
+                .buynow-2 .panel-foot .total p {
+                    font-size: 13px
+                }
+
+                .buynow-2 .panel-foot .action .continue {
+                    font-size: 13px;
+                    color: #0388cd
+                }
+
+                .buynow-2 .panel-foot .action .purchase {
+                    display: block;
+                    position: relative;
+                    padding: 8px 40px 8px 20px;
+                    background: #d60c0c;
+                    color: #fff;
+                    border: none;
+                    font-size: 13px;
+                    line-height: 20px;
+                    font-weight: 700;
+                    cursor: pointer;
+                    border-radius: 4px
+                }
+
+                    .buynow-2 .panel-foot .action .purchase:after {
+                        content: "";
+                        display: block;
+                        position: absolute;
+                        width: 12px;
+                        height: 8px;
+                        background: url(templates/backend/images/spritesheet.png) -264px -81px no-repeat;
+                        top: 14px;
+                        right: 15px
+                    }
+
+        #scrrolbar {
+            max-height: 320px
+        }
+
+            #scrrolbar::-webkit-scrollbar {
+                height: 100%;
+                width: 6px
+            }
+
+            #scrrolbar::-webkit-scrollbar-thumb {
+                background: #ccc;
+                height: 10px;
+                width: 7px;
+                border-radius: 3px
+            }
+
+        #modal-cart .uk-modal-dialog {
+            width: 740px !important;
+            padding: 20px 0 10px !important
+        }
+
+            #modal-cart .uk-modal-dialog > .uk-close:first-child {
+                margin: -16px -15px 0 0
+            }
+
+        .action.uk-flex.uk-flex-middle.uk-flex-space-between {
+            width: 100%;
+        }
+
+        .cart-scrrolbar {
+            max-height: 320px
+        }
+
+            .cart-scrrolbar::-webkit-scrollbar {
+                height: 100%;
+                width: 6px;
+            }
+
+            .cart-scrrolbar::-webkit-scrollbar-thumb {
+                background: #ccc;
+                height: 10px;
+                width: 7px;
+                border-radius: 3px;
+            }
+
+        #scrollbar {
+            min-width: 700px;
+        }
+    </style>
 </head>
 <body>
 
-    <noscript>
-        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T6MKFP5"
-                height="0" width="0" style="display:none;visibility:hidden"></iframe>
-    </noscript>
-
-    <div id="fb-root"></div>
-    <script>
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.0&appId=1166764796689577&autoLogAppEvents=1";
-            fjs.parentNode.insertBefore(js, fjs);
-
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
-    <div id="wr_wrapper">
-        <div class="header">
-            <div class="head-logo">
-                <a href="/">
-                    <img src="/Content/img/logo-bds-viet.png" alt="Bất động sản, mua b&#225;n cho thu&#234; nh&#224; đất" />
-                    <h1 class="slogan">Trang thông tin bất động sản</h1>
-                </a>
-            </div>
-            <div class="swiper-container swiper-topbanner">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <a href="/bao-gia-banner" title="Báo giá banner - batdongsanviet.vn"><img src="/Content/img/topbanner-02.jpg" /></a>
+    <!-- PC HEADER -->
+    <header class="pc-header uk-visible-large">
+        <section class="upper">
+            <div class="uk-container uk-container-center">
+                <div class="uk-flex uk-flex-middle uk-flex-space-between container">
+                    <div class="top-menu clearfix">
                     </div>
-                    <div class="swiper-slide">
-                        <a href="/bao-gia-banner" title="Báo giá banner - batdongsanviet.vn"><img src="/Content/img/topbanner-02.jpg" /></a>
+                    <div class="top-members">
+                        @if (@UserManager.GetUserName(User) == null)
+                        {
+                            <div class="member-link uk-flex lib-grid-20">
+                                <a class="btn-register" href="/dang-ky">
+                                    <i class="fa fa-key"></i> Đăng ký
+                                </a>
+                                <a class="btn-login" href="/dang-nhap">
+                                    <i class="fa fa-lock"></i> Đăng nhập
+                                </a>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="member-link uk-flex lib-grid-20">
+                                <a class="btn-register" href="#">
+                                    <i class="fa fa-user"></i> @UserManager.GetUserName(User)
+                                </a>
+                                <form action="/dang-xuat">
+                                    <a class="btn-login" href="javascript:void(0)">
+                                        <button type="submit" style="background:none;border:none;">
+                                            <i class="fa fa-lock"></i> Đăng xuất
+                                        </button>
+                                    </a>
+                                </form>
+                            </div>
+                        }
+
                     </div>
+
                 </div>
             </div>
-        </div>
-        <div class="cp-action">
-            <div class="user-status">
-                <a href="/dang-nhap" class="btn-login " rel="nofollow">
-                    <i class=" fa-solid fa-user"></i>
-                    Đăng nhập
+        </section><!-- .upper -->
+
+
+        <section class="lower" style="padding: 0px;">
+            <div class="uk-container uk-container-center">
+                <img style="width: 100%;" src="/uploads/zzzzzzzzzzzzzzzzzzzzzzzz-970-x-150-px-.png" alt="">
+            </div>
+        </section>
+
+        <section class="menu-bar">
+            <div class="uk-container uk-container-center" style="    background: rgb(7, 116, 185);">
+                <div class="uk-flex uk-flex-middle lib-grid-0 uk-flex-space-between">
+
+                    <nav class="main-nav">
+                        <ul class="uk-navbar-nav uk-clearfix main-menu">
+                            <li>
+                                <a href="/" title="Trang chủ">
+                                    Trang chủ
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/nha-dat-ban/2" title="Nhà Đất Bán">
+                                    Nhà Đất Bán
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/sang-nhuong/3" title="Sang Nhượng">
+                                    Sang Nhượng
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/cho-thue/4" title="Nhà Đất Cho Thuê">
+                                    Nhà Đất Cho Thuê
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/tin-tuc" title="Thành viên">
+                                    Tin tức
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/phong-thuy" title="Phong thủy">
+                                    Phong thủy
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/noi-ngoai-that" title="Nội ngoại thất">
+                                    Nội ngoại thất
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/lien-he" title="Liên hệ và thanh toán">
+                                    Liên hệ và thanh toán
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <a href="/dang-du-an" title="Đăng tin" class="a-btl-uload">Đăng Tin <i class="fa fa-upload"></i></a>
+                </div><!-- .container -->
+            </div>
+        </section>
+    </header><!-- .pc-header -->
+    <!-- MOBILE HEADER -->
+    <header class="mobile-header uk-hidden-large">
+        <section class="upper">
+            <div class="uk-container uk-container-center">
+                <a class="moblie-menu-btn skin-1" href="#offcanvas" class="offcanvas" data-uk-offcanvas="{target:'#offcanvas'}">
+                    <span>Menu</span>
                 </a>
-                <a class="btn-regis " href="/dang-ky" rel="nofollow">
-                    <i class="fa-solid fa-lock"></i>
-                    Đăng ký
+                <div class="logo">
+                    <a href="/" title="">
+                        <img style="max-height: 50px;" src="/uploads/zzzzzzzzzzzzzzzzzzzzzzzz-970-x-150-px-.png">
+                    </a>
+                </div>
+                <a class="mobile-hotline" href="tel:02466.759.435 -  0948.242.555" title="Hotline">
+                    02466.759.435 -  0948.242.555
                 </a>
             </div>
-            <a href="/dang-tin" title="Đăng tin BĐS" class="btn bg-green postproduct">
-                <i class="fa-solid fa-plus"></i>
-                Đăng tin
-            </a>
-        </div>
-        <div class="cp-mmenu">
-            <div class="mmenu">
-                <ul class="ul-menu">
-                    <li class="item">
-                        <a class="cate" href="/"><i class="fa-solid fa-house-blank"></i></a>
-                    </li>
-                    <li class="item">
-                        <a href="/nha-dat-ban" class="cate">
-                            Cần bán
+        </section>
+        <section class="lower">
+            <div class="uk-container uk-container-center">
+                <div class="uk-flex uk-flex-space-between uk-flex-middle">
+                    <div class="user_login uk-flex lib-grid-20">
+                        <a class="btn-register" href="/dang-ky">
+                            <i class="fa fa-key"></i> Đăng ký
                         </a>
-                        <ul class="ul-submenu">
-                            <li class="li-submenu">
-                                <ul class="ul-column">
-                                    <li><a href="/ban-can-ho-chung-cu" title="Bán căn hộ chung cư">Bán căn hộ chung cư</a></li>
-                                    <li><a href="/ban-nha-rieng" title="Bán nhà riêng">Bán nhà riêng</a></li>
-                                    <li><a href="/ban-nha-biet-thu-lien-ke" title="Bán nhà biệt thự, liền kề">Bán nhà biệt thự, liền kề</a></li>
-                                    <li><a href="/ban-nha-mat-pho" title="Bán nhà mặt phố">Bán nhà mặt phố</a></li>
-                                </ul>
-                            </li>
-                            <li class="li-submenu">
-                                <ul class="ul-column">
-                                    <li><a href="/ban-nha-cap-4" title="Bán nhà cấp 4">Bán nhà cấp 4</a></li>
-                                    <li><a href="/ban-cua-hang-ki-ot" title="Bán cửa hàng &amp; ki ốt">Bán cửa hàng &amp; ki ốt</a></li>
-                                    <li><a href="/ban-trang-trai-khu-nghi-duong" title="Bán trang trại, khu nghỉ dưỡng">Bán trang trại, khu nghỉ dưỡng</a></li>
-                                    <li><a href="/ban-kho-nha-xuong" title="Bán kho, nhà xưởng">Bán kho, nhà xưởng</a></li>
-                                </ul>
-                            </li>
-                            <li class="li-submenu">
-                                <ul class="ul-column">
-                                    <li><a href="/ban-dat" title="Bán đất">Bán đất</a></li>
-                                    <li><a href="/ban-dat-nen-du-an" title="Bán đất nền dự án">Bán đất nền dự án</a></li>
-                                    <li><a href="/ban-dat-tho-cu" title="Bán đất thổ cư">Bán đất thổ cư</a></li>
-                                    <li><a href="/ban-loai-bat-dong-san-khac" title="Bán loại bất động sản khác">Bán loại bất động sản khác</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="item">
-                        <a href="/nha-dat-cho-thue" class="cate">
-                            Cần cho thuê
+                        <a class="btn-login" href="/dang-nhap">
+                            <i class="fa fa-lock"></i> Đăng nhập
                         </a>
-                        <ul class="ul-submenu">
-                            <li class="li-submenu">
-                                <ul class="ul-column">
-                                    <li>
-                                        <a href="/cho-thue-can-ho-chung-cu" title="Cho thuê căn hộ chung cư">
-                                            Cho thuê căn hộ chung cư
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/cho-thue-nha-rieng" title="Cho thuê nhà riêng">
-                                            Cho thuê nhà riêng
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/cho-thue-biet-thu-lien-ke" title="Cho thuê biệt thự, liền kề">
-                                            Cho thuê biệt thự, liền kề
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/cho-thue-nha-mat-pho" title="Cho thuê nhà mặt phố">
-                                            Cho thuê nhà mặt phố
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/cho-thue-nha-tro-phong-tro" title="Cho thuê nhà trọ, phòng trọ">
-                                            Cho thuê nhà trọ, phòng trọ
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="li-submenu">
-                                <ul class="ul-column">
-                                    <li>
-                                        <a href="/cho-thue-van-phong" title="Cho thuê văn phòng">
-                                            Cho thuê văn phòng
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/cho-thue-cua-hang-ki-ot" title="Cho thuê cửa hàng, ki ốt">
-                                            Cho thuê cửa hàng, ki ốt
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/cho-thue-kho-nha-xuong-dat" title="Cho thuê kho, nhà xưởng, đất">
-                                            Cho thuê kho, nhà xưởng, đất
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/cho-thue-loai-bat-dong-san-khac" title="Cho thuê loại bất động sản khác">
-                                            Cho thuê loại bất động sản khác
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="item">
-                        <a href="/nha-dat-can-mua" class="cate">
-                            Cần mua
-                        </a>
-                        <ul class="ul-submenu">
-                            <li class="li-submenu">
-                                <ul class="ul-column">
-                                    <li>
-                                        <a href="/mua-can-ho-chung-cu" title="Mua căn hộ chung cư">
-                                            Mua căn hộ chung cư
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/mua-nha-rieng" title="Mua nhà riêng">
-                                            Mua nhà riêng
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/mua-nha-biet-thu-lien-ke" title="Mua nhà biệt thự, liền kề">
-                                            Mua nhà biệt thự, liền kề
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/mua-nha-mat-pho" title="Mua nhà mặt phố">
-                                            Mua nhà mặt phố
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/mua-dat-nen-du-an" title="Mua đất nền dự án">
-                                            Mua đất nền dự án
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="li-submenu">
-                                <ul class="ul-column">
-                                    <li>
-                                        <a href="/mua-dat-tho-cu" title="Mua đất thổ cư">
-                                            Mua đất thổ cư
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/mua-trang-trai-khu-nghi-duong" title="Mua trang trại, khu nghỉ dưỡng">
-                                            Mua trang trại, khu nghỉ dưỡng
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/mua-kho-nha-xuong" title="Mua kho, nhà xưởng">
-                                            Mua kho, nhà xưởng
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/mua-loai-bat-dong-san-khac" title="Mua loại bất động sản khác">
-                                            Mua loại bất động sản khác
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="item">
-                        <a href="/nha-dat-can-thue" class="cate">
-                            Cần thuê
-                        </a>
-                        <ul class="ul-submenu">
-                            <li class="li-submenu">
-                                <ul class="ul-column">
-                                    <li>
-                                        <a href="/can-thue-can-ho-chung-cu" title="Cần thuê căn hộ chung cư">
-                                            Cần thuê căn hộ chung cư
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/can-thue-nha-rieng" title="Cần thuê nhà riêng">
-                                            Cần thuê nhà riêng
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/can-thue-nha-mat-pho" title="Cần thuê nhà mặt phố">
-                                            Cần thuê nhà mặt phố
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/can-thue-nha-tro-phong-tro" title="Cần thuê nhà trọ, phòng trọ">
-                                            Cần thuê nhà trọ, phòng trọ
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="li-submenu">
-                                <ul class="ul-column">
-                                    <li>
-                                        <a href="/can-thue-van-phong" title="Cần thuê văn phòng">
-                                            Cần thuê văn phòng
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/can-thue-cua-hang-ki-ot" title="Cần thuê cửa hàng, ki ốt">
-                                            Cần thuê cửa hàng, ki ốt
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/can-thue-kho-nha-xuong-dat" title="Cần thuê kho, nhà xưởng, đất">
-                                            Cần thuê kho, nhà xưởng, đất
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/can-thue-loai-bat-dong-san-khac" title="Cần thuê loại bất động sản khác">
-                                            Cần thuê loại bất động sản khác
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="item">
-                        <a href="/nha-dat-sang-nhuong" class="cate">
-                            Sang nhượng
-                        </a>
-                        <ul class="ul-submenu">
-                            <li class="li-submenu">
-                                <ul class="ul-column">
-                                    <li>
-                                        <a href="/kiot-sap-cho" title="Kiốt, Sạp chợ">
-                                            Kiốt, Sạp chợ
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/quan-ca-phe-do-uong" title="Quán cà phê, Đồ uống">
-                                            Quán cà phê, Đồ uống
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/quan-an-nha-hang-khach-san" title="Quán ăn, Nhà hàng, Khách sạn">
-                                            Quán ăn, Nhà hàng, Khách sạn
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/shop-thoi-trang-tiem-toc-spa" title="Shop thời trang, Tiệm tóc, Spa">
-                                            Shop thời trang, Tiệm tóc, Spa
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/sang-nhuong-bat-dong-san-khac" title="Sang nhượng bất động sản khác">
-                                            Sang nhượng bất động sản khác
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="item">
-                        <a href="/du-an-bat-dong-san" class="cate">
-                            Dự án
-                        </a>
-                        <ul class="ul-submenu">
-                            <li class="li-submenu">
-                                <ul class="ul-column">
-                                    <li>
-                                        <a href="/khu-do-thi-moi" title="Khu đô thị mới">
-                                            Khu đô thị mới
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/biet-thu-lien-ke" title="Biệt thự liền kề">
-                                            Biệt thự liền kề
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/cao-oc-van-phong" title="Cao ốc văn phòng">
-                                            Cao ốc văn phòng
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/trung-tam-thuong-mai" title="Trung tâm thương mại">
-                                            Trung tâm thương mại
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/khu-phuc-hop" title="Khu phức hợp">
-                                            Khu phức hợp
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="li-submenu">
-                                <ul class="ul-column">
-                                    <li>
-                                        <a href="/can-ho-chung-cu" title="Căn hộ, Chung cư">
-                                            Căn hộ, Chung cư
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/khu-nghi-duong-sinh-thai" title="Khu nghỉ dưỡng, Sinh thái">
-                                            Khu nghỉ dưỡng, Sinh thái
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/nha-o-xa-hoi" title="Nhà ở xã hội">
-                                            Nhà ở xã hội
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/khu-cong-nghiep" title="Khu Công nghiệp	">
-                                            Khu Công nghiệp
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/du-an-khac" title="Dự án khác">
-                                            Dự án khác
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="item">
-                        <a href="/tin-tuc" title="Tin tức bất động sản" class="cate">
-                            Tin tức
-                        </a>
-                        <ul class="ul-submenu">
-                            <li class="li-submenu">
-                                <ul class="ul-column ul-column-cate">
-                                    <li class="li-cate">
-                                        <a title="Tin thị trường" href="/tin-thi-truong-ctid1552">Tin thị trường</a>
-                                        <ul class="ul-submenu1">
-                                            <li>
-                                                <a class="subcate-article" title="Th&#244;ng tin quy hoạch" href="/tin-thi-truong/thong-tin-quy-hoach-ctid1556">Th&#244;ng tin quy hoạch</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="li-cate">
-                                        <a title="Phong thủy" href="/phong-thuy-ctid1560">Phong thủy</a>
-                                        <ul class="ul-submenu1">
-                                            <li>
-                                                <a class="subcate-article" title="Phong thủy văn ph&#242;ng" href="/phong-thuy/phong-thuy-van-phong-ctid1562">Phong thủy văn ph&#242;ng</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="li-cate">
-                                        <a title="Phong thủy nh&#224; ở" href="/phong-thuy-nha-o-ctid1561">Phong thủy nh&#224; ở</a>
-                                        <ul class="ul-submenu1">
-                                            <li>
-                                                <a class="subcate-article" title="To&#224;n cảnh" href="/phong-thuy-nha-o/toan-canh-ctid1584">To&#224;n cảnh</a>
-                                            </li>
-                                            <li>
-                                                <a class="subcate-article" title="Ph&#242;ng ngủ" href="/phong-thuy-nha-o/phong-ngu-ctid1585">Ph&#242;ng ngủ</a>
-                                            </li>
-                                            <li>
-                                                <a class="subcate-article" title="Ph&#242;ng kh&#225;ch" href="/phong-thuy-nha-o/phong-khach-ctid1587">Ph&#242;ng kh&#225;ch</a>
-                                            </li>
-                                            <li>
-                                                <a class="subcate-article" title="Ph&#242;ng bếp" href="/phong-thuy-nha-o/phong-bep-ctid1588">Ph&#242;ng bếp</a>
-                                            </li>
-                                            <li>
-                                                <a class="subcate-article" title="Ph&#242;ng tắm" href="/phong-thuy-nha-o/phong-tam-ctid1589">Ph&#242;ng tắm</a>
-                                            </li>
-                                            <li>
-                                                <a class="subcate-article" title="Cửa ch&#237;nh, s&#226;n vườn" href="/phong-thuy-nha-o/cua-chinh-san-vuon-ctid1590">Cửa ch&#237;nh, s&#226;n vườn</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="li-cate">
-                                        <a title="Nh&#224; đẹp" href="/nha-dep-ctid1564">Nh&#224; đẹp</a>
-                                        <ul class="ul-submenu1">
-                                            <li>
-                                                <a class="subcate-article" title="Ngoại thất" href="/nha-dep/ngoai-that-ctid1566">Ngoại thất</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="li-cate">
-                                        <a title="Nội thất" href="/noi-that-ctid1565">Nội thất</a>
-                                        <ul class="ul-submenu1">
-                                            <li>
-                                                <a class="subcate-article" title="To&#224;n cảnh" href="/noi-that/toan-canh-ctid1574">To&#224;n cảnh</a>
-                                            </li>
-                                            <li>
-                                                <a class="subcate-article" title="Ph&#242;ng kh&#225;ch" href="/noi-that/phong-khach-ctid1576">Ph&#242;ng kh&#225;ch</a>
-                                            </li>
-                                            <li>
-                                                <a class="subcate-article" title="Ph&#242;ng ngủ" href="/noi-that/phong-ngu-ctid1577">Ph&#242;ng ngủ</a>
-                                            </li>
-                                            <li>
-                                                <a class="subcate-article" title="Nh&#224; bếp" href="/noi-that/nha-bep-ctid1579">Nh&#224; bếp</a>
-                                            </li>
-                                            <li>
-                                                <a class="subcate-article" title="Ph&#242;ng tắm" href="/noi-that/phong-tam-ctid1580">Ph&#242;ng tắm</a>
-                                            </li>
-                                            <li>
-                                                <a class="subcate-article" title="Văn ph&#242;ng" href="/noi-that/van-phong-ctid1582">Văn ph&#242;ng</a>
-                                            </li>
-                                            <li>
-                                                <a class="subcate-article" title="Kh&#225;ch sạn, nh&#224; h&#224;ng, showroom" href="/noi-that/khach-san-nha-hang-showroom-ctid1583">Kh&#225;ch sạn, nh&#224; h&#224;ng, showroom</a>
-                                            </li>
-                                            <li>
-                                                <a class="subcate-article" title="Ph&#242;ng trẻ em" href="/noi-that/phong-tre-em-ctid1634">Ph&#242;ng trẻ em</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="li-cate">
-                                        <a title="Kinh nghiệm" href="/kinh-nghiem-ctid1591">Kinh nghiệm</a>
-                                        <ul class="ul-submenu1">
-                                            <li>
-                                                <a class="subcate-article" title="Kinh nghiệm mua nh&#224;" href="/kinh-nghiem/kinh-nghiem-mua-nha-ctid1592">Kinh nghiệm mua nh&#224;</a>
-                                            </li>
-                                            <li>
-                                                <a class="subcate-article" title="Kinh nghiệm b&#225;n nh&#224; đất" href="/kinh-nghiem/kinh-nghiem-ban-nha-dat-ctid1593">Kinh nghiệm b&#225;n nh&#224; đất</a>
-                                            </li>
-                                            <li>
-                                                <a class="subcate-article" title="Kinh nghiệm đầu tư" href="/kinh-nghiem/kinh-nghiem-dau-tu-ctid1598">Kinh nghiệm đầu tư</a>
-                                            </li>
-                                            <li>
-                                                <a class="subcate-article" title="Kinh nghiệm thu&#234; nh&#224;" href="/kinh-nghiem/kinh-nghiem-thue-nha-ctid1601">Kinh nghiệm thu&#234; nh&#224;</a>
-                                            </li>
-                                            <li>
-                                                <a class="subcate-article" title="Kinh nghiệm cho thu&#234; nh&#224;" href="/kinh-nghiem/kinh-nghiem-cho-thue-nha-ctid1602">Kinh nghiệm cho thu&#234; nh&#224;</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="li-cate">
-                                        <a title="X&#226;y dựng" href="/xay-dung-ctid1603">X&#226;y dựng</a>
-                                        <ul class="ul-submenu1">
-                                            <li>
-                                                <a class="subcate-article" title="Vật liệu x&#226;y dựng" href="/xay-dung/vat-lieu-xay-dung-ctid1604">Vật liệu x&#226;y dựng</a>
-                                            </li>
-                                            <li>
-                                                <a class="subcate-article" title="Kiến thức x&#226;y dựng" href="/xay-dung/kien-thuc-xay-dung-ctid1607">Kiến thức x&#226;y dựng</a>
-                                            </li>
-                                            <li>
-                                                <a class="subcate-article" title="Giải ph&#225;p x&#226;y dựng" href="/xay-dung/giai-phap-xay-dung-ctid1608">Giải ph&#225;p x&#226;y dựng</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="li-cate">
-                                        <a title="Kiến tr&#250;c" href="/kien-truc-ctid1611">Kiến tr&#250;c</a>
-                                        <ul class="ul-submenu1">
-                                            <li>
-                                                <a class="subcate-article" title="Tư vấn thiết kế" href="/kien-truc/tu-van-thiet-ke-ctid1612">Tư vấn thiết kế</a>
-                                            </li>
-                                            <li>
-                                                <a class="subcate-article" title="Kiến tr&#250;c xưa v&#224; nay" href="/kien-truc/kien-truc-xua-va-nay-ctid1614">Kiến tr&#250;c xưa v&#224; nay</a>
-                                            </li>
-                                            <li>
-                                                <a class="subcate-article" title="Du lịch kiến tr&#250;c" href="/kien-truc/du-lich-kien-truc-ctid1615">Du lịch kiến tr&#250;c</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="li-cate">
-                                        <a title="Luật về nh&#224; đất" href="/luat-ve-nha-dat-ctid1619">Luật về nh&#224; đất</a>
-                                        <ul class="ul-submenu1">
-                                            <li>
-                                                <a class="subcate-article" title="Chuyển quyền sở hữu" href="/luat-ve-nha-dat/chuyen-quyen-so-huu-ctid1625">Chuyển quyền sở hữu</a>
-                                            </li>
-                                            <li>
-                                                <a class="subcate-article" title="Thừa kế - Tranh chấp" href="/luat-ve-nha-dat/thua-ke-tranh-chap-ctid1626">Thừa kế - Tranh chấp</a>
-                                            </li>
-                                            <li>
-                                                <a class="subcate-article" title="Thuế nh&#224; đất" href="/luat-ve-nha-dat/thue-nha-dat-ctid1628">Thuế nh&#224; đất</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="item">
-                        <a href="/nha-moi-gioi" title="Nhà môi giới" class="cate">
-                            Nhà môi giới
+                    </div>
+                    <a href="members/dang-tin.html" title="Đăng tin" class="a-btl-uload">Đăng Tin <i class="fa fa-upload"></i></a>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+    @RenderBody()
+    <footer class="footer">
+
+        <section class="panel-menu-footer ft-contact">
+            <div class="uk-container uk-container-center">
+                <ul class="menu_footer uk-list uk-flex uk-flex-middle lib-grid-20">
+                    <li>
+                        <a href="#" title="Thời gian làm việc">
+                            Thời gian làm việc
                         </a>
                     </li>
-                    <li class="item">
-                        <a href="/lien-he-gop-y" class="cate">
-                            Liên hệ
+                    <li>
+                        <a href="3" title="Quy chế website">
+                            Quy chế website
                         </a>
                     </li>
-                    <li class="item">
-                        <a href="/bao-gia-tin-vip" title="Báo giá tin VIP" class="cate">
-                            Báo giá
+                    <li>
+                        <a href="#" title="Tuyển dụng">
+                            Tuyển dụng
                         </a>
-                        <ul class="ul-submenu">
-                            <li class="li-submenu">
-                                <ul class="ul-column">
-                                    <li>
-                                        <a href="/bao-gia-tin-vip" title="Báo giá tin VIP">
-                                            Báo giá tin VIP
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/bao-gia-banner" title="Báo giá Banner">
-                                            Báo giá Banner
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/thanh-toan-quang-cao" title="Thanh toán quảng cáo">
-                                            Thanh toán
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/huong-dan" title="Hướng dẫn">
-                                            Hướng dẫn
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" title="Thông tin">
+                            Thông tin
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" title="Hướng dẫn">
+                            Hướng dẫn
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/lien-he" title="Liên hệ- Thanh Toán">
+                            Liên hệ- Thanh Toán
+                        </a>
                     </li>
                 </ul>
             </div>
-        </div>
-        @RenderBody()
-    </div>
-    <div class="footer">
-        <div class="main">
-            Copyright © 2008 - 2022 <b>batdongsanviet.com.vn</b> ® Ghi rõ nguồn <b>"batdongsanviet.com.vn"</b> khi phát hành lại thông tin từ website này.
-            <br>Hotline: 0933221148 | Email: <a target="_top" href="/cdn-cgi/l/email-protection#cfa6a1a9a08fadaebbaba0a1a8bcaea1b9a6aabbe1b9a1f09cbaada5aaacbbf283a60c65a1efa72e7448efadaebbaba0a1a8bcaea1b9a6aabbe1aca0a2e1b9a1">
-                <span class="__cf_email__" data-cfemail="5f363139301f3d3e2b3b3031382c3e3129363a2b712931">[email&#160;protected]</span>
-            </a>
-        </div>
-        <script data-cfasync="false" src="https://batdongsanviet.com.vn/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-        <script type="application/ld+json">
-            {
-              "@@context": "https://schema.org",
-              "@@type": "Organization",
-              "name": "Công ty TMDT Bất động sản Việt",
-              "alternateName": " Viet Nam Property ecomerce service company",
-              "description": "Công ty TMDT Bất động sản Việt hoạt động trong lĩnh vực rao vặt, tiếp thị thông tin bất động sản việt nam",
-              "url": "https://batdongsanviet.com.vn",
-              "logo": "https://batdongsanviet.com.vn/Content/img/logo-bds-viet.png",
+        </section>
+        <section class="upper">
+            <div class="uk-container uk-container-center">
+                <div class="uk-grid uk-grid-medium uk-flex-middle">
+                    <div class="uk-width-small-1-2 uk-width-large-1-2">
+                        <section class="panel ft-contact">
+                            <header class="panel-head">
+                                <h3 class="heading"><span>Thông tin liên hệ</span></h3>
+                            </header>
+                            <section class="panel-body">
+                                <p class="p-ft-l"><strong><span>MUA BÁN NHÀ ĐẤT&nbsp;</span></strong></p>
 
-             "address":{
-                 "@@type": "PostalAddress",
-                 "streetAddress": "Bùi Bằng  Đoàn,P. Tân Phong, Q.7, Hồ Chí Minh",
-                 "addressLocality": "Hồ Chí Minh",
-                 "addressRegion": "HCM",
-                 "postalCode": "700000",
-                 "addressCountry": "Việt Nam"
-             },
-              "contactPoint": [{
-                "@@type": "ContactPoint",
-                "telephone": "+84933221148",
-                  "email": "admin@batdongsanviet.vn",
-                "contactType": "customer service",
-                  "areaServed": "VI",
-                  "availableLanguage": [
-                      "Vietnamese",
-                      "English"
-                  ]
-              }]
-            }
-        </script>
-    </div>
-    <div id="loadding"></div>
-    <div id="popup"></div>
-    <div id="scroll-up"></div>
+                                <p class="p-ft-l"><label>Văn phòng tại Hà Nội : </label>Số 86, Ngõ 140, Khuất Duy Tiến, Nhân Chính, Thanh Xuân, Hà Nội.</p>
+
+                                <p class="p-ft-l"><label>Hỗ trợ đăng quảng cáo: 0948.242.555</label></p>
+
+                                <p class="p-ft-l"><label>Hỗ trợ nhà đất: 0948.242.555</label></p>
+
+                                <p class="p-ft-l"><label>Email: </label><span style="color: rgb(95, 99, 104); font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; font-size: 14px; text-align: center; white-space: nowrap;">cskhbatdongsanviet.info@gmail.com</span></p>
+                            </section><!-- .panel-body -->
+                        </section><!-- .panel -->
+                    </div>
+                    <div class="uk-width-small-1-2 uk-width-large-1-2">
+                        <section class="panel ft-contact">
+                            <section class="panel-body">
+                                <div class="thongke-truycap uk-flex uk-flex-right mt10">
+                                    <ul class="uk-list uk-list-tk">
+                                        <li>Đang Online: 1713</li>
+                                        <li>Hôm nay: 4393</li>
+                                        <li>Hôm qua: 18261</li>
+                                        <li>Tổng truy cập: 5390923</li>
+                                    </ul>
+                                </div>
+                            </section><!-- .panel-body -->
+                        </section><!-- .panel -->
+                    </div>
+                </div><!-- .uk-grid -->
+            </div><!-- .uk-container -->
+        </section><!-- upper -->
+    </footer><!--.footer -->
+    @*<script src="https://apis.google.com/js/platform.js" async defer>{ lang: 'vi' }</script>*@
+    <div id="offcanvas" class="uk-offcanvas offcanvas">
+        <div class="uk-offcanvas-bar">
+            <form class="uk-search" action="tim-kiem.html" data-uk-search="{}">
+                <input class="uk-search-field" type="search" name="key" placeholder="Nhập từ khóa tìm kiếm">
+            </form>
+
+            <ul class="l1 uk-nav uk-nav-offcanvas uk-nav uk-nav-parent-icon" data-uk-nav>
+                <li class="l1 ">
+                    <a href="/" title="Trang chủ" class="l1">Trang chủ</a>
+
+                </li>
+                <li class="l1 ">
+                    <a href="/nha-dat-ban/2" title="Nhà Đất Bán" class="l1">Nhà Đất Bán</a>
+
+                </li>
+                <li class="l1 ">
+                    <a href="/sang-nhuong/3" title="Sang Nhượng" class="l1">Sang Nhượng</a>
+
+                </li>
+                <li class="l1 ">
+                    <a href="/nha-dat-cho-thue/4" title="Nhà Đất Cho Thuê" class="l1">Nhà Đất Cho Thuê</a>
+
+                </li>
+                <li class="l1 ">
+                    <a href="/tin-tuc" title="Nhà Đất Cho Thuê" class="l1">Tin tức</a>
+
+                </li>
+                <li class="l1 ">
+                    <a href="/lien-he" title="Liên hệ và thanh toán" class="l1">Liên hệ và thanh toán</a>
+
+                </li>
+            </ul>
+        </div>
+    </div><!-- #offcanvas -->
+    <script src="/assets/js/slider.min.js"></script>
+    <script src="/assets/js/slideshow.min.js"></script>
+    <script src="/assets/js/sticky.min.js"></script>
+    <script src="/assets/js/lightbox.min.js"></script>
+    <script src="/assets/js/lightslider.min.js"></script>
+    <script src="/assets/js/jquery.flexslider-min.js"></script>
+    <script src="/assets/js/datepicker.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"></script>
-    <script src="/assets/js/jquery-1.12.4.min.js"></script>
-    <script src="/assets/js/swiper.min.js"></script>
-    <script src="/assets/js/lang.js"></script>
-    <script src="/assets/js/sticky-kit.js"></script>
-    <script src="/assets/js/chosen.jquery.min.js"></script>
-    <script src="/assets/js/jquery.validate.min.js"></script>
-    <script src="/assets/js/jquery.validate.unobtrusive.min.js"></script>
-    <script src="/assets/js/jquery-ui.min.js"></script>
-    <script src="/assets/js/common.js"></script>
-    <script src="/assets/js/script.js"></script>
-    <script src="/assets/js/jquery.nicescroll.js"></script>
-    <script src="/assets/js/BuilderDropbox.js"></script>
-    <script src="/assets/js/SearchScript.js"></script>
-    </div>
+    <script src="/assets/js/timepicker.min.js"></script>
+    <script src="/assets/js/function.js"></script>
+    <script src="/assets/js/library.js"></script>
+    <script src="~/admin/js/Toastr/toastr.js"></script>
+    <script src="~/admin/js/custemToast.js"></script>
+    @RenderSection("js", required: false)
 </body>
 </html>

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace BDS.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class DashboardController : Controller
+    public class DashboardController : BaseController
     {
         private readonly BDSContext _context;
 

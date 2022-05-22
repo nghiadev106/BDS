@@ -4,1400 +4,319 @@
     var categories = (List<BDS.Model.NewsCategory>)ViewBag.categories;
     var relatedNews = (List<BDS.Model.News>)ViewBag.relatedNews;
     var ListNews = (List<BDS.Model.News>)ViewBag.ListNews;
+    var ListProject = (List<BDS.Model.Project>)ViewBag.ListProject;
 }
 
-<div id="fix_height">
-    <div class="main main-detail">
-        <div class="dl-flex">
-            <div class="col-auto display-ib mg-right-20 set-relative">
-                <ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
-                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a href="/" itemprop="item" title="BatdongsanViet">
-                            <meta itemprop="name" content="BatdongsanViet" />
-                            BatdongsanViet
-                        </a>
-                        <meta itemprop="position" content="1" />
-                    </li>
-                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a href="/nha-dat-ban/-1/-1/0/0" itemprop="item" title="Nh&#224; đất b&#225;n">
-                            <meta itemprop="name" content="Nh&#224; đất b&#225;n" />
-                            Nh&#224; đất b&#225;n
-                        </a>
-                        <meta itemprop="position" content="2" />
-                    </li>
-                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a href="/ban-dat-tho-cu-ha-noi/-1/-1/0/0" itemprop="item" title="Hà N&#244;̣i">
-                            <meta itemprop="name" content="Hà N&#244;̣i" />
-                            Hà N&#244;̣i
-                        </a>
-                        <meta itemprop="position" content="3" />
-                    </li>
-                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a href="/ban-dat-tho-cu-dong-anh-ha-noi/-1/-1/0/0" itemprop="item" title="Đ&#244;ng Anh, Hà N&#244;̣i">
-                            <meta itemprop="name" content="Đ&#244;ng Anh, Hà N&#244;̣i" />
-                            Đ&#244;ng Anh, Hà N&#244;̣i
-                        </a>
-                        <meta itemprop="position" content="4" />
-                    </li>
-                    <li class="active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a href="" itemprop="item" title="Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư  tại Bắc Thăng Long gi&#225; rẻ hơn thị trường">
-                            <meta itemprop="name" content="Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư  tại Bắc Thăng Long gi&#225; rẻ hơn thị trường" />
-                            Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư tại Bắc Thăng Long gi&#225; rẻ hơn thị trường
-                        </a>
-                        <meta itemprop="position" content="5" />
-                    </li>
-                </ul>
-                <h1 class="fweight-bold fsize-18 clr-055699 lh-24">Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư tại Bắc Thăng Long gi&#225; rẻ hơn thị trường</h1>
-                <p>
-                    <h2 class="text-non-underline clr-055699 fsize-14">
-                        <b class="clr-000">Khu vực:</b>
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn" title="B&#225;n đất thổ cư  Đường 19">
-                            B&#225;n đất thổ cư Đường 19
-                        </a>
-                        - Đ&#244;ng Anh - Hà N&#244;̣i
-                    </h2>
-                </p>
-                <div class="pn-social">
-                    <a href="https://batdongsanviet.com.vn/social-p1174164" class="twitter-share-button" data-show-count="false" rel="nofollow">Tweet</a>
-                    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-                    <div class="fb-like" data-href="https://batdongsanviet.com.vn/social-p1174164" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
-                    <div class="fb-share-button" data-href="https://batdongsanviet.com.vn/social-p1174164" data-layout="button" data-size="small" data-mobile-iframe="true">
-                        <a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://batdongsanviet.com.vn/social-p1174164%2F&amp;src=sdkpreparse" rel="nofollow">Share</a>
-                    </div>
-                </div>
-                <p>
-                    <b class="fsize-13 clr-000">Giá:</b>
-                    <span class="fsize-15 fweight-bold clr-319c00">
-                        2.85 tỷ
-                    </span>
-                    <b class="fsize-13 clr-000 mg-left-20">Diện tích:</b>
-                    <span class="fsize-15 fweight-bold clr-319c00">
-                        75 m&#178;
-                    </span>
-                </p>
-                <div class="p-desc fsize-14 lh-24 text-left mg-top-10">
-                    Vợ chồng em cần bán gấp mảnh đất 75m2 THỔ CƯ tại BẮC THĂNG LONG giá rẻ hơn thị trường</br>* Địa chỉ: Lô đầu tiên ngõ 10 đường Bờ Kênh, Ấp Sáp Mai, Võng La, Đông Anh</br>* Diện tích: 75m2, mặt tiền 4,12m</br>* Hướng: Đông Bắc</br> </br>HẠ TẦNG – TIỆN ÍCH ngập tràn :</br>+ Ngõ ô tô con, đánh thẳng xe vào nhà, khu dân cư văn minh </br>+ Gần đường nhựa lớn 11m, có thể để xe luôn dọc đường lớn.</br>+ Giao thông thuận tiện, mất 2p đến cổng chính KCN Bắc Thăng Long, 3p đến Cầu Thăng Long, ~10p đến Mỹ Đình, 15p đến sân bay Nội Bài…</br>+ Gần 3 chợ lớn, gần viện Nhiệt đới TW 2, gần trường cấp 1-2-3, gần công viên Kim Quy châu Á…</br> </br>Vợ Chồng em đang có nhu cầu cần tiền cho mảnh lớn hơn nên bán gấp trong tuần. Bác nào mua đầu tư hay muốn xây nhà có sân thì quá đẹp luôn ạ.</br>* Sổ đỏ full thổ cư, pháp lý rõ ràng</br>Giá công khai: 2tỷ 850tr (Không thương lượng, thiện chí mua nhanh e bao sổ) </br>Chính chủ: Call Ms Nga 0973.820.720 hoặc zalo cùng số.
-                </div>
-                <div class="display-bl brd-bottom-w-1 brd-style-solid brd-style-color set-relative h-30 mg-top-20">
-                    <div onclick="(new ProductDetailFnc()).ShowView(this);" data-action="prd-view" data-id="pn-image" class="no-mg fsize-13 fweight-bold set-absolute bottom-0 left-0 pd-2 pd-top-3 pd-left-8 pd-right-8 prd-view">
-                        Xem ảnh
-                    </div>
-                    <div onclick="(new ProductDetailFnc()).ShowView(this);" data-action="prd-view" data-id="pn-map" class="no-mg fweight-bold set-absolute bottom-0 left73 pd-2 pd-top-3 pd-left-8 pd-right-8 prd-view">
-                        Xem bản đồ
-                    </div>
-                </div>
-                <div id="pn-image" class="group-image-detail mg-top-20 hidden">
-                    <div class="group-image-prd clear" id="osgslide">
-                        <div class="show-img main-img">
-                            <a rel="nofollow" href="javascript:void(0)">
-                                <img alt="Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư  tại Bắc Thăng Long gi&#225; rẻ hơn thị trường" rel="imagegallery-0" src="/bds/2022-05-10/20220510093355361248.jpg?width=820&amp;height=445&amp;quality=100&amp;cache=always&amp;mode=max">
-                            </a>
-                            <span class="num-img"><span id="countimage">1</span>/5</span>
-                            <div id="aniimated-thumbnials" style="display:none">
-                                <span class="imageGallery" id="imagegallery-0" data-src="/bds/2022-05-10/20220510093355361248.jpg" data-desc="Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư  tại Bắc Thăng Long gi&#225; rẻ hơn thị trường-0">
-                                    <img src="/bds/2022-05-10/20220510093355361248.jpg?width=73&amp;height=55&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư  tại Bắc Thăng Long gi&#225; rẻ hơn thị trường-0">
-                                </span>
-                                <span class="imageGallery" id="imagegallery-1" data-src="/bds/2022-05-10/20220510093355986248.jpg" data-desc="Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư  tại Bắc Thăng Long gi&#225; rẻ hơn thị trường-1">
-                                    <img src="/bds/2022-05-10/20220510093355986248.jpg?width=73&amp;height=55&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư  tại Bắc Thăng Long gi&#225; rẻ hơn thị trường-1">
-                                </span>
-                                <span class="imageGallery" id="imagegallery-2" data-src="/bds/2022-05-10/20220510093356627248.jpg" data-desc="Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư  tại Bắc Thăng Long gi&#225; rẻ hơn thị trường-2">
-                                    <img src="/bds/2022-05-10/20220510093356627248.jpg?width=73&amp;height=55&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư  tại Bắc Thăng Long gi&#225; rẻ hơn thị trường-2">
-                                </span>
-                                <span class="imageGallery" id="imagegallery-3" data-src="/bds/2022-05-10/20220510093400533248.jpg" data-desc="Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư  tại Bắc Thăng Long gi&#225; rẻ hơn thị trường-3">
-                                    <img src="/bds/2022-05-10/20220510093400533248.jpg?width=73&amp;height=55&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư  tại Bắc Thăng Long gi&#225; rẻ hơn thị trường-3">
-                                </span>
-                                <span class="imageGallery" id="imagegallery-4" data-src="/bds/2022-05-10/20220510093402377248.jpg" data-desc="Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư  tại Bắc Thăng Long gi&#225; rẻ hơn thị trường-4">
-                                    <img src="/bds/2022-05-10/20220510093402377248.jpg?width=73&amp;height=55&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư  tại Bắc Thăng Long gi&#225; rẻ hơn thị trường-4">
-                                </span>
-                            </div>
-                        </div>
-                        <div class="slide-thumb">
-                            <div class="list-thumb">
-                                <div class="content-listthumb">
-                                    <div class="item_thumb osgslideimg osgslide-active">
-                                        <img rel="imagegallery-0" src="/bds/2022-05-10/20220510093355361248.jpg?width=73&amp;height=55&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư  tại Bắc Thăng Long gi&#225; rẻ hơn thị trường-0">
-                                    </div>
-                                    <div class="item_thumb osgslideimg">
-                                        <img rel="imagegallery-1" src="/bds/2022-05-10/20220510093355986248.jpg?width=73&amp;height=55&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư  tại Bắc Thăng Long gi&#225; rẻ hơn thị trường-1">
-                                    </div>
-                                    <div class="item_thumb osgslideimg">
-                                        <img rel="imagegallery-2" src="/bds/2022-05-10/20220510093356627248.jpg?width=73&amp;height=55&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư  tại Bắc Thăng Long gi&#225; rẻ hơn thị trường-2">
-                                    </div>
-                                    <div class="item_thumb osgslideimg">
-                                        <img rel="imagegallery-3" src="/bds/2022-05-10/20220510093400533248.jpg?width=73&amp;height=55&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư  tại Bắc Thăng Long gi&#225; rẻ hơn thị trường-3">
-                                    </div>
-                                    <div class="item_thumb osgslideimg">
-                                        <img rel="imagegallery-4" src="/bds/2022-05-10/20220510093402377248.jpg?width=73&amp;height=55&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư  tại Bắc Thăng Long gi&#225; rẻ hơn thị trường-4">
-                                    </div>
-                                </div>
-                            </div>
-                            <span class="slide-prev noneclick">
-                                <i class="icon-left-open-4"></i>
-                            </span>
-                            <span class="slide-next">
-                                <i class="icon-right-open-4"></i>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div id="pn-map" class="pd-20 brd-e7e7e7 mg-top-20 hidden">
-                    <iframe width="100%" height="246px" ignore-lazy-loading="" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q= 21.1611142,105.84957959999997&amp;key=AIzaSyAMcE3b52-0-_d0bnjv1Ls5ToDRb8nIJug" allowfullscreen=""></iframe>
-                </div>
-                <div class="w-per60 pull-left mg-top-20 mg-bottom-20">
-                    <ul class="display-bl mg-right-10 w-per100 text-left">
-                        <li class="display-bl header1">Đặc điểm bất động sản</li>
-                        <li class="display-bl no-border-top brd-e7e7e7">
-                            <label class="display-ib w-per30 lbl-1">
-                                Loại tin rao
-                            </label>
-                            <div class="display-ib w-per70 desc-1 mg-left-ng-4">
-                                B&#225;n đất thổ cư
-                            </div>
-                        </li>
-                        <li class="display-bl no-border-top brd-e7e7e7">
-                            <label class="display-ib w-per30 lbl-1">
-                                Mặt tiền
-                            </label>
-                            <div class="display-ib w-per70 desc-1 mg-left-ng-4">
-                                4 (m)
-                            </div>
-                        </li>
-                        <li class="display-bl no-border-top brd-e7e7e7">
-                            <label class="display-ib w-per30 lbl-1">
-                                Đường rộng
-                            </label>
-                            <div class="display-ib w-per70 desc-1 mg-left-ng-4">
-                                3 (m)
-                            </div>
-                        </li>
-                        <li class="display-bl no-border-top brd-e7e7e7">
-                            <label class="display-ib w-per30 lbl-1">
-                                Hướng nhà
-                            </label>
-                            <div class="display-ib w-per70 desc-1 mg-left-ng-4">
-                                Không xác định
-                            </div>
-                        </li>
-                        <li class="display-bl no-border-top brd-e7e7e7">
-                            <label class="display-ib w-per30 lbl-1">
-                                Hướng ban công
-                            </label>
-                            <div class="display-ib w-per70 desc-1 mg-left-ng-4">
-                                Không xác định
-                            </div>
-                        </li>
-                        <li class="display-bl no-border-top brd-e7e7e7">
-                            <label class="display-ib w-per30 lbl-1">
-                                Pháp lý
-                            </label>
-                            <div class="display-ib w-per70 desc-1 mg-left-ng-4">
-                                Sổ đỏ/Sổ hồng
-                            </div>
-                        </li>
-                        <li class="display-bl no-border-top brd-e7e7e7">
-                            <label class="display-ib w-per30 lbl-1">
-                                Địa chỉ
-                            </label>
-                            <div class="display-ib w-per70 desc-1 mg-left-ng-4">
-                                19 V&#245;ng La
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="w-per40 pull-left mg-top-20 mg-bottom-20">
-                    <ul class="display-bl mg-left-10 w-per100 text-left">
-                        <li class="display-bl header1">Liên hệ</li>
-                        <li class="display-bl no-border-top brd-e7e7e7">
-                            <label class="display-ib w-per30 lbl-1">
-                                Họ tên
-                            </label>
-                            <div class="display-ib w-per70 desc-1 mg-left-ng-4">
-                                Minh Du
-                            </div>
-                        </li>
-                        <li class="display-bl no-border-top brd-e7e7e7">
-                            <label class="display-ib w-per30 lbl-1">
-                                Email
-                            </label>
-                            <div class="display-ib w-per70 desc-1 mg-left-ng-4">
-                                <a rel="nofollow" class="clr-555 text-non-underline" style="word-break:break-all;" href="/cdn-cgi/l/email-protection#64100b14100d0a0600175654565655240309050d084a070b09"><span class="__cf_email__" data-cfemail="8afee5fafee3e4e8eef9b8bab8b8bbcaede7ebe3e6a4e9e5e7">[email&#160;protected]</span></a>
-                            </div>
-                        </li>
-                        <li class="display-bl no-border-top brd-e7e7e7">
-                            <label class="display-ib w-per30 lbl-1">
-                                Điện thoại
-                            </label>
-                            <div class="display-ib w-per70 desc-1 mg-left-ng-4">
-                                0973820720
-                            </div>
-                        </li>
-                        <li class="display-bl no-border-top brd-e7e7e7">
-                            <label class="display-ib w-per30 lbl-1">
-                                Địa chỉ
-                            </label>
-                            <div class="display-ib w-per70 desc-1 mg-left-ng-4">
-                                Mỹ Tho Tiền Giang
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="clear display-bl clr-ccc fweight-bold">
-                    Mã tin đăng: <label class="display-ib clr-555 mg-right-45 fweight-normal">01174164</label>
-                    Loại hình tin đăng: <label class="display-ib clr-555 mg-right-45 fweight-normal">Tin thường</label>
-                    Ngày cập nhật: <label class="display-ib clr-555 fweight-normal">10/05/2022</label>
-                </div>
-                <div class="clear user-more">
-                    <a href="/xem-tin-cung-nguoi-dang/100560">
-                        <i class="icon-user-circle"></i>
-                        Xem thêm tin của cùng người đăng
-                        <i class="icon-angle-double-right"></i>
+<div id="body" class="body-container">
+    <div class="breadcrumb" style="display: list-item;">
+        <div class="uk-container uk-container-center">
+            <ul class="uk-breadcrumb">
+                <li>
+                    <a href="/" title="Trang chủ">
+                        <i class="fa fa-home"></i> Trang chủ
                     </a>
-                </div>
-                <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-                <div id="rating-box"> <div class="br-wrapper br-theme-fontawesome-stars"><select id="rating" style="display: none;"> <option value="1">1</option> <option value="2">2</option> <option value="3">3</option> <option selected value="4">4</option> <option value="5">5</option> </select><div class="br-widget"><a href="#" data-rating-value="1" data-rating-text="1" class="br-selected"></a><a href="#" data-rating-value="2" data-rating-text="2" class="br-selected"></a><a href="#" data-rating-value="3" data-rating-text="3" class="br-selected"></a><a href="#" data-rating-value="4" data-rating-text="4" class="br-selected"></a><a href="#" data-rating-value="5" data-rating-text="5" class="br-selected br-current"></a><div class="br-current-rating">5</div></div></div> <div class="kksr-legend"> <div vocab="//schema.org/" typeof="CreativeWorkSeason"> <div property="name" class="kksr-title">Cần b&#225;n gấp mảnh đất 75m2 Thổ Cư tại Bắc Thăng Long gi&#225; rẻ hơn thị trường</div> <div property="aggregateRating" typeof="AggregateRating"> Tỷ lệ: <span property="ratingValue">5</span> (89%) <span property="ratingCount">350</span> votes <meta property="bestRating" content="5"> <meta property="worstRating" content="1"> </div> </div> </div> <div class="rating-responsive">.Đánh giá của bạn</div> </div>
-                <div id="idprothertext" class="display-bl brd-bottom-w-1 brd-style-solid brd-style-color set-relative h-30 mg-top-30 mg-bottom-10">
-                    <div class="fweight-bold set-absolute bottom-0 left-per-50 pd-2 pd-top-3 pd-left-8 pd-right-8 prd-view-ac">
-                        <h2 class="fsize-13 no-mg">B&#225;n đất thổ cư Đường 19</h2>
-                    </div>
-                </div>
-                <div class="item display-bl pd-top-10 pd-bottom-10">
-                    <h3 class="display-bl fsize-13">
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn-xa-duc-tu-dong-anh-ha-noi/ban-475m-dat-truc-chinh-12m-tai-phuc-hau-duc-tu-dong-anh-gia-hon-50-trieu-lh-0377236-p1174269" title="Bán 47.5m đ&#226;́t trục chính 12m tại Phúc H&#226;̣u, Dục Tú Đ&#244;ng Anh. Giá hơn 50 tri&#234;̣u, LH: 0377236666" class="clr-055699">Bán 47.5m đ&#226;́t trục chính 12m tại Phúc H&#226;̣u, Dục Tú Đ&#244;ng Anh. Giá hơn 50 tri&#234;̣u, LH: 0377236666</a>
-                    </h3>
-                    <div class="display-bl set-relative min-h-84 new-view">
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn-xa-duc-tu-dong-anh-ha-noi/ban-475m-dat-truc-chinh-12m-tai-phuc-hau-duc-tu-dong-anh-gia-hon-50-trieu-lh-0377236-p1174269" title="Bán 47.5m đ&#226;́t trục chính 12m tại Phúc H&#226;̣u, Dục Tú Đ&#244;ng Anh. Giá hơn 50 tri&#234;̣u, LH: 0377236666" class="display-ib w-per-17">
-                            <img alt="Bán 47.5m đ&#226;́t trục chính 12m tại Phúc H&#226;̣u, Dục Tú Đ&#244;ng Anh. Giá hơn 50 tri&#234;̣u, LH: 0377236666" class="full-width clr-D4D4D4 text-non-underline" src="/Content/img/no_images.jpg" />
-                        </a><p class="pd-left-10 w-per-83 display-ib oflow-hidden max-h-40 no-mg-bottom">
-                            BÁN LÔ ĐẤT TRỤC CHÍNH THÔN PHÚC HẬU XÃ DỤC TÚ ĐÔNG ANH HÀ NỘI Diện tích : 47.5m Mặt tiền = mặt hậu 5.5m Đường trước đất 12m kinh doanh bất chấp Vị trí cách đường dẫn chân Cầu Tứ Liên ...
-                        </p>
-                        <p class="set-absolute left-per-17 bottom-per-23 pd-left-10 no-mg-bottom">
-                            Giá: <span class="fweight-bold mg-right-60 clr-055699">50 tri&#234;̣u</span>
-                            Diện tích: <span class="fweight-bold clr-055699">47 m&#178;</span>
-                        </p>
-                        <p class="set-absolute left-per-17 bottom-ng-3 pd-left-10 no-mg-bottom">
-                            Quận/Huyện:
-                            <a title="B&#225;n đất thổ cư Đ&#244;ng Anh" href="/ban-dat-tho-cu-dong-anh" class="clr-055699">Đ&#244;ng Anh</a>,
-                            <a title="B&#225;n đất thổ cư Hà N&#244;̣i" href="/ban-dat-tho-cu-ha-noi" class="clr-055699">Hà N&#244;̣i</a>
-                        </p>
-                        <p class="set-absolute bottom-ng-3 no-mg-bottom right-3 clr-555">
-                            10/05/2022
-                        </p>
-                    </div>
-                </div>
-                <div class="item display-bl pd-top-10 pd-bottom-10">
-                    <h3 class="display-bl fsize-13">
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn-xa-nguyen-khe-dong-anh-ha-noi/ban-dat-nguyen-khe-dong-anh-dt-68m2-mt-4m-vuong-vuc-vo-tri-dep-gia-dau-tu-p1095446" title="B&#193;N ĐẤT NGUY&#202;N KH&#202;- Đ&#212;NG ANH, DT 68M2, MT 4M VU&#212;NG VỨC, VỊ TR&#205; ĐẸP, GI&#193; ĐẦU TƯ!" class="clr-055699">B&#193;N ĐẤT NGUY&#202;N KH&#202;- Đ&#212;NG ANH, DT 68M2, MT 4M VU&#212;NG VỨC, VỊ TR&#205; ĐẸP, GI&#193; ĐẦU TƯ!</a>
-                    </h3>
-                    <div class="display-bl set-relative min-h-84 new-view">
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn-xa-nguyen-khe-dong-anh-ha-noi/ban-dat-nguyen-khe-dong-anh-dt-68m2-mt-4m-vuong-vuc-vo-tri-dep-gia-dau-tu-p1095446" title="B&#193;N ĐẤT NGUY&#202;N KH&#202;- Đ&#212;NG ANH, DT 68M2, MT 4M VU&#212;NG VỨC, VỊ TR&#205; ĐẸP, GI&#193; ĐẦU TƯ!" class="display-ib w-per-17">
-                            <img alt="B&#193;N ĐẤT NGUY&#202;N KH&#202;- Đ&#212;NG ANH, DT 68M2, MT 4M VU&#212;NG VỨC, VỊ TR&#205; ĐẸP, GI&#193; ĐẦU TƯ!" class="full-width clr-D4D4D4 text-non-underline" src="/bds/2022-03-12/20220312081413279248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                            <img alt="B&#193;N ĐẤT NGUY&#202;N KH&#202;- Đ&#212;NG ANH, DT 68M2, MT 4M VU&#212;NG VỨC, VỊ TR&#205; ĐẸP, GI&#193; ĐẦU TƯ!" class="small-img1" src="/bds/2022-03-12/20220312081414014248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                            <img alt="B&#193;N ĐẤT NGUY&#202;N KH&#202;- Đ&#212;NG ANH, DT 68M2, MT 4M VU&#212;NG VỨC, VỊ TR&#205; ĐẸP, GI&#193; ĐẦU TƯ!" class="small-img2" src="/bds/2022-03-12/20220312081414748248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                        </a><p class="pd-left-10 w-per-83 display-ib oflow-hidden max-h-40 no-mg-bottom">
-                            • Chính chủ gửi bán mảnh đất tại thôn Khê Nữ, Nguyên Khê, Đông Anh. • Diện tích 68m2, Mặt tiền 4m, vuông vức bao diêm. • Cách Lê Hữu Tựu 100m, ngõ 3,5m ô tô thông, gần đường bìa làng, ...
-                        </p>
-                        <p class="set-absolute left-per-17 bottom-per-23 pd-left-10 no-mg-bottom">
-                            Giá: <span class="fweight-bold mg-right-60 clr-055699">2.17 tỷ</span>
-                            Diện tích: <span class="fweight-bold clr-055699">68 m&#178;</span>
-                        </p>
-                        <p class="set-absolute left-per-17 bottom-ng-3 pd-left-10 no-mg-bottom">
-                            Quận/Huyện:
-                            <a title="B&#225;n đất thổ cư Đ&#244;ng Anh" href="/ban-dat-tho-cu-dong-anh" class="clr-055699">Đ&#244;ng Anh</a>,
-                            <a title="B&#225;n đất thổ cư Hà N&#244;̣i" href="/ban-dat-tho-cu-ha-noi" class="clr-055699">Hà N&#244;̣i</a>
-                        </p>
-                        <p class="set-absolute bottom-ng-3 no-mg-bottom right-3 clr-555">
-                            10/05/2022
-                        </p>
-                    </div>
-                </div>
-                <div class="item display-bl pd-top-10 pd-bottom-10">
-                    <h3 class="display-bl fsize-13">
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn-xa-viet-hung-dong-anh-ha-noi/ban-dat-dau-gia-x1-viet-hung-dong-anh-dt-85m2-mt-5m-ngo-o-to-tranh-nhau-vo-tri-dep-p1097152" title="B&#193;N ĐẤT ĐẤU GI&#193; X1 VIỆT H&#217;NG- Đ&#212;NG ANH, DT 85M2, MT 5M, NG&#213; &#212; T&#212; TR&#193;NH NHAU, VỊ TR&#205; ĐẸP" class="clr-055699">B&#193;N ĐẤT ĐẤU GI&#193; X1 VIỆT H&#217;NG- Đ&#212;NG ANH, DT 85M2, MT 5M, NG&#213; &#212; T&#212; TR&#193;NH NHAU, VỊ TR&#205; ĐẸP</a>
-                    </h3>
-                    <div class="display-bl set-relative min-h-84 new-view">
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn-xa-viet-hung-dong-anh-ha-noi/ban-dat-dau-gia-x1-viet-hung-dong-anh-dt-85m2-mt-5m-ngo-o-to-tranh-nhau-vo-tri-dep-p1097152" title="B&#193;N ĐẤT ĐẤU GI&#193; X1 VIỆT H&#217;NG- Đ&#212;NG ANH, DT 85M2, MT 5M, NG&#213; &#212; T&#212; TR&#193;NH NHAU, VỊ TR&#205; ĐẸP" class="display-ib w-per-17">
-                            <img alt="B&#193;N ĐẤT ĐẤU GI&#193; X1 VIỆT H&#217;NG- Đ&#212;NG ANH, DT 85M2, MT 5M, NG&#213; &#212; T&#212; TR&#193;NH NHAU, VỊ TR&#205; ĐẸP" class="full-width clr-D4D4D4 text-non-underline" src="/bds/2022-03-14/20220314101921548248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                            <img alt="B&#193;N ĐẤT ĐẤU GI&#193; X1 VIỆT H&#217;NG- Đ&#212;NG ANH, DT 85M2, MT 5M, NG&#213; &#212; T&#212; TR&#193;NH NHAU, VỊ TR&#205; ĐẸP" class="small-img1" src="/bds/2022-03-14/20220314101927142248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                            <img alt="B&#193;N ĐẤT ĐẤU GI&#193; X1 VIỆT H&#217;NG- Đ&#212;NG ANH, DT 85M2, MT 5M, NG&#213; &#212; T&#212; TR&#193;NH NHAU, VỊ TR&#205; ĐẸP" class="small-img2" src="/bds/2022-03-14/20220314101937283248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                        </a><p class="pd-left-10 w-per-83 display-ib oflow-hidden max-h-40 no-mg-bottom">
-                            + Chính chủ gửi bán mảnh đất tại khu đấu giá X1 khu Trung Việt Hùng - Đông Anh. + Diện tích 85m2, 5m mặt tiền đẹp. + Đường ô tô tránh nhau, cách 1 nhà ra đường trục lớn liên xã. + ...
-                        </p>
-                        <p class="set-absolute left-per-17 bottom-per-23 pd-left-10 no-mg-bottom">
-                            Giá: <span class="fweight-bold mg-right-60 clr-055699">4.25 tỷ</span>
-                            Diện tích: <span class="fweight-bold clr-055699">85 m&#178;</span>
-                        </p>
-                        <p class="set-absolute left-per-17 bottom-ng-3 pd-left-10 no-mg-bottom">
-                            Quận/Huyện:
-                            <a title="B&#225;n đất thổ cư Đ&#244;ng Anh" href="/ban-dat-tho-cu-dong-anh" class="clr-055699">Đ&#244;ng Anh</a>,
-                            <a title="B&#225;n đất thổ cư Hà N&#244;̣i" href="/ban-dat-tho-cu-ha-noi" class="clr-055699">Hà N&#244;̣i</a>
-                        </p>
-                        <p class="set-absolute bottom-ng-3 no-mg-bottom right-3 clr-555">
-                            10/05/2022
-                        </p>
-                    </div>
-                </div>
-                <div class="item display-bl pd-top-10 pd-bottom-10">
-                    <h3 class="display-bl fsize-13">
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn-xa-thuy-lam-dong-anh-ha-noi/dau-gia-x2-huong-tram-thuy-lam-85m2-via-he-2m-duong-rong-10m-4-o-to-tranh-nhau-kinh-doanh-p1101843" title="ĐẤU GI&#193; X2 HƯƠNG TRẦM - THỤY L&#194;M, 85M2, VỈA H&#200; 2M, ĐƯỜNG RỘNG 10M 4 &#212; T&#212; TR&#193;NH NHAU, KINH DOANH" class="clr-055699">ĐẤU GI&#193; X2 HƯƠNG TRẦM - THỤY L&#194;M, 85M2, VỈA H&#200; 2M, ĐƯỜNG RỘNG 10M 4 &#212; T&#212; TR&#193;NH NHAU, KINH DOANH</a>
-                    </h3>
-                    <div class="display-bl set-relative min-h-84 new-view">
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn-xa-thuy-lam-dong-anh-ha-noi/dau-gia-x2-huong-tram-thuy-lam-85m2-via-he-2m-duong-rong-10m-4-o-to-tranh-nhau-kinh-doanh-p1101843" title="ĐẤU GI&#193; X2 HƯƠNG TRẦM - THỤY L&#194;M, 85M2, VỈA H&#200; 2M, ĐƯỜNG RỘNG 10M 4 &#212; T&#212; TR&#193;NH NHAU, KINH DOANH" class="display-ib w-per-17">
-                            <img alt="ĐẤU GI&#193; X2 HƯƠNG TRẦM - THỤY L&#194;M, 85M2, VỈA H&#200; 2M, ĐƯỜNG RỘNG 10M 4 &#212; T&#212; TR&#193;NH NHAU, KINH DOANH" class="full-width clr-D4D4D4 text-non-underline" src="/bds/2022-03-18/20220318092227211248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                            <img alt="ĐẤU GI&#193; X2 HƯƠNG TRẦM - THỤY L&#194;M, 85M2, VỈA H&#200; 2M, ĐƯỜNG RỘNG 10M 4 &#212; T&#212; TR&#193;NH NHAU, KINH DOANH" class="small-img1" src="/bds/2022-03-18/20220318092234398248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                            <img alt="ĐẤU GI&#193; X2 HƯƠNG TRẦM - THỤY L&#194;M, 85M2, VỈA H&#200; 2M, ĐƯỜNG RỘNG 10M 4 &#212; T&#212; TR&#193;NH NHAU, KINH DOANH" class="small-img2" src="/bds/2022-03-18/20220318092240961248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                        </a><p class="pd-left-10 w-per-83 display-ib oflow-hidden max-h-40 no-mg-bottom">
-                            * Chính chủ gửi bán mảnh đất Đấu giá X2 Hương Trầm - Thụy Lâm - Đông Anh rất đẹp. * Đường rộng hơn 10m có vỉa hè 2m, 4 ô tô tránh nhau dừng đỗ thoải mái. * Thửa đất đẹp, tương lai ...
-                        </p>
-                        <p class="set-absolute left-per-17 bottom-per-23 pd-left-10 no-mg-bottom">
-                            Giá: <span class="fweight-bold mg-right-60 clr-055699">3.145 tỷ</span>
-                            Diện tích: <span class="fweight-bold clr-055699">85 m&#178;</span>
-                        </p>
-                        <p class="set-absolute left-per-17 bottom-ng-3 pd-left-10 no-mg-bottom">
-                            Quận/Huyện:
-                            <a title="B&#225;n đất thổ cư Đ&#244;ng Anh" href="/ban-dat-tho-cu-dong-anh" class="clr-055699">Đ&#244;ng Anh</a>,
-                            <a title="B&#225;n đất thổ cư Hà N&#244;̣i" href="/ban-dat-tho-cu-ha-noi" class="clr-055699">Hà N&#244;̣i</a>
-                        </p>
-                        <p class="set-absolute bottom-ng-3 no-mg-bottom right-3 clr-555">
-                            10/05/2022
-                        </p>
-                    </div>
-                </div>
-                <div class="item display-bl pd-top-10 pd-bottom-10">
-                    <h3 class="display-bl fsize-13">
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn-xa-viet-hung-dong-anh-ha-noi/nhinh-4-ty-ban-dat-kinh-doanh-duoc-tai-viet-hung-dong-anh-truc-chinh-xa-luu-luong-giao-thong-lon-p1103961" title="NHỈNH 4 TỶ, B&#193;N ĐẤT KINH DOANH ĐƯỢC TẠI VIỆT H&#217;NG Đ&#212;NG ANH, TRỤC CH&#205;NH X&#195;, LƯU LƯỢNG GIAO TH&#212;NG LỚN" class="clr-055699">NHỈNH 4 TỶ, B&#193;N ĐẤT KINH DOANH ĐƯỢC TẠI VIỆT H&#217;NG Đ&#212;NG ANH, TRỤC CH&#205;NH X&#195;, LƯU LƯỢNG GIAO TH&#212;NG LỚN</a>
-                    </h3>
-                    <div class="display-bl set-relative min-h-84 new-view">
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn-xa-viet-hung-dong-anh-ha-noi/nhinh-4-ty-ban-dat-kinh-doanh-duoc-tai-viet-hung-dong-anh-truc-chinh-xa-luu-luong-giao-thong-lon-p1103961" title="NHỈNH 4 TỶ, B&#193;N ĐẤT KINH DOANH ĐƯỢC TẠI VIỆT H&#217;NG Đ&#212;NG ANH, TRỤC CH&#205;NH X&#195;, LƯU LƯỢNG GIAO TH&#212;NG LỚN" class="display-ib w-per-17">
-                            <img alt="NHỈNH 4 TỶ, B&#193;N ĐẤT KINH DOANH ĐƯỢC TẠI VIỆT H&#217;NG Đ&#212;NG ANH, TRỤC CH&#205;NH X&#195;, LƯU LƯỢNG GIAO TH&#212;NG LỚN" class="full-width clr-D4D4D4 text-non-underline" src="/bds/2022-03-20/20220320073754594248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                            <img alt="NHỈNH 4 TỶ, B&#193;N ĐẤT KINH DOANH ĐƯỢC TẠI VIỆT H&#217;NG Đ&#212;NG ANH, TRỤC CH&#205;NH X&#195;, LƯU LƯỢNG GIAO TH&#212;NG LỚN" class="small-img1" src="/bds/2022-03-20/20220320073756594248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                            <img alt="NHỈNH 4 TỶ, B&#193;N ĐẤT KINH DOANH ĐƯỢC TẠI VIỆT H&#217;NG Đ&#212;NG ANH, TRỤC CH&#205;NH X&#195;, LƯU LƯỢNG GIAO TH&#212;NG LỚN" class="small-img2" src="/bds/2022-03-20/20220320073757328248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                        </a><p class="pd-left-10 w-per-83 display-ib oflow-hidden max-h-40 no-mg-bottom">
-                            Nhỉnh 4 tỷ, thửa đất kinh doanh được tại Đấu giá Việt Hùng.Mặt đường nhựa Trục chính đi vào UBND xã, trường cấp 1-2, chợ Việt Hùng.Mặt tiền 5m, vỉa hè rộng.Liên hệ: Hoàng Thắng 086...
-                        </p>
-                        <p class="set-absolute left-per-17 bottom-per-23 pd-left-10 no-mg-bottom">
-                            Giá: <span class="fweight-bold mg-right-60 clr-055699">4.65 tỷ</span>
-                            Diện tích: <span class="fweight-bold clr-055699">85 m&#178;</span>
-                        </p>
-                        <p class="set-absolute left-per-17 bottom-ng-3 pd-left-10 no-mg-bottom">
-                            Quận/Huyện:
-                            <a title="B&#225;n đất thổ cư Đ&#244;ng Anh" href="/ban-dat-tho-cu-dong-anh" class="clr-055699">Đ&#244;ng Anh</a>,
-                            <a title="B&#225;n đất thổ cư Hà N&#244;̣i" href="/ban-dat-tho-cu-ha-noi" class="clr-055699">Hà N&#244;̣i</a>
-                        </p>
-                        <p class="set-absolute bottom-ng-3 no-mg-bottom right-3 clr-555">
-                            10/05/2022
-                        </p>
-                    </div>
-                </div>
-                <div class="item display-bl pd-top-10 pd-bottom-10">
-                    <h3 class="display-bl fsize-13">
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn-xa-nguyen-khe-dong-anh-ha-noi/ban-dat-khe-nu-nguyen-khe-30m-ra-duong-le-huu-tuu-canh-khu-san-choi-cay-xanh-duong-4m-p1103976" title="B&#193;N ĐẤT KH&#202; NŨ, NGUY&#202;N KH&#202;, 30M RA ĐƯỜNG L&#202; HỮU TỰU, CẠNH KHU S&#194;N CHƠI, C&#194;Y XANH, ĐƯỜNG 4M" class="clr-055699">B&#193;N ĐẤT KH&#202; NŨ, NGUY&#202;N KH&#202;, 30M RA ĐƯỜNG L&#202; HỮU TỰU, CẠNH KHU S&#194;N CHƠI, C&#194;Y XANH, ĐƯỜNG 4M</a>
-                    </h3>
-                    <div class="display-bl set-relative min-h-84 new-view">
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn-xa-nguyen-khe-dong-anh-ha-noi/ban-dat-khe-nu-nguyen-khe-30m-ra-duong-le-huu-tuu-canh-khu-san-choi-cay-xanh-duong-4m-p1103976" title="B&#193;N ĐẤT KH&#202; NŨ, NGUY&#202;N KH&#202;, 30M RA ĐƯỜNG L&#202; HỮU TỰU, CẠNH KHU S&#194;N CHƠI, C&#194;Y XANH, ĐƯỜNG 4M" class="display-ib w-per-17">
-                            <img alt="B&#193;N ĐẤT KH&#202; NŨ, NGUY&#202;N KH&#202;, 30M RA ĐƯỜNG L&#202; HỮU TỰU, CẠNH KHU S&#194;N CHƠI, C&#194;Y XANH, ĐƯỜNG 4M" class="full-width clr-D4D4D4 text-non-underline" src="/bds/2022-03-20/20220320080141180248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                            <img alt="B&#193;N ĐẤT KH&#202; NŨ, NGUY&#202;N KH&#202;, 30M RA ĐƯỜNG L&#202; HỮU TỰU, CẠNH KHU S&#194;N CHƠI, C&#194;Y XANH, ĐƯỜNG 4M" class="small-img1" src="/bds/2022-03-20/20220320080145805248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                            <img alt="B&#193;N ĐẤT KH&#202; NŨ, NGUY&#202;N KH&#202;, 30M RA ĐƯỜNG L&#202; HỮU TỰU, CẠNH KHU S&#194;N CHƠI, C&#194;Y XANH, ĐƯỜNG 4M" class="small-img2" src="/bds/2022-03-20/20220320080147008248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                        </a><p class="pd-left-10 w-per-83 display-ib oflow-hidden max-h-40 no-mg-bottom">
-                            - Chính chủ bán lướt cọc thửa đất Khê Nữ, Nguyên Khê, 30m ra đến đường Lê Hữu Tựu. - Diện tích: 63.6m, mặt tiền 5m, dài gần 13m, hướng Bắc. - Đường trước đất gần 4m, cách 1 nhà ra ...
-                        </p>
-                        <p class="set-absolute left-per-17 bottom-per-23 pd-left-10 no-mg-bottom">
-                            Giá: <span class="fweight-bold mg-right-60 clr-055699">2.5 tỷ</span>
-                            Diện tích: <span class="fweight-bold clr-055699">63 m&#178;</span>
-                        </p>
-                        <p class="set-absolute left-per-17 bottom-ng-3 pd-left-10 no-mg-bottom">
-                            Quận/Huyện:
-                            <a title="B&#225;n đất thổ cư Đ&#244;ng Anh" href="/ban-dat-tho-cu-dong-anh" class="clr-055699">Đ&#244;ng Anh</a>,
-                            <a title="B&#225;n đất thổ cư Hà N&#244;̣i" href="/ban-dat-tho-cu-ha-noi" class="clr-055699">Hà N&#244;̣i</a>
-                        </p>
-                        <p class="set-absolute bottom-ng-3 no-mg-bottom right-3 clr-555">
-                            10/05/2022
-                        </p>
-                    </div>
-                </div>
-                <div class="item display-bl pd-top-10 pd-bottom-10">
-                    <h3 class="display-bl fsize-13">
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn-xa-uy-no-dong-anh-ha-noi/ban-dat-dau-gia-hau-oai-uy-no-2-mat-tien-nhin-vao-khu-shophouse-319-bqp-via-he-truoc-sau-dau-t-p1104452" title="B&#225;n đất đấu gi&#225; Hậu Oai - Uy Nỗ, 2 mặt tiền, nh&#236;n v&#224;o khu shophouse 319 BQP, vỉa h&#232; trước sau, đầu tư, kinh doanh" class="clr-055699">B&#225;n đất đấu gi&#225; Hậu Oai - Uy Nỗ, 2 mặt tiền, nh&#236;n v&#224;o khu shophouse 319 BQP, vỉa h&#232; trước sau, đầu tư, kinh doanh</a>
-                    </h3>
-                    <div class="display-bl set-relative min-h-84 new-view">
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn-xa-uy-no-dong-anh-ha-noi/ban-dat-dau-gia-hau-oai-uy-no-2-mat-tien-nhin-vao-khu-shophouse-319-bqp-via-he-truoc-sau-dau-t-p1104452" title="B&#225;n đất đấu gi&#225; Hậu Oai - Uy Nỗ, 2 mặt tiền, nh&#236;n v&#224;o khu shophouse 319 BQP, vỉa h&#232; trước sau, đầu tư, kinh doanh" class="display-ib w-per-17">
-                            <img alt="B&#225;n đất đấu gi&#225; Hậu Oai - Uy Nỗ, 2 mặt tiền, nh&#236;n v&#224;o khu shophouse 319 BQP, vỉa h&#232; trước sau, đầu tư, kinh doanh" class="full-width clr-D4D4D4 text-non-underline" src="/bds/2022-03-21/20220321062241971248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                            <img alt="B&#225;n đất đấu gi&#225; Hậu Oai - Uy Nỗ, 2 mặt tiền, nh&#236;n v&#224;o khu shophouse 319 BQP, vỉa h&#232; trước sau, đầu tư, kinh doanh" class="small-img1" src="/bds/2022-03-21/20220321062259222248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                            <img alt="B&#225;n đất đấu gi&#225; Hậu Oai - Uy Nỗ, 2 mặt tiền, nh&#236;n v&#224;o khu shophouse 319 BQP, vỉa h&#232; trước sau, đầu tư, kinh doanh" class="small-img2" src="/bds/2022-03-21/20220321062311597248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                        </a><p class="pd-left-10 w-per-83 display-ib oflow-hidden max-h-40 no-mg-bottom">
-                            - Thửa đất 111m2, mặt tiền 6m, dài 18.5m.- 2 mặt tiền trước sau, vỉa hè rộng, đường 2 làn xe.- Đất nằm trong khu đô thị đã có quy hoạch và triển khai đồng bộ tương lai gần 1-2 năm ...
-                        </p>
-                        <p class="set-absolute left-per-17 bottom-per-23 pd-left-10 no-mg-bottom">
-                            Giá: <span class="fweight-bold mg-right-60 clr-055699">6.22 tỷ</span>
-                            Diện tích: <span class="fweight-bold clr-055699">75 m&#178;</span>
-                        </p>
-                        <p class="set-absolute left-per-17 bottom-ng-3 pd-left-10 no-mg-bottom">
-                            Quận/Huyện:
-                            <a title="B&#225;n đất thổ cư Đ&#244;ng Anh" href="/ban-dat-tho-cu-dong-anh" class="clr-055699">Đ&#244;ng Anh</a>,
-                            <a title="B&#225;n đất thổ cư Hà N&#244;̣i" href="/ban-dat-tho-cu-ha-noi" class="clr-055699">Hà N&#244;̣i</a>
-                        </p>
-                        <p class="set-absolute bottom-ng-3 no-mg-bottom right-3 clr-555">
-                            10/05/2022
-                        </p>
-                    </div>
-                </div>
-                <div class="item display-bl pd-top-10 pd-bottom-10">
-                    <h3 class="display-bl fsize-13">
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn-xa-nguyen-khe-dong-anh-ha-noi/ban-dat-ngay-sat-dau-gia-x6-nguyen-khe-gan-ql3-duong-o-to-gan-4m-thua-dep-ngo-thong-dau-tu-dinh-p1105712" title="B&#225;n đất ngay s&#225;t đấu gi&#225; x6 Nguy&#234;n Kh&#234;, gần QL3, đường &#244; t&#244; gần 4m, thửa đẹp, ng&#245; th&#244;ng, đầu tư đỉnh" class="clr-055699">B&#225;n đất ngay s&#225;t đấu gi&#225; x6 Nguy&#234;n Kh&#234;, gần QL3, đường &#244; t&#244; gần 4m, thửa đẹp, ng&#245; th&#244;ng, đầu tư đỉnh</a>
-                    </h3>
-                    <div class="display-bl set-relative min-h-84 new-view">
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn-xa-nguyen-khe-dong-anh-ha-noi/ban-dat-ngay-sat-dau-gia-x6-nguyen-khe-gan-ql3-duong-o-to-gan-4m-thua-dep-ngo-thong-dau-tu-dinh-p1105712" title="B&#225;n đất ngay s&#225;t đấu gi&#225; x6 Nguy&#234;n Kh&#234;, gần QL3, đường &#244; t&#244; gần 4m, thửa đẹp, ng&#245; th&#244;ng, đầu tư đỉnh" class="display-ib w-per-17">
-                            <img alt="B&#225;n đất ngay s&#225;t đấu gi&#225; x6 Nguy&#234;n Kh&#234;, gần QL3, đường &#244; t&#244; gần 4m, thửa đẹp, ng&#245; th&#244;ng, đầu tư đỉnh" class="full-width clr-D4D4D4 text-non-underline" src="/bds/2022-03-22/20220322070014833248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                            <img alt="B&#225;n đất ngay s&#225;t đấu gi&#225; x6 Nguy&#234;n Kh&#234;, gần QL3, đường &#244; t&#244; gần 4m, thửa đẹp, ng&#245; th&#244;ng, đầu tư đỉnh" class="small-img1" src="/bds/2022-03-22/20220322070026287248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                            <img alt="B&#225;n đất ngay s&#225;t đấu gi&#225; x6 Nguy&#234;n Kh&#234;, gần QL3, đường &#244; t&#244; gần 4m, thửa đẹp, ng&#245; th&#244;ng, đầu tư đỉnh" class="small-img2" src="/bds/2022-03-22/20220322070028865248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                        </a><p class="pd-left-10 w-per-83 display-ib oflow-hidden max-h-40 no-mg-bottom">
-                            + Bán đất thôn Nguyên Khê - Đông Anh, cách 1 nhà ra khu đấu giá X6 Nguyên Khê.+ Cách QL3 vài chục mét, thẳng trục khu đấu giá, ngõ ô tô gần 4m rộng rãi, ô tô vào đất thoải mái.+ Diện ...
-                        </p>
-                        <p class="set-absolute left-per-17 bottom-per-23 pd-left-10 no-mg-bottom">
-                            Giá: <span class="fweight-bold mg-right-60 clr-055699">4.45 tỷ</span>
-                            Diện tích: <span class="fweight-bold clr-055699">89 m&#178;</span>
-                        </p>
-                        <p class="set-absolute left-per-17 bottom-ng-3 pd-left-10 no-mg-bottom">
-                            Quận/Huyện:
-                            <a title="B&#225;n đất thổ cư Đ&#244;ng Anh" href="/ban-dat-tho-cu-dong-anh" class="clr-055699">Đ&#244;ng Anh</a>,
-                            <a title="B&#225;n đất thổ cư Hà N&#244;̣i" href="/ban-dat-tho-cu-ha-noi" class="clr-055699">Hà N&#244;̣i</a>
-                        </p>
-                        <p class="set-absolute bottom-ng-3 no-mg-bottom right-3 clr-555">
-                            10/05/2022
-                        </p>
-                    </div>
-                </div>
-                <div class="item display-bl pd-top-10 pd-bottom-10">
-                    <h3 class="display-bl fsize-13">
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn-xa-xuan-non-dong-anh-ha-noi/ban-dat-lo-goc-xuan-non-dong-anh-dt-70m-mt-54m-ngo-hon-3m-gia-3x-p1106984" title="B&#193;N ĐẤT L&#212; G&#211;C XU&#194;N NỘN - Đ&#212;NG ANH, DT 70M, MT 5,4M, NG&#213; HƠN 3M, GI&#193; 3X" class="clr-055699">B&#193;N ĐẤT L&#212; G&#211;C XU&#194;N NỘN - Đ&#212;NG ANH, DT 70M, MT 5,4M, NG&#213; HƠN 3M, GI&#193; 3X</a>
-                    </h3>
-                    <div class="display-bl set-relative min-h-84 new-view">
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn-xa-xuan-non-dong-anh-ha-noi/ban-dat-lo-goc-xuan-non-dong-anh-dt-70m-mt-54m-ngo-hon-3m-gia-3x-p1106984" title="B&#193;N ĐẤT L&#212; G&#211;C XU&#194;N NỘN - Đ&#212;NG ANH, DT 70M, MT 5,4M, NG&#213; HƠN 3M, GI&#193; 3X" class="display-ib w-per-17">
-                            <img alt="B&#193;N ĐẤT L&#212; G&#211;C XU&#194;N NỘN - Đ&#212;NG ANH, DT 70M, MT 5,4M, NG&#213; HƠN 3M, GI&#193; 3X" class="full-width clr-D4D4D4 text-non-underline" src="/bds/2022-03-23/20220323074817553248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                            <img alt="B&#193;N ĐẤT L&#212; G&#211;C XU&#194;N NỘN - Đ&#212;NG ANH, DT 70M, MT 5,4M, NG&#213; HƠN 3M, GI&#193; 3X" class="small-img1" src="/bds/2022-03-23/20220323074818444248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                            <img alt="B&#193;N ĐẤT L&#212; G&#211;C XU&#194;N NỘN - Đ&#212;NG ANH, DT 70M, MT 5,4M, NG&#213; HƠN 3M, GI&#193; 3X" class="small-img2" src="/bds/2022-03-23/20220323074819194248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                        </a><p class="pd-left-10 w-per-83 display-ib oflow-hidden max-h-40 no-mg-bottom">
-                            • Chủ gửi bán mảnh đất lô góc, mặt tiền rộng, tỷ lệ vàng tại Xóm Trại - Xuân Nộn - Đông anh.• Diện tích 70,7m2, mặt tiền 5,3m, ngõ ô tô hơn 3m ngõ thông thẳng, từ đường trục chính ...
-                        </p>
-                        <p class="set-absolute left-per-17 bottom-per-23 pd-left-10 no-mg-bottom">
-                            Giá: <span class="fweight-bold mg-right-60 clr-055699">2.4 tỷ</span>
-                            Diện tích: <span class="fweight-bold clr-055699">70 m&#178;</span>
-                        </p>
-                        <p class="set-absolute left-per-17 bottom-ng-3 pd-left-10 no-mg-bottom">
-                            Quận/Huyện:
-                            <a title="B&#225;n đất thổ cư Đ&#244;ng Anh" href="/ban-dat-tho-cu-dong-anh" class="clr-055699">Đ&#244;ng Anh</a>,
-                            <a title="B&#225;n đất thổ cư Hà N&#244;̣i" href="/ban-dat-tho-cu-ha-noi" class="clr-055699">Hà N&#244;̣i</a>
-                        </p>
-                        <p class="set-absolute bottom-ng-3 no-mg-bottom right-3 clr-555">
-                            10/05/2022
-                        </p>
-                    </div>
-                </div>
-                <div class="item display-bl pd-top-10 pd-bottom-10">
-                    <h3 class="display-bl fsize-13">
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn-xa-xuan-non-dong-anh-ha-noi/ban-55m2-dat-truc-chinh-duong-yen-xuan-non-duong-o-to-tranh-sat-kcn-tap-trung-dong-anh-p1109912" title="B&#193;N 55M2 ĐẤT TRỤC CH&#205;NH ĐƯỜNG Y&#202;N- XU&#194;N NỘN, ĐƯỜNG &#212; T&#212; TR&#193;NH, S&#193;T KCN TẬP TRUNG Đ&#212;NG ANH" class="clr-055699">B&#193;N 55M2 ĐẤT TRỤC CH&#205;NH ĐƯỜNG Y&#202;N- XU&#194;N NỘN, ĐƯỜNG &#212; T&#212; TR&#193;NH, S&#193;T KCN TẬP TRUNG Đ&#212;NG ANH</a>
-                    </h3>
-                    <div class="display-bl set-relative min-h-84 new-view">
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn-xa-xuan-non-dong-anh-ha-noi/ban-55m2-dat-truc-chinh-duong-yen-xuan-non-duong-o-to-tranh-sat-kcn-tap-trung-dong-anh-p1109912" title="B&#193;N 55M2 ĐẤT TRỤC CH&#205;NH ĐƯỜNG Y&#202;N- XU&#194;N NỘN, ĐƯỜNG &#212; T&#212; TR&#193;NH, S&#193;T KCN TẬP TRUNG Đ&#212;NG ANH" class="display-ib w-per-17">
-                            <img alt="B&#193;N 55M2 ĐẤT TRỤC CH&#205;NH ĐƯỜNG Y&#202;N- XU&#194;N NỘN, ĐƯỜNG &#212; T&#212; TR&#193;NH, S&#193;T KCN TẬP TRUNG Đ&#212;NG ANH" class="full-width clr-D4D4D4 text-non-underline" src="/bds/2022-03-25/20220325074125747248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                            <img alt="B&#193;N 55M2 ĐẤT TRỤC CH&#205;NH ĐƯỜNG Y&#202;N- XU&#194;N NỘN, ĐƯỜNG &#212; T&#212; TR&#193;NH, S&#193;T KCN TẬP TRUNG Đ&#212;NG ANH" class="small-img1" src="/bds/2022-03-25/20220325074128591248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                            <img alt="B&#193;N 55M2 ĐẤT TRỤC CH&#205;NH ĐƯỜNG Y&#202;N- XU&#194;N NỘN, ĐƯỜNG &#212; T&#212; TR&#193;NH, S&#193;T KCN TẬP TRUNG Đ&#212;NG ANH" class="small-img2" src="/bds/2022-03-25/20220325074131919248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                        </a><p class="pd-left-10 w-per-83 display-ib oflow-hidden max-h-40 no-mg-bottom">
-                            - Chính chủ gửi bán mảnh đất trục chính tại thôn Đường Yên - Xuân Nộn - Đông Anh, diện tích 55m2, mặt tiền gần 5m. - Mặt trục chính của thôn nối với bìa làng ra Khu công nghiệp Tập ...
-                        </p>
-                        <p class="set-absolute left-per-17 bottom-per-23 pd-left-10 no-mg-bottom">
-                            Giá: <span class="fweight-bold mg-right-60 clr-055699">2.1 tỷ</span>
-                            Diện tích: <span class="fweight-bold clr-055699">55 m&#178;</span>
-                        </p>
-                        <p class="set-absolute left-per-17 bottom-ng-3 pd-left-10 no-mg-bottom">
-                            Quận/Huyện:
-                            <a title="B&#225;n đất thổ cư Đ&#244;ng Anh" href="/ban-dat-tho-cu-dong-anh" class="clr-055699">Đ&#244;ng Anh</a>,
-                            <a title="B&#225;n đất thổ cư Hà N&#244;̣i" href="/ban-dat-tho-cu-ha-noi" class="clr-055699">Hà N&#244;̣i</a>
-                        </p>
-                        <p class="set-absolute bottom-ng-3 no-mg-bottom right-3 clr-555">
-                            10/05/2022
-                        </p>
-                    </div>
-                </div>
-                <div class="item display-bl pd-top-10 pd-bottom-10">
-                    <h3 class="display-bl fsize-13">
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn-xa-tien-duong-dong-anh-ha-noi/nhinh-4-ty-co-ngay-dat-mat-duong-nhua-bia-bac-co-duong-sat-truc-vo-nguyen-giap-dan-do-p1111704" title="NHỈNH 4 TỶ C&#211; NGAY ĐẤT MẶT ĐƯỜNG NHỰA B&#204;A BẮC CỔ DƯƠNG, S&#193;T TRỤC V&#213; NGUY&#202;N GI&#193;P - ĐẢN DỊ" class="clr-055699">NHỈNH 4 TỶ C&#211; NGAY ĐẤT MẶT ĐƯỜNG NHỰA B&#204;A BẮC CỔ DƯƠNG, S&#193;T TRỤC V&#213; NGUY&#202;N GI&#193;P - ĐẢN DỊ</a>
-                    </h3>
-                    <div class="display-bl set-relative min-h-84 new-view">
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn-xa-tien-duong-dong-anh-ha-noi/nhinh-4-ty-co-ngay-dat-mat-duong-nhua-bia-bac-co-duong-sat-truc-vo-nguyen-giap-dan-do-p1111704" title="NHỈNH 4 TỶ C&#211; NGAY ĐẤT MẶT ĐƯỜNG NHỰA B&#204;A BẮC CỔ DƯƠNG, S&#193;T TRỤC V&#213; NGUY&#202;N GI&#193;P - ĐẢN DỊ" class="display-ib w-per-17">
-                            <img alt="NHỈNH 4 TỶ C&#211; NGAY ĐẤT MẶT ĐƯỜNG NHỰA B&#204;A BẮC CỔ DƯƠNG, S&#193;T TRỤC V&#213; NGUY&#202;N GI&#193;P - ĐẢN DỊ" class="full-width clr-D4D4D4 text-non-underline" src="/bds/2022-03-26/20220326010552080248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                            <img alt="NHỈNH 4 TỶ C&#211; NGAY ĐẤT MẶT ĐƯỜNG NHỰA B&#204;A BẮC CỔ DƯƠNG, S&#193;T TRỤC V&#213; NGUY&#202;N GI&#193;P - ĐẢN DỊ" class="small-img1" src="/bds/2022-03-26/20220326010553159248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                            <img alt="NHỈNH 4 TỶ C&#211; NGAY ĐẤT MẶT ĐƯỜNG NHỰA B&#204;A BẮC CỔ DƯƠNG, S&#193;T TRỤC V&#213; NGUY&#202;N GI&#193;P - ĐẢN DỊ" class="small-img2" src="/bds/2022-03-26/20220326010553471248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                        </a><p class="pd-left-10 w-per-83 display-ib oflow-hidden max-h-40 no-mg-bottom">
-                            - Chính chủ gửi bán mảnh đất nhỏ xinh, khuôn tiền, mặt tiền lớn tại bìa Bắc thôn Cổ Dương, xã Tiên Dương, Đông Anh. - Diện tích 51m2, mặt tiền 5m, hậu 5m vuông vức. - Mặt đường nhựa ...
-                        </p>
-                        <p class="set-absolute left-per-17 bottom-per-23 pd-left-10 no-mg-bottom">
-                            Giá: <span class="fweight-bold mg-right-60 clr-055699">4.1 tỷ</span>
-                            Diện tích: <span class="fweight-bold clr-055699">51 m&#178;</span>
-                        </p>
-                        <p class="set-absolute left-per-17 bottom-ng-3 pd-left-10 no-mg-bottom">
-                            Quận/Huyện:
-                            <a title="B&#225;n đất thổ cư Đ&#244;ng Anh" href="/ban-dat-tho-cu-dong-anh" class="clr-055699">Đ&#244;ng Anh</a>,
-                            <a title="B&#225;n đất thổ cư Hà N&#244;̣i" href="/ban-dat-tho-cu-ha-noi" class="clr-055699">Hà N&#244;̣i</a>
-                        </p>
-                        <p class="set-absolute bottom-ng-3 no-mg-bottom right-3 clr-555">
-                            10/05/2022
-                        </p>
-                    </div>
-                </div>
-                <div class="item display-bl pd-top-10 pd-bottom-10">
-                    <h3 class="display-bl fsize-13">
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn-xa-tien-duong-dong-anh-ha-noi/chua-toi-2-ty-co-ngay-dat-co-duong-tien-duong-dt-55m-gan-cho-gan-kdt-co-duong-p1116908" title="CHƯA TỚI 2 TỶ C&#211; NGAY ĐẤT CỔ DƯƠNG - TI&#202;N DƯƠNG, DT 55M, GẦN CHỢ, GẦN KĐT CỔ DƯƠNG" class="clr-055699">CHƯA TỚI 2 TỶ C&#211; NGAY ĐẤT CỔ DƯƠNG - TI&#202;N DƯƠNG, DT 55M, GẦN CHỢ, GẦN KĐT CỔ DƯƠNG</a>
-                    </h3>
-                    <div class="display-bl set-relative min-h-84 new-view">
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn-xa-tien-duong-dong-anh-ha-noi/chua-toi-2-ty-co-ngay-dat-co-duong-tien-duong-dt-55m-gan-cho-gan-kdt-co-duong-p1116908" title="CHƯA TỚI 2 TỶ C&#211; NGAY ĐẤT CỔ DƯƠNG - TI&#202;N DƯƠNG, DT 55M, GẦN CHỢ, GẦN KĐT CỔ DƯƠNG" class="display-ib w-per-17">
-                            <img alt="CHƯA TỚI 2 TỶ C&#211; NGAY ĐẤT CỔ DƯƠNG - TI&#202;N DƯƠNG, DT 55M, GẦN CHỢ, GẦN KĐT CỔ DƯƠNG" class="full-width clr-D4D4D4 text-non-underline" src="/bds/2022-03-31/20220331064221105248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                            <img alt="CHƯA TỚI 2 TỶ C&#211; NGAY ĐẤT CỔ DƯƠNG - TI&#202;N DƯƠNG, DT 55M, GẦN CHỢ, GẦN KĐT CỔ DƯƠNG" class="small-img1" src="/bds/2022-03-31/20220331064223605248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                            <img alt="CHƯA TỚI 2 TỶ C&#211; NGAY ĐẤT CỔ DƯƠNG - TI&#202;N DƯƠNG, DT 55M, GẦN CHỢ, GẦN KĐT CỔ DƯƠNG" class="small-img2" src="/bds/2022-03-31/20220331064225355248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                        </a><p class="pd-left-10 w-per-83 display-ib oflow-hidden max-h-40 no-mg-bottom">
-                            - Chính chủ cần bán mảnh đất nhỏ xinh tại Cổ Dương, Tiên Dương, Đông Anh.- Diện tích 55,5m2, mặt tiền 3,7m.- Ngõ 2,7m, ngõ nông, cách 20m ra trục chính ô tô tránh nhau.- Gần chợ Cổ ...
-                        </p>
-                        <p class="set-absolute left-per-17 bottom-per-23 pd-left-10 no-mg-bottom">
-                            Giá: <span class="fweight-bold mg-right-60 clr-055699">1.95 tỷ</span>
-                            Diện tích: <span class="fweight-bold clr-055699">55 m&#178;</span>
-                        </p>
-                        <p class="set-absolute left-per-17 bottom-ng-3 pd-left-10 no-mg-bottom">
-                            Quận/Huyện:
-                            <a title="B&#225;n đất thổ cư Đ&#244;ng Anh" href="/ban-dat-tho-cu-dong-anh" class="clr-055699">Đ&#244;ng Anh</a>,
-                            <a title="B&#225;n đất thổ cư Hà N&#244;̣i" href="/ban-dat-tho-cu-ha-noi" class="clr-055699">Hà N&#244;̣i</a>
-                        </p>
-                        <p class="set-absolute bottom-ng-3 no-mg-bottom right-3 clr-555">
-                            10/05/2022
-                        </p>
-                    </div>
-                </div>
-                <div class="item display-bl pd-top-10 pd-bottom-10">
-                    <h3 class="display-bl fsize-13">
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn-xa-tien-duong-dong-anh-ha-noi/dat-phan-lo-lien-ke-khu-do-tho-co-duong-tien-duong-sat-quy-hoach-truong-hoc-kinh-doanh-p1128135" title="ĐẤT PH&#194;N L&#212; LIỀN KỀ KHU Đ&#212; THỊ CỔ DƯƠNG - TI&#202;N DƯƠNG, S&#193;T QUY HOẠCH TRƯỜNG HỌC, KINH DOANH" class="clr-055699">ĐẤT PH&#194;N L&#212; LIỀN KỀ KHU Đ&#212; THỊ CỔ DƯƠNG - TI&#202;N DƯƠNG, S&#193;T QUY HOẠCH TRƯỜNG HỌC, KINH DOANH</a>
-                    </h3>
-                    <div class="display-bl set-relative min-h-84 new-view">
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn-xa-tien-duong-dong-anh-ha-noi/dat-phan-lo-lien-ke-khu-do-tho-co-duong-tien-duong-sat-quy-hoach-truong-hoc-kinh-doanh-p1128135" title="ĐẤT PH&#194;N L&#212; LIỀN KỀ KHU Đ&#212; THỊ CỔ DƯƠNG - TI&#202;N DƯƠNG, S&#193;T QUY HOẠCH TRƯỜNG HỌC, KINH DOANH" class="display-ib w-per-17">
-                            <img alt="ĐẤT PH&#194;N L&#212; LIỀN KỀ KHU Đ&#212; THỊ CỔ DƯƠNG - TI&#202;N DƯƠNG, S&#193;T QUY HOẠCH TRƯỜNG HỌC, KINH DOANH" class="full-width clr-D4D4D4 text-non-underline" src="/bds/2022-04-08/20220408065908794248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                            <img alt="ĐẤT PH&#194;N L&#212; LIỀN KỀ KHU Đ&#212; THỊ CỔ DƯƠNG - TI&#202;N DƯƠNG, S&#193;T QUY HOẠCH TRƯỜNG HỌC, KINH DOANH" class="small-img1" src="/bds/2022-04-08/20220408065909747248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                            <img alt="ĐẤT PH&#194;N L&#212; LIỀN KỀ KHU Đ&#212; THỊ CỔ DƯƠNG - TI&#202;N DƯƠNG, S&#193;T QUY HOẠCH TRƯỜNG HỌC, KINH DOANH" class="small-img2" src="/bds/2022-04-08/20220408065910701248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                        </a><p class="pd-left-10 w-per-83 display-ib oflow-hidden max-h-40 no-mg-bottom">
-                            Bán Đất thổ cư đường Cổ Dương Đông Anh Hà Nội 82,5 m² giá 6.6 tỷ - Chính chủ nhờ bán thửa đất 82,5m, mặt tiền 5m, hướng Nam mát mẻ. - Đường 6m, vỉa hè 2m, ngay cạnh khu đất quy hoạch ...
-                        </p>
-                        <p class="set-absolute left-per-17 bottom-per-23 pd-left-10 no-mg-bottom">
-                            Giá: <span class="fweight-bold mg-right-60 clr-055699">6.6 tỷ</span>
-                            Diện tích: <span class="fweight-bold clr-055699">82 m&#178;</span>
-                        </p>
-                        <p class="set-absolute left-per-17 bottom-ng-3 pd-left-10 no-mg-bottom">
-                            Quận/Huyện:
-                            <a title="B&#225;n đất thổ cư Đ&#244;ng Anh" href="/ban-dat-tho-cu-dong-anh" class="clr-055699">Đ&#244;ng Anh</a>,
-                            <a title="B&#225;n đất thổ cư Hà N&#244;̣i" href="/ban-dat-tho-cu-ha-noi" class="clr-055699">Hà N&#244;̣i</a>
-                        </p>
-                        <p class="set-absolute bottom-ng-3 no-mg-bottom right-3 clr-555">
-                            10/05/2022
-                        </p>
-                    </div>
-                </div>
-                <div class="item display-bl pd-top-10 pd-bottom-10">
-                    <h3 class="display-bl fsize-13">
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn-xa-xuan-non-dong-anh-ha-noi/ban-dat-bia-lang-duong-yen-xuan-non-duong-o-to-tranh-nhau-gia-dau-tu-p1141991" title="B&#193;N ĐẤT B&#204;A L&#192;NG ĐƯỜNG Y&#202;N - XU&#194;N NỘN, ĐƯỜNG &#212; T&#212; TR&#193;NH NHAU, GI&#193; ĐẦU TƯ" class="clr-055699">B&#193;N ĐẤT B&#204;A L&#192;NG ĐƯỜNG Y&#202;N - XU&#194;N NỘN, ĐƯỜNG &#212; T&#212; TR&#193;NH NHAU, GI&#193; ĐẦU TƯ</a>
-                    </h3>
-                    <div class="display-bl set-relative min-h-84 new-view">
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn-xa-xuan-non-dong-anh-ha-noi/ban-dat-bia-lang-duong-yen-xuan-non-duong-o-to-tranh-nhau-gia-dau-tu-p1141991" title="B&#193;N ĐẤT B&#204;A L&#192;NG ĐƯỜNG Y&#202;N - XU&#194;N NỘN, ĐƯỜNG &#212; T&#212; TR&#193;NH NHAU, GI&#193; ĐẦU TƯ" class="display-ib w-per-17">
-                            <img alt="B&#193;N ĐẤT B&#204;A L&#192;NG ĐƯỜNG Y&#202;N - XU&#194;N NỘN, ĐƯỜNG &#212; T&#212; TR&#193;NH NHAU, GI&#193; ĐẦU TƯ" class="full-width clr-D4D4D4 text-non-underline" src="/bds/2022-04-18/20220418091707218248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                            <img alt="B&#193;N ĐẤT B&#204;A L&#192;NG ĐƯỜNG Y&#202;N - XU&#194;N NỘN, ĐƯỜNG &#212; T&#212; TR&#193;NH NHAU, GI&#193; ĐẦU TƯ" class="small-img1" src="/bds/2022-04-18/20220418091710937248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                            <img alt="B&#193;N ĐẤT B&#204;A L&#192;NG ĐƯỜNG Y&#202;N - XU&#194;N NỘN, ĐƯỜNG &#212; T&#212; TR&#193;NH NHAU, GI&#193; ĐẦU TƯ" class="small-img2" src="/bds/2022-04-18/20220418091713484248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                        </a><p class="pd-left-10 w-per-83 display-ib oflow-hidden max-h-40 no-mg-bottom">
-                            - Chính chủ gửi bán mảnh đất rất đẹp tại thôn Đường Yên, xã Xuân Nộn, huyện Đông Anh.- Mảnh đất nằm ở bia Tây gần với trục chính Đản Dị - Xuân Nộn, Đường hai ô tô tránh nhau thoải ...
-                        </p>
-                        <p class="set-absolute left-per-17 bottom-per-23 pd-left-10 no-mg-bottom">
-                            Giá: <span class="fweight-bold mg-right-60 clr-055699">2.66 tỷ</span>
-                            Diện tích: <span class="fweight-bold clr-055699">72 m&#178;</span>
-                        </p>
-                        <p class="set-absolute left-per-17 bottom-ng-3 pd-left-10 no-mg-bottom">
-                            Quận/Huyện:
-                            <a title="B&#225;n đất thổ cư Đ&#244;ng Anh" href="/ban-dat-tho-cu-dong-anh" class="clr-055699">Đ&#244;ng Anh</a>,
-                            <a title="B&#225;n đất thổ cư Hà N&#244;̣i" href="/ban-dat-tho-cu-ha-noi" class="clr-055699">Hà N&#244;̣i</a>
-                        </p>
-                        <p class="set-absolute bottom-ng-3 no-mg-bottom right-3 clr-555">
-                            10/05/2022
-                        </p>
-                    </div>
-                </div>
-                <div class="item display-bl pd-top-10 pd-bottom-10">
-                    <h3 class="display-bl fsize-13">
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn-xa-nguyen-khe-dong-anh-ha-noi/ban-dat-xom-duong-nguyen-khe-ngo-o-to-tam-3m-ngo-thong-gan-truong-gan-cho-lap-ghep-p1168582" title="B&#193;N ĐẤT X&#211;M ĐƯỜNG -  NGUY&#202;N KH&#202;, NG&#213; &#212; T&#212; TẦM 3M, NG&#213; TH&#212;NG, GẦN TRƯỜNG, GẦN CHỢ LẮP GH&#201;P" class="clr-055699">B&#193;N ĐẤT X&#211;M ĐƯỜNG - NGUY&#202;N KH&#202;, NG&#213; &#212; T&#212; TẦM 3M, NG&#213; TH&#212;NG, GẦN TRƯỜNG, GẦN CHỢ LẮP GH&#201;P</a>
-                    </h3>
-                    <div class="display-bl set-relative min-h-84 new-view">
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn-xa-nguyen-khe-dong-anh-ha-noi/ban-dat-xom-duong-nguyen-khe-ngo-o-to-tam-3m-ngo-thong-gan-truong-gan-cho-lap-ghep-p1168582" title="B&#193;N ĐẤT X&#211;M ĐƯỜNG -  NGUY&#202;N KH&#202;, NG&#213; &#212; T&#212; TẦM 3M, NG&#213; TH&#212;NG, GẦN TRƯỜNG, GẦN CHỢ LẮP GH&#201;P" class="display-ib w-per-17">
-                            <img alt="B&#193;N ĐẤT X&#211;M ĐƯỜNG -  NGUY&#202;N KH&#202;, NG&#213; &#212; T&#212; TẦM 3M, NG&#213; TH&#212;NG, GẦN TRƯỜNG, GẦN CHỢ LẮP GH&#201;P" class="full-width clr-D4D4D4 text-non-underline" src="/bds/2022-05-06/20220506111559162248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                            <img alt="B&#193;N ĐẤT X&#211;M ĐƯỜNG -  NGUY&#202;N KH&#202;, NG&#213; &#212; T&#212; TẦM 3M, NG&#213; TH&#212;NG, GẦN TRƯỜNG, GẦN CHỢ LẮP GH&#201;P" class="small-img1" src="/bds/2022-05-06/20220506111603099248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                            <img alt="B&#193;N ĐẤT X&#211;M ĐƯỜNG -  NGUY&#202;N KH&#202;, NG&#213; &#212; T&#212; TẦM 3M, NG&#213; TH&#212;NG, GẦN TRƯỜNG, GẦN CHỢ LẮP GH&#201;P" class="small-img2" src="/bds/2022-05-06/20220506111605724248.jpg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                        </a><p class="pd-left-10 w-per-83 display-ib oflow-hidden max-h-40 no-mg-bottom">
-                            -Chính chủ cần bán mảnh đất tại xóm Đường, Khê Nữ, Nguyên Khê, Đông Anh.- Gần Chợ Lắp Ghép, gần Lê Hữu Tựu, gần Trường cấp 1, 2 Nguyên Khê, cách khu đấu giá X3 Khê Nữ chỉ vài chục ...
-                        </p>
-                        <p class="set-absolute left-per-17 bottom-per-23 pd-left-10 no-mg-bottom">
-                            Giá: <span class="fweight-bold mg-right-60 clr-055699">2.2 tỷ</span>
-                            Diện tích: <span class="fweight-bold clr-055699">61 m&#178;</span>
-                        </p>
-                        <p class="set-absolute left-per-17 bottom-ng-3 pd-left-10 no-mg-bottom">
-                            Quận/Huyện:
-                            <a title="B&#225;n đất thổ cư Đ&#244;ng Anh" href="/ban-dat-tho-cu-dong-anh" class="clr-055699">Đ&#244;ng Anh</a>,
-                            <a title="B&#225;n đất thổ cư Hà N&#244;̣i" href="/ban-dat-tho-cu-ha-noi" class="clr-055699">Hà N&#244;̣i</a>
-                        </p>
-                        <p class="set-absolute bottom-ng-3 no-mg-bottom right-3 clr-555">
-                            10/05/2022
-                        </p>
-                    </div>
-                </div>
-                <div class="item display-bl pd-top-10 pd-bottom-10">
-                    <h3 class="display-bl fsize-13">
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn-xa-duc-tu-dong-anh-ha-noi/ban-475m-dat-truc-chinh-12m-tai-phuc-hau-duc-tu-dong-anh-gia-hon-50-trieu-lh-0377236-p1173997" title="Bán 47.5m đ&#226;́t trục chính 12m tại Phúc H&#226;̣u, Dục Tú Đ&#244;ng Anh. Giá hơn 50 tri&#234;̣u, LH: 0377236666" class="clr-055699">Bán 47.5m đ&#226;́t trục chính 12m tại Phúc H&#226;̣u, Dục Tú Đ&#244;ng Anh. Giá hơn 50 tri&#234;̣u, LH: 0377236666</a>
-                    </h3>
-                    <div class="display-bl set-relative min-h-84 new-view">
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn-xa-duc-tu-dong-anh-ha-noi/ban-475m-dat-truc-chinh-12m-tai-phuc-hau-duc-tu-dong-anh-gia-hon-50-trieu-lh-0377236-p1173997" title="Bán 47.5m đ&#226;́t trục chính 12m tại Phúc H&#226;̣u, Dục Tú Đ&#244;ng Anh. Giá hơn 50 tri&#234;̣u, LH: 0377236666" class="display-ib w-per-17">
-                            <img alt="Bán 47.5m đ&#226;́t trục chính 12m tại Phúc H&#226;̣u, Dục Tú Đ&#244;ng Anh. Giá hơn 50 tri&#234;̣u, LH: 0377236666" class="full-width clr-D4D4D4 text-non-underline" src="/Content/img/no_images.jpg" />
-                        </a><p class="pd-left-10 w-per-83 display-ib oflow-hidden max-h-40 no-mg-bottom">
-                            BÁN LÔ ĐẤT TRỤC CHÍNH THÔN PHÚC HẬU XÃ DỤC TÚ ĐÔNG ANH HÀ NỘI Diện tích : 47.5m Mặt tiền = mặt hậu 5.5m Đường trước đất 12m kinh doanh bất chấp Vị trí cách đường dẫn chân Cầu Tứ Liên ...
-                        </p>
-                        <p class="set-absolute left-per-17 bottom-per-23 pd-left-10 no-mg-bottom">
-                            Giá: <span class="fweight-bold mg-right-60 clr-055699">50 tri&#234;̣u</span>
-                            Diện tích: <span class="fweight-bold clr-055699">47 m&#178;</span>
-                        </p>
-                        <p class="set-absolute left-per-17 bottom-ng-3 pd-left-10 no-mg-bottom">
-                            Quận/Huyện:
-                            <a title="B&#225;n đất thổ cư Đ&#244;ng Anh" href="/ban-dat-tho-cu-dong-anh" class="clr-055699">Đ&#244;ng Anh</a>,
-                            <a title="B&#225;n đất thổ cư Hà N&#244;̣i" href="/ban-dat-tho-cu-ha-noi" class="clr-055699">Hà N&#244;̣i</a>
-                        </p>
-                        <p class="set-absolute bottom-ng-3 no-mg-bottom right-3 clr-555">
-                            10/05/2022
-                        </p>
-                    </div>
-                </div>
-                <div class="item display-bl pd-top-10 pd-bottom-10">
-                    <h3 class="display-bl fsize-13">
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn-xa-vong-la-dong-anh-ha-noi/ban-dat-chinh-chu-dia-chi-lang-chai-xa-vong-la-dong-anh-ha-noi-dt58m2-lh-0906183689-p1172135" title="B&#225;n đất ch&#237;nh chủ địa chỉ: L&#224;ng Ch&#224;i, X&#227; V&#245;ng La, Đ&#244;ng Anh, H&#224; Nội DT58m2 LH 0906183689" class="clr-055699">B&#225;n đất ch&#237;nh chủ địa chỉ: L&#224;ng Ch&#224;i, X&#227; V&#245;ng La, Đ&#244;ng Anh, H&#224; Nội DT58m2 LH 0906183689</a>
-                    </h3>
-                    <div class="display-bl set-relative min-h-84 new-view">
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn-xa-vong-la-dong-anh-ha-noi/ban-dat-chinh-chu-dia-chi-lang-chai-xa-vong-la-dong-anh-ha-noi-dt58m2-lh-0906183689-p1172135" title="B&#225;n đất ch&#237;nh chủ địa chỉ: L&#224;ng Ch&#224;i, X&#227; V&#245;ng La, Đ&#244;ng Anh, H&#224; Nội DT58m2 LH 0906183689" class="display-ib w-per-17">
-                            <img alt="B&#225;n đất ch&#237;nh chủ địa chỉ: L&#224;ng Ch&#224;i, X&#227; V&#245;ng La, Đ&#244;ng Anh, H&#224; Nội DT58m2 LH 0906183689" class="full-width clr-D4D4D4 text-non-underline" src="/bds/2022-05-09/20220509085328791248.jpeg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                            <img alt="B&#225;n đất ch&#237;nh chủ địa chỉ: L&#224;ng Ch&#224;i, X&#227; V&#245;ng La, Đ&#244;ng Anh, H&#224; Nội DT58m2 LH 0906183689" class="small-img1" src="/bds/2022-05-09/20220509085330556248.jpeg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                            <img alt="B&#225;n đất ch&#237;nh chủ địa chỉ: L&#224;ng Ch&#224;i, X&#227; V&#245;ng La, Đ&#244;ng Anh, H&#224; Nội DT58m2 LH 0906183689" class="small-img2" src="/bds/2022-05-09/20220509085332181248.jpeg?width=200&amp;height=160&amp;quality=100&amp;cache=always&amp;mode=crop" />
-                        </a><p class="pd-left-10 w-per-83 display-ib oflow-hidden max-h-40 no-mg-bottom">
-                            Bán đất chính chủ địa chỉ: Làng Chài, Xã Võng La, Đông Anh, Hà Nội. Cách chân cầu Thăng Long khoảng 500m, sổ đỏ chính chủ, DT 58m2, MT 4m, ngõ rộng 4m, hướng Nam. Đất vuông vắn đẹp, ...
-                        </p>
-                        <p class="set-absolute left-per-17 bottom-per-23 pd-left-10 no-mg-bottom">
-                            Giá: <span class="fweight-bold mg-right-60 clr-055699">Thỏa thu&#226;̣n</span>
-                            Diện tích: <span class="fweight-bold clr-055699">58 m&#178;</span>
-                        </p>
-                        <p class="set-absolute left-per-17 bottom-ng-3 pd-left-10 no-mg-bottom">
-                            Quận/Huyện:
-                            <a title="B&#225;n đất thổ cư Đ&#244;ng Anh" href="/ban-dat-tho-cu-dong-anh" class="clr-055699">Đ&#244;ng Anh</a>,
-                            <a title="B&#225;n đất thổ cư Hà N&#244;̣i" href="/ban-dat-tho-cu-ha-noi" class="clr-055699">Hà N&#244;̣i</a>
-                        </p>
-                        <p class="set-absolute bottom-ng-3 no-mg-bottom right-3 clr-555">
-                            09/05/2022
-                        </p>
-                    </div>
-                </div>
-                <div class="item display-bl pd-top-10 pd-bottom-10">
-                    <h3 class="display-bl fsize-13">
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn-xa-duc-tu-dong-anh-ha-noi/ban-475m-dat-truc-chinh-12m-tai-phuc-hau-duc-tu-dong-anh-gia-hon-50-trieu-lh-0377236-p1171717" title="Bán 47.5m đ&#226;́t trục chính 12m tại Phúc H&#226;̣u, Dục Tú Đ&#244;ng Anh. Giá hơn 50 tri&#234;̣u, LH: 0377236666" class="clr-055699">Bán 47.5m đ&#226;́t trục chính 12m tại Phúc H&#226;̣u, Dục Tú Đ&#244;ng Anh. Giá hơn 50 tri&#234;̣u, LH: 0377236666</a>
-                    </h3>
-                    <div class="display-bl set-relative min-h-84 new-view">
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn-xa-duc-tu-dong-anh-ha-noi/ban-475m-dat-truc-chinh-12m-tai-phuc-hau-duc-tu-dong-anh-gia-hon-50-trieu-lh-0377236-p1171717" title="Bán 47.5m đ&#226;́t trục chính 12m tại Phúc H&#226;̣u, Dục Tú Đ&#244;ng Anh. Giá hơn 50 tri&#234;̣u, LH: 0377236666" class="display-ib w-per-17">
-                            <img alt="Bán 47.5m đ&#226;́t trục chính 12m tại Phúc H&#226;̣u, Dục Tú Đ&#244;ng Anh. Giá hơn 50 tri&#234;̣u, LH: 0377236666" class="full-width clr-D4D4D4 text-non-underline" src="/Content/img/no_images.jpg" />
-                        </a><p class="pd-left-10 w-per-83 display-ib oflow-hidden max-h-40 no-mg-bottom">
-                            BÁN LÔ ĐẤT TRỤC CHÍNH THÔN PHÚC HẬU XÃ DỤC TÚ ĐÔNG ANH HÀ NỘI Diện tích : 47.5m Mặt tiền = mặt hậu 5.5m Đường trước đất 12m kinh doanh bất chấp Vị trí cách đường dẫn chân Cầu Tứ Liên ...
-                        </p>
-                        <p class="set-absolute left-per-17 bottom-per-23 pd-left-10 no-mg-bottom">
-                            Giá: <span class="fweight-bold mg-right-60 clr-055699">50 tri&#234;̣u</span>
-                            Diện tích: <span class="fweight-bold clr-055699">47 m&#178;</span>
-                        </p>
-                        <p class="set-absolute left-per-17 bottom-ng-3 pd-left-10 no-mg-bottom">
-                            Quận/Huyện:
-                            <a title="B&#225;n đất thổ cư Đ&#244;ng Anh" href="/ban-dat-tho-cu-dong-anh" class="clr-055699">Đ&#244;ng Anh</a>,
-                            <a title="B&#225;n đất thổ cư Hà N&#244;̣i" href="/ban-dat-tho-cu-ha-noi" class="clr-055699">Hà N&#244;̣i</a>
-                        </p>
-                        <p class="set-absolute bottom-ng-3 no-mg-bottom right-3 clr-555">
-                            08/05/2022
-                        </p>
-                    </div>
-                </div>
-                <div class="item display-bl pd-top-10 pd-bottom-10">
-                    <h3 class="display-bl fsize-13">
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn-xa-duc-tu-dong-anh-ha-noi/ban-475m-dat-truc-chinh-12m-tai-phuc-hau-duc-tu-dong-anh-gia-hon-50-trieu-lh-0377236-p1171534" title="Bán 47.5m đ&#226;́t trục chính 12m tại Phúc H&#226;̣u, Dục Tú Đ&#244;ng Anh. Giá hơn 50 tri&#234;̣u, LH: 0377236666" class="clr-055699">Bán 47.5m đ&#226;́t trục chính 12m tại Phúc H&#226;̣u, Dục Tú Đ&#244;ng Anh. Giá hơn 50 tri&#234;̣u, LH: 0377236666</a>
-                    </h3>
-                    <div class="display-bl set-relative min-h-84 new-view">
-                        <a href="/ban-dat-tho-cu-duong-19-10-hn-xa-duc-tu-dong-anh-ha-noi/ban-475m-dat-truc-chinh-12m-tai-phuc-hau-duc-tu-dong-anh-gia-hon-50-trieu-lh-0377236-p1171534" title="Bán 47.5m đ&#226;́t trục chính 12m tại Phúc H&#226;̣u, Dục Tú Đ&#244;ng Anh. Giá hơn 50 tri&#234;̣u, LH: 0377236666" class="display-ib w-per-17">
-                            <img alt="Bán 47.5m đ&#226;́t trục chính 12m tại Phúc H&#226;̣u, Dục Tú Đ&#244;ng Anh. Giá hơn 50 tri&#234;̣u, LH: 0377236666" class="full-width clr-D4D4D4 text-non-underline" src="/Content/img/no_images.jpg" />
-                        </a><p class="pd-left-10 w-per-83 display-ib oflow-hidden max-h-40 no-mg-bottom">
-                            BÁN LÔ ĐẤT TRỤC CHÍNH THÔN PHÚC HẬU XÃ DỤC TÚ ĐÔNG ANH HÀ NỘI Diện tích : 47.5m Mặt tiền = mặt hậu 5.5m Đường trước đất 12m kinh doanh bất chấp Vị trí cách đường dẫn chân Cầu Tứ Liên ...
-                        </p>
-                        <p class="set-absolute left-per-17 bottom-per-23 pd-left-10 no-mg-bottom">
-                            Giá: <span class="fweight-bold mg-right-60 clr-055699">50 tri&#234;̣u</span>
-                            Diện tích: <span class="fweight-bold clr-055699">47 m&#178;</span>
-                        </p>
-                        <p class="set-absolute left-per-17 bottom-ng-3 pd-left-10 no-mg-bottom">
-                            Quận/Huyện:
-                            <a title="B&#225;n đất thổ cư Đ&#244;ng Anh" href="/ban-dat-tho-cu-dong-anh" class="clr-055699">Đ&#244;ng Anh</a>,
-                            <a title="B&#225;n đất thổ cư Hà N&#244;̣i" href="/ban-dat-tho-cu-ha-noi" class="clr-055699">Hà N&#244;̣i</a>
-                        </p>
-                        <p class="set-absolute bottom-ng-3 no-mg-bottom right-3 clr-555">
-                            08/05/2022
-                        </p>
-                    </div>
-                </div><input type="hidden" value="19" id="hddProductOtherCounter" />
-                <p id="idprotherlink" class="text-right mg-top-10">
-                    <a rel="nofollow" class="clr-055699 fsize-14 fweight-bold lh-18" href="/ban-dat-tho-cu-duong-19-10-hn">Xem thêm các tin khác tại khu vực này<i class="icon-angle-double-right fsize-18 mg-left-ng-4"></i></a>
-                </p>
-            </div><div class="col-300 display-ib">
-                <input type="hidden" id="hddAreas" value="50-80" />
-                <input type="hidden" id="hddPrice" value="2000-3000" />
-                <div class="display-bl brd-bottom-w-1 brd-style-solid brd-style-color set-relative h-30 mg-top-20">
-                    <div class="no-mg bg-055699 fsize-13 fweight-bold set-absolute bottom-0 left-0 pd-2 pd-top-3 pd-left-5 pd-right-10 radius-top-7 white-clr">
-                        Tìm kiếm BĐS
-                    </div>
-                </div>
-                <div class="w-300 pd-10 pd-bottom-20 brd-style-solid brdcolor-999 display-bl brdwidth1 bs-border-box no-border-top">
-                    <form ReturnUrl="" action="/Product/BoxSearch/" id="frm_BoxSearch" method="post">
-                        <div class="mg-top-5">
-                            <input class="input form-control" id="Keyword" maxlength="60" name="Keyword" placeholder="Nhập nội dung tìm kiếm" type="text" value="" />
-                        </div>
-                        <div class="mg-top-10">
-                            <select name="ProductType" id="cboType" class="chosen-select disable_search w-278" onchange="objSearchFunc.GetSubCategory(this.value);">
-                                <option selected=selected value="89">Nh&#224; đất b&#225;n</option>
-                                <option value="90">Nh&#224; đất cho thu&#234;</option>
-                                <option value="92">Nh&#224; đất cần mua</option>
-                                <option value="91">Nh&#224; đất cần thu&#234;</option>
-                                <option value="79">Nh&#224; đất sang nhượng</option>
-                            </select>
-                        </div>
-                        <div class="mg-top-10">
-                            <select name="Category" id="cboCategory" class="chosen-select disable_search w-278">
-                                <option value="0">--Chọn loại nhà đất--</option>
-                                <option value="45">B&#225;n căn hộ chung cư</option>
-                                <option value="46">B&#225;n nh&#224; ri&#234;ng, ng&#245;, hẻm</option>
-                                <option value="47">B&#225;n nh&#224; biệt thự, liền kề</option>
-                                <option value="48">B&#225;n nh&#224; mặt tiền, mặt phố</option>
-                                <option value="81">B&#225;n nh&#224; cấp 4</option>
-                                <option value="84">B&#225;n cửa h&#224;ng &amp; ki ốt</option>
-                                <option value="51">B&#225;n trang trại, khu nghỉ dưỡng</option>
-                                <option value="52">B&#225;n kho, nh&#224; xưởng</option>
-                                <option value="83">B&#225;n đất</option>
-                                <option value="49">B&#225;n đất nền dự &#225;n</option>
-                                <option selected=selected value="50">B&#225;n đất thổ cư</option>
-                                <option value="53">B&#225;n loại bất động sản kh&#225;c</option>
-                            </select>
-                        </div>
-                        <div class="mg-top-10">
-                            <select name="City" id="cboCity" class="chosen-select w-278" onchange="objSearchFunc.ChangeCity(this.value);">
-                                <option value="">--Chọn Tỉnh/Thành phố--</option>
-                                <option value="SG">Hồ Ch&#237; Minh</option>
-                                <option selected=selected value="HN">Hà N&#244;̣i</option>
-                                <option value="BD">B&#236;nh Dương</option>
-                                <option value="DDN">Đ&#224; Nẵng</option>
-                                <option value="HP">Hải Ph&#242;ng</option>
-                                <option value="LA">Long An</option>
-                                <option value="VT">B&#224; Rịa Vũng T&#224;u</option>
-                                <option value="AG">An Giang</option>
-                                <option value="BG">Bắc Giang</option>
-                                <option value="BK">Bắc Kạn</option>
-                                <option value="BL">Bạc Li&#234;u</option>
-                                <option value="BN">Bắc Ninh</option>
-                                <option value="BTR">Bến Tre</option>
-                                <option value="BDD">B&#236;nh Định</option>
-                                <option value="BP">B&#236;nh Phước</option>
-                                <option value="BTH">B&#236;nh Thuận </option>
-                                <option value="CM">C&#224; Mau</option>
-                                <option value="CN">Cả Nước</option>
-                                <option value="CT">Cần Thơ</option>
-                                <option value="CB">Cao Bằng</option>
-                                <option value="DDL">Đắk Lắk</option>
-                                <option value="DNO">Đắk N&#244;ng</option>
-                                <option value="DDB">Điện Bi&#234;n</option>
-                                <option value="DNA">Đồng Nai</option>
-                                <option value="DDT">Đồng Th&#225;p</option>
-                                <option value="GL">Gia Lai</option>
-                                <option value="HG">H&#224; Giang</option>
-                                <option value="HNA">H&#224; Nam</option>
-                                <option value="HT">H&#224; Tĩnh</option>
-                                <option value="HD">Hải Dương</option>
-                                <option value="HGI">Hậu Giang</option>
-                                <option value="HB">H&#242;a B&#236;nh</option>
-                                <option value="HY">Hưng Y&#234;n</option>
-                                <option value="KH">Kh&#225;nh H&#242;a</option>
-                                <option value="KG">Ki&#234;n Giang</option>
-                                <option value="KT">Kon Tum</option>
-                                <option value="LCH">Lai Ch&#226;u</option>
-                                <option value="LDD">L&#226;m Đồng</option>
-                                <option value="LS">Lạng Sơn</option>
-                                <option value="LCA">L&#224;o Cai</option>
-                                <option value="NDD">Nam Định</option>
-                                <option value="NA">Nghệ An</option>
-                                <option value="NB">Ninh B&#236;nh</option>
-                                <option value="NT">Ninh Thuận</option>
-                                <option value="PT">Ph&#250; Thọ</option>
-                                <option value="PY">Ph&#250; Y&#234;n</option>
-                                <option value="QB">Quảng B&#236;nh</option>
-                                <option value="QNA">Quảng Nam</option>
-                                <option value="QNG">Quảng Ng&#227;i</option>
-                                <option value="QNI">Quảng Ninh</option>
-                                <option value="QT">Quảng Trị</option>
-                                <option value="ST">S&#243;c Trăng</option>
-                                <option value="SL">Sơn La</option>
-                                <option value="TNI">T&#226;y Ninh</option>
-                                <option value="TB">Th&#225;i B&#236;nh</option>
-                                <option value="TN">Th&#225;i Nguy&#234;n</option>
-                                <option value="TH">Thanh H&#243;a</option>
-                                <option value="TTH">Thừa Thi&#234;n Huế</option>
-                                <option value="TG">Tiền Giang</option>
-                                <option value="TV">Tr&#224; Vinh</option>
-                                <option value="TQ">Tuy&#234;n Quang</option>
-                                <option value="VL">Vĩnh Long</option>
-                                <option value="VP">Vĩnh Ph&#250;c</option>
-                                <option value="YB">Y&#234;n B&#225;i</option>
-                            </select>
-                        </div>
-                        <div class="mg-top-10">
-                            <select name="District" id="cboDistricts" class="chosen-select w-278" onchange="objSearchFunc.ChangeDistricts($('#cboCity').val(), this.value)">
-                                <option value="0">--Chọn Quận/Huyện--</option>
-                                <option value="2">Ba Đ&#236;nh</option>
-                                <option value="18">Ba V&#236;</option>
-                                <option value="718">Bắc Từ Li&#234;m</option>
-                                <option value="7">Cầu Giấy</option>
-                                <option value="24">Chương Mỹ</option>
-                                <option value="20">Đan Phượng</option>
-                                <option selected=selected value="10">Đ&#244;ng Anh</option>
-                                <option value="3">Đống Đa</option>
-                                <option value="11">Gia L&#226;m</option>
-                                <option value="15">H&#224; Đ&#244;ng</option>
-                                <option value="4">Hai B&#224; Trưng</option>
-                                <option value="21">Ho&#224;i Đức</option>
-                                <option value="1">Ho&#224;n Kiếm</option>
-                                <option value="8">Ho&#224;ng Mai</option>
-                                <option value="9">Long Bi&#234;n</option>
-                                <option value="17">M&#234; Linh</option>
-                                <option value="29">Mỹ Đức</option>
-                                <option value="14">Nam Từ Li&#234;m</option>
-                                <option value="27">Ph&#250; Xuy&#234;n</option>
-                                <option value="19">Ph&#250;c Thọ</option>
-                                <option value="22">Quốc Oai</option>
-                                <option value="12">S&#243;c Sơn</option>
-                                <option value="16">Sơn T&#226;y</option>
-                                <option value="6">T&#226;y Hồ</option>
-                                <option value="23">Thạch Thất</option>
-                                <option value="25">Thanh Oai</option>
-                                <option value="13">Thanh Tr&#236;</option>
-                                <option value="5">Thanh Xu&#226;n</option>
-                                <option value="26">Thường T&#237;n</option>
-                                <option value="28">Ứng H&#242;a</option>
-                            </select>
-                        </div>
-                        <div class="mg-top-10">
-                            <div id="divArea" class="searchrow advance-select-box">
-                                <span class="select-text">
-                                    <span class="select-text-content">--Chọn diện tích--</span>
-                                </span>
-                                <input id="hdCboArea" name="Area" value="-1" type="hidden">
-                                <div id="divAreaOptions" class="advance-select-options advance-options" minvalue="txtAreaMinValue" maxvalue="txtAreaMaxValue" unit="area" hddvalue="hdCboArea" ddlid="divArea">
-                                    <table class="header-options options">
-                                        <tbody>
-                                            <tr class="advance-options">
-                                                <td class="advance-options">
-                                                    <input id="txtAreaMinValue" value="50" name="AreaMin" placeholder="từ" class="min-value advance-options" maxlength="6" numbersonly="true" decimal="false" type="text">
-                                                </td>
-                                                <td class="advance-options">
-                                                    <span class="advance-options">- </span>
-                                                </td>
-                                                <td class="advance-options">
-                                                    <input id="txtAreaMaxValue" value="80" name="AreaMax" placeholder="đến" class="max-value advance-options" maxlength="6" numbersonly="true" decimal="false" type="text">
-                                                </td>
-                                                <td class="advance-options">
-                                                    <span class="advance-options">m2</span>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <ul class="advance-options">
-                                        <li data-id="-1" class="advance-options">--Chọn diện tích--</li>
-                                        <li data-id="0" class="advance-options">Chưa xác định</li>
-                                        <li data-id="1" class="advance-options">&lt; 30 m2</li>
-                                        <li data-id="2" class="advance-options">30 - 50 m2</li>
-                                        <li data-id="3" class="advance-options">50 - 80 m2</li>
-                                        <li data-id="4" class="advance-options">80 - 100 m2</li>
-                                        <li data-id="5" class="advance-options">100 - 150 m2</li>
-                                        <li data-id="6" class="advance-options">150 - 200 m2</li>
-                                        <li data-id="7" class="advance-options">200 - 250 m2</li>
-                                        <li data-id="8" class="advance-options">250 - 300 m2</li>
-                                        <li data-id="9" class="advance-options">300 - 500 m2</li>
-                                        <li data-id="10" class="advance-options">&gt;= 500 m2</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mg-top-10">
-                            <div id="divPrice" class="searchrow advance-select-box">
-                                <span class="select-text">
-                                    <span class="select-text-content">--Chọn mức giá--</span>
-                                </span>
-                                <input id="hdCboPrice" name="Price" value="-1" type="hidden">
-                                <div id="divPriceOptions" class="advance-select-options advance-options" minvalue="txtPriceMinValue" maxvalue="txtPriceMaxValue" unit="money" lblmin="lblPriceMin" lblmax="lblPriceMax" hddvalue="hdCboPrice" ddlid="divPrice">
-                                    <table class="header-options options">
-                                        <tbody>
-                                            <tr class="advance-options">
-                                                <td class="advance-options">
-                                                    <input id="txtPriceMinValue" value="2000" name="PriceMin" placeholder="từ" class="min-value advance-options" maxlength="6" numbersonly="true" decimal="true" type="text">
-                                                    <div id="lblPriceMin"></div>
-                                                </td>
-                                                <td class="advance-options">
-                                                    <span class="advance-options">-</span>
-                                                </td>
-                                                <td class="advance-options">
-                                                    <input id="txtPriceMaxValue" value="3000" name="PriceMax" placeholder="đến" class="max-value advance-options" maxlength="6" numbersonly="true" decimal="true" type="text">
-                                                    <div id="lblPriceMax"></div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <ul class="advance-options">
-                                        <li data-id="-1" class="advance-options current">--Chọn mức giá--</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="cpsearchadvanced" class="h-0">
-                            <div class="mg-top-10">
-                                <select name="Ward" id="cboWards" class="chosen-select w-278">
-                                    <option value="0">--Chọn Phường/Xã--</option>
-                                    <option value="9912">Thị trấn Đ&#244;ng Anh</option>
-                                    <option value="9913">X&#227; Bắc Hồng</option>
-                                    <option value="9914">X&#227; Cổ Loa</option>
-                                    <option value="9927">X&#227; Đại Mạch</option>
-                                    <option value="9934">X&#227; Đ&#244;ng Hội</option>
-                                    <option value="9916">X&#227; Dục T&#250;</option>
-                                    <option value="9936">X&#227; Hải Bối</option>
-                                    <option value="9937">X&#227; Kim Chung</option>
-                                    <option value="9938">X&#227; Kim Nỗ</option>
-                                    <option value="9940">X&#227; Li&#234;n H&#224;</option>
-                                    <option value="9941">X&#227; Mai L&#226;m</option>
-                                    <option value="9942">X&#227; Nam Hồng</option>
-                                    <option value="9943">X&#227; Nguy&#234;n Kh&#234;</option>
-                                    <option value="12234">X&#227; T&#224;m X&#225;</option>
-                                    <option value="9944">X&#227; Tầm X&#225;</option>
-                                    <option value="9945">X&#227; Thụy L&#226;m</option>
-                                    <option value="9946">X&#227; Ti&#234;n Dương</option>
-                                    <option value="9947">X&#227; Uy Nỗ</option>
-                                    <option value="9948">X&#227; V&#226;n H&#224;</option>
-                                    <option value="9949">X&#227; V&#226;n Nội</option>
-                                    <option value="9950">X&#227; Việt H&#249;ng</option>
-                                    <option value="9965">X&#227; Vĩnh Ngọc</option>
-                                    <option selected=selected value="9951">X&#227; V&#245;ng La</option>
-                                    <option value="9954">X&#227; Xu&#226;n Canh</option>
-                                    <option value="9961">X&#227; Xu&#226;n Nộn</option>
-                                </select>
-                            </div>
-                            <div class="mg-top-10">
-                                <select name="Street" id="cboStreets" class="chosen-select w-278">
-                                    <option value="0">--Chọn Đường/Phố--</option>
-                                    <option selected=selected value="5707">Đường 19</option>
-                                    <option value="709">Đường 23</option>
-                                    <option value="702">Đường 23B</option>
-                                    <option value="689">Đường 3</option>
-                                    <option value="3786">Đường 5</option>
-                                    <option value="699">đường Bắc H&#224;</option>
-                                    <option value="8888">Đường Bắc Hồng</option>
-                                    <option value="679">Đường Bắc Thăng Long</option>
-                                    <option value="4874">Đường B&#237;ch Phượng</option>
-                                    <option value="711">Đường Cao Lỗ</option>
-                                    <option value="7920">Đường Cao tốc Nhật T&#226;n Nội B&#224;i</option>
-                                    <option value="8372">Đường Cao tốc Thăng Long Nội B&#224;i</option>
-                                    <option value="701">đường Cầu Lớn-Nam Hồng</option>
-                                    <option value="705">Đường Cổ Loa</option>
-                                    <option value="612">Đường Cổ Nhuế</option>
-                                    <option value="8417">Đường Cửa H&#224;ng Mới</option>
-                                    <option value="8420">Đường Đa Lộc</option>
-                                    <option value="8258">Đường Đ&#224;i Bi</option>
-                                    <option value="7296">Đường Đản Dị</option>
-                                    <option value="2112">Đường Đ&#224;o Cam Mộc</option>
-                                    <option value="1096">Đường Đ&#224;o Duy Từ</option>
-                                    <option value="708">đường Đ&#224;o Duy T&#249;ng</option>
-                                    <option value="712">đường Đ&#244;ng Hội</option>
-                                    <option value="706">đường Ga Đ&#244;ng Anh</option>
-                                    <option value="7089">Đường Giầy Da</option>
-                                    <option value="6444">Đường Hải Bối</option>
-                                    <option value="6445">Đường Kinh Bắc 1</option>
-                                    <option value="6619">Đường L&#226;m Ti&#234;n</option>
-                                    <option value="8419">Đường L&#234; Hữu Tựu</option>
-                                    <option value="8362">Đường Li&#234;n X&#227;</option>
-                                    <option value="7489">Đường L&#242; V&#244;i</option>
-                                    <option value="7415">Đường Lộc H&#224;</option>
-                                    <option value="7358">Đường Ngọc Chi</option>
-                                    <option value="7440">Đường Phan X&#225;</option>
-                                    <option value="450">Đường Ph&#225;p V&#226;n</option>
-                                    <option value="7784">Đường Phương Trạch</option>
-                                    <option value="7919">Đường Quốc lộ 23B</option>
-                                    <option value="7677">Đường Quốc lộ 3</option>
-                                    <option value="7378">Đường S&#225;p Mai</option>
-                                    <option value="4878">Đường T&#226;n Trang</option>
-                                    <option value="8604">Đường Thi&#234;n Biều</option>
-                                    <option value="4877">Đường Thi&#234;n Phước</option>
-                                    <option value="7799">Đường Thiết Bị Điện</option>
-                                    <option value="707">đường Th&#244;n Đ&#236;a-Nam Hồng</option>
-                                    <option value="5742">Đường Thụy L&#226;m</option>
-                                    <option value="710">Đường V&#226;n Tr&#236;</option>
-                                    <option value="2922">Phố 72</option>
-                                    <option value="4876">Phố Ph&#249; Dung</option>
-                                </select>
-                            </div>
-                            <div class="mg-top-10">
-                                <select name="Rooms" id="cboRooms" class="chosen-select w-278">
-                                    <option value="-1">--Chọn số phòng ngủ--</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">&gt; 5</option>
-                                </select>
-                            </div>
-                            <div class="mg-top-10">
-                                <select id="cboDirections" name="Directions" class="chosen-select w-278">
-                                    <option value="-1">--Chọn hướng nhà--</option>
-                                    <option value="1">Đ&#244;ng</option>
-                                    <option value="2">T&#226;y</option>
-                                    <option value="3">Nam</option>
-                                    <option value="4">Bắc</option>
-                                    <option value="5">Đ&#244;ng Bắc</option>
-                                    <option value="6">T&#226;y Bắc</option>
-                                    <option value="7">T&#226;y Nam</option>
-                                    <option value="8">Đ&#244;ng Nam</option>
-                                </select>
-                            </div>
-                            <div class="mg-top-10">
-                                <select name="Projects" id="cboProjects" class="chosen-select w-278">
-                                    <option value="0">--Chọn dự án bất động sản--</option>
-                                    <option value="3197">Eurowindow River Park</option>
-                                    <option value="1645">Khu nh&#224; ở cho c&#244;ng nh&#226;n Đ&#244;ng Anh</option>
-                                    <option value="1322">Khu đ&#244; thị Nam Hồng</option>
-                                    <option value="1687">Intracom Riverside</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="mg-top-20">
-                            <button class="btn-boxsearch btn bg-green fsize-16 w-130 no-pd fweight-normal text-non-uppercase mg-left-70 lh-42 h-42" type="submit" style="line-height:40px !important;">
-                                <i class="icon-search"></i>
-                                Tìm kiếm
-                            </button>
-                            <div class="text-center mg-top-10"><span id="advsearch">Tìm nâng cao</span></div>
-                        </div>
-                    </form>
-                </div>
-                <div class="display-bl brd-bottom-w-1 brd-style-solid brd-style-color set-relative h-30 mg-top-20">
-                    <div class="no-mg bg-055699 fsize-13 fweight-bold set-absolute bottom-0 left-0 pd-2 pd-top-3 pd-left-5 pd-right-10 radius-top-7 white-clr">
-                        Tiện ích
-                    </div>
-                </div>
-                <div class="w-300 pd-10 pd-bottom-20 brd-style-solid brdcolor-999 display-bl brdwidth1 bs-border-box no-border-top">
-                    <div class="i-fengshui mg-top-10 mg-bottom-15" onclick="(new FengShui()).ShowPopup();">
-                        Xem phong thủy theo tuổi
-                    </div>
+                </li>
+                <li class="uk-active">
+                    <a href="/tin-tuc" title="Tin tức">Tin tức</a>
+                </li>
+                <li class="uk-active">
+                    <a href="#" title="@Model.Name">@Model.Name</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="uk-container uk-container-center">
+        <div class="uk-grid uk-grid-medium mb20">
+            <div class="uk-width-large-1-3 mb15 uk-push-2-3">
 
-                </div>
-                <h2>
-                    <div class="h-count">
-                        B&#225;n đất thổ cư Đ&#244;ng Anh Hà N&#244;̣i
-                    </div>
-                    <ul class="cp-linkcount">
-                        <li>
-                            <h3>
-                                <a title="B&#225;n đất thổ cư X&#227; Cổ Loa" href="/ban-dat-tho-cu-xa-co-loa">
-                                    X&#227; Cổ Loa
-                                </a> (1)
-                            </h3>
-                        </li>
-                        <li>
-                            <h3>
-                                <a title="B&#225;n đất thổ cư X&#227; Nam Hồng" href="/ban-dat-tho-cu-xa-nam-hong">
-                                    X&#227; Nam Hồng
-                                </a> (1)
-                            </h3>
-                        </li>
-                    </ul>
-                    <div class="clear"></div>
-                </h2>
-                <div class="display-bl brd-bottom-w-1 brd-style-solid brd-style-color set-relative h-30 mg-top-20">
-                    <div class="no-mg bg-055699 fsize-13 fweight-bold set-absolute bottom-0 left-0 pd-2 pd-top-3 pd-left-5 pd-right-10 radius-top-7 white-clr">
-                        Dự án nổi bật
-                    </div>
-                    <a class="more-duan" href="/du-an-bat-dong-san" title="Dự án Bất động sản - batdongsanviet.vn">Xem thêm</a>
-                </div>
-                <div id="slide-projecthome" class="set-relative swiper-container w-300 brd-style-solid brdcolor-999 display-bl h-485 brdwidth1 bs-border-box no-border-top">
-                    <div class="swiper-wrapper h-440">
-                        <ul class='swiper-slide h-440'>
-                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-12 h-78 fsize-12 lh-18">
-                                <a title="Khu đ&#244; thị An Ph&#250; Thịnh" href="/khu-do-thi-moi-quy-nhon-binh-dinh/khu-do-thi-an-phu-thinh-prj611" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
-                                    <img class="clr-D4D4D4" src="/duan/2018-04-18/20180418020447626248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Khu đ&#244; thị An Ph&#250; Thịnh" />
-                                </a>
-                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
-                                    <a title="Khu đ&#244; thị An Ph&#250; Thịnh" href="/khu-do-thi-moi-quy-nhon-binh-dinh/khu-do-thi-an-phu-thinh-prj611" class="clr-055699">
-                                        Khu đ&#244; thị An Ph&#250; Thịnh
-                                    </a>
-                                </h3>
-                                Đường Huỳnh Tấn Ph&#225;t, X&#227; Nhơn B&#236;nh, Quy Nhơn, B&#236;nh Định
-                            </li>
-                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-14 h-78 fsize-12 lh-18">
-                                <a title="Eurowindow River Park" href="/khu-do-thi-moi-dong-anh-ha-noi/eurowindow-river-park-prj3197" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
-                                    <img class="clr-D4D4D4" src="/duan/2018-04-28/20180428062852182248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Eurowindow River Park" />
-                                </a>
-                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
-                                    <a title="Eurowindow River Park" href="/khu-do-thi-moi-dong-anh-ha-noi/eurowindow-river-park-prj3197" class="clr-055699">
-                                        Eurowindow River Park
-                                    </a>
-                                </h3>
-                                Đường 5 k&#233;o d&#224;i (Trường Sa), x&#227; Đ&#244;ng Hội, Đ&#244;ng Anh, Hà N&#244;̣i
-                            </li>
-                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-14 h-78 fsize-12 lh-18">
-                                <a title="V-Green City Phố Nối" href="/khu-do-thi-moi-yen-my-hy-hung-yen/v-green-city-pho-noi-prj186" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
-                                    <img class="clr-D4D4D4" src="/duan/2018-04-16/20180416092929080248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="V-Green City Phố Nối" />
-                                </a>
-                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
-                                    <a title="V-Green City Phố Nối" href="/khu-do-thi-moi-yen-my-hy-hung-yen/v-green-city-pho-noi-prj186" class="clr-055699">
-                                        V-Green City Phố Nối
-                                    </a>
-                                </h3>
-                                Đường 39A, X&#227; Li&#234;u X&#225;, Y&#234;n Mỹ, Hưng Y&#234;n
-                            </li>
-                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-14 h-78 fsize-12 lh-18">
-                                <a title="Chơn Th&#224;nh Golden Land" href="/khu-do-thi-moi-chon-thanh-binh-phuoc/chon-thanh-golden-land-prj304" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
-                                    <img class="clr-D4D4D4" src="/duan/2018-04-16/20180416040527240248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Chơn Th&#224;nh Golden Land" />
-                                </a>
-                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
-                                    <a title="Chơn Th&#224;nh Golden Land" href="/khu-do-thi-moi-chon-thanh-binh-phuoc/chon-thanh-golden-land-prj304" class="clr-055699">
-                                        Chơn Th&#224;nh Golden Land
-                                    </a>
-                                </h3>
-                                Đường Quốc Lộ 13, X&#227; Minh Hưng, Chơn Th&#224;nh, B&#236;nh Phước
-                            </li>
-                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-14 h-78 fsize-12 lh-18">
-                                <a title="Lavita Garden" href="/can-ho-chung-cu-thu-duc-ho-chi-minh/lavita-garden-prj2935" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
-                                    <img class="clr-D4D4D4" src="/duan/2018-04-27/20180427042730810248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Lavita Garden" />
-                                </a>
-                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
-                                    <a title="Lavita Garden" href="/can-ho-chung-cu-thu-duc-ho-chi-minh/lavita-garden-prj2935" class="clr-055699">
-                                        Lavita Garden
-                                    </a>
-                                </h3>
-                                30 Đường 3, Phường Trường Thọ, Thủ Đức, Hồ Ch&#237; Minh
-                            </li>
-                        </ul><ul class='swiper-slide h-440'>
-                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-12 h-78 fsize-12 lh-18">
-                                <a title="Times City" href="/khu-phuc-hop-hai-ba-trung-ha-noi/times-city-prj1718" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
-                                    <img class="clr-D4D4D4" src="/duan/2018-04-26/20180426115652997248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Times City" />
-                                </a>
-                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
-                                    <a title="Times City" href="/khu-phuc-hop-hai-ba-trung-ha-noi/times-city-prj1718" class="clr-055699">
-                                        Times City
-                                    </a>
-                                </h3>
-                                458 Minh Khai, Phường Vĩnh Tuy, Hai B&#224; Trưng, Hà N&#244;̣i
-                            </li>
-                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-14 h-78 fsize-12 lh-18">
-                                <a title="Dầu Gi&#226;y Center City 2" href="/khu-do-thi-moi-thong-nhat-dong-nai/dau-giay-center-city-2-prj1990" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
-                                    <img class="clr-D4D4D4" src="/duan/2018-04-26/20180426050312274248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Dầu Gi&#226;y Center City 2" />
-                                </a>
-                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
-                                    <a title="Dầu Gi&#226;y Center City 2" href="/khu-do-thi-moi-thong-nhat-dong-nai/dau-giay-center-city-2-prj1990" class="clr-055699">
-                                        Dầu Gi&#226;y Center City 2
-                                    </a>
-                                </h3>
-                                Đường Quốc lộ 1A, Thị trấn Dầu Gi&#226;y, Thống Nhất, Đồng Nai
-                            </li>
-                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-14 h-78 fsize-12 lh-18">
-                                <a title="Aurora Residences" href="/can-ho-chung-cu-quan-8-ho-chi-minh/aurora-residences-prj3046" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
-                                    <img class="clr-D4D4D4" src="/duan/2018-04-27/20180427050514770248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Aurora Residences" />
-                                </a>
-                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
-                                    <a title="Aurora Residences" href="/can-ho-chung-cu-quan-8-ho-chi-minh/aurora-residences-prj3046" class="clr-055699">
-                                        Aurora Residences
-                                    </a>
-                                </h3>
-                                Số 277 Bến B&#236;nh Đ&#244;ng, phường 14, quận 8, Tp.HCM
-                            </li>
-                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-14 h-78 fsize-12 lh-18">
-                                <a title="Trầu Cau Garden" href="/biet-thu-lien-ke-bac-ninh-bn-bac-ninh/trau-cau-garden-prj872" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
-                                    <img class="clr-D4D4D4" src="/duan/2018-04-25/20180425113705819248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Trầu Cau Garden" />
-                                </a>
-                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
-                                    <a title="Trầu Cau Garden" href="/biet-thu-lien-ke-bac-ninh-bn-bac-ninh/trau-cau-garden-prj872" class="clr-055699">
-                                        Trầu Cau Garden
-                                    </a>
-                                </h3>
-                                Đường L&#234; Th&#225;i Tổ, Bắc Ninh, Bắc Ninh
-                            </li>
-                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-14 h-78 fsize-12 lh-18">
-                                <a title="Vincity Gia L&#226;m" href="/can-ho-chung-cu-gia-lam-ha-noi/vincity-gia-lam-prj2484" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
-                                    <img class="clr-D4D4D4" src="/duan/2018-04-27/20180427022307979248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Vincity Gia L&#226;m" />
-                                </a>
-                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
-                                    <a title="Vincity Gia L&#226;m" href="/can-ho-chung-cu-gia-lam-ha-noi/vincity-gia-lam-prj2484" class="clr-055699">
-                                        Vincity Gia L&#226;m
-                                    </a>
-                                </h3>
-                                Gia L&#226;m, Hà N&#244;̣i
-                            </li>
-                        </ul><ul class='swiper-slide h-440'>
-                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-12 h-78 fsize-12 lh-18">
-                                <a title="Tecco Tứ Hiệp" href="/can-ho-chung-cu-thanh-tri-ha-noi/tecco-tu-hiep-prj2511" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
-                                    <img class="clr-D4D4D4" src="/duan/2018-04-27/20180427023204998248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Tecco Tứ Hiệp" />
-                                </a>
-                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
-                                    <a title="Tecco Tứ Hiệp" href="/can-ho-chung-cu-thanh-tri-ha-noi/tecco-tu-hiep-prj2511" class="clr-055699">
-                                        Tecco Tứ Hiệp
-                                    </a>
-                                </h3>
-                                X&#227; Tứ Hiệp, Thanh Tr&#236;, Hà N&#244;̣i
-                            </li>
-                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-14 h-78 fsize-12 lh-18">
-                                <a title="New Skyline" href="/can-ho-chung-cu-ha-dong-ha-noi/new-skyline-prj2148" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
-                                    <img class="clr-D4D4D4" src="/duan/2018-04-27/20180427120420049248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="New Skyline" />
-                                </a>
-                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
-                                    <a title="New Skyline" href="/can-ho-chung-cu-ha-dong-ha-noi/new-skyline-prj2148" class="clr-055699">
-                                        New Skyline
-                                    </a>
-                                </h3>
-                                L&#244; đất CC2 KĐT Văn Qu&#225;n, Phường Văn Qu&#225;n, H&#224; Đ&#244;ng, Hà N&#244;̣i
-                            </li>
-                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-14 h-78 fsize-12 lh-18">
-                                <a title="Dragon Park Văn Giang" href="/du-an-khac-van-giang-hy-hung-yen/dragon-park-van-giang-prj789" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
-                                    <img class="clr-D4D4D4" src="/duan/2018-04-25/20180425111418451248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Dragon Park Văn Giang" />
-                                </a>
-                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
-                                    <a title="Dragon Park Văn Giang" href="/du-an-khac-van-giang-hy-hung-yen/dragon-park-van-giang-prj789" class="clr-055699">
-                                        Dragon Park Văn Giang
-                                    </a>
-                                </h3>
-                                Đường Tỉnh lộ 179, X&#227; Cửu Cao, Văn Giang, Hưng Y&#234;n
-                            </li>
-                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-14 h-78 fsize-12 lh-18">
-                                <a title="Daresco Residence" href="/khu-do-thi-moi-duc-hoa-long-an/daresco-residence-prj2075" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
-                                    <img class="clr-D4D4D4" src="/duan/2018-04-26/20180426113658720248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="Daresco Residence" />
-                                </a>
-                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
-                                    <a title="Daresco Residence" href="/khu-do-thi-moi-duc-hoa-long-an/daresco-residence-prj2075" class="clr-055699">
-                                        Daresco Residence
-                                    </a>
-                                </h3>
-                                X&#227; Đức Lập Thượng, Đức H&#242;a, Long An
-                            </li>
-                            <li class="set-relative pd-left-92 display-bl mg-left-10 mg-right-10 mg-top-14 h-78 fsize-12 lh-18">
-                                <a title="B&#224;u C&#225;t II" href="/can-ho-chung-cu-tan-binh-ho-chi-minh/bau-cat-ii-prj2737" class="set-absolute brd-style-solid brdcolor-e7e7e7 brdwidth1 bs-border-box w-82 h-78 left-0 top0">
-                                    <img class="clr-D4D4D4" src="/duan/2018-04-27/20180427032926204248.jpg?width=80&amp;height=76&amp;quality=100&amp;cache=always&amp;mode=crop" alt="B&#224;u C&#225;t II" />
-                                </a>
-                                <h3 class="fweight-bold fsize-13 lh-20 mg-bottom-3">
-                                    <a title="B&#224;u C&#225;t II" href="/can-ho-chung-cu-tan-binh-ho-chi-minh/bau-cat-ii-prj2737" class="clr-055699">
-                                        B&#224;u C&#225;t II
-                                    </a>
-                                </h3>
-                                Hồng Lạc, P.10, Q.T&#226;n B&#236;nh, TP. Hồ Ch&#237; Minh
-                            </li>
+                <aside class="aside">
+                    @*<div class="form-search mb15">
+                        <ul class="tabs1 uk-flex-center uk-flex uk-list">
+                            <li id="sale" class="togle-type active">Tìm kiếm nhanh</li>
                         </ul>
+                        <div class="panel-body">
+                            <form asp-action="Search" asp-controller="Project" method="get" accept-charset="utf-8">
+                                <div class="line-item mb10">
+                                    <input type="text" name="keyword" value="" placeholder="Nhập tên dự án, vd: Mỹ đình, Topaz Garden" class="text uk-width-1-1" />
+                                </div>
+                                <div class="line-item mb10">
+                                    <select name="categoryId" class="text uk-width-1-1">
+                                        <option value="">Tất cả</option>
+                                        @if (categories.Count() > 0)
+                                        {
+                                            foreach (var item in categories)
+                                            {
+                                                <option value="@item.Id">@item.Name</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                                <div class="line-item mb10">
+                                    <select name="provinceId" id="province" class="text uk-width-1-1 location">
+                                        <option value="0" selected="selected">[Chọn Tỉnh/Thành phố]</option>
+                                        @if (provinces.Count() > 0)
+                                        {
+                                            foreach (var item in provinces)
+                                            {
+                                                <option value="@item.Id">@item.Name</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                                <div class="line-item mb10">
+                                    <select name="districtId" class="text uk-width-1-1 location" id="district">
+                                        <option value="0" selected="selected">[Chọn Quận/Huyện]</option>
+                                    </select>
+                                </div>
+                                <div class="line-item mb10">
+                                    <select name="wardId" class="text uk-width-1-1 location" id="ward">
+                                        <option value="0" selected="selected">[Chọn Xã/Phường]</option>
+                                    </select>
+                                </div>
+                                <div class="uk-flex uk-flex-middle lib-grid-10">
+                                    <div class="line-item mb10 uk-width-1-1">
+                                        <input type="text" name="fromPrice" value=""
+                                               placeholder="Giá tiền từ ..." class="text uk-width-1-1 input-text">
+                                    </div>
+                                    <div class="line-item mb10 uk-width-1-1">
+                                        <select name="fromPriceType" class="text uk-width-1-1 changetype">
+                                            <option value="0">Giá tiền</option>
+                                            @if (priceTypes.Count() > 0)
+                                            {
+                                                foreach (var item in priceTypes)
+                                                {
+                                                    <option value="@item.Id">@item.Name</option>
+
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="uk-flex uk-flex-middle lib-grid-10">
+                                    <div class="line-item mb10 uk-width-1-1">
+                                        <input type="text" name="toPrice" value=""
+                                               placeholder="Đến ..." class="text uk-width-1-1 input-text">
+                                    </div>
+                                    <div class="line-item mb10 uk-width-1-1">
+                                        <select name="toPriceType" class="text uk-width-1-1 changetype">
+                                            <option value="0">Giá tiền</option>
+                                            @if (priceTypes.Count() > 0)
+                                            {
+                                                foreach (var item in priceTypes)
+                                                {
+                                                    <option value="@item.Id">@item.Name</option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="uk-flex uk-flex-middle lib-grid-10">
+                                    <div class="line-item mb10 uk-width-1-1">
+                                        <input type="text" name="fromAcreage" value=""
+                                               placeholder="Diện tích từ ..." class="text uk-width-1-1 input-text">
+                                    </div>
+                                    <div class="line-item mb10 uk-width-1-1">
+                                        <input type="text" name="toAcreage" value=""
+                                               placeholder="Diện tích đến ..." class="text uk-width-1-1 input-text">
+                                    </div>
+                                </div>
+                                <div class="uk-flex uk-flex-middle lib-grid-10">
+                                    <div class="line-item mb10 bg-submit uk-width-1-1">
+                                        <button class="uk-width-1-1 btn-type-1" type="submit"> Tìm tất cả</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>*@
+                    <div class="video uk-visible-large mb15">
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/VswHarlC4gs"
+                                frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="dv-boxhotline-r uk-visible-large uk-flex-middle uk-flex uk-flex-space-between">
+                        <div class="dv-hl uk-flex-middle uk-flex uk-flex-left lib-grid-10">
+                            <i class="ico-sty i-hotline"></i>
+                            <label>Hotline</label>
+                            <a title="Hotline trợ giúp trực tiếp"
+                               href="tel: 02466.759.435 -  0948.242.555">02466.759.435 -  0948.242.555</a>
+                        </div>
+                        <div class="dv-sca uk-flex-middle uk-flex uk-flex-right">
+                            <span>
+                                <a href="skype: xiontungbatuoc?chat"
+                                   title="Click để chat trực tuyến với bộ phận hỗ trợ">
+                                    <i class="ico-sty i-yaho"></i>
+                                </a>
+                            </span>
+                            <span>
+                                <a rel="nofollow" target="_blank" href=""
+                                   title="Hãy theo dõi chúng tôi trên Google +">
+                                    <i class="ico-sty i-google"></i>
+                                </a>
+                            </span>
+                            <span>
+                                <a rel="nofollow" title="Hãy theo dõi chúng tôi trên facebook" target="_blank"
+                                   href="https://www.facebook.com/Gamuda-Garden-N%C6%A1i-ng%C3%B4i-nh%C3%A0-l%C3%A0-t%E1%BB%95-%E1%BA%A5m-801984929967755/?ref=bookmarks%5C"><i class="ico-sty i-face"></i></a>
+                            </span>
+                        </div>
                     </div>
 
-                    <div class="swiper-button-next fsize-44 clr-055699">
-                        <i class="icon-right-open-big wauto-before set-absolute top0 right-5"></i>
-                    </div>
-                    <div class="swiper-button-prev fsize-44 clr-055699">
-                        <i class="icon-left-open-big wauto-before set-absolute top0 left-5"></i>
-                    </div>
-                </div>
+
+                    <section class="aside-gallery uk-visible-large mt15">
+                        <section class="panel-body home-branch">
+                            <section class="panel-body uk-grid lib-grid-20">
+                                @if (ListProject.Count() > 0)
+                                {
+                                    foreach (var item in ListProject)
+                                    {
+                                        <div class="adversite-item uk-width-1-1 mb5">
+                                            <a href="/du-an/chi-tiet/@item.Url/@item.Id" title="@item.Name" class="img-cover">
+                                                <img src="@item.Image" alt="/du-an/chi-tiet/@item.Url/@item.Id" />
+                                            </a>
+                                        </div>
+                                    }
+                                }
+                            </section>
+                        </section>
+                    </section>
+
+
+                </aside>
+                <script type="text/javascript" charset="utf-8">
+                    $(document).ready(function () {
+                        $("#province").on("change", function () {
+                                        var id = $("#province").val();
+                            $.ajax({
+                                        url: "/get-district",
+                                type: "GET",
+                                data: { id: id },
+                                success: function (result) {
+                                    $("#district").html($('<option/>', { value: 0, text: '[Chọn Quận/Huyện]' }));
+                                    $("#ward").html($('<option/>', { value: 0, text: '[Chọn Xã/Phường]' }));
+                                    $.each(result, function (i, item) {
+                                        $("#district").append('<option value="' + item.id + '"> ' + item.name + ' </option>');
+                                                });
+                                            },
+                                error: function (e) {
+                                                alert(e);
+                                            }
+                                        });
+                                    });
+
+                        $("#district").on("change", function () {
+                                        var id = $("#district").val();
+                            $.ajax({
+                                        url: "/get-ward",
+                                type: "GET",
+                                data: { id: id },
+                                success: function (result) {
+                                    $("#ward").html($('<option/>', { value: 0, text: '[Chọn Xã/Phường]' }));
+                                    $.each(result, function (i, item) {
+                                        $("#ward").append('<option value="' + item.id + '"> ' + item.name + ' </option>');
+                                                });
+                                            },
+                                error: function (e) {
+                                                alert(e);
+                                            }
+                                        });
+                                    });
+                                });
+                </script>
+            </div>
+            <div class="uk-width-large-2-3 mb15 uk-pull-1-3">
+                <section class="estate-detail mb15">
+                    <section class="panel-body">
+                        <div class="dv-ct-detail bor_bottom mb10">
+                            <h1 class="mb0">@Model.Name</h1>
+                        </div>
+                        <div class="meta_time mb5">
+                            Đăng ngày: @Model.CreateDate.Value.ToString("MM/dd/yyyy")
+                        </div>
+
+                        <div class="meta">
+                        </div>
+                        <div class="gallerys_excerpt">
+                            <div class="uk-grid lib-grid-0">
+                                <div class="uk-width-large-1-2">
+                                    <script>
+                                        $(document).ready(function () {
+                                            $("#content-slider").lightSlider({
+                                                loop: true,
+                                                keyPress: true
+                                            });
+                                            $('#image-gallery').lightSlider({
+                                                gallery: true,
+                                                item: 1,
+                                                thumbItem: 6,
+                                                slideMargin: 0,
+                                                speed: 2500,
+                                                auto: false,
+                                                loop: true,
+                                                onSliderLoad: function () {
+                                                    $('#image-gallery').removeClass('cS-hidden');
+                                                }
+                                            });
+                                        });
+                                    </script>
+                                </div>
+                            </div><!-- .uk-grid -->
+                        </div><!-- .gallerys_excerpt -->
+                        <div class="content mt15" style="display:flex;flex-direction:column">
+                            @*<div class="title"><span>Mô tả chi tiết</span></div>*@
+                            <div style="height:100%">
+                                @Html.Raw(Model.Detail)
+                            </div>
+                            <section class="homepage-projects-small mb15">
+                                <header class="panel-head">
+                                    <h3 class="heading">
+                                        <span>Tin liên quan</span>
+                                    </h3>
+                                </header>
+                                <section class="panel-body box-padding-background">
+                                    <ul class="uk-grid lib-grid-0 uk-grid-width-1-1 list-projects">
+                                        @if (relatedNews.Count() > 0)
+                                        {
+                                            foreach (var item in relatedNews)
+                                            {
+                                                <li>
+                                                    <div class="projects uk-flex lib-grid-10 Vip2">
+                                                        <i class="i-bds-cc-1"></i>
+                                                        <div class="thumb">
+                                                            <a class="image img-cover" href="/tin-tuc/chi-tiet/@item.Url/@item.Id" title="@item.Name">
+                                                                <img src="@item.Image" alt="@item.Name" />
+                                                            </a>
+                                                        </div>
+                                                        <div class="infor">
+                                                            <h4 class="title">
+                                                                <img src="/uploads/new-icon.gif" alt="gif" style="width: 22px">
+                                                                <a href="/tin-tuc/chi-tiet/@item.Url/@item.Id" title="@item.Name" style="color: rgb(255, 114, 0) !important;">
+                                                                    @item.Name
+                                                                </a>
+                                                            </h4>
+                                                            <div class="time_create">
+                                                                @item.CreateDate.Value.ToString("MM/dd/yyyy")
+                                                            </div>
+                                                            <div class="projects_desc">
+                                                                @item.Description
+                                                                <a href="/tin-tuc/chi-tiet/@item.Url/@item.Id" title="Xem tiếp">Xem tiếp</a>
+                                                            </div>
+                                                        </div>
+                                                    </div><!-- .product -->
+                                                </li>
+                                            }
+                                        }
+
+                                    </ul>
+                                </section><!-- .panel-body -->
+                            </section><!-- .top-content -->
+
+                        </div>
+                    </section><!-- .panel-body -->
+                </section><!-- .estate-detail -->
+                <section class="estate-same">
+                  
+                </section><!-- .estate-same -->
             </div>
         </div>
     </div>
-    <script type="application/ld+json">
-        {"Code":"01174164","Name":"Cần bán gấp mảnh đất 75m2 Thổ Cư  tại Bắc Thăng Long giá rẻ hơn thị trường","CateName":"Bán đất thổ cư","ProjectName":null,"Link":"/ban-dat-tho-cu-duong-19-10-hn-xa-vong-la-dong-anh-ha-noi/can-ban-gap-manh-dat-75m2-tho-cu-tai-bac-thang-long-gia-re-hon-thi-truong-p1174164","Expired":false,"DirectionName":"Không xác định","BalconyDirectionName":"Không xác định","LastUpTimeVN":"10/05/2022","VipTypeName":"Tin thường","LegalName":"Sổ đỏ/Sổ hồng","Description":"Vợ chồng em cần bán gấp mảnh đất 75m2 THỔ CƯ tại BẮC THĂNG LONG giá rẻ hơn thị trường</br>* Địa chỉ: Lô đầu tiên ngõ 10 đường Bờ Kênh, Ấp Sáp Mai, Võng La, Đông Anh</br>* Diện tích: 75m2, mặt tiền 4,12m</br>* Hướng: Đông Bắc</br> </br>HẠ TẦNG – TIỆN ÍCH ngập tràn :</br>+ Ngõ ô tô con, đánh thẳng xe vào nhà, khu dân cư văn minh  </br>+ Gần đường nhựa lớn 11m, có thể để xe luôn dọc đường lớn.</br>+ Giao thông thuận tiện, mất 2p đến cổng chính KCN Bắc Thăng Long, 3p đến Cầu Thăng Long, ~10p đến Mỹ Đình, 15p đến sân bay Nội Bài…</br>+ Gần 3 chợ lớn, gần viện Nhiệt đới TW 2, gần trường cấp 1-2-3, gần công viên Kim Quy châu Á…</br> </br>Vợ Chồng em đang có nhu cầu cần tiền cho mảnh lớn hơn nên bán gấp trong tuần. Bác nào mua đầu tư hay muốn xây nhà có sân thì quá đẹp luôn ạ.</br>* Sổ đỏ full thổ cư, pháp lý rõ ràng</br>Giá công khai: 2tỷ 850tr (Không thương lượng, thiện chí mua nhanh e bao sổ) </br>Chính chủ: Call Ms Nga 0973.820.720 hoặc zalo cùng số.","PriceString":"2.85 tỷ","AreaString":"75 m²","ListImages":["/bds/2022-05-10/20220510093355361248.jpg","/bds/2022-05-10/20220510093355986248.jpg","/bds/2022-05-10/20220510093356627248.jpg","/bds/2022-05-10/20220510093400533248.jpg","/bds/2022-05-10/20220510093402377248.jpg"],"Breadcrumb":{"Link":"/ban-dat-tho-cu-duong-19-10-hn","TextLink":"Bán đất thổ cư  Đường 19","AddText":"- Đông Anh - Hà Nội"},"IsContactInfo":true,"ProjectInfo":null,"UserLink":"/xem-tin-cung-nguoi-dang/100560","IsViewMoreProductByUser":true,"Visible":true,"ProductId":1174164,"CateId":50,"ParentCateId":89,"ProjectId":0,"Title":null,"EndDate":0,"StartDate":0,"Images":null,"Price":2.85,"ComputedPrice":2850000000.0,"UnitPrice":0,"Address":"19 Võng La","CityCode":"HN","DistrictId":10,"WardID":9951,"StreetId":5707,"Area":75.0,"Width":4.0,"RoadWidth":3.0,"Rooms":0,"BathRooms":0,"Direction":9,"BalconyDirection":9,"LastUpTime":637877720428463895,"CreateByUser":100560,"VipType":1,"Status":2,"IsPublic":true,"Legal":1,"Floors":0,"Interior":null,"Lat":"21.1611142","Long":"105.84957959999997","IsMarkerDrag":false,"Price_Crawler":null,"Area_Crawler":null,"CommonInfo":null,"ContactName":"Minh Du","ContactAddress":"Mỹ Tho Tiền Giang","ContactPhone":"0973820720","ContactEmail":"toptinbds20221@gmail.com","ContactMobile":"0973820720"}
-    </script>
-    <script type="application/ld+json">
-        {"Code":"01174164","Name":"Cần bán gấp mảnh đất 75m2 Thổ Cư  tại Bắc Thăng Long giá rẻ hơn thị trường","CateName":"Bán đất thổ cư","ProjectName":null,"Link":"/ban-dat-tho-cu-duong-19-10-hn-xa-vong-la-dong-anh-ha-noi/can-ban-gap-manh-dat-75m2-tho-cu-tai-bac-thang-long-gia-re-hon-thi-truong-p1174164","Expired":false,"DirectionName":"Không xác định","BalconyDirectionName":"Không xác định","LastUpTimeVN":"10/05/2022","VipTypeName":"Tin thường","LegalName":"Sổ đỏ/Sổ hồng","Description":"Vợ chồng em cần bán gấp mảnh đất 75m2 THỔ CƯ tại BẮC THĂNG LONG giá rẻ hơn thị trường</br>* Địa chỉ: Lô đầu tiên ngõ 10 đường Bờ Kênh, Ấp Sáp Mai, Võng La, Đông Anh</br>* Diện tích: 75m2, mặt tiền 4,12m</br>* Hướng: Đông Bắc</br> </br>HẠ TẦNG – TIỆN ÍCH ngập tràn :</br>+ Ngõ ô tô con, đánh thẳng xe vào nhà, khu dân cư văn minh  </br>+ Gần đường nhựa lớn 11m, có thể để xe luôn dọc đường lớn.</br>+ Giao thông thuận tiện, mất 2p đến cổng chính KCN Bắc Thăng Long, 3p đến Cầu Thăng Long, ~10p đến Mỹ Đình, 15p đến sân bay Nội Bài…</br>+ Gần 3 chợ lớn, gần viện Nhiệt đới TW 2, gần trường cấp 1-2-3, gần công viên Kim Quy châu Á…</br> </br>Vợ Chồng em đang có nhu cầu cần tiền cho mảnh lớn hơn nên bán gấp trong tuần. Bác nào mua đầu tư hay muốn xây nhà có sân thì quá đẹp luôn ạ.</br>* Sổ đỏ full thổ cư, pháp lý rõ ràng</br>Giá công khai: 2tỷ 850tr (Không thương lượng, thiện chí mua nhanh e bao sổ) </br>Chính chủ: Call Ms Nga 0973.820.720 hoặc zalo cùng số.","PriceString":"2.85 tỷ","AreaString":"75 m²","ListImages":["/bds/2022-05-10/20220510093355361248.jpg","/bds/2022-05-10/20220510093355986248.jpg","/bds/2022-05-10/20220510093356627248.jpg","/bds/2022-05-10/20220510093400533248.jpg","/bds/2022-05-10/20220510093402377248.jpg"],"Breadcrumb":{"Link":"/ban-dat-tho-cu-duong-19-10-hn","TextLink":"Bán đất thổ cư  Đường 19","AddText":"- Đông Anh - Hà Nội"},"IsContactInfo":true,"ProjectInfo":null,"UserLink":"/xem-tin-cung-nguoi-dang/100560","IsViewMoreProductByUser":true,"Visible":true,"ProductId":1174164,"CateId":50,"ParentCateId":89,"ProjectId":0,"Title":null,"EndDate":0,"StartDate":0,"Images":null,"Price":2.85,"ComputedPrice":2850000000.0,"UnitPrice":0,"Address":"19 Võng La","CityCode":"HN","DistrictId":10,"WardID":9951,"StreetId":5707,"Area":75.0,"Width":4.0,"RoadWidth":3.0,"Rooms":0,"BathRooms":0,"Direction":9,"BalconyDirection":9,"LastUpTime":637877720428463895,"CreateByUser":100560,"VipType":1,"Status":2,"IsPublic":true,"Legal":1,"Floors":0,"Interior":null,"Lat":"21.1611142","Long":"105.84957959999997","IsMarkerDrag":false,"Price_Crawler":null,"Area_Crawler":null,"CommonInfo":null,"ContactName":"Minh Du","ContactAddress":"Mỹ Tho Tiền Giang","ContactPhone":"0973820720","ContactEmail":"toptinbds20221@gmail.com","ContactMobile":"0973820720"}
-    </script>
-    <style>
-        .br-theme-fontawesome-stars .br-widget {
-            height: 28px;
-            white-space: nowrap;
-        }
-
-            .br-theme-fontawesome-stars .br-widget a {
-                margin-right: 2px;
-                position: relative;
-                width: 16px;
-                height: 16px;
-                display: inline-block;
-            }
-
-                .br-theme-fontawesome-stars .br-widget a:after {
-                    background: url(../Content/img/star.gif) center center no-repeat;
-                    width: 16px;
-                    height: 16px;
-                    position: absolute;
-                    left: 0;
-                    top: 0px;
-                    content: "";
-                }
-
-                .br-theme-fontawesome-stars .br-widget a.br-active:after {
-                    background: url(../Content/img/star-active.gif) center center no-repeat;
-                    width: 16px;
-                    height: 16px;
-                    position: absolute;
-                    left: 0;
-                    top: 0px;
-                    content: "";
-                }
-
-                .br-theme-fontawesome-stars .br-widget a.br-selected:after {
-                    background: url(../Content/img/star-active.gif) center center no-repeat;
-                    width: 16px;
-                    height: 16px;
-                    position: absolute;
-                    left: 0;
-                    top: 0px;
-                    content: "";
-                }
-
-            .br-theme-fontawesome-stars .br-widget .br-current-rating {
-                display: none;
-            }
-
-        .br-theme-fontawesome-stars .br-readonly a {
-            cursor: default;
-        }
-
-        .single-post {
-            margin-bottom: 30px;
-        }
-
-        #rating-box {
-            margin-bottom: 15px;
-        }
-
-            #rating-box .kksr-title {
-                display: none
-            }
-
-            #rating-box .br-wrapper {
-                display: inline-block;
-            }
-
-            #rating-box .kksr-legend {
-                display: inline-block;
-            }
-
-            #rating-box .rating-responsive {
-                display: inline-block;
-            }
-
-        #faqs_box {
-            padding: 30px 0px;
-            margin-top: 20px;
-        }
-    </style>
 </div>
+
+

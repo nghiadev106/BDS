@@ -18,9 +18,16 @@ namespace BDS.Areas.Admin.Models.Project
         public DateTime? EditDate { get; set; }
         public int? DisplayOrder { get; set; }
         public bool? IsHot { get; set; }
-        public decimal? Price { get; set; }
+        public string Price { get; set; }
         public string Acreage { get; set; }
-        public int? AddressId { get; set; }
+
+        [Required(ErrorMessage = "Bạn phải chọn địa chỉ")]
+        public int? WardId { get; set; }
+        public int? ProvinceId { get; set; }
+        public int? DistrictId { get; set; }
+        public int? PriceTypeId { get; set; }
+        public int? DirectionId { get; set; }
+        public int? Phone { get; set; }
         public string AddressDetail { get; set; }
 
         [Required(ErrorMessage = "Bạn phải nhập tên sản phẩm")]

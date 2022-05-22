@@ -15,9 +15,11 @@ namespace BDS.Services
 {
     public interface IProjectService
     {
-        Task<PaginationViewModel> Pagination(Dictionary<string, object> data);
+        List<ProjectViewModel> Search(string keyword, int categoryId, int provinceId, int districtId, int wardId, string fromPrice, int fromPriceType, string toPrice, int toPriceType, string fromAcreage, string toAcreage);
 
         Task<List<ProjectViewModel>> GetAll();
+
+        Task<List<ProjectViewModel>> GetByCategoryId(int id);
 
         Task<int> Create(ProjectCreateRequest request);
 
@@ -59,89 +61,107 @@ namespace BDS.Services
                 CreateDate = p.CreateDate,
                 IsHot=p.IsHot,
                 Acreage=p.Acreage,
-                AddressId=p.AddressId,
-                AddressDetail=p.AddressDetail
+                WardId=p.WardId,
+                DirectionName=p.Direction.Name,
+                PriceTypeName=p.PriceType.Name,
+                AddressDetail=p.AddressDetail,
+                Phone=p.Phone
             }).OrderByDescending(x => x.CreateDate).ToListAsync();
         }
 
-        public async Task<PaginationViewModel> Pagination(Dictionary<string, object> data)
+        public async Task<List<ProjectViewModel>> GetByCategoryId(int id)
         {
-            PaginationViewModel paginationViewModel = new PaginationViewModel();
-            try
+            return await _context.Projects.Where(x=>x.CategoryId==id).Select(p => new ProjectViewModel()
             {
-                int page = int.Parse(data["page"].ToString());
-                int pageSize = int.Parse(data["pageSize"].ToString());
-                string nameSearch = "";
-                if (data.ContainsKey("nameSearch") && !string.IsNullOrEmpty(data["nameSearch"].ToString().Trim()))
-                    nameSearch = data["nameSearch"].ToString().Trim().ToLower();
-                paginationViewModel.Page = page;
-                paginationViewModel.PageSize = pageSize;
-                paginationViewModel.TotalItems = await _context.Projects.Where(x => x.Name.ToLower().IndexOf(nameSearch) >= 0).CountAsync();
-                var model = from p in _context.Projects
-                            select new ProjectViewModel
-                            {
-                                Id = p.Id,
-                                Name = p.Name,
-                                Image = p.Image,
-                                CategoryName = p.Category.Name,
-                                Description = p.Description,
-                                Price = p.Price,
-                                Detail = p.Detail,
-                                IsNew = p.IsNew,
-                                Url = p.Url,
-                                DisplayOrder = p.DisplayOrder,
-                                Status = p.Status,
-                                CreateDate = p.CreateDate,
-                                IsHot = p.IsHot,
-                                Acreage = p.Acreage,
-                                AddressId = p.AddressId,
-                                AddressDetail = p.AddressDetail
-                            };
-                string sortByName = "";
-                if (data.ContainsKey("sortByName") && !string.IsNullOrEmpty(data["sortByName"].ToString().Trim()))
-                    sortByName = data["sortByName"].ToString().Trim().ToLower();
-                switch (sortByName)
-                {
-                    case "asc":
-                        model = model.OrderBy(x => x.Name);
-                        break;
+                Id = p.Id,
+                Name = p.Name,
+                Image = p.Image,
+                CategoryName = p.Category.Name,
+                Description = p.Description,
+                Price = p.Price,
+                Detail = p.Detail,
+                IsNew = p.IsNew,
+                Url = p.Url,
+                DisplayOrder = p.DisplayOrder,
+                Status = p.Status,
+                CreateDate = p.CreateDate,
+                IsHot = p.IsHot,
+                Acreage = p.Acreage,
+                WardId = p.WardId,
+                DirectionName = p.Direction.Name,
+                PriceTypeName = p.PriceType.Name,
+                AddressDetail = p.AddressDetail,
+                Phone = p.Phone
+            }).OrderByDescending(x => x.CreateDate).ToListAsync();
+        }
 
-                    case "desc":
-                        model = model.OrderByDescending(x => x.Name);
-                        break;
-                }
-                string sortByCreatedDate = "";
-                if (data.ContainsKey("sortByCreatedDate") && !string.IsNullOrEmpty(data["sortByCreatedDate"].ToString().Trim()))
-                    sortByCreatedDate = data["sortByCreatedDate"].ToString().Trim().ToLower();
-                switch (sortByCreatedDate)
+        public List<ProjectViewModel> Search(string keyword, int categoryId, int provinceId, int districtId, int wardId, string fromPrice, int fromPriceType, string toPrice, int toPriceType, string fromAcreage, string toAcreage)
+        {
+                string queryString = string.Format("SELECT * FROM Project WHERE dbo.fuConvertToUnsign1(Name) LIKE N'%' + dbo.fuConvertToUnsign1(N'{0}') + '%'", keyword);
+                var model = _context.Projects.FromSqlRaw(queryString).Select(p => new ProjectViewModel()
                 {
-                    case "asc":
-                        model = model.OrderBy(x => x.CreateDate);
-                        break;
+                    Id = p.Id,
+                    Name = p.Name,
+                    Image = p.Image,
+                    CategoryName = p.Category.Name,
+                    Description = p.Description,
+                    Price = p.Price,
+                    Detail = p.Detail,
+                    IsNew = p.IsNew,
+                    Url = p.Url,
+                    DisplayOrder = p.DisplayOrder,
+                    Status = p.Status,
+                    CreateDate = p.CreateDate,
+                    IsHot = p.IsHot,
+                    Acreage = p.Acreage,
+                    WardId = p.WardId,
+                    PriceTypeId=p.PriceTypeId,
+                    DirectionId=p.DirectionId,
+                    ProvinceId=p.ProvinceId,
+                    DistrictId=p.DistrictId,
+                    CategoryId=p.CategoryId,
+                    DirectionName = p.Direction.Name,
+                    PriceTypeName = p.PriceType.Name,
+                    AddressDetail = p.AddressDetail,
+                    Phone = p.Phone
+                }).OrderByDescending(x => x.CreateDate).ToList();
+                if (categoryId != 0)
+                {
+                    model = model.Where(x => x.CategoryId == categoryId).ToList();
+                }
+                if (provinceId != 0)
+                {
+                    model = model.Where(x => x.ProvinceId == provinceId).ToList();
+                }
+                if (districtId != 0)
+                {
+                    model = model.Where(x => x.DistrictId == districtId).ToList();
+                }
+                if (wardId != 0)
+                {
+                    model = model.Where(x => x.WardId == wardId).ToList();
+                }
 
-                    case "desc":
-                        model = model.OrderByDescending(x => x.CreateDate);
-                        break;
-                }
-                string sortByPrice = "";
-                if (data.ContainsKey("sortByPrice") && !string.IsNullOrEmpty(data["sortByPrice"].ToString().Trim()))
-                    sortByPrice = data["sortByPrice"].ToString().Trim().ToLower();
-                switch (sortByPrice)
+                if (!string.IsNullOrEmpty(fromPrice) && fromPriceType != 0)
                 {
-                    case "asc":
-                        model = model.OrderBy(x => x.Price);
-                        break;
-                    case "desc":
-                        model = model.OrderByDescending(x => x.Price);
-                        break;
+                    model = model.Where(x => Convert.ToDecimal(x.Price) >= Convert.ToDecimal(fromPrice) && x.PriceTypeId == fromPriceType).ToList();
                 }
-                paginationViewModel.Data = model.Where(x => x.Name.ToLower().IndexOf(nameSearch) >= 0).Skip((page - 1) * pageSize).Take(pageSize);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            return paginationViewModel;
+
+                if (!string.IsNullOrEmpty(toPrice) && toPriceType != 0)
+                {
+                    model = model.Where(x => Convert.ToDecimal(x.Price) <= Convert.ToDecimal(toPrice) && x.PriceTypeId == toPriceType).ToList();
+                }
+
+                if (!string.IsNullOrEmpty(fromAcreage))
+                {
+                    model = model.Where(x => Convert.ToDecimal(x.Acreage) >= Convert.ToDecimal(fromAcreage)).ToList();
+                }
+
+                if (!string.IsNullOrEmpty(toAcreage))
+                {
+                    model = model.Where(x => Convert.ToDecimal(x.Acreage) <= Convert.ToDecimal(toAcreage)).ToList();
+                }
+                return model;
         }
 
         public async Task<int> Create(ProjectCreateRequest request)
@@ -150,7 +170,7 @@ namespace BDS.Services
             {
                 try
                 {
-                    Project project = new Project()
+                    Project pro = new Project()
                     {
                         Name = request.Name,
                         Image = request.Image,
@@ -165,14 +185,19 @@ namespace BDS.Services
                         CreateDate = DateTime.Now,
                         IsHot = request.IsHot,
                         Acreage = request.Acreage,
-                        AddressId = request.AddressId,
-                        AddressDetail = request.AddressDetail
+                        WardId = request.WardId,
+                        PriceTypeId=request.PriceTypeId,
+                        ProvinceId=request.ProvinceId,
+                        DistrictId=request.DistrictId,
+                        DirectionId=request.DirectionId,
+                        AddressDetail = request.AddressDetail,
+                        Phone = request.Phone
                     };
                     if (request.File != null)
                     {
-                        project.Image = await SaveFile(request.File);
+                        pro.Image = await SaveFile(request.File);
                     }
-                    _context.Projects.Add(project);
+                    _context.Projects.Add(pro);
                     await _context.SaveChangesAsync();
 
                     if (request.Files != null)
@@ -181,7 +206,7 @@ namespace BDS.Services
                         {
                             ProjectImage image = new ProjectImage()
                             {
-                                ProjectId = project.Id,
+                                ProjectId = pro.Id,
                                 Path = await SaveFile(item)
                             };
                             _context.ProjectImages.Add(image);
@@ -206,31 +231,36 @@ namespace BDS.Services
             {
                 try
                 {
-                    Project project = await _context.Projects.FindAsync(request.Id);
-                    if (project == null) return -1;
-                    project.Name = request.Name;
-                    project.CategoryId = request.CategoryId;
-                    project.Description = request.Description;
-                    project.Price = request.Price;
-                    project.Detail = request.Detail;
-                    project.IsNew = request.IsNew;
-                    project.Url = request.Url;
-                    project.DisplayOrder = request.DisplayOrder;
-                    project.Status = request.Status;
-                    project.EditDate = DateTime.Now;
-                    project.IsHot = request.IsHot;
-                    project.Acreage = request.Acreage;
-                    project.AddressId = request.AddressId;
-                    project.AddressDetail = request.AddressDetail;
+                    Project pro = await _context.Projects.FindAsync(request.Id);
+                    if (pro == null) return -1;
+                    pro.Name = request.Name;
+                    pro.CategoryId = request.CategoryId;
+                    pro.Description = request.Description;
+                    pro.Price = request.Price;
+                    pro.Detail = request.Detail;
+                    pro.IsNew = request.IsNew;
+                    pro.Url = request.Url;
+                    pro.DisplayOrder = request.DisplayOrder;
+                    pro.Status = request.Status;
+                    pro.EditDate = DateTime.Now;
+                    pro.IsHot = request.IsHot;
+                    pro.Acreage = request.Acreage;
+                    pro.WardId = request.WardId;
+                    pro.DistrictId = request.DistrictId;
+                    pro.ProvinceId = request.ProvinceId;
+                    pro.PriceTypeId = request.PriceTypeId;
+                    pro.DirectionId = request.DirectionId;
+                    pro.AddressDetail = request.AddressDetail;
+                    pro.Phone = request.Phone;
                     if (request.File != null)
                     {
-                        await _storageService.DeleteFileAsync(project.Image);
-                        project.Image = await SaveFile(request.File);
+                        await _storageService.DeleteFileAsync(pro.Image);
+                        pro.Image = await SaveFile(request.File);
                     }
 
                     if (request.Files != null)
                     {
-                        List<ProjectImage> images = await _context.ProjectImages.Where(x => x.ProjectId == project.Id).ToListAsync();
+                        List<ProjectImage> images = await _context.ProjectImages.Where(x => x.ProjectId == pro.Id).ToListAsync();
                         if (images.Count() > 0)
                         {
                             foreach (var item in images)
@@ -244,7 +274,7 @@ namespace BDS.Services
                         {
                             ProjectImage image = new ProjectImage()
                             {
-                                ProjectId = project.Id,
+                                ProjectId = pro.Id,
                                 Path = await SaveFile(item)
                             };
                             _context.ProjectImages.Add(image);
@@ -268,11 +298,11 @@ namespace BDS.Services
             {
                 try
                 {
-                    Project project = await _context.Projects.FindAsync(id);
-                    if (project == null) return -1;
-                    if (project.Image != null)
+                    Project pro = await _context.Projects.FindAsync(id);
+                    if (pro == null) return -1;
+                    if (pro.Image != null)
                     {
-                        await _storageService.DeleteFileAsync(project.Image);
+                        await _storageService.DeleteFileAsync(pro.Image);
                     }
                     List<ProjectImage> images = await _context.ProjectImages.Where(x => x.ProjectId == id).ToListAsync();
                     if (images.Count() > 0)
@@ -283,7 +313,7 @@ namespace BDS.Services
                             await _storageService.DeleteFileAsync(item.Path);
                         }
                     }
-                    _context.Projects.Remove(project);
+                    _context.Projects.Remove(pro);
                     await _context.SaveChangesAsync();
                     transaction.Commit();
                     return 1;
@@ -300,27 +330,47 @@ namespace BDS.Services
         {
             try
             {
-                return await _context.Projects.Where(x => x.Id == id).Select(p => new ProjectViewModel()
-                {
-                    Id = p.Id,
-                    Name = p.Name,
-                    Image = p.Image,
-                    CategoryName = p.Category.Name,
-                    Description = p.Description,
-                    Price = p.Price,
-                    Detail = p.Detail,
-                    Url = p.Url,
-                    IsNew = p.IsNew,
-                    CategoryId = p.CategoryId,
-                    DisplayOrder = p.DisplayOrder,
-                    Status = p.Status,
-                    CreateDate = p.CreateDate,
-                    IsHot = p.IsHot,
-                    Acreage = p.Acreage,
-                    AddressId = p.AddressId,
-                    AddressDetail = p.AddressDetail,
-                    Images = _context.ProjectImages.Where(x => x.ProjectId == id).ToList()
-                }).FirstOrDefaultAsync();
+                var query = from pro in _context.Projects
+                            join c in _context.Categories on pro.CategoryId equals c.Id
+                            join type in _context.PriceTypes on pro.PriceTypeId equals type.Id
+                            join dir in _context.Directions on pro.DirectionId equals dir.Id
+                            join w in _context.Wards on pro.WardId equals w.Id
+                            join d in _context.Districts on w.DistrictId equals d.Id
+                            join p in _context.Provinces on d.ProvinceId equals p.Id
+                            select new ProjectViewModel()
+                            {
+                                Id = pro.Id,
+                                Name = pro.Name,
+                                Image = pro.Image,
+                                CategoryId = pro.CategoryId,
+                                Description = pro.Description,
+                                Price = pro.Price,
+                                Detail = pro.Detail,
+                                IsNew = pro.IsNew,
+                                Url = pro.Url,
+                                DisplayOrder = pro.DisplayOrder,
+                                Status = pro.Status,
+                                IsHot = pro.IsHot,
+                                Acreage = pro.Acreage,
+                                WardId = pro.WardId,
+                                AddressDetail = pro.AddressDetail,
+                                DistrictId = d.Id,
+                                ProvinceId = p.Id,
+                                WardName=w.Name,
+                                DirectionName=dir.Name,
+                                ProvinceName=p.Name,
+                                PriceTypeName=type.Name,
+                                DistrictName=d.Name,
+                                CategoryName=c.Name,
+                                CreateDate=pro.CreateDate,
+                                EditDate=pro.EditDate,
+                                PriceTypeId = type.Id,
+                                DirectionId = dir.Id,
+                                Phone = pro.Phone,
+                                Images = _context.ProjectImages.Where(x => x.ProjectId == id).ToList()
+                            };
+                var project = await query.Where(x => x.Id == id).FirstOrDefaultAsync();
+                return project;
             }
             catch (Exception)
             {
@@ -332,29 +382,38 @@ namespace BDS.Services
         {
             try
             {
-                Project project = await _context.Projects.FindAsync(id);
-                if (project == null) return null;
-                ProjectUpdateRequest updateProjectsViewModel = new ProjectUpdateRequest()
-                {
-                    Id = project.Id,
-                    Name = project.Name,
-                    Image = project.Image,
-                    CategoryId = project.CategoryId,
-                    Description = project.Description,
-                    Price = project.Price,
-                    Detail = project.Detail,
-                    IsNew = project.IsNew,
-                    Url = project.Url,
-                    DisplayOrder = project.DisplayOrder,
-                    Status = project.Status,
-                    IsHot = project.IsHot,
-                    Acreage = project.Acreage,
-                    AddressId = project.AddressId,
-                    AddressDetail = project.AddressDetail,
-                    Images = _context.ProjectImages.Where(x => x.ProjectId == id).ToList()
-                };
-
-                return updateProjectsViewModel;
+                var query = from pro in _context.Projects
+                              join type in _context.PriceTypes on pro.PriceTypeId equals type.Id
+                              join dir in _context.Directions on pro.DirectionId equals dir.Id
+                              join w in _context.Wards on pro.WardId equals w.Id
+                                join d in _context.Districts on w.DistrictId equals d.Id
+                                join p in _context.Provinces on d.ProvinceId equals p.Id
+                                select new ProjectUpdateRequest()
+                                {
+                                    Id = pro.Id,
+                                    Name = pro.Name,
+                                    Image = pro.Image,
+                                    CategoryId = pro.CategoryId,
+                                    Description = pro.Description,
+                                    Price = pro.Price,
+                                    Detail = pro.Detail,
+                                    IsNew = pro.IsNew,
+                                    Url = pro.Url,
+                                    DisplayOrder = pro.DisplayOrder,
+                                    Status = pro.Status,
+                                    IsHot = pro.IsHot,
+                                    Acreage = pro.Acreage,
+                                    WardId = pro.WardId,
+                                    AddressDetail = pro.AddressDetail,
+                                    DistrictId=d.Id,
+                                    ProvinceId=p.Id,
+                                    PriceTypeId=type.Id,
+                                    DirectionId=dir.Id,
+                                    Phone = pro.Phone,
+                                    Images = _context.ProjectImages.Where(x => x.ProjectId == id).ToList()
+                                };
+                var project = await query.Where(x => x.Id == id).FirstOrDefaultAsync();
+                return project;
             }
             catch (Exception)
             {
