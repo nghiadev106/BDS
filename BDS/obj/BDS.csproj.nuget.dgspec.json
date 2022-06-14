@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\nghia\\DoAnTotNghiep2022\\Trang\\BDS\\BDS\\BDS.csproj": {}
+    "D:\\DA\\BSD\\BDS\\BDS\\BDS.csproj": {}
   },
   "projects": {
-    "D:\\nghia\\DoAnTotNghiep2022\\Trang\\BDS\\BDS\\BDS.csproj": {
+    "D:\\DA\\BSD\\BDS\\BDS\\BDS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\nghia\\DoAnTotNghiep2022\\Trang\\BDS\\BDS\\BDS.csproj",
+        "projectUniqueName": "D:\\DA\\BSD\\BDS\\BDS\\BDS.csproj",
         "projectName": "BDS",
-        "projectPath": "D:\\nghia\\DoAnTotNghiep2022\\Trang\\BDS\\BDS\\BDS.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\nghia\\DoAnTotNghiep2022\\Trang\\BDS\\BDS\\obj\\",
+        "projectPath": "D:\\DA\\BSD\\BDS\\BDS\\BDS.csproj",
+        "packagesPath": "C:\\Users\\DreamStore\\.nuget\\packages\\",
+        "outputPath": "D:\\DA\\BSD\\BDS\\BDS\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DreamStore\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -43,6 +40,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "MailKit": {
+              "target": "Package",
+              "version": "[3.3.0, )"
+            },
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.9, )"
@@ -72,6 +73,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[5.0.2, )"
+            },
+            "MimeKit": {
+              "target": "Package",
+              "version": "[3.3.0, )"
             }
           },
           "imports": [
@@ -92,7 +97,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
         }
       }
     }

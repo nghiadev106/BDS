@@ -1,4 +1,6 @@
-﻿using BDS.Model;
+﻿using BDS.Areas.Admin.Models.FeedBack;
+using BDS.Email;
+using BDS.Model;
 using BDS.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -9,10 +11,12 @@ namespace BDS.Areas.Admin.Controllers
     public class FeedBackController : BaseController
     {
         private readonly IFeedbackService _service;
+        private ISendMailService _sendMailservice;
 
-        public FeedBackController(IFeedbackService service)
+        public FeedBackController(IFeedbackService service, ISendMailService sendMailservice)
         {
             _service = service;
+            _sendMailservice = sendMailservice;
         }
         public async Task<IActionResult> Index()
         {
@@ -27,9 +31,21 @@ namespace BDS.Areas.Admin.Controllers
             return View(res);
         }
 
-        public async Task<IActionResult> Confirm(Feedback fb)
+        public async Task<IActionResult> Confirm(FeedBackUpdateRequest fb)
         {
-            var result =await _service.Update(fb.Id);
+
+            var result = await _service.Update(fb.Id);
+
+
+            MailContent content = new MailContent
+            {
+                To = fb.Email,
+                Subject = "Phản hồi từ BDS nhà đất",
+                Body = fb.Reply
+            };
+
+            await _sendMailservice.SendMail(content);
+
             if (result == 1)
             {
                 TempData["success"] = "Xác nhận thành công";

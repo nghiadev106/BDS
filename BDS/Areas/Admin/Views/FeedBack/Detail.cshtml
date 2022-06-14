@@ -1,11 +1,35 @@
-﻿@model BDS.Model.Feedback
+﻿@model BDS.Areas.Admin.Models.FeedBack.FeedBackUpdateRequest
 @{
     ViewData["Title"] = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
+@section css{
+    <link href="~/admin/js/summernote/summernote-bs4.min.css" rel="stylesheet">
+}
+
 @section js{
+    <script src="~/admin/js/summernote/summernote-bs4.js"></script>
     <script src="~/admin/js/custemUrl.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#reply').summernote({
+                height: 200,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'italic', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'hr']],
+                    ['view', ['fullscreen', 'codeview']],
+                    ['help', ['help']]
+                ]
+            });
+        });
+    </script>
 }
 <input type="hidden" id="success" value="@TempData["success"]" />
 <input type="hidden" id="warning" value="@TempData["warning"]" />
@@ -48,6 +72,12 @@
                             <label class="control-label">Lời nhắn</label>
                             <textarea readonly asp-for="Message" rows="5" class="form-control"></textarea>
                         </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Trả lời</label>
+                            <textarea asp-for="Reply" id="reply" class="form-control"></textarea>
+                            <span asp-validation-for="Reply" class="text-danger"></span>
+                        </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Trạng thái</label>
                             <select disabled class="form-control" id="Status" asp-for="Status">
@@ -63,12 +93,16 @@
                                 }
                             </select>
                         </div>
-                        @if (Model.Status == 0)
-                        {
-                            <div class="form-group">
-                                <input type="submit" value="Xác nhận" class="btn btn-primary" />
-                            </div>
-                        }
+                        @*@if (Model.Status == 0)
+                            {
+                                <div class="form-group">
+                                    <input type="submit" value="Trả lời" class="btn btn-primary" />
+                                </div>
+                            }*@
+
+                        <div class="form-group">
+                            <input type="submit" value="Trả lời" class="btn btn-primary" />
+                        </div>
                     </div>
                 </div>
             </form>

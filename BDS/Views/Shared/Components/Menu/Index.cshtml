@@ -1,0 +1,10 @@
+﻿@model List<BDS.Model.Category>
+
+@foreach (var item in Model)
+{
+    <li>
+        <a href="/@item.Url/@item.Id" title="@item.Name">
+            @item.Name
+        </a>
+    </li>
+}

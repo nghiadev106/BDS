@@ -1,3 +1,4 @@
+using BDS.Email;
 using BDS.Model;
 using BDS.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -36,7 +37,11 @@ namespace BDS
             //    .AddEntityFrameworkStores<ApplicationDbContext>()
             //    .AddDefaultTokenProviders();
 
-             //Specifiying we are going to use Identity Framework
+            services.AddOptions();
+            var mailsettings = Configuration.GetSection("MailSettings");
+            services.Configure<MailSettings>(mailsettings);
+
+            //Specifiying we are going to use Identity Framework
             services.AddIdentity<IdentityUser, IdentityRole>(options =>
             {
                 options.Password.RequireDigit = false;
@@ -67,7 +72,7 @@ namespace BDS
             services.AddTransient<IPriceTypeService, PriceTypeService>();
             services.AddTransient<IDirectionService, DirectionService>();
             services.AddTransient<IFeedbackService, FeedbackService>();
-
+            services.AddTransient<ISendMailService, SendMailService>();
             services.AddDistributedMemoryCache();
             services.AddSession(options =>
             {
