@@ -1,7 +1,10 @@
 ﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
 
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+@{
+    var fullName = @HttpContextAccessor.HttpContext.Session.GetString("USER_SESSION");
+}
 <!DOCTYPE html>
 <html>
 <head>
@@ -348,7 +351,7 @@
                     <div class="top-menu clearfix">
                     </div>
                     <div class="top-members">
-                        @if (@UserManager.GetUserName(User) == null)
+                        @if (fullName == null)
                         {
                             <div class="member-link uk-flex lib-grid-20">
                                 <a class="btn-register" href="/dang-ky">
@@ -363,7 +366,7 @@
                         {
                             <div class="member-link uk-flex lib-grid-20">
                                 <a class="btn-register" href="#">
-                                    <i class="fa fa-user"></i> @UserManager.GetUserName(User)
+                                    <i class="fa fa-user"></i> @fullName
                                 </a>
                                 <form action="/dang-xuat">
                                     <a class="btn-login" href="javascript:void(0)">
@@ -399,7 +402,21 @@
                                     Trang chủ
                                 </a>
                             </li>
-                            @await Component.InvokeAsync("Menu")
+                            <li>
+                                <a href="/nha-dat-ban/2" title="Nhà Đất Bán">
+                                    Nhà Đất Bán
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/sang-nhuong/3" title="Sang Nhượng">
+                                    Sang Nhượng
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/cho-thue/4" title="Nhà Đất Cho Thuê">
+                                    Nhà Đất Cho Thuê
+                                </a>
+                            </li>
                             <li>
                                 <a href="/tin-tuc" title="Thành viên">
                                     Tin tức

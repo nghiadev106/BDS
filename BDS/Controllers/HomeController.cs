@@ -32,7 +32,7 @@ namespace BDS.Controllers
             ViewBag.ListNewsHot = _context.News.Where(x => x.Status == 1&&x.IsNew==true).Take(8).ToList();
             ViewBag.ListFengShui = _context.FengShuis.Where(x => x.Status == 1).Take(8).ToList();
             ViewBag.ListFurniture = _context.Furnitures.Where(x => x.Status == 1).Take(8).ToList();
-            ViewBag.ListProject = (await _service.GetAll()).OrderByDescending(x=>x.CreateDate).Take(20).ToList();
+            ViewBag.ListProject = (await _service.GetAll()).Where(x => x.Status == 1).OrderByDescending(x=>x.CreateDate).Take(20).ToList();
             ViewBag.ListProjectNew = _context.Projects.Where(x => x.Status == 1 && x.IsNew==true).OrderByDescending(x => x.CreateDate).Take(8).ToList();
             ViewBag.ListProjectHot = _context.Projects.Where(x => x.IsHot==true && x.Status==1).OrderByDescending(x => x.CreateDate).Take(8).ToList();
             return View();

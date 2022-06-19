@@ -106,6 +106,9 @@ namespace BDS.Controllers
                 TempData["warning"] = "Bạn chưa chọn địa chỉ";
                 return View(request);
             }
+            request.IsHot = false;
+            request.IsNew = false;
+            request.Status = 0;
 
             var result = await _service.Create(request);
 

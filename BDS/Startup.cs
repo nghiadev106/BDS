@@ -73,6 +73,7 @@ namespace BDS
             services.AddTransient<IDirectionService, DirectionService>();
             services.AddTransient<IFeedbackService, FeedbackService>();
             services.AddTransient<ISendMailService, SendMailService>();
+            services.AddTransient<IUserService, UserService>();
             services.AddDistributedMemoryCache();
             services.AddSession(options =>
             {

@@ -29,6 +29,7 @@ namespace BDS.Model
         public virtual DbSet<Direction> Directions { get; set; }
         public virtual DbSet<District> Districts { get; set; }
         public virtual DbSet<Feedback> Feedbacks { get; set; }
+        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<FengShui> FengShuis { get; set; }
         public virtual DbSet<Furniture> Furnitures { get; set; }
         public virtual DbSet<News> News { get; set; }
@@ -204,6 +205,18 @@ namespace BDS.Model
                     .IsUnicode(false);
 
                 entity.Property(e => e.Name).HasMaxLength(250);
+            });
+
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.ToTable("User");
+
+                entity.Property(e => e.FullName).HasMaxLength(250);
+
+                entity.Property(e => e.CreateDate).HasColumnType("datetime");
+
+                entity.Property(e => e.Username).HasMaxLength(50);
+                entity.Property(e => e.Password).HasMaxLength(50);
             });
 
             modelBuilder.Entity<FengShui>(entity =>

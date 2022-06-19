@@ -22,12 +22,12 @@ namespace BDS.Controllers
             var pageSize = 1;
             var blogs = await _context.News.Where(x => x.Status == 1).OrderBy(x => x.DisplayOrder).ToListAsync();
             totalRow = blogs.Count();
-            var sanphams = blogs.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            var data = blogs.Skip((page - 1) * pageSize).Take(pageSize).ToList();
             int totalPage = (int)Math.Ceiling((double)totalRow / pageSize);
 
             var paginationSet = new PaginationSet<News>()
             {
-                Items = sanphams,
+                Items = data,
                 MaxPage = 5,
                 Page = page,
                 TotalCount = totalRow,

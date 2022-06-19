@@ -1,25 +1,18 @@
 ﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using System.Threading.Tasks;
-using BDS.Areas.Admin.Models.Authen;
-using BDS.Model;
-using System;
+using BDS.Services;
+using BDS.Models;
 
 namespace BDS.Controllers
 {
     public class UserController : Controller
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
 
-        public UserController(SignInManager<IdentityUser> signInManager,
-            UserManager<IdentityUser> userManager)
+        private readonly IUserService _service;
+
+        public UserController(IUserService service)
         {
-            _userManager = userManager;
-            _signInManager = signInManager;
+            _service = service;
         }
 
         public IActionResult Login()
@@ -28,54 +21,35 @@ namespace BDS.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(LoginRequest request, string returnUrl = null)
+        public ActionResult Login(LoginRequest model)
         {
-            returnUrl ??= Url.Content("/");
-            // Đã đăng nhập nên chuyển hướng về Index
-            if (_signInManager.IsSignedIn(User))
-            {
-                HttpContext.Session.SetString("Token", JsonConvert.SerializeObject(request));
-                return Redirect(returnUrl);
-            }
-
-
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(
-                    request.UserNameOrEmail,
-                    request.Password,
-                    request.RememberMe,
-                    true
-                );
-
-                if (!result.Succeeded)
+                var result = _service.Login(model.Username, model.Password);
+                if (result == 1)
                 {
-                    // Thất bại username/password -> tìm user theo email, nếu thấy thì thử đăng nhập
-                    // bằng user tìm được
-                    var user = await _userManager.FindByEmailAsync(request.UserNameOrEmail);
-                    if (user != null)
-                    {
-                        result = await _signInManager.PasswordSignInAsync(
-                            user,
-                            request.Password,
-                            request.RememberMe,
-                            true
-                        );
-                    }
+                    var user = _service.GetUserDetail(model.Username, model.Password);
+
+                    HttpContext.Session.SetString("USER_SESSION", user.FullName);
+                    return Redirect("/");
                 }
-
-                if (result.Succeeded)
+                else if (result == 0)
                 {
-                    HttpContext.Session.SetString("Token", JsonConvert.SerializeObject(request));
-                    return LocalRedirect(returnUrl);
+                    ModelState.AddModelError("", "Tài khoản không tồn tại.");
+                }
+                else if (result == -1)
+                {
+                    ModelState.AddModelError("", "Tài khoản đang bị khoá.");
+                }
+                else if (result == -2)
+                {
+                    ModelState.AddModelError("", "Mật khẩu không đúng.");
                 }
                 else
                 {
-                    TempData["error"] = "Tài khoản hoặc mật khẩu không chính xác";
-                    return View();
+                    ModelState.AddModelError("", "đăng nhập không đúng.");
                 }
             }
-            TempData["error"] = "Đăng nhập không thành công";
             return View();
         }
 
@@ -86,43 +60,38 @@ namespace BDS.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterRequest request)
+        public IActionResult Register(RegisterRequest model)
         {
             if (!ModelState.IsValid)
             {
-                TempData["error"] = "Đăng ký không thành công";
-                return View(request);
+                ModelState.AddModelError("", "Đăng ký không thành công");
+                return View(model);
+            }
+            var user = _service.GetUserName(model.Username);
+            if (user != null)
+            {
+                ModelState.AddModelError("", "Tài khoản đã tồn tại.");
+                return View(model);
             }
 
-            var user = new IdentityUser
-            {
-                Email = request.Email,
-                UserName = request.UserName,
-                EmailConfirmed = true,
-                PhoneNumber = request.PhoneNumber,
-                SecurityStamp = Guid.NewGuid().ToString()
-            };
+            var result = _service.Add(model);
 
-            var result = await _userManager.CreateAsync(user, request.Password);
-
-            if (result.Succeeded)
+            if (result != null)
             {
                 return Redirect("/dang-nhap");
             }
             else
             {
-                TempData["error"] = "Đăng ký không thành công";
+                ModelState.AddModelError("", "Đăng ký không thành công");
             }
-            TempData["error"] = "Đăng ký không thành công";
             return View();
         }
 
-        public async Task<IActionResult> LogOut()
+        public ActionResult LogOut()
         {
-            if (!_signInManager.IsSignedIn(User)) return RedirectToPage("/");
-            await _signInManager.SignOutAsync();
-            HttpContext.Session.Remove("Token");
+            HttpContext.Session.Remove("USER_SESSION");
             return Redirect("/dang-nhap");
         }
     }
+
 }

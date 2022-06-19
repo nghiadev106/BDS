@@ -430,7 +430,6 @@ D:\nghia\DoAnTotNghiep2022\Trang\BDS\BDS\obj\Debug\net5.0\Razor\Areas\Admin\View
 D:\nghia\DoAnTotNghiep2022\Trang\BDS\BDS\obj\Debug\net5.0\Razor\Areas\Admin\Views\Shared\_LayoutAdmin.cshtml.g.cs
 D:\nghia\DoAnTotNghiep2022\Trang\BDS\BDS\obj\Debug\net5.0\Razor\Areas\Admin\Views\User\Login.cshtml.g.cs
 D:\nghia\DoAnTotNghiep2022\Trang\BDS\BDS\obj\Debug\net5.0\Razor\Areas\Admin\Views\_ViewImports.cshtml.g.cs
-D:\nghia\DoAnTotNghiep2022\Trang\BDS\BDS\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 D:\nghia\DoAnTotNghiep2022\Trang\BDS\BDS\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 D:\nghia\DoAnTotNghiep2022\Trang\BDS\BDS\obj\Debug\net5.0\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
 D:\nghia\DoAnTotNghiep2022\Trang\BDS\BDS\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
@@ -1892,3 +1891,7 @@ D:\DA\BSD\BDS\BDS\obj\Debug\net5.0\Razor\Views\Shared\Components\Menu\Index.csht
 D:\DA\BSD\BDS\BDS\bin\Debug\net5.0\MailKit.dll
 D:\DA\BSD\BDS\BDS\bin\Debug\net5.0\MimeKit.dll
 D:\DA\BSD\BDS\BDS\bin\Debug\net5.0\BouncyCastle.Crypto.dll
+D:\nghia\DoAnTotNghiep2022\Trang\BDS\BDS\bin\Debug\net5.0\MailKit.dll
+D:\nghia\DoAnTotNghiep2022\Trang\BDS\BDS\bin\Debug\net5.0\MimeKit.dll
+D:\nghia\DoAnTotNghiep2022\Trang\BDS\BDS\bin\Debug\net5.0\BouncyCastle.Crypto.dll
+D:\nghia\DoAnTotNghiep2022\Trang\BDS\BDS\obj\Debug\net5.0\Razor\Views\Shared\Components\Menu\Index.cshtml.g.cs

@@ -1,10 +1,10 @@
-﻿@model BDS.Areas.Admin.Models.Authen.RegisterRequest
+﻿@model BDS.Models.RegisterRequest
 
 <input type="hidden" id="success" value="@TempData["success"]" />
 <input type="hidden" id="warning" value="@TempData["warning"]" />
-<input type="hidden" id="error" value="@TempData["error"]"
+<input type="hidden" id="error" value="@TempData["error"]" />
 <div id="body" class="body-container">
-    <div class="breadcrumb" style="display: list-item;">
+    <div class="breadcrumb">
         <div class="uk-container uk-container-center">
             <ul class="uk-breadcrumb">
                 <li>
@@ -20,60 +20,61 @@
     </div>
     <div class="uk-container uk-container-center">
         <div class="uk-grid uk-grid-medium mb20">
-                <div class="uk-width-large-1-4"></div>
-                <div class="uk-width-large-2-4">
-                    <section class="register_box">
-                        <header class="panel-head">
-                            <div class="heading-2"><span>Đăng ký</span></div>
-                        </header>
-                        <section class="panel-body">
-                            <div class="uk-alert uk-alert-danger uk-margin-remove mb15" data-uk-alert>
-                                <a href="#" class="uk-alert-close uk-close"></a>
-                                <p>Nếu bạn đã là thanh viên xin mời bạn <a href="/dang-nhap">Đăng Nhập</a>, Nều chưa là thành viên xin mời bạn đăng ký tài khoản.</p>
-                            </div>
-                            <form class="uk-form uk-form-horizontal" role="form" method="post" asp-action="Register" asp-controller="User">
-                                <div class="log login">
-                                    <div class="uk-grid lib-grid-20 uk-grid-widt-1-1 uk-grid-width-small-1-2 uk-grid-width-large-1-2">
-                                        <div class="mb15 form-row">
-                                            <input type="text" asp-for="UserName" placeholder="Username (*)" class="form-control" />
-                                            <span asp-validation-for="UserName" class="text-danger"></span>
-                                        </div>
-                                        <div class="mb15 form-row">
-                                            <input type="text" asp-for="Email" value="" placeholder="Email  (*)" class="form-control" />
-                                            <span asp-validation-for="Email" class="text-danger"></span>
-                                        </div>
-
-                                        <div class="mb15 form-row">
-                                            <input type="text" asp-for="PhoneNumber" value="" placeholder="Số điện thoại  (*)" class="form-control" />
-                                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-                                        </div>
-                                        <div class="mb15 form-row">
-                                            <input asp-for="Password" class="form-control" placeholder="Mật khẩu (*)" type="password">
-                                            <span asp-validation-for="Password" class="text-danger"></span>
-                                        </div>
-
-                                        <div class="mb15 form-row">
-                                            <input asp-for="ConfirmPassword" class="form-control" placeholder="Nhập lại mật khẩu (*)" type="password">
-                                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-                                        </div>
+            <div class="uk-width-large-1-4"></div>
+            <div class="uk-width-large-2-4">
+                <section class="register_box">
+                    <header class="panel-head">
+                        <div class="heading-2"><span>Đăng ký</span></div>
+                    </header>
+                    <section class="panel-body">
+                        <div class="uk-alert uk-alert-danger uk-margin-remove mb15" data-uk-alert>
+                            <a href="#" class="uk-alert-close uk-close"></a>
+                            <p>Nếu bạn đã là thanh viên xin mời bạn <a href="/dang-nhap">Đăng Nhập</a>, Nều chưa là thành viên xin mời bạn đăng ký tài khoản.</p>
+                        </div>
+                        <form class="uk-form uk-form-horizontal" role="form" method="post" asp-action="Register" asp-controller="User">
+                            <div class="log login">
+                                <div class="uk-grid lib-grid-20 uk-grid-widt-1-1 uk-grid-width-small-1-2 uk-grid-width-large-1-2">
+                                    <div style="text-align:center;margin-bottom:10px" asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <style type="text/css">
+                                        ul {
+                                            list-style: none;
+                                        }
+                                    </style>
+                                    <div class="mb15 form-row">
+                                        <input type="text" asp-for="FullName" value="" placeholder="Họ và tên  (*)" class="form-control" />
+                                        <span asp-validation-for="FullName" class="text-danger"></span>
                                     </div>
-                                    <div class="mb15 form-row uk-text-center">
-                                        <button type="submit" name="register" value="register" class="uk-button login_button">Đăng ký</button>
+                                    <div class="mb15 form-row">
+                                        <input type="text" asp-for="Username" placeholder="Username (*)" class="form-control" />
+                                        <span asp-validation-for="Username" class="text-danger"></span>
                                     </div>
-                                    <div>
-                                        <a href="/dang-nhap">Bạn đã có tài khoản</a>
+
+                                    <div class="mb15 form-row">
+                                        <input asp-for="Password" class="form-control" placeholder="Mật khẩu (*)" type="password">
+                                        <span asp-validation-for="Password" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="mb15 form-row">
+                                        <input asp-for="ConfirmPassword" class="form-control" placeholder="Nhập lại mật khẩu (*)" type="password">
+                                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                                     </div>
                                 </div>
-                            </form>
-                        </section>
+                                <div class="mb15 form-row uk-text-center">
+                                    <button type="submit" name="register" value="register" class="uk-button login_button">Đăng ký</button>
+                                </div>
+                                <div>
+                                    <a href="/dang-nhap">Bạn đã có tài khoản</a>
+                                </div>
+                            </div>
+                        </form>
                     </section>
-                </div><!-- .uk-width -->
+                </section>
+            </div><!-- .uk-width -->
 
-            </div><!-- .uk-grid -->
-        </div><!-- .uk-container -->
-    </section><!-- .index-navigation -->
-
-    <script>
+        </div><!-- .uk-grid -->
+    </div><!-- .uk-container -->
+</div>
+<script>
         $(document).ready(function () {
             $('.button-social').click(function () {
                 var url = $(this).attr('data-href');

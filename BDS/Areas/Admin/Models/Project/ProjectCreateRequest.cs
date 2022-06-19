@@ -43,7 +43,6 @@ namespace BDS.Areas.Admin.Models.Project
         [Required(ErrorMessage = "Bạn phải nhập URL")]
         public string Url { get; set; }
 
-        [Required(ErrorMessage = "Bạn phải chọn trạng thái")]
         public int? Status { get; set; }
         public bool IsNewInput
         {

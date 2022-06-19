@@ -8,7 +8,7 @@ namespace BDS.Controllers
     {
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-            var sessions = context.HttpContext.Session.GetString("Token");
+            var sessions = context.HttpContext.Session.GetString("USER_SESSION");
             if (sessions == null)
             {
                 context.Result = new RedirectToActionResult("Login", "User", null);

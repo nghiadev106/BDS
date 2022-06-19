@@ -71,7 +71,7 @@ namespace BDS.Services
 
         public async Task<List<ProjectViewModel>> GetByCategoryId(int id)
         {
-            return await _context.Projects.Where(x=>x.CategoryId==id).Select(p => new ProjectViewModel()
+            return await _context.Projects.Where(x=>x.CategoryId==id&&x.Status==1).Select(p => new ProjectViewModel()
             {
                 Id = p.Id,
                 Name = p.Name,
@@ -161,7 +161,7 @@ namespace BDS.Services
                 {
                     model = model.Where(x => Convert.ToDecimal(x.Acreage) <= Convert.ToDecimal(toAcreage)).ToList();
                 }
-                return model;
+                return model.Where(x => x.Status == 1).ToList();
         }
 
         public async Task<int> Create(ProjectCreateRequest request)

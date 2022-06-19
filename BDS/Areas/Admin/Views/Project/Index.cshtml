@@ -51,11 +51,14 @@
                                 <td>@item.Description</td>
                                 @if (item.Status == 1)
                                 {
-                                    <td><span class="btn-success">Hoạt động</span></td>
+                                    <td><span class="btn-success">Đã đăng</span></td>
                                 }
-                                else
+                                else if (item.Status == 0)
                                 {
-                                    <td><span class="btn-danger">Khóa</span></td>
+                                   <td><span class="btn-warning">Chờ duyệt</span></td>
+                                }else
+                                {
+                                <td><span class="btn-danger">Khóa</span></td>
                                 }
                                 <td>
                                     <a href="/Admin/Project/Edit/@item.Id" class="btn btn-primary glyphicon glyphicon-pencilt"><i class="fa-solid fa-pencil"></i></a>

@@ -47,7 +47,7 @@ namespace BDS.Controllers
             ViewBag.categories = _context.Categories.Where(x => x.Status == 1).ToList();
             ViewBag.provinces = _context.Provinces.ToList();
             ViewBag.priceTypes = _context.PriceTypes.ToList();
-            ViewBag.ListProjects = await _context.Projects.Where(x => x.Status == 1).OrderBy(x => x.CreateDate).ToListAsync();
+            ViewBag.ListProjects = await _context.Projects.Where(x => x.Status == 1).OrderByDescending(x => x.CreateDate).ToListAsync();
             ViewBag.ListProjectSearch = _service.Search(keyword, categoryId, provinceId, districtId, wardId, fromPrice, fromPriceType, toPrice, toPriceType, fromAcreage, toAcreage);
             return View();
         }
@@ -86,7 +86,7 @@ namespace BDS.Controllers
             ViewBag.provinces = _context.Provinces.ToList();
             ViewBag.priceTypes = _context.PriceTypes.ToList();
             ViewBag.ListProject = await _context.Projects.Where(x => x.Status == 1).OrderBy(x => x.CreateDate).Take(5).ToListAsync();
-            ViewBag.relatedProject = allProject.Where(x => x.Id != project.Id).Take(8).ToList();
+            ViewBag.relatedProject = allProject.Where(x => x.Id != project.Id&&x.Status==1).Take(8).ToList();
             ViewBag.category = await _context.Categories.Where(x=>x.Id==project.CategoryId).SingleOrDefaultAsync();
             return View(project);
         }
